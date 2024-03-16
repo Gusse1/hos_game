@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bk1exu1p74wrs"]
+[gd_scene load_steps=14 format=3 uid="uid://bk1exu1p74wrs"]
 
 [ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_Pawn.gd" id="1_qx48f"]
 [ext_resource type="Resource" uid="uid://c770d2068in3p" path="res://addons/GoldGdt/Default.tres" id="2_m0ukv"]
@@ -7,17 +7,10 @@
 [ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_View.gd" id="5_say2d"]
 [ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_Body.gd" id="6_k6qi8"]
 [ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_Camera.gd" id="7_3b78s"]
-[ext_resource type="Script" path="res://src/resources/PlayerState.gd" id="7_5xn01"]
-[ext_resource type="Script" path="res://src/resources/PlayerVariables.gd" id="7_m0na8"]
 [ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_DebugUI.gd" id="7_vbtkw"]
 [ext_resource type="Script" path="res://src/shooting.gd" id="9_tnwmm"]
 
 [sub_resource type="Theme" id="Theme_jc27t"]
-
-[sub_resource type="Resource" id="Resource_vwc4m"]
-script = ExtResource("7_m0na8")
-MAX_HEALTH = 10.0
-MAX_BLOOD = 11.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j7pn1"]
 size = Vector3(0.813, 1.45627, 0.813)
@@ -42,8 +35,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="Crosshair" type="Control" parent="GameUI"]
 layout_mode = 1
@@ -62,55 +53,25 @@ scale = Vector2(0.5, 0.5)
 points = PackedVector2Array(-6, -1, 5, -1)
 default_color = Color(1, 1, 1, 0.482353)
 
-[node name="BloodDisplay" type="Control" parent="GameUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="GameUI/BloodDisplay"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -12.9999
-offset_top = -5.0
-offset_right = 161.0
-offset_bottom = 81.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.316622
-theme = SubResource("Theme_jc27t")
-theme_type_variation = &"font"
-theme_override_font_sizes/normal_font_size = 36
-text = "11"
-fit_content = true
-
 [node name="AmmoDisplay" type="Control" parent="GameUI"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 11
+anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
+offset_left = -368.0
+offset_top = 474.0
+offset_right = -275.0
+offset_bottom = -94.0
+grow_horizontal = 0
 grow_vertical = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameUI/AmmoDisplay"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -378.0
-offset_top = -229.0
-offset_right = -182.0
-offset_bottom = -171.0
-grow_horizontal = 0
-grow_vertical = 0
+layout_mode = 0
+offset_left = -1.0
+offset_top = -4.0
+offset_right = 195.0
+offset_bottom = 54.0
 rotation = -0.13439
 theme = SubResource("Theme_jc27t")
 theme_type_variation = &"font"
@@ -273,11 +234,6 @@ script = ExtResource("4_5gavo")
 Parameters = ExtResource("2_m0ukv")
 Body = NodePath("../Body")
 
-[node name="PlayerState" type="Node" parent="." node_paths=PackedStringArray("blood_text")]
-script = ExtResource("7_5xn01")
-playerVariables = SubResource("Resource_vwc4m")
-blood_text = NodePath("../GameUI/BloodDisplay/RichTextLabel")
-
 [node name="Body" type="CharacterBody3D" parent="." node_paths=PackedStringArray("View", "collision_hull", "duck_timer")]
 collision_layer = 2
 floor_constant_speed = true
@@ -323,18 +279,16 @@ editor_description = "
 fov = 90.6
 near = 0.001
 
-[node name="gun" type="CSGBox3D" parent="Interpolated Camera/Arm/Arm Anchor/Camera" node_paths=PackedStringArray("raycast", "firerate", "reload_timer", "ammo_display", "playerState")]
+[node name="gun" type="CSGBox3D" parent="Interpolated Camera/Arm/Arm Anchor/Camera" node_paths=PackedStringArray("raycast", "firerate", "reload_timer", "ammo_display")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.166886, -0.325985, -0.737846)
 size = Vector3(0.162964, 0.118652, 0.481445)
 script = ExtResource("9_tnwmm")
 raycast = NodePath("../RayCast3D")
 firerate = NodePath("firerate")
 reload_timer = NodePath("reload_timer")
-reload_accumulation = 1.0
 maganize_size = 7
 spread = 2.0
 ammo_display = NodePath("../../../../../GameUI/AmmoDisplay/RichTextLabel")
-playerState = NodePath("../../../../../PlayerState")
 
 [node name="reload_timer" type="Timer" parent="Interpolated Camera/Arm/Arm Anchor/Camera/gun"]
 one_shot = true

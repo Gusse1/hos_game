@@ -8,6 +8,8 @@ var bullet_impacts = []
 
 # Reload variables
 @export var reload_timer : Timer
+@export var reload_accumulation : float
+var reload_float : float
 @export var maganize_size : int
 var current_magazine_size : int 
 var reloading : bool
@@ -18,6 +20,9 @@ var reloading : bool
 # UI Variables
 @export var ammo_display : RichTextLabel
 
+# Resource variables
+@export var playerState : PlayerState
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ammo_display.text = str(current_magazine_size)
@@ -25,7 +30,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _input(event):
+func _process(delta):
 	if Input.is_action_pressed("shoot") and can_shoot and not reloading and (current_magazine_size > 0):
 		_apply_recoil()
 		firerate.start()
@@ -33,11 +38,20 @@ func _input(event):
 		current_magazine_size-=1
 		_shoot()
 		ammo_display.text = str(current_magazine_size)
-				
-	if Input.is_action_pressed("reload"):
-		print_debug("Reloading!")
-		reload_timer.start()
+		
+	# Weapon is reloaded by holding down the reload key where singular bullets are transmitted to the magazine
+	if Input.is_action_pressed("reload") and playerState.current_blood > 0:
 		reloading = true
+		reload_float += reload_accumulation*delta
+		playerState._adjust_blood(-(reload_accumulation*delta))
+		print_debug("reload_float ", reload_float)
+		if reload_float >= 1.5:
+			_reload_singular_bullet()
+			reload_float = 0
+	if Input.is_action_just_released("reload"):
+		reloading = false
+		reload_float = 0
+		print_debug("reload end")
 		
 
 func _apply_recoil():
@@ -45,7 +59,6 @@ func _apply_recoil():
 	var random_angle_y = randf_range(-spread,spread)
 	
 	raycast.rotation_degrees = Vector3(90 - random_angle_x, random_angle_y, 0)
-	print_debug(raycast.rotation_degrees)
 
 func _shoot():
 	raycast.force_raycast_update()
@@ -67,7 +80,6 @@ func _shoot():
 
 func _reset_recoil():
 	raycast.rotation_degrees = Vector3(90, 0, 0)
-	print_debug(raycast.rotation_degrees)
 
 func _on_firerate_timeout():
 	can_shoot = true
@@ -80,3 +92,7 @@ func _on_reload_timer_timeout():
 	reloading = false
 	ammo_display.text = str(current_magazine_size)
 
+func _reload_singular_bullet():
+	if current_magazine_size < maganize_size:
+		current_magazine_size += 1
+		ammo_display.text = str(current_magazine_size)
