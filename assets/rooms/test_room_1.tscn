@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5hav5o7x3noe"]
+
+[ext_resource type="Script" path="res://src/room_gen/room_info.gd" id="1_hgyfk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vnky"]
+albedo_color = Color(0.6, 0.219608, 0, 1)
+
+[node name="Room" type="Node3D" node_paths=PackedStringArray("north_door", "south_door")]
+script = ExtResource("1_hgyfk")
+north_door = NodePath("north_door")
+south_door = NodePath("south_door")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25531, 0)
+use_collision = true
+size = Vector3(40, 0.5, 40)
+material = SubResource("StandardMaterial3D_4vnky")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2661, 9.49469, -11)
+use_collision = true
+size = Vector3(5, 19, 18)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1009, 9.49469, -11.5)
+use_collision = true
+size = Vector3(5, 19, 18)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7339, 9.49469, 11)
+use_collision = true
+size = Vector3(5, 19, 18)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0403214, 9.49469, -21.9597)
+use_collision = true
+size = Vector3(5, 19, 31)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0403214, 9.49469, 22)
+use_collision = true
+size = Vector3(5, 19, 31)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.633, 9.49469, 11.5)
+use_collision = true
+size = Vector3(5, 19, 18)
+
+[node name="south_door" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6, 0, 0)
+
+[node name="north_door" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6351, 0, 0)
