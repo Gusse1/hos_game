@@ -30,8 +30,8 @@ func _generate_rooms():
 			var curr_room = spawnedRooms[room_num]
 			print_debug("Moving new room... with room_num: ", room_num)
 			print_debug("North door position: ", prev_room.position.x + prev_room.north_door.position.x)
-			var northDoorLocation = prev_room.position.x + prev_room.north_door.position.x
-			var newPosition = northDoorLocation + curr_room.north_door_offset
+			var northDoorLocation = prev_room.position + prev_room.north_door.position
+			var newPosition = northDoorLocation.x + curr_room.north_door_offset
 			
 			print_debug(newPosition)
 

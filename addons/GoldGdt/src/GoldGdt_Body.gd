@@ -163,9 +163,9 @@ func _duck(duck_on: bool) -> void:
 	if duck_on:
 		if !ducked and !ducking:
 			ducking = true
-			duck_timer.start(1.0)
+			duck_timer.start(0.8)
 		
-		time = max(0, (1.0 - duck_timer.time_left))
+		time = max(0, (0.8 - duck_timer.time_left))
 		
 		if ducking:
 			if duck_timer.time_left <= 0.6 or !is_on_floor():
