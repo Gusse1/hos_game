@@ -38,7 +38,7 @@ func _generate_rooms():
 				"east":
 					_spawn_east_room(room_num)
 				"south":
-					_spawn_north_room(room_num)
+					_spawn_south_room(room_num)
 				"west":
 					_spawn_west_room(room_num)
 	
