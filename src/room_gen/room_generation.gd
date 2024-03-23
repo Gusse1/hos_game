@@ -20,16 +20,18 @@ func _generate_rooms():
 		# Instantiate the random room
 		var randomRoom = roomScenes[randomIndex].instantiate()
 					
-		self.get_tree().current_scene.add_child.call_deferred(randomRoom)
+		self.add_child.call_deferred(randomRoom)
 		spawnedRooms.append(randomRoom)
 		
 		spawnedRooms[room_num]._generate_offset()
 				
 		if room_num > 0:
+			var prev_room = spawnedRooms[room_num-1]
+			var curr_room = spawnedRooms[room_num]
 			print_debug("Moving new room... with room_num: ", room_num)
-			print_debug(spawnedRooms[room_num-1].position)
-			var northDoorLocation = spawnedRooms[room_num-1].position.x + spawnedRooms[room_num-1].north_door_offset
-			var newPosition = northDoorLocation + spawnedRooms[room_num].north_door_offset
+			print_debug("North door position: ", prev_room.position.x + prev_room.north_door.position.x)
+			var northDoorLocation = prev_room.position.x + prev_room.north_door.position.x
+			var newPosition = northDoorLocation + curr_room.north_door_offset
 			
 			print_debug(newPosition)
 

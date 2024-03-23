@@ -1,14 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://b5hav5o7x3noe"]
 
-[ext_resource type="Script" path="res://src/room_gen/room_info.gd" id="1_hgyfk"]
+[ext_resource type="Script" path="res://src/room_gen/room_info.gd" id="1_f6dxa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vnky"]
 albedo_color = Color(0.6, 0.219608, 0, 1)
 
-[node name="Room" type="Node3D" node_paths=PackedStringArray("north_door", "south_door")]
-script = ExtResource("1_hgyfk")
+[node name="Room" type="Node3D" node_paths=PackedStringArray("north_door")]
+script = ExtResource("1_f6dxa")
 north_door = NodePath("north_door")
-south_door = NodePath("south_door")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25531, 0)
