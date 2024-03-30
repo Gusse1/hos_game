@@ -2,6 +2,7 @@ class_name PlayerState extends Node
 
 @export var playerVariables : PlayerVariables
 var current_blood : float
+var current_health : float
 
 # UI
 @export var blood_text : RichTextLabel
@@ -9,6 +10,7 @@ var current_blood : float
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_blood = playerVariables.MAX_BLOOD
+	current_health = playerVariables.MAX_HEALTH / 2
 
 
 
@@ -23,3 +25,11 @@ func _adjust_blood(amount: float):
 		current_blood = 0
 	if current_blood > playerVariables.MAX_BLOOD:
 		current_blood = playerVariables.MAX_BLOOD
+		
+func _adjust_health(amount: float):
+	current_health += amount
+	
+	if current_health < 0:
+		current_health = 0
+	if current_health > playerVariables.MAX_HEALTH:
+		current_health = playerVariables.MAX_HEALTH

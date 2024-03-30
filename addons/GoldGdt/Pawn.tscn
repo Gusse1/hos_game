@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bk1exu1p74wrs"]
+[gd_scene load_steps=19 format=3 uid="uid://bk1exu1p74wrs"]
 
 [ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_Pawn.gd" id="1_qx48f"]
 [ext_resource type="Resource" uid="uid://c770d2068in3p" path="res://addons/GoldGdt/Default.tres" id="2_m0ukv"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://src/resources/PlayerState.gd" id="7_5xn01"]
 [ext_resource type="Script" path="res://src/resources/PlayerVariables.gd" id="7_m0na8"]
 [ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_DebugUI.gd" id="7_vbtkw"]
+[ext_resource type="Script" path="res://src/resources/PlayerHealing.gd" id="9_sve2w"]
 [ext_resource type="Script" path="res://src/shooting.gd" id="9_tnwmm"]
 [ext_resource type="PackedScene" uid="uid://b8wdvd0emyfjb" path="res://models/handgun.blend" id="12_u5677"]
 
@@ -19,6 +20,7 @@
 script = ExtResource("7_m0na8")
 MAX_HEALTH = 10.0
 MAX_BLOOD = 11.0
+HEALING_SPEED = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j7pn1"]
 size = Vector3(0.813, 1.45627, 0.813)
@@ -278,6 +280,10 @@ Body = NodePath("../Body")
 script = ExtResource("7_5xn01")
 playerVariables = SubResource("Resource_vwc4m")
 blood_text = NodePath("../GameUI/BloodDisplay/RichTextLabel")
+
+[node name="PlayerHealing" type="Node" parent="PlayerState" node_paths=PackedStringArray("playerState")]
+script = ExtResource("9_sve2w")
+playerState = NodePath("..")
 
 [node name="Body" type="CharacterBody3D" parent="." node_paths=PackedStringArray("View", "collision_hull", "duck_timer")]
 collision_layer = 2
