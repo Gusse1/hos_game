@@ -68,14 +68,30 @@ size = Vector3(5, 19, 18)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6351, 0, 0)
 visible = false
 
+[node name="north_block" type="CSGBox3D" parent="north_door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 9.5, -0.5)
+size = Vector3(2, 20, 6)
+
 [node name="west_door" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22)
 visible = false
+
+[node name="west_block" type="CSGBox3D" parent="west_door"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.18557e-08, 9.99469, 0.5)
+size = Vector3(3, 20, 6)
 
 [node name="east_door" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22)
 visible = false
 
+[node name="east_block" type="CSGBox3D" parent="east_door"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.37114e-08, 9.99469, -1)
+size = Vector3(2, 20, 6)
+
 [node name="south_door" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6, 0, 0)
 visible = false
+
+[node name="south_block" type="CSGBox3D" parent="south_door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 9.5, 0.5)
+size = Vector3(2, 20, 6)
