@@ -1,16 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5hav5o7x3noe"]
+[gd_scene load_steps=3 format=3 uid="uid://c64501kbdseiw"]
 
-[ext_resource type="Script" path="res://src/room_gen/room_info.gd" id="1_f6dxa"]
+[ext_resource type="Script" path="res://src/room_gen/room_info.gd" id="1_dlhme"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vnky"]
 albedo_color = Color(0.6, 0.219608, 0, 1)
 
-[node name="Room" type="Node3D" node_paths=PackedStringArray("north_door", "west_door", "south_door", "east_door")]
-script = ExtResource("1_f6dxa")
-north_door = NodePath("north_door")
-west_door = NodePath("west_door")
+[node name="Room" type="Node3D" node_paths=PackedStringArray("south_door", "east_door")]
+script = ExtResource("1_dlhme")
 south_door = NodePath("south_door")
 east_door = NodePath("east_door")
+
+[node name="upgrade_box3D61" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2.995, 6.5)
+size = Vector3(4, 6, 4)
+
+[node name="upgrade_box3D71" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2.99469, 0)
+size = Vector3(4, 6, 4)
+
+[node name="upgrade_box3D81" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2.995, -7.5)
+size = Vector3(4, 6, 4)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25531, 0)
@@ -35,9 +45,9 @@ use_collision = true
 size = Vector3(5, 19, 18)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7339, 9.49469, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7339, 9.49469, 8)
 use_collision = true
-size = Vector3(5, 19, 18)
+size = Vector3(5, 19, 24)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.633, 9.49469, 11.5)
@@ -60,22 +70,12 @@ use_collision = true
 size = Vector3(5, 19, 18)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D2/CSGBox3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.367, 0, 0.500006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.367, 0, -1.99999)
 use_collision = true
-size = Vector3(5, 19, 18)
-
-[node name="north_door" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6351, 0, 0)
-visible = false
-
-[node name="west_door" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22)
-visible = false
+size = Vector3(5, 19, 23)
 
 [node name="east_door" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200001, 0, 21)
 
 [node name="south_door" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6, 0, 0)
-visible = false

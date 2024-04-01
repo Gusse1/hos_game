@@ -2,10 +2,12 @@ extends Node3D
 
 # Define a list of room scenes
 var roomScenes : Array[PackedScene] = [
-	preload("res://assets/rooms/test_room_1.tscn")
+	preload("res://assets/rooms/test_room_1.tscn"),
+	preload("res://assets/rooms/upgrade_room_1.tscn"),
 ]
 
 var spawnedRooms = []
+var spawnedExtraRooms = []
 
 @export var rooms_to_generate: int
 
@@ -28,10 +30,8 @@ func _generate_rooms():
 		
 		# Instantiate the random room
 		var randomRoom = roomScenes[randomIndex].instantiate()
-					
 		self.add_child.call_deferred(randomRoom)
 		spawnedRooms.append(randomRoom)
-		
 		spawnedRooms[room_num]._generate_offset()
 				
 		if room_num > 0:
@@ -39,7 +39,6 @@ func _generate_rooms():
 			var availableDirections = directions.duplicate()
 			
 			if spawnedRooms[room_num-1].north_blocked:
-				print_debug("northblock")
 				_remove_dir(availableDirections, "north")
 			if spawnedRooms[room_num-1].south_blocked:
 				_remove_dir(availableDirections, "south")
@@ -48,8 +47,14 @@ func _generate_rooms():
 			if spawnedRooms[room_num-1].west_blocked:
 				_remove_dir(availableDirections, "west")
 			
-			print_debug(availableDirections)
-			var randomDirIndex = randi() % availableDirections.size()
+			var randomDirIndex = 0
+			
+			if availableDirections.size() > 0:
+				randomDirIndex = randi() % availableDirections.size()
+			else:
+				print_debug("All dirs blocked for room:", spawnedRooms[room_num].name)
+				continue
+
 			var randomDir = availableDirections[randomDirIndex]
 			
 			match randomDir:
@@ -61,39 +66,59 @@ func _generate_rooms():
 					_spawn_south_room(room_num)
 				"west":
 					_spawn_west_room(room_num)
-	
+
 func _spawn_north_room(room_num: int):
 	var prev_room = spawnedRooms[room_num-1]
+	
+	if spawnedRooms[room_num].south_blocked:
+		return 0
+	
 	var curr_room = spawnedRooms[room_num]
+		
 	var northDoorLocation = prev_room.position + prev_room.north_door.position
-	var newPosition = northDoorLocation.x + curr_room.north_door_offset
+	var newPosition = northDoorLocation.x - curr_room.south_door_offset
 	
 	spawnedRooms[room_num].south_blocked = true
 	spawnedRooms[room_num].position = Vector3(newPosition, prev_room.position.y, prev_room.position.z)
 
 func _spawn_east_room(room_num: int):
 	var prev_room = spawnedRooms[room_num-1]
+	
+	if spawnedRooms[room_num].west_blocked:
+		return 0
+	
 	var curr_room = spawnedRooms[room_num]
+		
 	var eastDoorLocation = prev_room.position + prev_room.east_door.position
-	var newPosition = eastDoorLocation.z + curr_room.east_door_offset
+	var newPosition = eastDoorLocation.z - curr_room.west_door_offset
 	
 	spawnedRooms[room_num].west_blocked = true
 	spawnedRooms[room_num].position = Vector3(prev_room.position.x, prev_room.position.y, newPosition)
 
 func _spawn_south_room(room_num: int):
 	var prev_room = spawnedRooms[room_num-1]
+	
+	if spawnedRooms[room_num].north_blocked:
+		return 0
+				
 	var curr_room = spawnedRooms[room_num]
+				
 	var southDoorLocation = prev_room.position + prev_room.south_door.position
-	var newPosition = southDoorLocation.x + curr_room.south_door_offset
+	var newPosition = southDoorLocation.x - curr_room.north_door_offset
 	
 	spawnedRooms[room_num].north_blocked = true
 	spawnedRooms[room_num].position = Vector3(newPosition, prev_room.position.y, prev_room.position.z)
 	
 func _spawn_west_room(room_num: int):
 	var prev_room = spawnedRooms[room_num-1]
+
+	if spawnedRooms[room_num].east_blocked:
+		return 0
+
 	var curr_room = spawnedRooms[room_num]
+	
 	var westDoorLocation = prev_room.position + prev_room.west_door.position
-	var newPosition = westDoorLocation.z + curr_room.west_door_offset
+	var newPosition = westDoorLocation.z - curr_room.east_door_offset
 	
 	spawnedRooms[room_num].east_blocked = true
 	spawnedRooms[room_num].position = Vector3(prev_room.position.x, prev_room.position.y, newPosition)
