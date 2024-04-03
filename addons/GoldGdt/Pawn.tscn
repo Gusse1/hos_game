@@ -21,7 +21,7 @@ script = ExtResource("7_m0na8")
 MAX_HEALTH = 10.0
 MAX_BLOOD = 11.0
 HEALING_SPEED = 1.0
-BASE_DAMAGE = 4.0
+BASE_DAMAGE = 5.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j7pn1"]
 size = Vector3(0.813, 1.45627, 0.813)
@@ -343,7 +343,7 @@ script = ExtResource("9_tnwmm")
 raycast = NodePath("../RayCast3D")
 firerate = NodePath("firerate")
 reload_timer = NodePath("reload_timer")
-reload_accumulation = 1.0
+reload_accumulation = 2.0
 maganize_size = 7
 spread = 2.0
 ammo_display = NodePath("../../../../../GameUI/AmmoDisplay/RichTextLabel")

@@ -8,7 +8,7 @@ var bullet_impacts = []
 
 # Reload variables
 @export var reload_timer : Timer
-@export var reload_accumulation : float
+@export var reload_accumulation : float # Speed of reload
 var reload_float : float
 @export var maganize_size : int
 var current_magazine_size : int 
@@ -80,8 +80,6 @@ func _shoot():
 			var target_state = target.get_parent().get_node("EnemyResources")
 		
 			if target_state != null:
-				#target_state.damage(playerState.playerVariables.BASE_DAMAGE)
-				
 				target_state._damage(playerState.playerVariables.BASE_DAMAGE)
 
 
