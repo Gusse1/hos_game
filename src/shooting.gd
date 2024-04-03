@@ -76,6 +76,13 @@ func _shoot():
 			if bullet_impacts.size() > 10:
 				bullet_impacts[0].queue_free()
 				bullet_impacts.remove_at(0)
+				
+			var target_state = target.get_parent().get_node("EnemyResources")
+		
+			if target_state != null:
+				#target_state.damage(playerState.playerVariables.BASE_DAMAGE)
+				
+				target_state._damage(playerState.playerVariables.BASE_DAMAGE)
 
 
 func _reset_recoil():

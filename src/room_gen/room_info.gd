@@ -42,9 +42,13 @@ func _generate_offset():
 func _update_doors():
 	if north_blocked == false and north_door:
 		north_door.visible = true
+		north_door.use_collision = true
 	if south_blocked == false and south_door:
 		south_door.visible = true
+		south_door.use_collision = true
 	if east_blocked == false and east_door:
 		east_door.visible = true
+		east_door.use_collision = true
 	if west_blocked == false and west_door:
 		west_door.visible = true
+		west_door.use_collision  = true

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5hav5o7x3noe"]
+[gd_scene load_steps=4 format=3 uid="uid://b5hav5o7x3noe"]
 
 [ext_resource type="Script" path="res://src/room_gen/room_info.gd" id="1_f6dxa"]
+[ext_resource type="PackedScene" uid="uid://bg0cfyn7q5vd5" path="res://assets/enemies/sprinter.tscn" id="2_h31of"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vnky"]
 albedo_color = Color(0.6, 0.219608, 0, 1)
@@ -95,3 +96,6 @@ visible = false
 [node name="south_block" type="CSGBox3D" parent="south_door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 9.5, 0.5)
 size = Vector3(2, 20, 6)
+
+[node name="Sprinter" parent="." instance=ExtResource("2_h31of")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.99469, 1)

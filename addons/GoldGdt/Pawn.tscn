@@ -21,6 +21,7 @@ script = ExtResource("7_m0na8")
 MAX_HEALTH = 10.0
 MAX_BLOOD = 11.0
 HEALING_SPEED = 1.0
+BASE_DAMAGE = 4.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j7pn1"]
 size = Vector3(0.813, 1.45627, 0.813)
@@ -287,6 +288,7 @@ playerState = NodePath("..")
 
 [node name="Body" type="CharacterBody3D" parent="." node_paths=PackedStringArray("View", "collision_hull", "duck_timer")]
 collision_layer = 2
+collision_mask = 3
 floor_constant_speed = true
 script = ExtResource("6_k6qi8")
 Parameters = ExtResource("2_m0ukv")

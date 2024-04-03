@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg0cfyn7q5vd5"]
+
+[ext_resource type="Script" path="res://src/resources/EnemyState.gd" id="1_d8gm5"]
+
+[node name="Sprinter" type="Node3D"]
+
+[node name="Sprinter3D" type="Node3D" parent="."]
+
+[node name="EnemyCollider" type="CSGCylinder3D" parent="Sprinter3D"]
+use_collision = true
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Sprinter3D"]
+
+[node name="EnemyResources" type="Node" parent="Sprinter3D"]
+script = ExtResource("1_d8gm5")
