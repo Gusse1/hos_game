@@ -1,15 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://bg0cfyn7q5vd5"]
+[gd_scene load_steps=4 format=3 uid="uid://bg0cfyn7q5vd5"]
 
 [ext_resource type="Script" path="res://src/resources/EnemyState.gd" id="1_d8gm5"]
+[ext_resource type="Script" path="res://src/enemy_logic/SprinterMovement.gd" id="1_exyy8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_chnrw"]
+height = 1.7773
 
 [node name="Sprinter" type="Node3D"]
 
-[node name="Sprinter3D" type="Node3D" parent="."]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_exyy8")
 
-[node name="EnemyCollider" type="CSGCylinder3D" parent="Sprinter3D"]
-use_collision = true
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Sprinter3D"]
-
-[node name="EnemyResources" type="Node" parent="Sprinter3D"]
+[node name="EnemyResources" type="Node" parent="CharacterBody3D"]
 script = ExtResource("1_d8gm5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CylinderShape3D_chnrw")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CharacterBody3D/CollisionShape3D"]

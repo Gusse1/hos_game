@@ -27,7 +27,6 @@ func _remove_dir(available_directions, removable):
 
 func _generate_rooms():
 	for room_num in rooms_to_generate:
-		print_debug(rooms_to_generate - room_num)
 		# Get a random index from the list
 		var randomIndex = randi() % roomScenes.size()
 		
@@ -37,7 +36,6 @@ func _generate_rooms():
 		spawnedRooms.append(randomRoom)
 		spawnedRooms.back()._generate_offset()
 		if room_num == 0:
-			print_debug("First room")
 			room_map.append(Vector2(0,0))
 		else:
 			# Choose a random direction:

@@ -107,4 +107,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 9.5, 0.5)
 size = Vector3(2, 20, 6)
 
 [node name="Sprinter" parent="." instance=ExtResource("2_h31of")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.99469, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.99469, 1)
