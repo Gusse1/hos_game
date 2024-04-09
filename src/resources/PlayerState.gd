@@ -3,6 +3,7 @@ class_name PlayerState extends Node
 @export var playerVariables : PlayerVariables
 var current_blood : float
 var current_health : float
+@export var blood_recovery_rate: float
 
 # UI
 @export var blood_text : RichTextLabel
@@ -16,7 +17,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	_adjust_blood(delta * blood_recovery_rate)
+	
 	pass
+	
 func _adjust_blood(amount: float):
 	current_blood += amount
 	blood_text.text = str(current_blood).pad_decimals(1)

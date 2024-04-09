@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5hav5o7x3noe"]
+[gd_scene load_steps=7 format=3 uid="uid://b5hav5o7x3noe"]
 
 [ext_resource type="Script" path="res://src/room_gen/room_info.gd" id="1_f6dxa"]
 [ext_resource type="PackedScene" uid="uid://bg0cfyn7q5vd5" path="res://assets/enemies/sprinter.tscn" id="2_h31of"]
@@ -10,6 +10,14 @@ geometry_parsed_geometry_type = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vnky"]
 albedo_color = Color(0.6, 0.219608, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe0wc"]
+transparency = 1
+blend_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1qsou"]
+transparency = 1
+blend_mode = 2
 
 [node name="Room" type="Node3D" node_paths=PackedStringArray("north_door", "west_door", "south_door", "east_door")]
 script = ExtResource("1_f6dxa")
@@ -81,6 +89,7 @@ visible = false
 [node name="north_block" type="CSGBox3D" parent="north_door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 9.5, -0.5)
 size = Vector3(2, 20, 6)
+material = SubResource("StandardMaterial3D_xe0wc")
 
 [node name="west_door" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22)
@@ -89,6 +98,7 @@ visible = false
 [node name="west_block" type="CSGBox3D" parent="west_door"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.18557e-08, 9.99469, 0.5)
 size = Vector3(3, 20, 6)
+material = SubResource("StandardMaterial3D_1qsou")
 
 [node name="east_door" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22)
@@ -97,6 +107,7 @@ visible = false
 [node name="east_block" type="CSGBox3D" parent="east_door"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.37114e-08, 9.99469, -1)
 size = Vector3(2, 20, 6)
+material = SubResource("StandardMaterial3D_1qsou")
 
 [node name="south_door" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6, 0, 0)
@@ -105,6 +116,7 @@ visible = false
 [node name="south_block" type="CSGBox3D" parent="south_door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 9.5, 0.5)
 size = Vector3(2, 20, 6)
+material = SubResource("StandardMaterial3D_1qsou")
 
 [node name="Sprinter" parent="." instance=ExtResource("2_h31of")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.99469, 1)

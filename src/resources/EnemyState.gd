@@ -4,6 +4,9 @@ extends Node
 @export_group("Vitality")
 @export var MAX_HEALTH: float = 10
 
+@export_group("Behaviour")
+@export var FOLLOW_THRESHOLD: float = 10
+@export var MOVEMENT_SPEED:float = 5
 
 var current_health: float
 

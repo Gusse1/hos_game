@@ -14,14 +14,15 @@ var reload_float : float
 var current_magazine_size : int 
 var reloading : bool
 
-# Recoil variables
-@export var spread : float
+var spread : float
 
 # UI Variables
 @export var ammo_display : RichTextLabel
-
+@export var crosshair : Line2D
+	
 # Resource variables
 @export var playerState : PlayerState
+@export var playerBody : GoldGdt_Body
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,6 +32,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# Calculate spread each frame (Maybe move this to another script?)
+	spread = playerState.playerVariables.BASE_SPREAD + (playerBody.velocity.length() * playerState.playerVariables.SPREAD_MOVEMENT_MODIFIER) 
+	crosshair.scale = Vector2.ONE*spread*1.25
+	
 	if Input.is_action_pressed("shoot") and can_shoot and not reloading and (current_magazine_size > 0):
 		_apply_recoil()
 		firerate.start()
@@ -41,20 +46,22 @@ func _process(delta):
 		
 	# Weapon is reloaded by holding down the reload key where singular bullets are transmitted to the magazine
 	if Input.is_action_pressed("reload") and playerState.current_blood > 0:
-		reloading = true
-		reload_float += reload_accumulation*delta
-		playerState._adjust_blood(-(reload_accumulation*delta))
-		print_debug("reload_float ", reload_float)
+		if current_magazine_size < maganize_size:
+			reloading = true
+			reload_float += reload_accumulation*delta
+			playerState._adjust_blood(-(reload_accumulation*delta))
 		if reload_float >= 1.5:
 			_reload_singular_bullet()
 			reload_float = 0
 	if Input.is_action_just_released("reload"):
 		reloading = false
 		reload_float = 0
-		print_debug("reload end")
+
 		
 
 func _apply_recoil():
+	spread = playerState.playerVariables.BASE_SPREAD + (playerBody.velocity.length() * playerState.playerVariables.SPREAD_MOVEMENT_MODIFIER) 
+		
 	var random_angle_x = randf_range(-spread,spread)
 	var random_angle_y = randf_range(-spread,spread)
 	
@@ -77,7 +84,7 @@ func _shoot():
 				bullet_impacts[0].queue_free()
 				bullet_impacts.remove_at(0)
 				
-			var target_state = target.get_parent().get_node("EnemyResources")
+			var target_state = target.get_node("EnemyResources")
 		
 			if target_state != null:
 				target_state._damage(playerState.playerVariables.BASE_DAMAGE)

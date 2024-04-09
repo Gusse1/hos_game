@@ -1,10 +1,8 @@
 extends CharacterBody3D
 
-@export var movement_speed: float = 2.0
-
 @onready var player_node = get_tree().current_scene.get_node("Pawn").get_node("Body")
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
-
+@onready var enemy_state: Node = $EnemyResources
 
 func _ready():
 	# These values need to be adjusted for the actor's speed
@@ -27,14 +25,13 @@ func set_movement_target():
 	navigation_agent.set_target_position(player_node.global_position)
 
 func _physics_process(delta):
-	if navigation_agent.is_navigation_finished():
-		print_debug("nav finish")
-		return
-	navigation_agent.set_target_position(player_node.global_position)
+	
+	if player_node.global_position.distance_to(navigation_agent.get_parent().global_position) < enemy_state.FOLLOW_THRESHOLD:
+		navigation_agent.set_target_position(player_node.global_position)
 
-	var current_agent_position: Vector3 = global_position
-	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
-	
-	
-	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
-	move_and_slide()
+		var current_agent_position: Vector3 = global_position
+		var next_path_position: Vector3 = navigation_agent.get_next_path_position()
+		
+		
+		velocity = current_agent_position.direction_to(next_path_position) * enemy_state.MOVEMENT_SPEED
+		move_and_slide()
