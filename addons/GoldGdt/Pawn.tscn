@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_DebugUI.gd" id="7_vbtkw"]
 [ext_resource type="Script" path="res://src/resources/PlayerHealing.gd" id="9_sve2w"]
 [ext_resource type="Script" path="res://src/shooting.gd" id="9_tnwmm"]
-[ext_resource type="PackedScene" uid="uid://b8wdvd0emyfjb" path="res://models/handgun.blend" id="12_u5677"]
+[ext_resource type="PackedScene" uid="uid://csj2q02ymg7kj" path="res://models/handgun.tscn" id="12_s8051"]
 
 [sub_resource type="Theme" id="Theme_jc27t"]
 
@@ -20,7 +20,7 @@
 script = ExtResource("7_m0na8")
 MAX_HEALTH = 10.0
 MAX_BLOOD = 11.0
-HEALING_SPEED = 0.6
+HEALING_SPEED = 1.0
 BASE_DAMAGE = 5.0
 BASE_SPREAD = 1.0
 SPREAD_MOVEMENT_MODIFIER = 0.5
@@ -282,6 +282,7 @@ Body = NodePath("../Body")
 [node name="PlayerState" type="Node" parent="." node_paths=PackedStringArray("blood_text")]
 script = ExtResource("7_5xn01")
 playerVariables = SubResource("Resource_vwc4m")
+blood_recovery_rate = 0.5
 blood_text = NodePath("../GameUI/BloodDisplay/RichTextLabel")
 
 [node name="PlayerHealing" type="Node" parent="PlayerState" node_paths=PackedStringArray("playerState")]
@@ -334,10 +335,10 @@ editor_description = "
 fov = 90.6
 near = 0.001
 
-[node name="handgun" parent="Interpolated Camera/Arm/Arm Anchor/Camera" instance=ExtResource("12_u5677")]
-transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 0.357425, -0.45264, -0.941378)
+[node name="handgun2" parent="Interpolated Camera/Arm/Arm Anchor/Camera" instance=ExtResource("12_s8051")]
+transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 0.296586, -0.479567, -0.922173)
 
-[node name="gun" type="CSGBox3D" parent="Interpolated Camera/Arm/Arm Anchor/Camera" node_paths=PackedStringArray("raycast", "firerate", "reload_timer", "ammo_display", "playerState")]
+[node name="gun" type="CSGBox3D" parent="Interpolated Camera/Arm/Arm Anchor/Camera" node_paths=PackedStringArray("raycast", "firerate", "reload_timer", "ammo_display", "crosshair", "playerState", "playerBody")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.166886, -0.325985, -0.737846)
 visible = false
 size = Vector3(0.162964, 0.118652, 0.481445)
@@ -348,7 +349,9 @@ reload_timer = NodePath("reload_timer")
 reload_accumulation = 2.0
 maganize_size = 7
 ammo_display = NodePath("../../../../../GameUI/AmmoDisplay/RichTextLabel")
+crosshair = NodePath("../../../../../GameUI/Crosshair/Line2D")
 playerState = NodePath("../../../../../PlayerState")
+playerBody = NodePath("../../../../../Body")
 
 [node name="reload_timer" type="Timer" parent="Interpolated Camera/Arm/Arm Anchor/Camera/gun"]
 one_shot = true

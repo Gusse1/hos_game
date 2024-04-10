@@ -28,21 +28,11 @@ environment = SubResource("Environment_138gm")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Pawn" parent="." groups=["Player"] instance=ExtResource("1_3375c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.00746, 0)
-
-[node name="Line2D" parent="Pawn/GameUI/Crosshair" index="0"]
-rotation = 0.785398
-
-[node name="PlayerState" parent="Pawn" index="5"]
-blood_recovery_rate = 0.5
+[node name="Pawn" parent="." groups=["Pawn"] instance=ExtResource("1_3375c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Interpolated Camera" parent="Pawn" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711, 0)
-
-[node name="gun" parent="Pawn/Interpolated Camera/Arm/Arm Anchor/Camera" index="1" node_paths=PackedStringArray("crosshair", "playerBody")]
-crosshair = NodePath("../../../../../GameUI/Crosshair/Line2D")
-playerBody = NodePath("../../../../../Body")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.04773, 0.495845, -25.6994)
