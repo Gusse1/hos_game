@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://dqn8slghf5akh"
+path="res://.godot/imported/hanging_plat.map-1e7eb392ce0741edeaf9216f3a2463c9.tres"
+
+[deps]
+
+source_file="res://maps/hanging_plat.map"
+dest_files=["res://.godot/imported/hanging_plat.map-1e7eb392ce0741edeaf9216f3a2463c9.tres"]
+
+[params]
+

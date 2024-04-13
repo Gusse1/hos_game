@@ -7,12 +7,12 @@
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_s8xgq"]
+[sub_resource type="Sky" id="Sky_4yols"]
 sky_material = SubResource("ProceduralSkyMaterial_ixcmd")
 
 [sub_resource type="Environment" id="Environment_138gm"]
 background_mode = 2
-sky = SubResource("Sky_s8xgq")
+sky = SubResource("Sky_4yols")
 tonemap_mode = 2
 sdfgi_enabled = true
 sdfgi_use_occlusion = true

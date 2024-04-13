@@ -42,6 +42,7 @@ View = NodePath("View Control")
 Camera = NodePath("Interpolated Camera")
 
 [node name="GameUI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,6 +65,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Line2D" type="Line2D" parent="GameUI/Crosshair"]
+rotation = 0.785398
 scale = Vector2(0.5, 0.5)
 points = PackedVector2Array(-6, -1, 5, -1)
 default_color = Color(1, 1, 1, 0.482353)
@@ -111,10 +113,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -378.0
-offset_top = -229.0
-offset_right = -182.0
-offset_bottom = -171.0
+offset_left = -403.0
+offset_top = -213.0
+offset_right = -207.0
+offset_bottom = -155.0
 grow_horizontal = 0
 grow_vertical = 0
 rotation = -0.13439
@@ -125,6 +127,7 @@ text = "7"
 fit_content = true
 
 [node name="Debug UI" type="Control" parent="." node_paths=PackedStringArray("Controls", "View", "Body", "GameInfo", "ControlsInfo", "ViewInfo", "BodyInfo")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
