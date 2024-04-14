@@ -31,9 +31,6 @@ shadow_enabled = true
 [node name="Pawn" parent="." groups=["Pawn"] instance=ExtResource("1_3375c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="Interpolated Camera" parent="Pawn" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711, 0)
-
 [node name="CSGBox3D7" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.04773, 0.495845, -25.6994)
 use_collision = true
@@ -49,5 +46,3 @@ use_collision = true
 [node name="RoomGeneration" type="Node3D" parent="."]
 script = ExtResource("2_lsoh3")
 rooms_to_generate = 15
-
-[editable path="Pawn"]

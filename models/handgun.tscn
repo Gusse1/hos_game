@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b8wdvd0emyfjb" path="res://models/handgun.blend" id="1_jwqa6"]
 
 [node name="handgun" instance=ExtResource("1_jwqa6")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="Armature_001" parent="." index="5"]
 transform = Transform3D(0.352302, 0, 0.0167929, -0.0159258, 0.111867, 0.334112, -0.00532623, -0.334491, 0.11174, 6.44081, -0.100269, -0.328816)
