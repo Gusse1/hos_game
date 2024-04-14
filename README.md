@@ -1,2 +1,2 @@
 # HoS game
-![hos_proto1](https://github.com/Gusse1/hos_game/assets/100567922/3f796363-156c-441f-a086-104e4d621469)
+![Skärmbild 2024-04-14 124416](https://github.com/Gusse1/hos_game/assets/100567922/256f0b3b-0f7c-4819-bd68-bde66173f9b5)
