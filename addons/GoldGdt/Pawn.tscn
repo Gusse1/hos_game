@@ -338,7 +338,7 @@ fov = 90.6
 near = 0.001
 
 [node name="handgun2" parent="Interpolated Camera/Arm/Arm Anchor/Camera" instance=ExtResource("12_s8051")]
-transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 0.296586, -0.440143, -0.833756)
+transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 0.421795, -0.531225, -1.15387)
 
 [node name="gun" type="CSGBox3D" parent="Interpolated Camera/Arm/Arm Anchor/Camera" node_paths=PackedStringArray("raycast", "firerate", "reload_timer", "ammo_display", "crosshair", "playerState", "playerBody")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.166886, -0.325985, -0.737846)

@@ -4,6 +4,7 @@ extends Node3D
 var roomScenes : Array[PackedScene] = [
 	preload("res://assets/rooms/test_room_1.tscn"),
 	preload("res://assets/rooms/upgrade_room_1.tscn"),
+	preload("res://assets/rooms/hanging_plat.tscn")
 ]
 
 var spawnedRooms = []
