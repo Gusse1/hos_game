@@ -6,7 +6,9 @@ extends Node
 
 @export_group("Behaviour")
 @export var FOLLOW_THRESHOLD: float = 10
-@export var MOVEMENT_SPEED:float = 5
+@export var MOVEMENT_SPEED: float = 5
+@export var ATTACK_RANGE: float = 2
+@export var ATTACK_DAMAGE: float = 4
 
 var current_health: float
 
