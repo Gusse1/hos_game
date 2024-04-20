@@ -79,3 +79,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200001, 0, 21)
 
 [node name="south_door" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6, 0, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1, 25, 0)
+light_color = Color(0.0745098, 0.309804, 0, 1)
+light_energy = 300.0
+light_indirect_energy = 2.0
+light_volumetric_fog_energy = 4.0
+shadow_enabled = true
+spot_range = 96.0

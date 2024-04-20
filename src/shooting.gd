@@ -17,7 +17,7 @@ var reloading : bool
 var spread : float
 
 # UI Variables
-@export var ammo_display : RichTextLabel
+@onready var ammo_display : RichTextLabel = $AmmoText
 @export var crosshair : Line2D
 	
 # Resource variables
@@ -26,6 +26,8 @@ var spread : float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	ammo_display = get_parent().get_node('handgun').AmmoText
+	print_debug(ammo_display)
 	ammo_display.text = str(current_magazine_size)
 	pass # Replace with function body.
 

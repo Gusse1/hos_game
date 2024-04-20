@@ -27,7 +27,8 @@ func _remove_dir(available_directions, removable):
 		iterator+=1
 
 func _generate_rooms():
-	for room_num in rooms_to_generate:
+	var room_num = 0
+	while room_num < rooms_to_generate:
 		# Get a random index from the list
 		var randomIndex = randi() % roomScenes.size()
 		
@@ -66,22 +67,28 @@ func _generate_rooms():
 					if _spawn_north_room(spawnedRooms.size()-1) != 0:
 						room_map.append(Vector2(room_map.back().x, room_map.back().y + 1))
 					else:
+						print_debug("Failed north, retrying...")
 						rooms_to_generate += 1
 				"east":
 					if _spawn_east_room(spawnedRooms.size()-1) != 0:
 						room_map.append(Vector2(room_map.back().x + 1, room_map.back().y))
 					else:
+						print_debug("Failed east, retrying...")
 						rooms_to_generate += 1
 				"south":
 					if _spawn_south_room(spawnedRooms.size()-1) != 0:
 						room_map.append(Vector2(room_map.back().x, room_map.back().y - 1))
 					else:
+						print_debug("Failed south, retrying...")
 						rooms_to_generate += 1
 				"west":
 					if _spawn_west_room(spawnedRooms.size()-1) != 0:
 						room_map.append(Vector2(room_map.back().x - 1, room_map.back().y))
 					else:
+						print_debug("Failed west, retrying...")
 						rooms_to_generate += 1
+						
+		room_num += 1
 
 func _spawn_north_room(room_num: int):
 	var prev_room = spawnedRooms[room_num-1]
