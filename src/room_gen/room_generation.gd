@@ -7,10 +7,13 @@ var roomScenes : Array[PackedScene] = [
 	preload("res://assets/rooms/hanging_plat.tscn")
 ]
 
+var startingRoom : PackedScene = preload("res://assets/rooms/starting_room.tscn")
+
 var spawnedRooms = []
 var spawnedExtraRooms = []
 var room_map = []
 
+@export var grid_printer : Node
 @export var rooms_to_generate: int
 
 var directions = ["north", "east", "south", "west"]
@@ -32,14 +35,23 @@ func _generate_rooms():
 		# Get a random index from the list
 		var randomIndex = randi() % roomScenes.size()
 		
-		# Instantiate the random room
-		var randomRoom = roomScenes[randomIndex].instantiate()
-		self.add_child.call_deferred(randomRoom)
-		spawnedRooms.append(randomRoom)
-		spawnedRooms.back()._generate_offset()
 		if room_num == 0:
 			room_map.append(Vector2(0,0))
+			var startingRoomInstance = startingRoom.instantiate()
+			self.add_child.call_deferred(startingRoomInstance)
+			spawnedRooms.append(startingRoomInstance)
+			spawnedRooms.back()._generate_offset()
 		else:
+			var randomRoom = roomScenes[randomIndex].instantiate()
+			self.add_child.call_deferred(randomRoom)
+			spawnedRooms.append(randomRoom)
+			spawnedRooms.back()._generate_offset()
+		
+		if room_num > 999:
+			print_debug("room_num exceeded limit. The room spawning is likely broken somehow")
+			grid_printer.print_grid(room_map)
+			return -1
+		elif room_num != 0:
 			# Choose a random direction:
 			var availableDirections = directions.duplicate()
 			
@@ -67,28 +79,30 @@ func _generate_rooms():
 					if _spawn_north_room(spawnedRooms.size()-1) != 0:
 						room_map.append(Vector2(room_map.back().x, room_map.back().y + 1))
 					else:
-						print_debug("Failed north, retrying...")
+						#print_debug("Failed north, retrying...")
 						rooms_to_generate += 1
 				"east":
 					if _spawn_east_room(spawnedRooms.size()-1) != 0:
 						room_map.append(Vector2(room_map.back().x + 1, room_map.back().y))
 					else:
-						print_debug("Failed east, retrying...")
+						#print_debug("Failed east, retrying...")
 						rooms_to_generate += 1
 				"south":
 					if _spawn_south_room(spawnedRooms.size()-1) != 0:
 						room_map.append(Vector2(room_map.back().x, room_map.back().y - 1))
 					else:
-						print_debug("Failed south, retrying...")
+						#print_debug("Failed south, retrying...")
 						rooms_to_generate += 1
 				"west":
 					if _spawn_west_room(spawnedRooms.size()-1) != 0:
 						room_map.append(Vector2(room_map.back().x - 1, room_map.back().y))
 					else:
-						print_debug("Failed west, retrying...")
+						#print_debug("Failed west, retrying...")
 						rooms_to_generate += 1
 						
 		room_num += 1
+	print_debug("Finished room generation with rooms to generate: " + str(rooms_to_generate) + " and room_num: " + str(room_num))
+	grid_printer.print_grid(room_map)
 
 func _spawn_north_room(room_num: int):
 	var prev_room = spawnedRooms[room_num-1]

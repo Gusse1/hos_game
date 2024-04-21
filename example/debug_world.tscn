@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dafpnrc0x0g1s"]
+[gd_scene load_steps=7 format=3 uid="uid://dafpnrc0x0g1s"]
 
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://addons/GoldGdt/Pawn.tscn" id="1_3375c"]
 [ext_resource type="Script" path="res://src/room_gen/room_generation.gd" id="2_lsoh3"]
+[ext_resource type="Script" path="res://src/room_gen/grid_printer.gd" id="3_u2wbk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ixcmd"]
 sky_top_color = Color(0.2, 0, 0, 1)
@@ -15,12 +16,15 @@ sky_material = SubResource("ProceduralSkyMaterial_ixcmd")
 [sub_resource type="Environment" id="Environment_138gm"]
 background_mode = 2
 sky = SubResource("Sky_4yols")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 2
 sdfgi_enabled = true
 sdfgi_use_occlusion = true
 sdfgi_read_sky_light = false
 glow_enabled = true
 volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
 volumetric_fog_albedo = Color(0.380392, 0.380392, 0.380392, 1)
 
 [node name="Debug World" type="Node3D"]
@@ -29,7 +33,7 @@ volumetric_fog_albedo = Color(0.380392, 0.380392, 0.380392, 1)
 environment = SubResource("Environment_138gm")
 
 [node name="Pawn" parent="." groups=["Pawn"] instance=ExtResource("1_3375c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 6, 1.25)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.04773, 0.495845, -25.6994)
@@ -43,6 +47,10 @@ use_collision = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, -3)
 use_collision = true
 
-[node name="RoomGeneration" type="Node3D" parent="."]
+[node name="RoomGeneration" type="Node3D" parent="." node_paths=PackedStringArray("grid_printer")]
 script = ExtResource("2_lsoh3")
+grid_printer = NodePath("../GridPrinter")
 rooms_to_generate = 15
+
+[node name="GridPrinter" type="Node" parent="."]
+script = ExtResource("3_u2wbk")

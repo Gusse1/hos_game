@@ -16,8 +16,9 @@ albedo_color = Color(0.6, 0.219608, 0, 1)
 transparency = 1
 blend_mode = 2
 
-[node name="Room" type="Node3D" node_paths=PackedStringArray("west_door", "south_door", "east_door")]
+[node name="Room" type="Node3D" node_paths=PackedStringArray("north_door", "west_door", "south_door", "east_door")]
 script = ExtResource("1_f6dxa")
+north_door = NodePath("north_door")
 west_door = NodePath("west_door")
 south_door = NodePath("south_door")
 east_door = NodePath("east_door")
