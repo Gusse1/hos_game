@@ -1,10 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://b34q6nrbu7sys"]
+[gd_scene load_steps=32 format=3 uid="uid://b34q6nrbu7sys"]
 
 [ext_resource type="Script" path="res://models/handgun_info.gd" id="1_goqh3"]
 [ext_resource type="Shader" path="res://assets/ui/ammo_display.gdshader" id="1_sfv7b"]
 [ext_resource type="Texture2D" uid="uid://d3bkiw8gdv05w" path="res://textures/Metal_11-128x128.png" id="2_hmtix"]
 [ext_resource type="Texture2D" uid="uid://bybw0d1jf3rie" path="res://textures/Metal_05-128x128.png" id="3_q6o8q"]
-[ext_resource type="Texture2D" uid="uid://f11yge4vr0f3" path="res://textures/128x128/Metal/Metal_23-128x128.png" id="4_ct2pk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_67135"]
 shader = ExtResource("1_sfv7b")
@@ -26,7 +25,6 @@ roughness = 0.5
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wj532"]
 resource_name = "BlackGrip"
 cull_mode = 2
-albedo_texture = ExtResource("4_ct2pk")
 roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3ipe8"]
