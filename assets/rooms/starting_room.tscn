@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cyg43uxe48x64"]
+[gd_scene load_steps=21 format=3 uid="uid://cyg43uxe48x64"]
 
 [ext_resource type="Script" path="res://src/room_gen/room_info.gd" id="1_c8yuc"]
 [ext_resource type="Script" path="res://addons/qodot/src/nodes/qodot_map.gd" id="1_y6ydv"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://ddalvofmusvbc" path="res://textures/Metal_06-128x128.png" id="4_x4xxi"]
 [ext_resource type="Texture2D" uid="uid://baceptmvrqarp" path="res://textures/Metal_18-128x128.png" id="6_repiy"]
 [ext_resource type="Texture2D" uid="uid://dbd0ffgthayul" path="res://textures/Grating_06-128x128.png" id="7_ct7rj"]
+
+[sub_resource type="FogMaterial" id="FogMaterial_jvfeb"]
+density = 5.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_c6sbc"]
 noise_type = 3
@@ -111,6 +114,16 @@ data = PackedVector3Array(-39.5307, -13.2149, -6.9737, -39.5307, -15.2149, -6.97
 script = ExtResource("1_c8yuc")
 south_door = NodePath("south_door")
 
+[node name="FogVolume3" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.3229, 4.65468, -0.601723)
+size = Vector3(2.20364, 10.966, 6.10505)
+material = SubResource("FogMaterial_jvfeb")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="FogVolume3"]
+light_color = Color(1, 0.0823529, 0.0980392, 1)
+light_volumetric_fog_energy = 10.0
+omni_range = 7.80849
+
 [node name="FogVolume2" type="FogVolume" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.532, 13.215, 0.060499)
 size = Vector3(6.3755, 63.049, 6.10505)
@@ -123,16 +136,15 @@ light_energy = 76.0
 light_indirect_energy = 5.0
 shadow_enabled = true
 spot_range = 65.0
-spot_angle = 20.152
+spot_angle = 11.5379
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(0.223046, 4.26102e-08, -0.974808, 0.974808, -9.74965e-09, 0.223046, 0, -1, -4.37114e-08, -57.2166, 5.58303, 7.62939e-06)
+[node name="SpotLight3D2" type="SpotLight3D" parent="SpotLight3D2"]
+transform = Transform3D(-4.37114e-08, -0.0195117, 0.99981, -0.999952, 0.00975449, 0.000190319, -0.00975634, -0.999762, -0.0195108, -15.713, 0.643147, -18.479)
 light_color = Color(0.705882, 0.392157, 0.0470588, 1)
-light_energy = 36.0
-light_indirect_energy = 5.0
-shadow_enabled = true
+light_energy = 0.75
+light_indirect_energy = 10.0
 spot_range = 65.0
-spot_angle = 20.152
+spot_angle = 89.99
 
 [node name="QodotMap" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.2197, 0)
@@ -163,3 +175,10 @@ shape = SubResource("ConcavePolygonShape3D_rai48")
 [node name="south_door" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.2, 0, 0)
 visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4553, 11.1803, 0)
+light_color = Color(0.705882, 0.392157, 0.0470588, 1)
+light_energy = 2.5
+light_volumetric_fog_energy = 0.0
+omni_range = 25.4336

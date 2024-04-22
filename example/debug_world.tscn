@@ -16,9 +16,10 @@ sky_material = SubResource("ProceduralSkyMaterial_ixcmd")
 [sub_resource type="Environment" id="Environment_138gm"]
 background_mode = 2
 sky = SubResource("Sky_4yols")
-ambient_light_source = 3
+ambient_light_source = 1
 ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 2
+ssil_enabled = true
 sdfgi_enabled = true
 sdfgi_use_occlusion = true
 sdfgi_read_sky_light = false

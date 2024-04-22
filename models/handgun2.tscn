@@ -896,8 +896,10 @@ mesh = SubResource("ArrayMesh_yt5oc")
 skeleton = NodePath("")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 2.07733, 1.16329, 0.147658)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 1.98319, 1.18578, 0.15133)
 light_energy = 0.2
+light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
-light_specular = 0.0
+light_bake_mode = 0
 shadow_bias = 5.0
+omni_range = 0.0861444

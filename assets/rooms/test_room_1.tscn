@@ -13,8 +13,6 @@ geometry_parsed_geometry_type = 2
 albedo_color = Color(0.6, 0.219608, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1qsou"]
-transparency = 1
-blend_mode = 2
 
 [node name="Room" type="Node3D" node_paths=PackedStringArray("north_door", "west_door", "south_door", "east_door")]
 script = ExtResource("1_f6dxa")
