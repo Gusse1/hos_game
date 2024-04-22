@@ -26,6 +26,7 @@ glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 volumetric_fog_albedo = Color(0.380392, 0.380392, 0.380392, 1)
+volumetric_fog_temporal_reprojection_amount = 0.95
 
 [node name="Debug World" type="Node3D"]
 

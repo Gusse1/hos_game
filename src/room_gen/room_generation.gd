@@ -107,10 +107,11 @@ func _generate_rooms():
 func _spawn_north_room(room_num: int):
 	var prev_room = spawnedRooms[room_num-1]
 	
-	if spawnedRooms[room_num].south_blocked or (Vector2(room_map.back().x, room_map.back().y + 1) in room_map):
-		spawnedRooms[room_num].queue_free()
-		spawnedRooms.remove_at(room_num)
-		return 0
+	#FIXME: Fix room generation such that they cannot "EAT" each other!!!!
+	#if spawnedRooms[room_num].south_blocked or (Vector2(room_map.back().x, room_map.back().y + 1) in room_map):
+	spawnedRooms[room_num].queue_free()
+	spawnedRooms.remove_at(room_num)
+	return 0
 	
 	var curr_room = spawnedRooms[room_num]
 		
