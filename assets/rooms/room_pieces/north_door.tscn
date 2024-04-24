@@ -1,8 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdmopvsiwf0q5"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe0wc"]
-transparency = 1
-blend_mode = 2
+[gd_scene format=3 uid="uid://cdmopvsiwf0q5"]
 
 [node name="north_door" type="CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6351, 0, 0)
@@ -11,4 +7,3 @@ visible = false
 [node name="north_block" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 9.5, -0.5)
 size = Vector3(2, 20, 6)
-material = SubResource("StandardMaterial3D_xe0wc")

@@ -121,6 +121,8 @@ material = SubResource("FogMaterial_jvfeb")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="FogVolume3"]
 light_color = Color(1, 0.0823529, 0.0980392, 1)
+light_energy = 3.0
+light_indirect_energy = 10.0
 light_volumetric_fog_energy = 10.0
 omni_range = 7.80849
 
@@ -141,8 +143,7 @@ spot_angle = 11.5379
 [node name="SpotLight3D2" type="SpotLight3D" parent="SpotLight3D2"]
 transform = Transform3D(-4.37114e-08, -0.0195117, 0.99981, -0.999952, 0.00975449, 0.000190319, -0.00975634, -0.999762, -0.0195108, -15.713, 0.643147, -18.479)
 light_color = Color(0.705882, 0.392157, 0.0470588, 1)
-light_energy = 0.75
-light_indirect_energy = 10.0
+light_indirect_energy = 25.0
 spot_range = 65.0
 spot_angle = 89.99
 
@@ -179,6 +180,7 @@ visible = false
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4553, 11.1803, 0)
 light_color = Color(0.705882, 0.392157, 0.0470588, 1)
-light_energy = 2.5
+light_energy = 7.0
+light_indirect_energy = 20.0
 light_volumetric_fog_energy = 0.0
 omni_range = 25.4336

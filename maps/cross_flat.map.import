@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://byaa6hfiuhyrx"
+path="res://.godot/imported/cross_flat.map-9bf5fa4b16aa8070350cebfbabd161dc.tres"
+
+[deps]
+
+source_file="res://maps/cross_flat.map"
+dest_files=["res://.godot/imported/cross_flat.map-9bf5fa4b16aa8070350cebfbabd161dc.tres"]
+
+[params]
+

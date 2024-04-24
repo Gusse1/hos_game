@@ -2,9 +2,10 @@ extends Node3D
 
 # Define a list of room scenes
 var roomScenes : Array[PackedScene] = [
-	preload("res://assets/rooms/test_room_1.tscn"),
+	#preload("res://assets/rooms/test_room_1.tscn"),
 	preload("res://assets/rooms/upgrade_room_1.tscn"),
-	preload("res://assets/rooms/hanging_plat.tscn")
+	preload("res://assets/rooms/hanging_plat.tscn"),
+	preload("res://assets/rooms/cross_map_1.tscn")
 ]
 
 var startingRoom : PackedScene = preload("res://assets/rooms/starting_room.tscn")
