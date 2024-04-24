@@ -2,10 +2,9 @@ extends Node3D
 
 # Define a list of room scenes
 var roomScenes : Array[PackedScene] = [
-	#preload("res://assets/rooms/test_room_1.tscn"),
-	preload("res://assets/rooms/upgrade_room_1.tscn"),
 	preload("res://assets/rooms/hanging_plat.tscn"),
-	preload("res://assets/rooms/cross_map_1.tscn")
+	preload("res://assets/rooms/cross_map_1.tscn"),
+	preload("res://assets/rooms/upgrade_1.tscn")
 ]
 
 var startingRoom : PackedScene = preload("res://assets/rooms/starting_room.tscn")
@@ -47,6 +46,7 @@ func _generate_rooms():
 			self.add_child.call_deferred(randomRoom)
 			spawnedRooms.append(randomRoom)
 			spawnedRooms.back()._generate_offset()
+			
 		
 		if room_num > 999:
 			print_debug("room_num exceeded limit. The room spawning is likely broken somehow")
@@ -139,7 +139,7 @@ func _spawn_east_room(room_num: int):
 	
 	spawnedRooms[room_num-1].east_blocked = true
 	spawnedRooms[room_num].west_blocked = true
-	spawnedRooms[room_num].position = Vector3(prev_room.position.x, prev_room.position.y, newPosition)
+	spawnedRooms[room_num].position = Vector3(prev_room.position.x + prev_room.west_door.position.x, prev_room.position.y, newPosition)
 	return 1
 
 func _spawn_south_room(room_num: int):
@@ -157,7 +157,7 @@ func _spawn_south_room(room_num: int):
 	
 	spawnedRooms[room_num-1].south_blocked = true
 	spawnedRooms[room_num].north_blocked = true
-	spawnedRooms[room_num].position = Vector3(newPosition, prev_room.position.y, prev_room.position.z)
+	spawnedRooms[room_num].position = Vector3(newPosition, prev_room.position.y, prev_room.position.z + prev_room.south_door.position.z)
 	return 1
 	
 func _spawn_west_room(room_num: int):
@@ -175,7 +175,7 @@ func _spawn_west_room(room_num: int):
 	
 	spawnedRooms[room_num-1].west_blocked = true
 	spawnedRooms[room_num].east_blocked = true
-	spawnedRooms[room_num].position = Vector3(prev_room.position.x, prev_room.position.y, newPosition)
+	spawnedRooms[room_num].position = Vector3(prev_room.position.x + prev_room.west_door.position.x, prev_room.position.y, newPosition)
 	return 1
 
 func _update_all_doors():

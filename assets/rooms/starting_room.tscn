@@ -116,6 +116,7 @@ south_door = NodePath("south_door")
 
 [node name="FogVolume3" type="FogVolume" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.3229, 4.65468, -0.601723)
+visible = false
 size = Vector3(2.20364, 10.966, 6.10505)
 material = SubResource("FogMaterial_jvfeb")
 
@@ -174,7 +175,7 @@ mesh = SubResource("ArrayMesh_1p8gc")
 shape = SubResource("ConcavePolygonShape3D_rai48")
 
 [node name="south_door" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.2, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.2, 0, -0.6078)
 visible = false
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]

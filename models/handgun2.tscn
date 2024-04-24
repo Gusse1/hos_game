@@ -902,4 +902,4 @@ light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 0
 shadow_bias = 5.0
-omni_range = 0.0861444
+omni_range = 147.616
