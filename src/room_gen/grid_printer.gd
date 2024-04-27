@@ -37,3 +37,4 @@ func print_grid(points: Array):
 		for cell in row:
 			row_str += cell
 		print(row_str)
+	

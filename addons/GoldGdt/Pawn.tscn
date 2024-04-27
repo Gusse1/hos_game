@@ -302,6 +302,12 @@ View = NodePath("../View Control")
 collision_hull = NodePath("Collision Hull")
 duck_timer = NodePath("Duck Timer")
 
+[node name="PlayerArea" type="Area3D" parent="Body"]
+
+[node name="Collision Hull" type="CollisionShape3D" parent="Body/PlayerArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.186363, 0)
+shape = SubResource("BoxShape3D_j7pn1")
+
 [node name="Collision Hull" type="CollisionShape3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.186363, 0)
 shape = SubResource("BoxShape3D_j7pn1")

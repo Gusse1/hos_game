@@ -9,6 +9,7 @@ var east_door_offset: float
 @export var west_door: Node3D
 @export var south_door: Node3D
 @export var east_door: Node3D
+@export var enemy_spawns: Node3D
 
 var north_blocked: bool
 var west_blocked: bool
