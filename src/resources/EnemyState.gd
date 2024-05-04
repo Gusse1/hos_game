@@ -10,10 +10,16 @@ extends Node
 @export var ATTACK_RANGE: float = 2
 @export var ATTACK_DAMAGE: float = 4
 
+@export_group("Other")
+@export var COST: int = 1
+
 var current_health: float
 
 func _ready():
 	current_health = MAX_HEALTH
+
+func _spawn_blood_cloud():
+	pass
 
 func _heal(amount: float):
 	current_health += amount

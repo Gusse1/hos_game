@@ -254,6 +254,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.48093, 0.5055, -32.9442)
 [node name="spawn10" type="CSGBox3D" parent="enemy_spawns"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.2857, 0.5055, -32.9442)
 
+[node name="spawn11" type="CSGBox3D" parent="enemy_spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.6249, 1.011, 33.7976)
+
+[node name="spawn12" type="CSGBox3D" parent="enemy_spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0515, 1.011, 34.6967)
+
+[node name="spawn13" type="CSGBox3D" parent="enemy_spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4682, 1.011, 34.6967)
+
+[node name="spawn14" type="CSGBox3D" parent="enemy_spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.45441, 1.011, 34.6967)
+
+[node name="spawn15" type="CSGBox3D" parent="enemy_spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2592, 1.011, 34.6967)
+
 [node name="room_trigger" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1155, 6.88274, -1.03553)
 

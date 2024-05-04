@@ -4,6 +4,7 @@ class_name PlayerState extends Node
 var current_blood : float
 var current_health : float
 @export var blood_recovery_rate: float
+@export var difficulty: int = 20
 
 # UI
 @export var blood_text : RichTextLabel
