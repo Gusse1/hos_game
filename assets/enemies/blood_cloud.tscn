@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://c7a4mxf6n0has"]
+
+[ext_resource type="SphereMesh" uid="uid://jp3fdltcpbjl" path="res://blood_cloud.tres" id="1_nj7lj"]
+
+[sub_resource type="Curve" id="Curve_e8h6s"]
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_km280"]
+curve = SubResource("Curve_e8h6s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_34dco"]
+lifetime_randomness = 0.5
+emission_shape_scale = Vector3(0.05, 0.05, 0.05)
+emission_shape = 1
+emission_sphere_radius = 0.5
+angle_min = -172.0
+angle_max = 269.5
+spread = 90.0
+initial_velocity_min = 0.1
+initial_velocity_max = 0.1
+gravity = Vector3(0, 0, 0)
+damping_max = 0.1
+scale_min = 0.4
+scale_max = 0.4
+scale_over_velocity_max = 1.0
+scale_over_velocity_curve = SubResource("CurveTexture_km280")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.6
+collision_use_scale = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6v4ip"]
+frequency = 0.057
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_iggtn"]
+noise = SubResource("FastNoiseLite_6v4ip")
+
+[sub_resource type="FogMaterial" id="FogMaterial_q4jur"]
+density = 100.0
+albedo = Color(0.580392, 0.0745098, 0.184314, 1)
+emission = Color(0.898039, 0, 0, 1)
+edge_fade = 0.303143
+density_texture = SubResource("NoiseTexture3D_iggtn")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p6hkm"]
+size = Vector3(0.621033, 1.03125, 0.5)
+
+[node name="blood_cloud" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+cast_shadow = 0
+amount = 30
+lifetime = 15.0
+preprocess = 5.0
+speed_scale = 20.0
+randomness = 0.1
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_34dco")
+draw_pass_1 = ExtResource("1_nj7lj")
+
+[node name="FogVolume" type="FogVolume" parent="."]
+size = Vector3(0.565293, 0.579982, 0.507906)
+shape = 0
+material = SubResource("FogMaterial_q4jur")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.498039, 0, 0.137255, 1)
+light_energy = 2.0
+light_indirect_energy = 12.0
+light_volumetric_fog_energy = 128.0
+omni_range = 0.679523
+
+[node name="blood_cloud_trigger" type="Area3D" parent="."]
+
+[node name="blood_cloud_shape" type="CollisionShape3D" parent="blood_cloud_trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00283813, 0.015625, -0.0119629)
+shape = SubResource("BoxShape3D_p6hkm")

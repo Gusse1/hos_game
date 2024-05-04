@@ -46,7 +46,6 @@ func _physics_process(delta):
 		
 func _damage_player(delta):
 	attack_float += attack_float_cumulation*delta
-	print(attack_float)
 	if attack_float > 1:
 		player_node.get_parent().get_node("PlayerState")._adjust_health(-enemy_state.ATTACK_DAMAGE)
 		attack_float = 0

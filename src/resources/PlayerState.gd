@@ -38,3 +38,11 @@ func _adjust_health(amount: float):
 		current_health = 0
 	if current_health > playerVariables.MAX_HEALTH:
 		current_health = playerVariables.MAX_HEALTH
+
+
+func _on_player_area_area_entered(area):
+	print_debug("Area entered player ", area.name)
+	if area.name == "blood_cloud_trigger":
+		_adjust_blood(playerVariables.PICKUP_BLOOD_GAIN)
+		area.get_parent().queue_free()
+

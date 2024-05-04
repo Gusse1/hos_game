@@ -19,7 +19,11 @@ func _ready():
 	current_health = MAX_HEALTH
 
 func _spawn_blood_cloud():
-	pass
+	print_debug("spawning blood_cloud")
+	var blood_cloud: PackedScene =  preload("res://assets/enemies/blood_cloud.tscn")
+	var inst_blood_cloud: Node3D = blood_cloud.instantiate()
+	inst_blood_cloud.position = get_parent().global_position
+	get_tree().get_root().add_child(inst_blood_cloud)
 
 func _heal(amount: float):
 	current_health += amount
@@ -33,4 +37,5 @@ func _damage(amount: float):
 	if current_health <= 0:
 		current_health = 0
 		print_debug("is kill")
+		_spawn_blood_cloud()
 		get_parent().get_parent().queue_free()

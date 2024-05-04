@@ -4,6 +4,7 @@ class_name PlayerVariables extends Resource
 @export var MAX_HEALTH : float = 10
 @export var MAX_BLOOD : float = 11
 @export var HEALING_SPEED : float = 1
+@export var PICKUP_BLOOD_GAIN : float = 3
 
 @export_group("Damage")
 @export var BASE_DAMAGE : float = 4

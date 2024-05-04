@@ -21,6 +21,7 @@ script = ExtResource("7_m0na8")
 MAX_HEALTH = 10.0
 MAX_BLOOD = 11.0
 HEALING_SPEED = 1.0
+PICKUP_BLOOD_GAIN = 3.0
 BASE_DAMAGE = 5.0
 BASE_SPREAD = 1.0
 SPREAD_MOVEMENT_MODIFIER = 0.5
@@ -384,5 +385,6 @@ layers = 512
 material_override = SubResource("StandardMaterial3D_s5sid")
 size = Vector3(1, 17.7839, 1)
 
+[connection signal="area_entered" from="Body/PlayerArea" to="PlayerState" method="_on_player_area_area_entered"]
 [connection signal="timeout" from="Interpolated Camera/Arm/Arm Anchor/Camera/gun/reload_timer" to="Interpolated Camera/Arm/Arm Anchor/Camera/gun" method="_on_reload_timer_timeout"]
 [connection signal="timeout" from="Interpolated Camera/Arm/Arm Anchor/Camera/gun/firerate" to="Interpolated Camera/Arm/Arm Anchor/Camera/gun" method="_on_firerate_timeout"]
