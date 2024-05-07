@@ -16,11 +16,11 @@ density = 5.0
 noise_type = 3
 seed = 295
 
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_5qoit"]
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_1aml8"]
 noise = SubResource("FastNoiseLite_c6sbc")
 
 [sub_resource type="FogMaterial" id="FogMaterial_k7i8p"]
-density_texture = SubResource("NoiseTexture3D_5qoit")
+density_texture = SubResource("NoiseTexture3D_1aml8")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6f7ih"]
 metallic_specular = 0.0
