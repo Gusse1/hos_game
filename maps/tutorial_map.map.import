@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://cabebmncs5n0x"
+path="res://.godot/imported/tutorial_map.map-195e6ed2ec2a20c67c84449050da87be.tres"
+
+[deps]
+
+source_file="res://maps/tutorial_map.map"
+dest_files=["res://.godot/imported/tutorial_map.map-195e6ed2ec2a20c67c84449050da87be.tres"]
+
+[params]
+

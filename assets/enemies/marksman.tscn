@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://dww22pq2782bp"]
+
+[ext_resource type="Script" path="res://src/resources/EnemyState.gd" id="2_3gjvk"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_chnrw"]
+height = 1.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_omqmo"]
+albedo_color = Color(1, 0.333333, 1, 1)
+
+[node name="Marksman" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+wall_min_slide_angle = 1.0472
+floor_max_angle = 1.309
+
+[node name="marksman_gun" type="CSGCylinder3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.44, 0.62689, 0.574702, 0)
+height = 0.282124
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
+height = 2.0
+radius = 3.0
+debug_enabled = true
+
+[node name="EnemyResources" type="Node" parent="CharacterBody3D"]
+script = ExtResource("2_3gjvk")
+FOLLOW_THRESHOLD = 100.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CylinderShape3D_chnrw")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CharacterBody3D/CollisionShape3D"]
+material = SubResource("StandardMaterial3D_omqmo")

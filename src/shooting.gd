@@ -18,6 +18,7 @@ var spread : float
 
 # UI Variables
 @onready var ammo_display : RichTextLabel = $AmmoText
+@export var gun_model : Node3D
 @export var crosshair : Line2D
 	
 # Resource variables
@@ -39,6 +40,9 @@ func _process(delta):
 	crosshair.scale = Vector2.ONE*spread*1.25
 	
 	if Input.is_action_pressed("shoot") and can_shoot and not reloading and (current_magazine_size > 0):
+		gun_model.get_node("AnimationPlayer").stop()
+		gun_model.get_node("AnimationPlayer").play("shoot")
+		
 		_apply_recoil()
 		firerate.start()
 		can_shoot = false
