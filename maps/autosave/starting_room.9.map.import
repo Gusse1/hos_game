@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://gh8hssqu5xsn"
+path="res://.godot/imported/starting_room.9.map-87b3761dccb269ec39a92c4ed2f3a8c1.tres"
+
+[deps]
+
+source_file="res://maps/autosave/starting_room.9.map"
+dest_files=["res://.godot/imported/starting_room.9.map-87b3761dccb269ec39a92c4ed2f3a8c1.tres"]
+
+[params]
+

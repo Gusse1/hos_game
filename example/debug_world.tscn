@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dafpnrc0x0g1s"]
+[gd_scene load_steps=9 format=3 uid="uid://dafpnrc0x0g1s"]
 
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://addons/GoldGdt/Pawn.tscn" id="1_3375c"]
 [ext_resource type="Script" path="res://src/room_gen/room_generation.gd" id="2_lsoh3"]
 [ext_resource type="Script" path="res://src/room_gen/grid_printer.gd" id="3_u2wbk"]
 [ext_resource type="PackedScene" uid="uid://53bbkhmk5ik0" path="res://assets/rooms/tutorial_map.tscn" id="4_iyluc"]
+[ext_resource type="PackedScene" uid="uid://bv5731sysdvcl" path="res://assets/interactables/eye_door.tscn" id="5_nt10f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ixcmd"]
 sky_top_color = Color(0.2, 0, 0, 1)
@@ -39,7 +40,7 @@ volumetric_fog_temporal_reprojection_amount = 0.95
 environment = SubResource("Environment_138gm")
 
 [node name="Pawn" parent="." groups=["Pawn"] instance=ExtResource("1_3375c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129, 53, -0.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97, -2, 0.25)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.04773, 0.495845, -25.6994)
@@ -64,6 +65,9 @@ script = ExtResource("3_u2wbk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3302, 26, -0.403542)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.1001, -0.810856, -0.576622, 0.00948397, -0.578729, 0.815465, -0.994932, -0.0870968, -0.0502406, -241, 183, 0)
+transform = Transform3D(0.1001, -0.810856, -0.576622, 0.00948397, -0.578729, 0.815465, -0.994932, -0.0870967, -0.0502406, -188, 168, 0)
 light_color = Color(1, 0.188235, 0.227451, 1)
 shadow_enabled = true
+
+[node name="DoorNode" parent="." instance=ExtResource("5_nt10f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67, -7.7751, 0)

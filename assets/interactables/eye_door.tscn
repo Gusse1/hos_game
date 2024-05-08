@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv5731sysdvcl"]
+
+[ext_resource type="Script" path="res://src/interactable_scripts/EyeDoor.gd" id="1_5c6p2"]
+[ext_resource type="Script" path="res://src/interactable_scripts/Eye.gd" id="2_nr3jb"]
+
+[node name="DoorNode" type="Node3D"]
+
+[node name="door" type="CSGBox3D" parent="." node_paths=PackedStringArray("eyes")]
+use_collision = true
+size = Vector3(2, 2, 0.5)
+script = ExtResource("1_5c6p2")
+eyes = [NodePath("eye")]
+
+[node name="eye" type="CSGBox3D" parent="door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57451, 0.132154, 0.125939)
+use_collision = true
+size = Vector3(0.4, 0.4, 0.4)
+script = ExtResource("2_nr3jb")
