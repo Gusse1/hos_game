@@ -28,7 +28,8 @@ func set_movement_target():
 
 func _physics_process(delta):
 	
-	if player_node.global_position.distance_to(navigation_agent.get_parent().global_position) < enemy_state.FOLLOW_THRESHOLD:
+	#if player_node.global_position.distance_to(navigation_agent.get_parent().global_position) < enemy_state.FOLLOW_THRESHOLD:
+	if enemy_state.ACTIVE:
 		navigation_agent.set_target_position(player_node.global_position)
 
 		var current_agent_position: Vector3 = global_position
@@ -36,6 +37,8 @@ func _physics_process(delta):
 		
 		
 		velocity = current_agent_position.direction_to(next_path_position) * enemy_state.MOVEMENT_SPEED
+		
+		
 		move_and_slide()
 		
 		# Attack player if in attack range

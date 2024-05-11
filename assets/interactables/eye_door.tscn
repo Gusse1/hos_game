@@ -16,3 +16,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57451, 0.132154, 0.125939)
 use_collision = true
 size = Vector3(0.4, 0.4, 0.4)
 script = ExtResource("2_nr3jb")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="door/eye"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.245643)
