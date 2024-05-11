@@ -672,23 +672,27 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
 [node name="Cube" type="MeshInstance3D" parent="gun_and_hand"]
 transform = Transform3D(0.109259, -0.033761, 0, 0.033761, 0.109259, 0, 0, 0, 0.0573253, 0.259237, 0.0443003, 0.0374812)
+layers = 2
 mesh = SubResource("ArrayMesh_8o6db")
 skeleton = NodePath("")
 
 [node name="Cube_001" type="MeshInstance3D" parent="gun_and_hand"]
 unique_name_in_owner = true
 transform = Transform3D(0.051436, 0, 0, 0, 6.13368e-10, 0.051436, 0, -0.051436, 6.13368e-10, 0.41282, 0.28963, 0.0366528)
+layers = 2
 mesh = SubResource("ArrayMesh_2d7uq")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_qalxd")
 
 [node name="Cylinder" type="MeshInstance3D" parent="gun_and_hand"]
 transform = Transform3D(0.00848067, 0.0205337, -0.0112205, -0.0233993, 0.00747608, -0.00400432, 6.67605e-05, 0.0119134, 0.0218522, 0.259777, 0.105814, 0.0997365)
+layers = 2
 mesh = SubResource("ArrayMesh_tfi10")
 skeleton = NodePath("")
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="gun_and_hand"]
 transform = Transform3D(0.0135684, 3.45355e-09, -0.036166, -0.036166, -9.2095e-09, -0.0135684, -6.90713e-09, 0.0386275, 0, 0.258613, 0.101668, 0.0603697)
+layers = 2
 mesh = SubResource("ArrayMesh_fkyaw")
 skeleton = NodePath("")
 
@@ -1007,6 +1011,7 @@ bones/43/rotation = Quaternion(-0.186934, -0.0137009, 0.0700521, 0.979776)
 bones/43/scale = Vector3(1, 1, 1)
 
 [node name="Cube_003" type="MeshInstance3D" parent="gun_and_hand/Armature_001/Skeleton3D"]
+layers = 2
 mesh = SubResource("ArrayMesh_1hvlj")
 skin = SubResource("Skin_o680i")
 
@@ -1322,16 +1327,19 @@ bones/43/rotation = Quaternion(-0.186934, -0.0137009, 0.0700521, 0.979776)
 bones/43/scale = Vector3(1, 1, 1)
 
 [node name="Cube_003" type="MeshInstance3D" parent="gun_and_hand/Armature_001/Skeleton3D/Skeleton3D"]
+layers = 2
 mesh = SubResource("ArrayMesh_1hvlj")
 skin = SubResource("Skin_o680i")
 
 [node name="Cube_002" type="MeshInstance3D" parent="gun_and_hand"]
 transform = Transform3D(0.460088, 0.000597118, 0, -0.0163323, 0.0168211, 0, 0, 0, 0.0075172, -0.0154356, 0.344478, 0.00132942)
+layers = 2
 mesh = SubResource("ArrayMesh_7nig5")
 skeleton = NodePath("")
 
 [node name="Cube_004" type="MeshInstance3D" parent="gun_and_hand"]
 transform = Transform3D(0.460088, 0.000597118, 0, -0.0163323, 0.0168211, 0, 0, 0, 0.0075172, -0.0154356, 0.344478, 0.0731125)
+layers = 2
 mesh = SubResource("ArrayMesh_yt5oc")
 skeleton = NodePath("")
 

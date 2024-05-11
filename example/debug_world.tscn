@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dafpnrc0x0g1s"]
+[gd_scene load_steps=14 format=3 uid="uid://dafpnrc0x0g1s"]
 
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://addons/GoldGdt/Pawn.tscn" id="1_3375c"]
 [ext_resource type="Script" path="res://src/room_gen/room_generation.gd" id="2_lsoh3"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://by8poq58ac6jv" path="res://assets/interactables/room_trigger.tscn" id="6_12kqi"]
 [ext_resource type="PackedScene" uid="uid://bg0cfyn7q5vd5" path="res://assets/enemies/sprinter.tscn" id="6_uwyct"]
 [ext_resource type="Script" path="res://src/enemy_logic/CombatArea.gd" id="7_yk14u"]
+[ext_resource type="Texture2D" uid="uid://buj8surx5vl06" path="res://textures/Grating_23-128x128.png" id="9_ltbfv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ixcmd"]
 sky_top_color = Color(0.2, 0, 0, 1)
@@ -38,13 +39,17 @@ volumetric_fog_density = 0.035
 volumetric_fog_albedo = Color(0.52549, 0, 0.0156863, 1)
 volumetric_fog_temporal_reprojection_amount = 0.95
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2l2e1"]
+depth_draw_mode = 1
+albedo_texture = ExtResource("9_ltbfv")
+
 [node name="Debug World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_138gm")
 
 [node name="Pawn" parent="." groups=["Pawn"] instance=ExtResource("1_3375c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2, 0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -225, 34, 0.25)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.04773, 0.495845, -25.6994)
@@ -88,6 +93,21 @@ size = Vector3(3, 2, 4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 omni_range = 6.0
 
+[node name="DoorNode2" parent="." instance=ExtResource("5_nt10f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -247, 18.45, 0)
+
+[node name="door" parent="DoorNode2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
+size = Vector3(38, 23, 0.5)
+
+[node name="eye" parent="DoorNode2/door" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.4255, 14.1322, 7.62593)
+size = Vector3(3, 2, 4)
+
+[node name="OmniLight3D" parent="DoorNode2/door/eye" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+omni_range = 6.0
+
 [node name="CombatArea1" parent="." instance=ExtResource("6_12kqi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.6155, 6.38274, 0.46447)
 script = ExtResource("7_yk14u")
@@ -100,7 +120,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9991, 7.711, -0.18988)
 [node name="Sprinter" parent="CombatArea1/Enemies" instance=ExtResource("6_uwyct")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 1, 0)
 
+[node name="PuzzleGeo" type="Node" parent="."]
+
+[node name="HideEyeBox" type="CSGBox3D" parent="PuzzleGeo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -236.122, 43.1598, 13.5)
+size = Vector3(1, 4, 8)
+material = SubResource("StandardMaterial3D_2l2e1")
+
+[node name="HideEyeBox2" type="CSGBox3D" parent="PuzzleGeo"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -239.291, 40.6474, 13.5097)
+size = Vector3(1, 7.4472, 8)
+material = SubResource("StandardMaterial3D_2l2e1")
+
+[node name="HideEyeBox3" type="CSGBox3D" parent="PuzzleGeo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -242.494, 43.1598, 13.5)
+size = Vector3(1, 4, 8)
+material = SubResource("StandardMaterial3D_2l2e1")
+
+[node name="HideEyeBox4" type="CSGBox3D" parent="PuzzleGeo"]
+transform = Transform3D(1.31134e-07, -1, 0, 1, 1.31134e-07, 0, 0, 0, 1, -239.268, 45.6635, 13.5097)
+size = Vector3(1, 7.4472, 8)
+material = SubResource("StandardMaterial3D_2l2e1")
+
+[node name="Boxes" type="Node3D" parent="PuzzleGeo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -225.482, 18.7249, 15.4044)
+
+[node name="Box" type="CSGBox3D" parent="PuzzleGeo/Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83073, -0.5, -0.122451)
+use_collision = true
+size = Vector3(3, 2, 3)
+
+[node name="Box2" type="CSGBox3D" parent="PuzzleGeo/Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.85704, 0.52389, -0.0575008)
+use_collision = true
+size = Vector3(3, 4, 3)
+
+[node name="Box3" type="CSGBox3D" parent="PuzzleGeo/Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8589, 0.5, -3.01599)
+use_collision = true
+size = Vector3(3, 4, 3)
+
 [connection signal="area_entered" from="CombatArea1" to="CombatArea1" method="_on_area_entered"]
 
 [editable path="DoorNode"]
+[editable path="DoorNode2"]
 [editable path="CombatArea1"]

@@ -14,6 +14,7 @@ var update : bool = false
 @export var camera_arm : SpringArm3D ## SpringArm3D that has it's rotation and extension distance set automatically.
 @export var camera_anchor : Node3D ## Camera anchor node that is automatically rotated to compensate for the camera arm rotation.
 @export var camera : Node3D ## Camera node that is automatically rotated to compensate for the camera anchor rotation.
+@export var gun_camera : Node3D ## Viewmodel camera
 
 func _ready() -> void:
 	set_as_top_level(true) # Detach from pawn node.
@@ -23,7 +24,6 @@ func _ready() -> void:
 	t_curr = target.global_transform
 
 func _process(delta_) -> void:
-	
 	_interpolate()
 	# Modify camera nodes to conform with Player Parameters.
 	# TODO: I have to make this not run every frame, but as far as I can tell, there is negligible impact on performance, so it stays.
@@ -50,6 +50,7 @@ func _interpolate() -> void:
 		global_rotation = target.global_rotation
 	else:
 		global_transform = target.global_transform
+	gun_camera.global_transform = camera.global_transform
 
 func _handle_camera_settings() -> void:
 	# Check if we are using third person.

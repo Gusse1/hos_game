@@ -323,7 +323,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711, 0)
 [node name="Camera Mount" type="Marker3D" parent="Body/Horizontal View/Vertical View"]
 gizmo_extents = 0.5
 
-[node name="Interpolated Camera" type="Node3D" parent="." node_paths=PackedStringArray("target", "camera_arm", "camera_anchor", "camera")]
+[node name="Interpolated Camera" type="Node3D" parent="." node_paths=PackedStringArray("target", "camera_arm", "camera_anchor", "camera", "gun_camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711, 0)
 script = ExtResource("7_3b78s")
 Parameters = ExtResource("2_m0ukv")
@@ -331,6 +331,7 @@ target = NodePath("../Body/Horizontal View/Vertical View/Camera Mount")
 camera_arm = NodePath("Arm")
 camera_anchor = NodePath("Arm/Arm Anchor")
 camera = NodePath("Arm/Arm Anchor/Camera")
+gun_camera = NodePath("Arm/Arm Anchor/Camera/SubViewportContainer/SubViewport/Guncam")
 
 [node name="Arm" type="SpringArm3D" parent="Interpolated Camera"]
 shape = SubResource("SphereShape3D_u4rs7")
@@ -342,6 +343,7 @@ editor_description = "
 "
 
 [node name="Camera" type="Camera3D" parent="Interpolated Camera/Arm/Arm Anchor"]
+cull_mask = 1048573
 current = true
 fov = 90.6
 near = 0.001
@@ -349,9 +351,28 @@ near = 0.001
 [node name="handgun" parent="Interpolated Camera/Arm/Arm Anchor/Camera" instance=ExtResource("13_lpmqc")]
 transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 0.47196, -0.572988, -1.19287)
 
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Interpolated Camera/Arm/Arm Anchor/Camera"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Interpolated Camera/Arm/Arm Anchor/Camera/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(3440, 1440)
+render_target_update_mode = 4
+
+[node name="Guncam" type="Camera3D" parent="Interpolated Camera/Arm/Arm Anchor/Camera/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.045, 0.646, -0.045)
+cull_mask = 2
+fov = 90.0
+
 [node name="gun" type="CSGBox3D" parent="Interpolated Camera/Arm/Arm Anchor/Camera" node_paths=PackedStringArray("raycast", "firerate", "reload_timer", "gun_model", "crosshair", "playerState", "playerBody")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.166886, -0.325985, -0.737846)
 visible = false
+layers = 2
 size = Vector3(0.162964, 0.118652, 0.481445)
 script = ExtResource("9_tnwmm")
 raycast = NodePath("../RayCast3D")

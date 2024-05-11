@@ -279,6 +279,35 @@ shadow_enabled = true
 spot_range = 38.0
 spot_angle = 89.99
 
+[node name="SpotLight3D4" type="SpotLight3D" parent="."]
+transform = Transform3D(0.0035704, -0.979224, -0.202753, -0.019111, -0.202784, 0.979037, -0.999811, 0.000379265, -0.019438, -203.331, 33.6553, 0.249439)
+light_color = Color(0.596078, 0.0235294, 0, 1)
+light_energy = 152.0
+light_indirect_energy = 5.0
+light_volumetric_fog_energy = 3.0
+shadow_enabled = true
+spot_range = 168.369
+spot_angle = 33.6531
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -250.706, 264.168, 2.64069)
+light_color = Color(0.596078, 0.0235294, 0, 1)
+light_energy = 304.0
+light_indirect_energy = 25.0
+light_volumetric_fog_energy = 6.0
+shadow_enabled = true
+spot_range = 2368.35
+spot_angle = 39.1079
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -253.124, 1.50024, -5.96046e-08)
+light_color = Color(0.568627, 0.0784314, 0.027451, 1)
+light_energy = 7.0
+light_indirect_energy = 20.0
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+omni_range = 123.266
+
 [node name="FogVolume3" type="FogVolume" parent="."]
 transform = Transform3D(0.936605, 0.350387, 0, -0.350387, 0.936605, 0, 0, 0, 1, 96.9651, -15.5611, 0.120998)
 size = Vector3(11.779, 63.049, 7.07767)
