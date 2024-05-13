@@ -43,7 +43,7 @@ func _process(delta):
 		gun_model.get_node("AnimationPlayer").stop()
 		gun_model.get_node("AnimationPlayer").play("shoot")
 		
-		_apply_recoil()
+		#_apply_recoil() # Temporarily disabled as i reconsider the games direction
 		firerate.start()
 		can_shoot = false
 		current_magazine_size-=1

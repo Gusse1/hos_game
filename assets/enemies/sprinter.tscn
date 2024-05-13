@@ -22,6 +22,7 @@ debug_enabled = true
 [node name="EnemyResources" type="Node" parent="CharacterBody3D"]
 script = ExtResource("1_d8gm5")
 FOLLOW_THRESHOLD = 100.0
+MOVEMENT_SPEED = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("CapsuleShape3D_hvunb")
