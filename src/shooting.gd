@@ -35,9 +35,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	# Calculate spread each frame (Maybe move this to another script?)
-	spread = playerState.playerVariables.BASE_SPREAD + (playerBody.velocity.length() * playerState.playerVariables.SPREAD_MOVEMENT_MODIFIER) 
-	crosshair.scale = Vector2.ONE*spread*1.25
+	# Calculate spread each frame (Maybe move this to another script?) RECOIL DISABLED
+	#spread = playerState.playerVariables.BASE_SPREAD + (playerBody.velocity.length() * playerState.playerVariables.SPREAD_MOVEMENT_MODIFIER) 
+	#crosshair.scale = Vector2.ONE*spread*1.25
 	
 	if Input.is_action_pressed("shoot") and can_shoot and not reloading and (current_magazine_size > 0):
 		gun_model.get_node("AnimationPlayer").stop()

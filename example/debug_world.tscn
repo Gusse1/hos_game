@@ -597,25 +597,27 @@ visible = false
 use_collision = true
 size = Vector3(51, 3, 4)
 
-[node name="CombatArea2" parent="." instance=ExtResource("6_12kqi")]
+[node name="CombatArea2" parent="." node_paths=PackedStringArray("waves") instance=ExtResource("6_12kqi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -373.619, 15.5162, 1.38228)
 script = ExtResource("7_yk14u")
+waves = [NodePath("Wave1")]
 
 [node name="room_trigger_shape" parent="CombatArea2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.31543, 7.711, -0.18988)
 
-[node name="Enemies" type="Node" parent="CombatArea2"]
+[node name="Wave1" type="Node3D" parent="CombatArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 373.619, -15.5162, -1.38228)
 
-[node name="Sprinter" parent="CombatArea2/Enemies" instance=ExtResource("6_uwyct")]
+[node name="Sprinter" parent="CombatArea2/Wave1" instance=ExtResource("6_uwyct")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -381.19, 25.1345, -4.8618)
 
-[node name="Sprinter2" parent="CombatArea2/Enemies" instance=ExtResource("6_uwyct")]
+[node name="Sprinter2" parent="CombatArea2/Wave1" instance=ExtResource("6_uwyct")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -411.737, 27.1281, 6.54181)
 
-[node name="Sprinter3" parent="CombatArea2/Enemies" instance=ExtResource("6_uwyct")]
+[node name="Sprinter3" parent="CombatArea2/Wave1" instance=ExtResource("6_uwyct")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -345.42, 27.1281, 8.14527)
 
-[node name="Sprinter4" parent="CombatArea2/Enemies" instance=ExtResource("6_uwyct")]
+[node name="Sprinter4" parent="CombatArea2/Wave1" instance=ExtResource("6_uwyct")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -446.186, 19.0882, -5.26096)
 
 [connection signal="area_entered" from="CombatArea1" to="CombatArea1" method="_on_area_entered"]

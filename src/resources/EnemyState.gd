@@ -5,7 +5,7 @@ extends Node
 @export var MAX_HEALTH: float = 10
 
 @export_group("Behaviour")
-@export var ACTIVE: bool = false
+@export var ACTIVE: bool = true
 @export var FOLLOW_THRESHOLD: float = 10
 @export var MOVEMENT_SPEED: float = 5
 @export var ATTACK_RANGE: float = 2
