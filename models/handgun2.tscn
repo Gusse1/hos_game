@@ -601,10 +601,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2nsvs")
 
-[node name="handgun" type="Node3D" node_paths=PackedStringArray("AmmoText")]
+[node name="handgun" type="Node3D" node_paths=PackedStringArray("AmmoText", "blood_bar", "health_bar")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 script = ExtResource("1_goqh3")
 AmmoText = NodePath("Control/SubViewportContainer/SubViewport/ColorRect/AmmoText")
+blood_bar = NodePath("Control/SubViewportContainer/SubViewport/ColorRect/BloodBar")
+health_bar = NodePath("Control/SubViewportContainer/SubViewport/ColorRect/HealthBar")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -644,6 +646,22 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(1, 1, 0.156863, 0)
 
+[node name="HealthBar" type="ProgressBar" parent="Control/SubViewportContainer/SubViewport/ColorRect"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 74.0
+offset_top = -96.06
+offset_right = -48.0
+offset_bottom = -64.06
+grow_horizontal = 2
+grow_vertical = 0
+tooltip_text = "BLOOD"
+fill_mode = 3
+show_percentage = false
+
 [node name="AmmoText" type="RichTextLabel" parent="Control/SubViewportContainer/SubViewport/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
@@ -661,6 +679,22 @@ theme = SubResource("Theme_3x22q")
 text = "7
 "
 
+[node name="BloodBar" type="ProgressBar" parent="Control/SubViewportContainer/SubViewport/ColorRect"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -96.06
+offset_right = -74.0
+offset_bottom = -64.06
+grow_horizontal = 2
+grow_vertical = 0
+tooltip_text = "BLOOD"
+fill_mode = 3
+show_percentage = false
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../gun_and_hand")
 libraries = {
@@ -676,8 +710,7 @@ layers = 2
 mesh = SubResource("ArrayMesh_8o6db")
 skeleton = NodePath("")
 
-[node name="Cube_001" type="MeshInstance3D" parent="gun_and_hand"]
-unique_name_in_owner = true
+[node name="MeshInstance3D" type="MeshInstance3D" parent="gun_and_hand"]
 transform = Transform3D(0.051436, 0, 0, 0, 6.13368e-10, 0.051436, 0, -0.051436, 6.13368e-10, 0.41282, 0.28963, 0.0366528)
 layers = 2
 mesh = SubResource("ArrayMesh_2d7uq")

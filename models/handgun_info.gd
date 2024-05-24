@@ -2,11 +2,11 @@ extends Node3D
 
 @export var AmmoText : RichTextLabel
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@export var  blood_bar : ProgressBar
+@export var health_bar : ProgressBar
 
+func _update_blood_display(current_blood : float, max_blood : float):
+	blood_bar.value = (current_blood/max_blood) * 100
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _update_health_display(current_health : float, max_health : float):
+	health_bar.value = (current_health/max_health) * 100

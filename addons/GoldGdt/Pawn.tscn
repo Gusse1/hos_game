@@ -79,6 +79,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameUI/BloodDisplay"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -283,11 +284,12 @@ script = ExtResource("4_5gavo")
 Parameters = ExtResource("2_m0ukv")
 Body = NodePath("../Body")
 
-[node name="PlayerState" type="Node" parent="." node_paths=PackedStringArray("blood_text")]
+[node name="PlayerState" type="Node" parent="." node_paths=PackedStringArray("blood_text", "handgun")]
 script = ExtResource("7_5xn01")
 playerVariables = SubResource("Resource_vwc4m")
 blood_recovery_rate = 0.5
 blood_text = NodePath("../GameUI/BloodDisplay/RichTextLabel")
+handgun = NodePath("../Interpolated Camera/Arm/Arm Anchor/Camera/handgun")
 
 [node name="PlayerHealing" type="Node" parent="PlayerState" node_paths=PackedStringArray("playerState")]
 script = ExtResource("9_sve2w")

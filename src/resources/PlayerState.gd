@@ -8,12 +8,13 @@ var current_health : float
 
 # UI
 @export var blood_text : RichTextLabel
+@export var handgun : Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_blood = playerVariables.MAX_BLOOD
 	current_health = playerVariables.MAX_HEALTH / 2
-
+	handgun._update_health_display(current_health, playerVariables.MAX_HEALTH)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,7 +25,8 @@ func _process(delta):
 	
 func _adjust_blood(amount: float):
 	current_blood += amount
-	blood_text.text = str(current_blood).pad_decimals(1)
+	#blood_text.text = str(current_blood).pad_decimals(1)
+	handgun._update_blood_display(current_blood, playerVariables.MAX_BLOOD)
 	
 	if current_blood < 0:
 		current_blood = 0
@@ -33,6 +35,7 @@ func _adjust_blood(amount: float):
 		
 func _adjust_health(amount: float):
 	current_health += amount
+	handgun._update_health_display(current_health, playerVariables.MAX_HEALTH)
 	
 	if current_health < 0:
 		current_health = 0
