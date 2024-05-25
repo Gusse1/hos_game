@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6ljyf4f4qj8t"]
+
+[ext_resource type="PackedScene" uid="uid://sk7spv88orwg" path="res://models/checkpoint_sign.blend" id="1_p3obf"]
+[ext_resource type="Texture2D" uid="uid://dckmk45o6edcu" path="res://textures/Metal_12-128x128.png" id="2_u07t0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxxi0"]
+albedo_texture = ExtResource("2_u07t0")
+metallic = 1.0
+metallic_specular = 0.2
+
+[node name="Checkpoint" type="Node3D"]
+
+[node name="checkpoint_sign" parent="." instance=ExtResource("1_p3obf")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="checkpoint_sign"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22531, 5.36442e-07, 0.0634452)
+light_energy = 3.0
+omni_range = 4.0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.064743, -2.03333, 0)
+size = Vector3(0.079, 5.067, 0.28)
+material = SubResource("StandardMaterial3D_wxxi0")

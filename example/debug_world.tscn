@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dafpnrc0x0g1s"]
+[gd_scene load_steps=23 format=3 uid="uid://dafpnrc0x0g1s"]
 
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://addons/GoldGdt/Pawn.tscn" id="1_3375c"]
 [ext_resource type="Script" path="res://addons/post_processing/node/post_process.gd" id="1_ch810"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://src/enemy_logic/CombatArea.gd" id="7_yk14u"]
 [ext_resource type="Texture2D" uid="uid://buj8surx5vl06" path="res://textures/Grating_23-128x128.png" id="9_ltbfv"]
 [ext_resource type="Texture2D" uid="uid://de5gtsehkfba7" path="res://assets/external/TexturesCom_Pipes0071_1_M_P.jpg" id="10_u40uv"]
+[ext_resource type="PackedScene" uid="uid://b6ljyf4f4qj8t" path="res://assets/interactables/checkpoint.tscn" id="13_evw7p"]
 
 [sub_resource type="Resource" id="Resource_gkxv8"]
 script = ExtResource("2_e0qwb")
@@ -100,7 +101,7 @@ sky = SubResource("Sky_4yols")
 ambient_light_source = 1
 ambient_light_color = Color(0.592157, 0, 0.105882, 1)
 ambient_light_energy = 4.7
-tonemap_mode = 2
+tonemap_mode = 3
 ssil_enabled = true
 sdfgi_enabled = true
 sdfgi_use_occlusion = true
@@ -113,10 +114,6 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.035
 volumetric_fog_albedo = Color(0.52549, 0, 0.0156863, 1)
 volumetric_fog_temporal_reprojection_amount = 0.95
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2l2e1"]
-depth_draw_mode = 1
-albedo_texture = ExtResource("9_ltbfv")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_anh6g"]
 resource_name = "Pipe1"
@@ -157,6 +154,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_o8tjx")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2l2e1"]
+depth_draw_mode = 1
+albedo_texture = ExtResource("9_ltbfv")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ilr3"]
+size = Vector3(144.954, 26.1779, 79.2984)
+
 [node name="Debug World" type="Node3D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -167,7 +171,7 @@ configuration = SubResource("Resource_gkxv8")
 environment = SubResource("Environment_138gm")
 
 [node name="Pawn" parent="." groups=["Pawn"] instance=ExtResource("1_3375c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -286.655, 34, 0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -481.345, 26.2897, 0.25)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.04773, 0.495845, -25.6994)
@@ -211,52 +215,19 @@ size = Vector3(3, 2, 4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 omni_range = 6.0
 
-[node name="CombatArea1" parent="." instance=ExtResource("6_12kqi")]
+[node name="CombatArea1" parent="." node_paths=PackedStringArray("waves") instance=ExtResource("6_12kqi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.6155, 6.38274, 0.46447)
 script = ExtResource("7_yk14u")
+waves = [NodePath("Wave1")]
 
 [node name="room_trigger_shape" parent="CombatArea1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9991, 7.711, -0.18988)
 
-[node name="Enemies" type="Node" parent="CombatArea1"]
+[node name="Wave1" type="Node3D" parent="CombatArea1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.6155, -6.38274, -0.46447)
 
-[node name="Sprinter" parent="CombatArea1/Enemies" instance=ExtResource("6_uwyct")]
+[node name="Sprinter" parent="CombatArea1/Wave1" instance=ExtResource("6_uwyct")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 1, 0)
-
-[node name="DoorNode2" parent="." instance=ExtResource("5_nt10f")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -247, 18.45, 0)
-
-[node name="door" parent="DoorNode2" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
-size = Vector3(38, 23, 0.5)
-
-[node name="eye" parent="DoorNode2/door" index="0"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.4255, 8.82138, 7.99535)
-size = Vector3(3, 2, 4)
-
-[node name="OmniLight3D" parent="DoorNode2/door/eye" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
-omni_range = 6.0
-
-[node name="HideEyeBox" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -235.928, 37.8021, 13.5)
-size = Vector3(1, 4, 8)
-material = SubResource("StandardMaterial3D_2l2e1")
-
-[node name="HideEyeBox2" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -239.096, 35.2897, 13.5097)
-size = Vector3(1, 7.4472, 8)
-material = SubResource("StandardMaterial3D_2l2e1")
-
-[node name="HideEyeBox3" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -242.299, 37.8021, 13.5)
-size = Vector3(1, 4, 8)
-material = SubResource("StandardMaterial3D_2l2e1")
-
-[node name="HideEyeBox4" type="CSGBox3D" parent="."]
-transform = Transform3D(1.31134e-07, -1, 0, 1, 1.31134e-07, 0, 0, 0, 1, -239.074, 40.3057, 13.5097)
-size = Vector3(1, 7.4472, 8)
-material = SubResource("StandardMaterial3D_2l2e1")
 
 [node name="PuzzleGeo" type="Node" parent="."]
 
@@ -597,6 +568,41 @@ visible = false
 use_collision = true
 size = Vector3(51, 3, 4)
 
+[node name="HideEyeBox" type="CSGBox3D" parent="PuzzleGeo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -235.928, 37.8021, 13.5)
+size = Vector3(1, 4, 8)
+material = SubResource("StandardMaterial3D_2l2e1")
+
+[node name="HideEyeBox2" type="CSGBox3D" parent="PuzzleGeo"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -239.096, 35.2897, 13.5097)
+size = Vector3(1, 7.4472, 8)
+material = SubResource("StandardMaterial3D_2l2e1")
+
+[node name="HideEyeBox3" type="CSGBox3D" parent="PuzzleGeo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -242.299, 37.8021, 13.5)
+size = Vector3(1, 4, 8)
+material = SubResource("StandardMaterial3D_2l2e1")
+
+[node name="HideEyeBox4" type="CSGBox3D" parent="PuzzleGeo"]
+transform = Transform3D(1.31134e-07, -1, 0, 1, 1.31134e-07, 0, 0, 0, 1, -239.074, 40.3057, 13.5097)
+size = Vector3(1, 7.4472, 8)
+material = SubResource("StandardMaterial3D_2l2e1")
+
+[node name="DoorNode2" parent="." instance=ExtResource("5_nt10f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -247, 18.45, 0)
+
+[node name="door" parent="DoorNode2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
+size = Vector3(38, 23, 0.5)
+
+[node name="eye" parent="DoorNode2/door" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.4255, 8.82138, 7.99535)
+size = Vector3(3, 2, 4)
+
+[node name="OmniLight3D" parent="DoorNode2/door/eye" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+omni_range = 6.0
+
 [node name="CombatArea2" parent="." node_paths=PackedStringArray("waves") instance=ExtResource("6_12kqi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -373.619, 15.5162, 1.38228)
 script = ExtResource("7_yk14u")
@@ -612,18 +618,47 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 373.619, -15.5162, -1.38228)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -381.19, 25.1345, -4.8618)
 
 [node name="Sprinter2" parent="CombatArea2/Wave1" instance=ExtResource("6_uwyct")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -411.737, 27.1281, 6.54181)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -411.737, 22.4052, 6.54181)
 
 [node name="Sprinter3" parent="CombatArea2/Wave1" instance=ExtResource("6_uwyct")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -345.42, 27.1281, 8.14527)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -345.42, 22.0848, 8.14527)
 
 [node name="Sprinter4" parent="CombatArea2/Wave1" instance=ExtResource("6_uwyct")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -446.186, 19.0882, -5.26096)
 
+[node name="CombatArea3" parent="." node_paths=PackedStringArray("waves") instance=ExtResource("6_12kqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -596.943, 31.0324, 2.76456)
+script = ExtResource("7_yk14u")
+waves = [NodePath("Wave1")]
+
+[node name="room_trigger_shape" parent="CombatArea3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04633, -1.92273, -0.408553)
+shape = SubResource("BoxShape3D_3ilr3")
+
+[node name="Wave1" type="Node3D" parent="CombatArea3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 373.619, -40.9996, -1.38228)
+
+[node name="Sprinter" parent="CombatArea3/Wave1" instance=ExtResource("6_uwyct")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -354.09, 26.7257, -24.5438)
+
+[node name="Sprinter2" parent="CombatArea3/Wave1" instance=ExtResource("6_uwyct")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -399.194, 26.7257, 25.1997)
+
+[node name="Sprinter3" parent="CombatArea3/Wave1" instance=ExtResource("6_uwyct")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -338.224, 26.7257, 2.32573)
+
+[node name="Sprinter4" parent="CombatArea3/Wave1" instance=ExtResource("6_uwyct")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -415.42, 26.7257, 3.72268)
+
+[node name="Checkpoint" parent="." instance=ExtResource("13_evw7p")]
+transform = Transform3D(1.67711, -0.197117, -0.848844, 0.104404, 1.8732, -0.228714, 0.865153, 0.156062, 1.6731, -504.172, 21.0153, -5.83598)
+
 [connection signal="area_entered" from="CombatArea1" to="CombatArea1" method="_on_area_entered"]
 [connection signal="area_entered" from="CombatArea2" to="CombatArea2" method="_on_area_entered"]
+[connection signal="area_entered" from="CombatArea3" to="CombatArea3" method="_on_area_entered"]
 
 [editable path="DoorNode"]
 [editable path="CombatArea1"]
 [editable path="DoorNode2"]
 [editable path="CombatArea2"]
+[editable path="CombatArea3"]
