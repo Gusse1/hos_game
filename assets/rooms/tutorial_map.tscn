@@ -210,10 +210,10 @@ add_uv2 = true
 size = Vector2(16, 9)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_v4df0"]
-viewport_path = NodePath("rest_screen/SubViewport")
+viewport_path = NodePath("VideotapeScreen/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_qnbcn"]
-viewport_path = NodePath("rest_screen/SubViewport")
+viewport_path = NodePath("VideotapeScreen/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_250p0"]
 resource_local_to_scene = true
@@ -355,11 +355,27 @@ omni_range = 123.266
 transform = Transform3D(1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, -504.412, 29.9432, -43.1519)
 light_color = Color(0.596078, 0.0235294, 0, 1)
 light_energy = 304.0
-light_indirect_energy = 25.0
-light_volumetric_fog_energy = 6.0
+light_indirect_energy = 2.0
+light_volumetric_fog_energy = 18.0
 shadow_enabled = true
 spot_range = 2368.35
 spot_angle = 39.1079
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.474088, 0.880477, 0, -0.880477, -0.474088, -608.433, 77.0426, 9.37836)
+light_color = Color(0.596078, 0.0235294, 0, 1)
+light_energy = 228.0
+light_volumetric_fog_energy = 2.0
+spot_range = 508.0
+spot_angle = 32.4941
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.287377, 0.957817, 0, -0.957817, 0.287377, -608.433, 77.0426, -2.60217)
+light_color = Color(0.596078, 0.0235294, 0, 1)
+light_energy = 228.0
+light_volumetric_fog_energy = 2.0
+spot_range = 212.0
+spot_angle = 32.4941
 
 [node name="FogVolume3" type="FogVolume" parent="."]
 transform = Transform3D(0.936605, 0.350387, 0, -0.350387, 0.936605, 0, 0, 0, 1, 96.9651, -15.5611, 0.120998)
@@ -378,19 +394,19 @@ spot_angle = 19.8488
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.2105, -34.2751, 7.62939e-06)
 
-[node name="rest_screen" type="MeshInstance3D" parent="."]
+[node name="VideotapeScreen" type="MeshInstance3D" parent="."]
 transform = Transform3D(-2.55, -3.85039e-07, 1.68306e-14, 0, -1.11464e-07, -2.55, 3.85039e-07, -2.55, 1.11464e-07, -507.052, 1.78472, 9.74131)
 mesh = SubResource("PlaneMesh_u6s78")
 skeleton = NodePath("SubViewport")
 surface_material_override/0 = SubResource("StandardMaterial3D_250p0")
 
-[node name="SubViewport" type="SubViewport" parent="rest_screen"]
+[node name="SubViewport" type="SubViewport" parent="VideotapeScreen"]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="rest_screen/SubViewport"]
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="VideotapeScreen/SubViewport"]
 custom_minimum_size = Vector2(1920, 1080)
 anchors_preset = 8
 anchor_left = 0.5

@@ -1,6 +1,7 @@
 class_name PlayerState extends Node
 
 @export var playerVariables : PlayerVariables
+var blood_accumulation_float : float # Player gets blood in bursts according to this value
 var current_blood : float
 var current_health : float
 @export var blood_recovery_rate: float
@@ -19,13 +20,20 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	_adjust_blood(delta * blood_recovery_rate)
+	_passive_blood_accumulation(delta * blood_recovery_rate)
 	
 	pass
 	
+func _passive_blood_accumulation(amount: float):
+	blood_accumulation_float += amount
+	if blood_accumulation_float > 1.5:
+		current_blood += blood_accumulation_float
+		blood_accumulation_float = 0
+		
+	_adjust_blood(0)
+	
 func _adjust_blood(amount: float):
 	current_blood += amount
-	#blood_text.text = str(current_blood).pad_decimals(1)
 	handgun._update_blood_display(current_blood, playerVariables.MAX_BLOOD)
 	
 	if current_blood < 0:

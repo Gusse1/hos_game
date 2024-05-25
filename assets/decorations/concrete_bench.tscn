@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://dskwoaxlq5bqg"]
+
+[ext_resource type="PackedScene" uid="uid://cxh2qcd81kovp" path="res://models/concrete_bench.blend" id="1_bmy4m"]
+[ext_resource type="Texture2D" uid="uid://drjojq45fc2nf" path="res://textures/Stone_21-128x128.png" id="2_kyr68"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4eai"]
+albedo_color = Color(0.913725, 0.913725, 0.913725, 1)
+albedo_texture = ExtResource("2_kyr68")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vqf8l"]
+data = PackedVector3Array(-0.5507, 1, 1, -0.5507, 2.3926, -1, -0.5507, 1, -1, -0.5507, 1, 1, -0.5507, 2.3926, 1, -0.5507, 2.3926, -1, -0.5507, -1, 1, -1, 1, 1, -0.5507, 1, 1, -0.5507, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -0.5507, -1, -1, 1, -1, 1, 1, -1, -1, -0.5507, -1, -1, -0.5507, -1, 1, 1, -1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -0.5507, -1, -1, 1, 1, -1, -0.5507, 1, -1, -0.5507, -1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, -0.5507, 1, -1, -1, 1, -1, -1, -1, -1, -0.5507, -1, -1, -0.5507, 1, -1, -1, -1, -1, -0.5507, -1, 1, -0.5507, -1, -1, -1, -1, -1, -1, -1, 1, -0.5507, -1, 1, 1, -1, 1, -0.5507, 1, 1, 1, 1, 1, 1, -1, 1, -0.5507, -1, 1, -0.5507, 1, 1, 1, 1, -1, -0.5507, 1, 1, -0.5507, 1, -1, 1, 1, -1, 1, 1, 1, -0.5507, 1, 1, -0.5507, 2.3926, -1, -1, 2.3926, 1, -1, 2.3926, -1, -0.5507, 2.3926, -1, -0.5507, 2.3926, 1, -1, 2.3926, 1, -1, 1, 1, -0.5507, 2.3926, 1, -0.5507, 1, 1, -1, 1, 1, -1, 2.3926, 1, -0.5507, 2.3926, 1, -0.5507, 1, -1, -1, 2.3926, -1, -1, 1, -1, -0.5507, 1, -1, -0.5507, 2.3926, -1, -1, 2.3926, -1, -1, 1, -1, -1, 2.3926, 1, -1, 1, 1, -1, 1, -1, -1, 2.3926, -1, -1, 2.3926, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bjddl"]
+data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_pv0qi"]
+data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1)
+
+[node name="concrete_bench" instance=ExtResource("1_bmy4m")]
+
+[node name="BaseBench" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_v4eai")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="BaseBench" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaseBench/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_vqf8l")
+
+[node name="LeftLeg" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_v4eai")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LeftLeg" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftLeg/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_bjddl")
+
+[node name="RightLeg" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_v4eai")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RightLeg" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightLeg/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_pv0qi")
