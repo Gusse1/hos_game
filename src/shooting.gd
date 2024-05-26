@@ -91,12 +91,14 @@ func _shoot():
 				bullet_impacts.remove_at(0)
 				
 			var enemy_resources = target.get_node("EnemyResources")
-			var door_eye = target.get_node("eye")
+			var door_eye = target.name
+			print_debug(target.name)
+			print_debug(door_eye != null)
 		
 			if enemy_resources != null:
 				enemy_resources._damage(playerState.playerVariables.BASE_DAMAGE)
-			if door_eye != null:
-				door_eye._shot_eye()
+			if door_eye == "eye_collider":
+				target._shot_eye()
 
 
 func _reset_recoil():

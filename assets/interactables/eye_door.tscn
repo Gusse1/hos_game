@@ -1,7 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://bv5731sysdvcl"]
+[gd_scene load_steps=10 format=3 uid="uid://bv5731sysdvcl"]
 
 [ext_resource type="Script" path="res://src/interactable_scripts/EyeDoor.gd" id="1_5c6p2"]
+[ext_resource type="PackedScene" uid="uid://di28gjymtwik3" path="res://models/eye_switch.blend" id="1_p18i6"]
+[ext_resource type="VideoStream" path="res://videos/hosEye.ogv" id="2_d3lfo"]
 [ext_resource type="Script" path="res://src/interactable_scripts/Eye.gd" id="2_nr3jb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fagp0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rt6j0"]
+size = Vector3(7.72699, 4.38135, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_670uy"]
+viewport_path = NodePath("door/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_bs57q"]
+viewport_path = NodePath("door/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57uwk"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_670uy")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+emission_texture = SubResource("ViewportTexture_bs57q")
+uv1_scale = Vector3(-0.169, -12.178, 0.562)
+uv1_offset = Vector3(3.23, 2.35, 0.43)
+uv1_triplanar = true
 
 [node name="DoorNode" type="Node3D"]
 
@@ -9,13 +33,56 @@
 use_collision = true
 size = Vector3(2, 2, 0.5)
 script = ExtResource("1_5c6p2")
-eyes = [NodePath("eye")]
+eyes = [NodePath("eye_switch/eye_collider")]
 
-[node name="eye" type="CSGBox3D" parent="door"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57451, 0.132154, 0.125939)
-use_collision = true
-size = Vector3(0.4, 0.4, 0.4)
+[node name="SubViewport" type="SubViewport" parent="door"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="door/SubViewport"]
+custom_minimum_size = Vector2(1920, 1080)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -1040.0
+offset_right = 1960.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+stream = ExtResource("2_d3lfo")
+autoplay = true
+loop = true
+buffering_msec = 1000
+
+[node name="eye_switch" parent="door" instance=ExtResource("1_p18i6")]
+transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 13.6904, -7.02063, -9.51155)
+
+[node name="eye_collider" type="StaticBody3D" parent="door/eye_switch"]
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_fagp0")
 script = ExtResource("2_nr3jb")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="door/eye"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.245643)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door/eye_switch/eye_collider"]
+transform = Transform3D(1, 0, 8.63974e-20, 0, 1, 0, 0, 0, 1, 0.00650024, -0.0686035, 0)
+shape = SubResource("BoxShape3D_rt6j0")
+
+[node name="Cylinder" parent="door/eye_switch" index="1"]
+transform = Transform3D(0, 0.0748121, 0, -0.5975, 0, 0, 0, 6.66134e-16, 1.07125, 0, 0, 0)
+surface_material_override/1 = SubResource("StandardMaterial3D_57uwk")
+
+[node name="Cylinder_001" parent="door/eye_switch" index="2"]
+visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="door/eye_switch"]
+transform = Transform3D(0.2, 0, -1.77636e-15, 0, 0.2, 0, 1.77636e-15, 0, 0.2, -0.246199, 0, -0.0397146)
+light_color = Color(0.596078, 0.0235294, 0, 1)
+light_energy = 13.64
+light_indirect_energy = 6.0
+
+[editable path="door/eye_switch"]
