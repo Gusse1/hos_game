@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dafpnrc0x0g1s"]
+[gd_scene load_steps=58 format=3 uid="uid://dafpnrc0x0g1s"]
 
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://addons/GoldGdt/Pawn.tscn" id="1_3375c"]
 [ext_resource type="Script" path="res://addons/post_processing/node/post_process.gd" id="1_ch810"]
@@ -117,6 +117,23 @@ volumetric_fog_density = 0.035
 volumetric_fog_albedo = Color(0.52549, 0, 0.0156863, 1)
 volumetric_fog_length = 256.0
 volumetric_fog_temporal_reprojection_amount = 0.95
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_nprwr"]
+viewport_path = NodePath("DoorNode2/EyeVidViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ahcnc"]
+viewport_path = NodePath("DoorNode2/EyeVidViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7j7q8"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_nprwr")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+emission_texture = SubResource("ViewportTexture_ahcnc")
+uv1_scale = Vector3(-0.169, -12.178, 0.562)
+uv1_offset = Vector3(3.23, 2.35, 0.43)
+uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_anh6g"]
 resource_name = "Pipe1"
@@ -312,7 +329,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9991, 7.711, -0.18988)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.6155, -6.38274, -0.46447)
 
 [node name="Sprinter" parent="CombatArea1/Wave1" instance=ExtResource("6_uwyct")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.4711, -4.94881, 0)
+
+[node name="DoorNode2" parent="." instance=ExtResource("7_j8fdy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -250.532, 17.2249, 0.147946)
+
+[node name="eye_switch" parent="DoorNode2" index="0"]
+transform = Transform3D(-2.5, 0, -3.77489e-07, 0, 2.5, 0, 3.77489e-07, 0, -2.5, -15.4618, 20.6954, 9.99055)
+
+[node name="EyeHolder" parent="DoorNode2/eye_switch" index="0"]
+surface_material_override/1 = SubResource("StandardMaterial3D_7j7q8")
+
+[node name="OmniLight3D" parent="DoorNode2/eye_switch" index="3"]
+transform = Transform3D(0.4, 0, -7.10543e-15, 0, 0.4, 0, 7.10543e-15, 0, 0.4, 0.153801, 0, -0.517311)
+
+[node name="eye_switch2" parent="DoorNode2" index="1"]
+transform = Transform3D(-2.68211e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -2.68211e-07, 13.778, 22.3449, 2.20148)
+visible = false
+
+[node name="EyeHolder" parent="DoorNode2/eye_switch2" index="0"]
+surface_material_override/1 = SubResource("StandardMaterial3D_7j7q8")
+
+[node name="door" parent="DoorNode2" index="3" node_paths=PackedStringArray("eyes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.425384, 10.5, 0)
+size = Vector3(34.7667, 23, 0.5)
+eyes = [NodePath("../eye_switch/eye_collider")]
+
+[node name="door_fog" parent="DoorNode2" index="4"]
+transform = Transform3D(2.535, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
 
 [node name="PuzzleGeo" type="Node" parent="."]
 
@@ -1089,6 +1133,7 @@ omni_range = 40.0
 [connection signal="area_entered" from="CombatArea3" to="CombatArea3" method="_on_area_entered"]
 
 [editable path="CombatArea1"]
+[editable path="DoorNode2"]
 [editable path="CombatArea2"]
 [editable path="CombatArea3"]
 [editable path="Checkpoint"]
