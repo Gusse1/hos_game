@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://53bbkhmk5ik0"]
+[gd_scene load_steps=36 format=3 uid="uid://53bbkhmk5ik0"]
 
 [ext_resource type="Script" path="res://addons/qodot/src/nodes/qodot_map.gd" id="1_nrcb7"]
 [ext_resource type="Resource" uid="uid://c36hv0o6g0udo" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="2_uty7i"]
@@ -193,7 +193,10 @@ edge_fade = 1.65642
 density_texture = SubResource("NoiseTexture3D_5qoit")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ka2f2"]
-viewport_path = NodePath("rest_screen/SubViewport")
+viewport_path = NodePath("VideotapeScreen/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_bm58j"]
+viewport_path = NodePath("VideotapeScreen/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_im3j5"]
 resource_local_to_scene = true
@@ -202,6 +205,7 @@ metallic_specular = 0.0
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_operator = 1
+emission_texture = SubResource("ViewportTexture_bm58j")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_u6s78"]
 lightmap_size_hint = Vector2i(82, 47)
@@ -334,9 +338,18 @@ spot_range = 2368.35
 spot_angle = 39.1079
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -253.124, 1.50024, -5.96046e-08)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -238.58, 1.50024, -5.96046e-08)
 light_color = Color(0.568627, 0.0784314, 0.027451, 1)
-light_energy = 7.0
+light_energy = 28.0
+light_indirect_energy = 20.0
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+omni_range = 123.266
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="OmniLight3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.0629, 0, 0)
+light_color = Color(0.568627, 0.0784314, 0.027451, 1)
+light_energy = 28.0
 light_indirect_energy = 20.0
 light_volumetric_fog_energy = 0.0
 shadow_enabled = true

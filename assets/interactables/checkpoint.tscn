@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6ljyf4f4qj8t"]
+[gd_scene load_steps=5 format=3 uid="uid://b6ljyf4f4qj8t"]
 
 [ext_resource type="PackedScene" uid="uid://sk7spv88orwg" path="res://models/checkpoint_sign.blend" id="1_p3obf"]
 [ext_resource type="Texture2D" uid="uid://dckmk45o6edcu" path="res://textures/Metal_12-128x128.png" id="2_u07t0"]
+[ext_resource type="PackedScene" uid="uid://dskwoaxlq5bqg" path="res://assets/decorations/concrete_bench.tscn" id="3_1ra04"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxxi0"]
 albedo_texture = ExtResource("2_u07t0")
@@ -21,3 +22,15 @@ omni_range = 4.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.064743, -2.03333, 0)
 size = Vector3(0.079, 5.067, 0.28)
 material = SubResource("StandardMaterial3D_wxxi0")
+
+[node name="concrete_bench" parent="." instance=ExtResource("3_1ra04")]
+transform = Transform3D(0.0102463, 0, -0.925943, 0, 0.926, 0, 0.925943, 0, 0.0102463, 1.39673, -4.40961, -0.421904)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="concrete_bench"]
+transform = Transform3D(0.571429, 2.13163e-14, 9.52912e-22, 0, -2.49779e-08, 0.571429, 2.13163e-14, -0.571429, -2.49779e-08, 0.579653, 12.5714, 0)
+light_energy = 18.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 18.0
+shadow_enabled = true
+spot_range = 100.396
+spot_angle = 20.4389

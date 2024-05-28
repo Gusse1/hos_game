@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dafpnrc0x0g1s"]
+[gd_scene load_steps=67 format=3 uid="uid://dafpnrc0x0g1s"]
 
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://addons/GoldGdt/Pawn.tscn" id="1_3375c"]
 [ext_resource type="Script" path="res://addons/post_processing/node/post_process.gd" id="1_ch810"]
@@ -10,10 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://bg0cfyn7q5vd5" path="res://assets/enemies/sprinter.tscn" id="6_uwyct"]
 [ext_resource type="PackedScene" uid="uid://blmdihl70wchk" path="res://assets/interactables/door_node.tscn" id="7_j8fdy"]
 [ext_resource type="Script" path="res://src/enemy_logic/CombatArea.gd" id="7_yk14u"]
-[ext_resource type="Texture2D" uid="uid://buj8surx5vl06" path="res://textures/Grating_23-128x128.png" id="9_ltbfv"]
 [ext_resource type="Texture2D" uid="uid://de5gtsehkfba7" path="res://assets/external/TexturesCom_Pipes0071_1_M_P.jpg" id="10_u40uv"]
+[ext_resource type="Material" uid="uid://bqw1sxjxt8ged" path="res://materials/see_thru_mesh.tres" id="11_76mdw"]
+[ext_resource type="Material" uid="uid://o2bxr0fy8tfb" path="res://materials/see_thru_mesh_dense.tres" id="11_tjsju"]
 [ext_resource type="PackedScene" uid="uid://b6ljyf4f4qj8t" path="res://assets/interactables/checkpoint.tscn" id="13_evw7p"]
-[ext_resource type="PackedScene" uid="uid://dskwoaxlq5bqg" path="res://assets/decorations/concrete_bench.tscn" id="14_6o8b6"]
 
 [sub_resource type="Resource" id="Resource_gkxv8"]
 script = ExtResource("2_e0qwb")
@@ -118,22 +118,131 @@ volumetric_fog_albedo = Color(0.52549, 0, 0.0156863, 1)
 volumetric_fog_length = 256.0
 volumetric_fog_temporal_reprojection_amount = 0.95
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_nprwr"]
-viewport_path = NodePath("DoorNode2/EyeVidViewport")
+[sub_resource type="PlaneMesh" id="PlaneMesh_y3p75"]
+material = ExtResource("11_tjsju")
+size = Vector2(26.755, 19.31)
+orientation = 0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ahcnc"]
-viewport_path = NodePath("DoorNode2/EyeVidViewport")
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ty1f4"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7j7q8"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_nprwr")
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
-emission_operator = 1
-emission_texture = SubResource("ViewportTexture_ahcnc")
-uv1_scale = Vector3(-0.169, -12.178, 0.562)
-uv1_offset = Vector3(3.23, 2.35, 0.43)
-uv1_triplanar = true
+[sub_resource type="BoxShape3D" id="BoxShape3D_8vgu1"]
+size = Vector3(1, 17.0319, 32.6736)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kbqtk"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o2op7"]
+resource_name = "Pipe1"
+cull_mode = 2
+albedo_texture = ExtResource("10_u40uv")
+metallic = 0.556818
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hjurl"]
+_surfaces = [{
+"aabb": AABB(-1.01713, -10.4535, -1.15703, 2.03427, 20.907, 2.31407),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray(0, 0, 3, 0, 6, 0, 0, 0, 1, 0, 3, 0, 9, 0, 1, 0, 0, 0, 9, 0, 4, 0, 1, 0, 10, 0, 4, 0, 9, 0, 10, 0, 7, 0, 4, 0, 11, 0, 7, 0, 10, 0, 11, 0, 2, 0, 7, 0, 5, 0, 2, 0, 11, 0, 5, 0, 8, 0, 2, 0, 6, 0, 8, 0, 5, 0, 6, 0, 3, 0, 8, 0, 1, 0, 8, 0, 3, 0, 8, 0, 7, 0, 2, 0, 7, 0, 1, 0, 4, 0, 8, 0, 1, 0, 7, 0, 6, 0, 9, 0, 0, 0, 9, 0, 11, 0, 10, 0, 11, 0, 6, 0, 5, 0, 9, 0, 6, 0, 11, 0),
+"name": "Pipe1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray(254, 255, 40, 0, 228, 66, 0, 0, 49, 252, 189, 255, 26, 61, 0, 0, 205, 3, 214, 255, 228, 194, 0, 0, 49, 124, 214, 255, 0, 0, 0, 0, 254, 255, 255, 255, 26, 189, 0, 0, 205, 3, 0, 0, 26, 61, 0, 0, 204, 131, 65, 0, 0, 0, 0, 0, 204, 131, 189, 255, 255, 255, 0, 0, 0, 0, 214, 255, 228, 66, 0, 0, 49, 252, 40, 0, 228, 194, 0, 0, 49, 124, 40, 0, 255, 255, 0, 0, 0, 0, 65, 0, 26, 189, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tow8o"]
+resource_name = "pipes_Cylinder_049"
+_surfaces = [{
+"aabb": AABB(-1.01713, -10.4535, -1.15703, 2.03427, 20.907, 2.31407),
+"attribute_data": PackedByteArray(216, 143, 99, 151, 224, 118, 182, 222, 228, 18, 74, 222, 216, 143, 99, 151, 211, 18, 182, 222, 241, 118, 74, 222, 211, 18, 26, 188, 241, 118, 175, 187, 254, 130, 25, 166, 211, 18, 15, 214, 107, 137, 8, 144, 211, 18, 15, 214, 216, 143, 25, 166, 241, 118, 163, 213, 241, 118, 163, 213, 224, 118, 193, 196, 224, 118, 193, 196, 254, 130, 99, 151, 224, 118, 15, 214, 107, 137, 8, 144, 224, 118, 15, 214, 241, 118, 85, 196, 107, 137, 116, 173, 241, 118, 85, 196, 211, 18, 193, 196, 211, 18, 193, 196, 254, 130, 99, 151, 216, 143, 25, 166, 228, 18, 163, 213, 228, 18, 163, 213, 228, 18, 85, 196, 107, 137, 116, 173, 228, 18, 85, 196, 224, 118, 26, 188, 228, 18, 175, 187, 254, 130, 25, 166),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray(1, 0, 11, 0, 20, 0, 1, 0, 4, 0, 11, 0, 29, 0, 5, 0, 2, 0, 29, 0, 14, 0, 5, 0, 32, 0, 13, 0, 28, 0, 32, 0, 23, 0, 13, 0, 34, 0, 21, 0, 30, 0, 34, 0, 7, 0, 21, 0, 15, 0, 6, 0, 33, 0, 15, 0, 24, 0, 6, 0, 18, 0, 25, 0, 16, 0, 18, 0, 9, 0, 25, 0, 3, 0, 26, 0, 10, 0, 26, 0, 22, 0, 8, 0, 22, 0, 3, 0, 12, 0, 26, 0, 3, 0, 22, 0, 19, 0, 27, 0, 0, 0, 27, 0, 35, 0, 31, 0, 35, 0, 19, 0, 17, 0, 27, 0, 19, 0, 35, 0),
+"material": SubResource("StandardMaterial3D_o2op7"),
+"name": "Pipe1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray(254, 255, 40, 0, 228, 66, 5, 64, 254, 255, 40, 0, 228, 66, 4, 241, 254, 255, 40, 0, 228, 66, 69, 213, 49, 252, 189, 255, 26, 61, 8, 192, 49, 252, 189, 255, 26, 61, 4, 241, 49, 252, 189, 255, 26, 61, 69, 213, 205, 3, 214, 255, 228, 194, 99, 213, 205, 3, 214, 255, 228, 194, 162, 194, 205, 3, 214, 255, 228, 194, 8, 192, 49, 124, 214, 255, 0, 0, 4, 241, 49, 124, 214, 255, 0, 0, 8, 192, 49, 124, 214, 255, 0, 0, 4, 241, 254, 255, 255, 255, 26, 189, 8, 192, 254, 255, 255, 255, 26, 189, 162, 194, 254, 255, 255, 255, 26, 189, 69, 213, 205, 3, 0, 0, 26, 61, 99, 213, 205, 3, 0, 0, 26, 61, 4, 241, 205, 3, 0, 0, 26, 61, 5, 64, 204, 131, 65, 0, 0, 0, 4, 241, 204, 131, 65, 0, 0, 0, 5, 64, 204, 131, 65, 0, 0, 0, 4, 241, 204, 131, 189, 255, 255, 255, 162, 194, 204, 131, 189, 255, 255, 255, 8, 192, 204, 131, 189, 255, 255, 255, 162, 194, 0, 0, 214, 255, 228, 66, 99, 213, 0, 0, 214, 255, 228, 66, 4, 241, 0, 0, 214, 255, 228, 66, 8, 192, 49, 252, 40, 0, 228, 194, 5, 64, 49, 252, 40, 0, 228, 194, 162, 194, 49, 252, 40, 0, 228, 194, 69, 213, 49, 124, 40, 0, 255, 255, 162, 194, 49, 124, 40, 0, 255, 255, 5, 64, 49, 124, 40, 0, 255, 255, 162, 194, 0, 0, 65, 0, 26, 189, 99, 213, 0, 0, 65, 0, 26, 189, 162, 194, 0, 0, 65, 0, 26, 189, 5, 64, 141, 1, 65, 131, 127, 184, 163, 71, 188, 42, 161, 42, 114, 254, 189, 124, 127, 184, 163, 71, 188, 42, 161, 42, 75, 85, 151, 170, 158, 233, 172, 233, 114, 254, 189, 124, 127, 71, 91, 184, 114, 254, 189, 124, 127, 184, 163, 71, 115, 254, 190, 124, 96, 22, 82, 22, 188, 42, 161, 42, 75, 85, 151, 170, 127, 71, 91, 184, 142, 1, 66, 131, 127, 71, 91, 184, 141, 1, 65, 131, 127, 184, 163, 71, 158, 233, 172, 233, 114, 254, 189, 124, 96, 22, 82, 22, 75, 85, 151, 170, 127, 71, 91, 184, 114, 254, 189, 124, 141, 1, 65, 131, 96, 22, 82, 22, 188, 42, 161, 42, 158, 233, 172, 233, 141, 1, 65, 131, 96, 22, 82, 22, 75, 85, 151, 170, 158, 233, 172, 233, 141, 1, 65, 131)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_hjurl")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cd7i4"]
+_surfaces = [{
+"aabb": AABB(-1.01713, -4.94749, -1.15703, 2.03427, 9.90099, 2.31407),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray(0, 0, 3, 0, 6, 0, 0, 0, 1, 0, 3, 0, 9, 0, 1, 0, 0, 0, 9, 0, 4, 0, 1, 0, 10, 0, 4, 0, 9, 0, 10, 0, 7, 0, 4, 0, 11, 0, 7, 0, 10, 0, 11, 0, 2, 0, 7, 0, 5, 0, 2, 0, 11, 0, 5, 0, 8, 0, 2, 0, 6, 0, 8, 0, 5, 0, 6, 0, 3, 0, 8, 0, 8, 0, 7, 0, 2, 0, 7, 0, 1, 0, 4, 0, 1, 0, 8, 0, 3, 0, 7, 0, 8, 0, 1, 0, 11, 0, 6, 0, 5, 0, 6, 0, 9, 0, 0, 0, 9, 0, 11, 0, 10, 0, 6, 0, 11, 0, 9, 0),
+"name": "Pipe1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 228, 66, 0, 0, 49, 252, 117, 255, 26, 61, 0, 0, 205, 3, 169, 255, 228, 194, 0, 0, 49, 124, 255, 255, 0, 0, 0, 0, 254, 255, 169, 255, 26, 189, 0, 0, 205, 3, 0, 0, 26, 61, 0, 0, 204, 131, 97, 0, 0, 0, 0, 0, 204, 131, 169, 255, 255, 255, 0, 0, 0, 0, 117, 255, 228, 66, 0, 0, 49, 252, 97, 0, 228, 194, 0, 0, 49, 124, 0, 0, 254, 255, 0, 0, 0, 0, 97, 0, 26, 189, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_c268q"]
+resource_name = "pipes_Cylinder_047"
+_surfaces = [{
+"aabb": AABB(-1.01713, -4.94749, -1.15703, 2.03427, 9.90099, 2.31407),
+"attribute_data": PackedByteArray(216, 143, 99, 151, 218, 96, 67, 226, 182, 40, 202, 225, 216, 143, 99, 151, 172, 40, 67, 226, 228, 96, 202, 225, 172, 40, 102, 187, 228, 96, 237, 186, 254, 130, 25, 166, 172, 40, 140, 216, 107, 137, 8, 144, 172, 40, 140, 216, 216, 143, 25, 166, 228, 96, 19, 216, 228, 96, 19, 216, 218, 96, 29, 197, 218, 96, 29, 197, 254, 130, 99, 151, 218, 96, 140, 216, 107, 137, 8, 144, 218, 96, 140, 216, 228, 96, 164, 196, 107, 137, 116, 173, 228, 96, 164, 196, 172, 40, 29, 197, 172, 40, 29, 197, 254, 130, 99, 151, 216, 143, 25, 166, 182, 40, 19, 216, 182, 40, 19, 216, 182, 40, 164, 196, 107, 137, 116, 173, 182, 40, 164, 196, 218, 96, 102, 187, 182, 40, 237, 186, 254, 130, 25, 166),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray(1, 0, 11, 0, 20, 0, 1, 0, 4, 0, 11, 0, 29, 0, 5, 0, 2, 0, 29, 0, 14, 0, 5, 0, 32, 0, 13, 0, 28, 0, 32, 0, 23, 0, 13, 0, 34, 0, 21, 0, 30, 0, 34, 0, 7, 0, 21, 0, 15, 0, 6, 0, 33, 0, 15, 0, 24, 0, 6, 0, 18, 0, 25, 0, 16, 0, 18, 0, 9, 0, 25, 0, 26, 0, 22, 0, 8, 0, 22, 0, 3, 0, 12, 0, 3, 0, 26, 0, 10, 0, 22, 0, 26, 0, 3, 0, 35, 0, 19, 0, 17, 0, 19, 0, 27, 0, 0, 0, 27, 0, 35, 0, 31, 0, 19, 0, 35, 0, 27, 0),
+"material": SubResource("StandardMaterial3D_o2op7"),
+"name": "Pipe1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 228, 66, 253, 63, 254, 255, 0, 0, 228, 66, 9, 241, 254, 255, 0, 0, 228, 66, 52, 213, 49, 252, 117, 255, 26, 61, 242, 191, 49, 252, 117, 255, 26, 61, 9, 241, 49, 252, 117, 255, 26, 61, 52, 213, 205, 3, 169, 255, 228, 194, 116, 213, 205, 3, 169, 255, 228, 194, 134, 194, 205, 3, 169, 255, 228, 194, 242, 191, 49, 124, 255, 255, 0, 0, 9, 241, 49, 124, 255, 255, 0, 0, 242, 191, 49, 124, 255, 255, 0, 0, 9, 241, 254, 255, 169, 255, 26, 189, 242, 191, 254, 255, 169, 255, 26, 189, 134, 194, 254, 255, 169, 255, 26, 189, 52, 213, 205, 3, 0, 0, 26, 61, 116, 213, 205, 3, 0, 0, 26, 61, 9, 241, 205, 3, 0, 0, 26, 61, 253, 63, 204, 131, 97, 0, 0, 0, 9, 241, 204, 131, 97, 0, 0, 0, 253, 63, 204, 131, 97, 0, 0, 0, 9, 241, 204, 131, 169, 255, 255, 255, 134, 194, 204, 131, 169, 255, 255, 255, 242, 191, 204, 131, 169, 255, 255, 255, 134, 194, 0, 0, 117, 255, 228, 66, 116, 213, 0, 0, 117, 255, 228, 66, 9, 241, 0, 0, 117, 255, 228, 66, 242, 191, 49, 252, 97, 0, 228, 194, 253, 63, 49, 252, 97, 0, 228, 194, 134, 194, 49, 252, 97, 0, 228, 194, 52, 213, 49, 124, 0, 0, 254, 255, 134, 194, 49, 124, 0, 0, 254, 255, 253, 63, 49, 124, 0, 0, 254, 255, 134, 194, 0, 0, 97, 0, 26, 189, 116, 213, 0, 0, 97, 0, 26, 189, 134, 194, 0, 0, 97, 0, 26, 189, 253, 63, 160, 1, 65, 131, 145, 184, 186, 71, 209, 42, 151, 42, 94, 254, 188, 124, 145, 184, 186, 71, 209, 42, 151, 42, 65, 85, 131, 170, 145, 233, 175, 233, 94, 254, 189, 124, 109, 71, 68, 184, 94, 254, 188, 124, 145, 184, 186, 71, 93, 254, 188, 124, 109, 22, 79, 22, 209, 42, 151, 42, 65, 85, 131, 170, 109, 71, 68, 184, 160, 1, 65, 131, 109, 71, 68, 184, 160, 1, 65, 131, 145, 184, 186, 71, 145, 233, 175, 233, 94, 254, 188, 124, 109, 22, 79, 22, 65, 85, 131, 170, 109, 71, 68, 184, 94, 254, 189, 124, 160, 1, 65, 131, 109, 22, 79, 22, 209, 42, 151, 42, 145, 233, 175, 233, 160, 1, 65, 131, 109, 22, 79, 22, 65, 85, 131, 170, 145, 233, 175, 233, 160, 1, 65, 131)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_cd7i4")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_j5ots"]
+_surfaces = [{
+"aabb": AABB(-1.01713, -1.44749, -1.15703, 2.03427, 2.90099, 2.31407),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray(0, 0, 3, 0, 6, 0, 0, 0, 1, 0, 3, 0, 9, 0, 1, 0, 0, 0, 9, 0, 4, 0, 1, 0, 10, 0, 4, 0, 9, 0, 10, 0, 7, 0, 4, 0, 11, 0, 7, 0, 10, 0, 11, 0, 2, 0, 7, 0, 5, 0, 2, 0, 11, 0, 5, 0, 8, 0, 2, 0, 6, 0, 8, 0, 5, 0, 6, 0, 3, 0, 8, 0, 8, 0, 7, 0, 2, 0, 7, 0, 1, 0, 4, 0, 1, 0, 8, 0, 3, 0, 7, 0, 8, 0, 1, 0, 11, 0, 6, 0, 5, 0, 6, 0, 9, 0, 0, 0, 9, 0, 11, 0, 10, 0, 6, 0, 11, 0, 9, 0),
+"name": "Pipe1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 228, 66, 0, 0, 49, 252, 40, 254, 26, 61, 0, 0, 205, 3, 219, 254, 228, 194, 0, 0, 49, 124, 255, 255, 0, 0, 0, 0, 254, 255, 219, 254, 26, 189, 0, 0, 205, 3, 0, 0, 26, 61, 0, 0, 204, 131, 78, 1, 0, 0, 0, 0, 204, 131, 219, 254, 255, 255, 0, 0, 0, 0, 40, 254, 228, 66, 0, 0, 49, 252, 78, 1, 228, 194, 0, 0, 49, 124, 0, 0, 254, 255, 0, 0, 0, 0, 78, 1, 26, 189, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2hpea"]
+resource_name = "pipes_Cylinder_050"
+_surfaces = [{
+"aabb": AABB(-1.01713, -1.44749, -1.15703, 2.03427, 2.90099, 2.31407),
+"attribute_data": PackedByteArray(216, 143, 99, 151, 205, 75, 67, 226, 196, 61, 202, 225, 216, 143, 99, 151, 193, 61, 67, 226, 207, 75, 202, 225, 193, 61, 102, 187, 207, 75, 237, 186, 254, 130, 25, 166, 193, 61, 140, 216, 107, 137, 8, 144, 193, 61, 140, 216, 216, 143, 25, 166, 207, 75, 19, 216, 207, 75, 19, 216, 205, 75, 29, 197, 205, 75, 29, 197, 254, 130, 99, 151, 205, 75, 140, 216, 107, 137, 8, 144, 205, 75, 140, 216, 207, 75, 164, 196, 107, 137, 116, 173, 207, 75, 164, 196, 193, 61, 29, 197, 193, 61, 29, 197, 254, 130, 99, 151, 216, 143, 25, 166, 196, 61, 19, 216, 196, 61, 19, 216, 196, 61, 164, 196, 107, 137, 116, 173, 196, 61, 164, 196, 205, 75, 102, 187, 196, 61, 237, 186, 254, 130, 25, 166),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray(1, 0, 11, 0, 20, 0, 1, 0, 4, 0, 11, 0, 29, 0, 5, 0, 2, 0, 29, 0, 14, 0, 5, 0, 32, 0, 13, 0, 28, 0, 32, 0, 23, 0, 13, 0, 34, 0, 21, 0, 30, 0, 34, 0, 7, 0, 21, 0, 15, 0, 6, 0, 33, 0, 15, 0, 24, 0, 6, 0, 18, 0, 25, 0, 16, 0, 18, 0, 9, 0, 25, 0, 26, 0, 22, 0, 8, 0, 22, 0, 3, 0, 12, 0, 3, 0, 26, 0, 10, 0, 22, 0, 26, 0, 3, 0, 35, 0, 19, 0, 17, 0, 19, 0, 27, 0, 0, 0, 27, 0, 35, 0, 31, 0, 19, 0, 35, 0, 27, 0),
+"material": SubResource("StandardMaterial3D_o2op7"),
+"name": "Pipe1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 228, 66, 253, 63, 254, 255, 0, 0, 228, 66, 34, 241, 254, 255, 0, 0, 228, 66, 231, 212, 49, 252, 40, 254, 26, 61, 242, 191, 49, 252, 40, 254, 26, 61, 34, 241, 49, 252, 40, 254, 26, 61, 231, 212, 205, 3, 219, 254, 228, 194, 194, 213, 205, 3, 219, 254, 228, 194, 8, 194, 205, 3, 219, 254, 228, 194, 242, 191, 49, 124, 255, 255, 0, 0, 34, 241, 49, 124, 255, 255, 0, 0, 242, 191, 49, 124, 255, 255, 0, 0, 34, 241, 254, 255, 219, 254, 26, 189, 242, 191, 254, 255, 219, 254, 26, 189, 9, 194, 254, 255, 219, 254, 26, 189, 231, 212, 205, 3, 0, 0, 26, 61, 194, 213, 205, 3, 0, 0, 26, 61, 34, 241, 205, 3, 0, 0, 26, 61, 253, 63, 204, 131, 78, 1, 0, 0, 34, 241, 204, 131, 78, 1, 0, 0, 253, 63, 204, 131, 78, 1, 0, 0, 34, 241, 204, 131, 219, 254, 255, 255, 9, 194, 204, 131, 219, 254, 255, 255, 242, 191, 204, 131, 219, 254, 255, 255, 9, 194, 0, 0, 40, 254, 228, 66, 194, 213, 0, 0, 40, 254, 228, 66, 34, 241, 0, 0, 40, 254, 228, 66, 242, 191, 49, 252, 78, 1, 228, 194, 253, 63, 49, 252, 78, 1, 228, 194, 8, 194, 49, 252, 78, 1, 228, 194, 231, 212, 49, 124, 0, 0, 254, 255, 9, 194, 49, 124, 0, 0, 254, 255, 253, 63, 49, 124, 0, 0, 254, 255, 9, 194, 0, 0, 78, 1, 26, 189, 194, 213, 0, 0, 78, 1, 26, 189, 9, 194, 0, 0, 78, 1, 26, 189, 253, 63, 160, 1, 65, 131, 226, 184, 33, 72, 47, 43, 104, 42, 94, 254, 188, 124, 227, 184, 34, 72, 47, 43, 104, 42, 18, 85, 37, 170, 83, 233, 188, 233, 94, 254, 189, 124, 28, 71, 221, 183, 94, 254, 188, 124, 227, 184, 34, 72, 93, 254, 188, 124, 170, 22, 66, 22, 47, 43, 103, 42, 18, 85, 37, 170, 27, 71, 220, 183, 160, 1, 65, 131, 27, 71, 220, 183, 160, 1, 65, 131, 226, 184, 33, 72, 83, 233, 188, 233, 94, 254, 188, 124, 170, 22, 66, 22, 19, 85, 38, 170, 28, 71, 221, 183, 94, 254, 189, 124, 160, 1, 65, 131, 171, 22, 66, 22, 47, 43, 104, 42, 84, 233, 188, 233, 160, 1, 65, 131, 171, 22, 66, 22, 18, 85, 37, 170, 84, 233, 188, 233, 160, 1, 65, 131)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_j5ots")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_iqaqa"]
+material = ExtResource("11_76mdw")
+size = Vector2(10.82, 6.3)
+orientation = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lmkqr"]
+size = Vector3(0.19043, 6.04075, 8.85803)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_anh6g"]
 resource_name = "Pipe1"
@@ -173,10 +282,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_o8tjx")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2l2e1"]
-depth_draw_mode = 1
-albedo_texture = ExtResource("9_ltbfv")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8nph7"]
 data = PackedVector3Array(0, -2.3032, -1, 0.866, 2.3031, -0.5, 0, 2.3031, -1, 0, -2.3032, -1, 0.866, -2.3032, -0.5, 0.866, 2.3031, -0.5, 0.866, -2.3032, -0.5, 0.866, 2.3031, 0.5, 0.866, 2.3031, -0.5, 0.866, -2.3032, -0.5, 0.866, -2.3032, 0.5, 0.866, 2.3031, 0.5, 0.866, -2.3032, 0.5, 0, 2.3031, 1, 0.866, 2.3031, 0.5, 0.866, -2.3032, 0.5, 0, -2.3032, 1, 0, 2.3031, 1, 0, -2.3032, 1, -0.866, 2.3031, 0.5, 0, 2.3031, 1, 0, -2.3032, 1, -0.866, -2.3032, 0.5, -0.866, 2.3031, 0.5, 0.7814, 2.5437, 0.4511, 0, 2.5437, 1.2327, 0, 2.5437, 0.9023, 0.7814, 2.5437, 0.4511, 1.0675, 2.5437, 0.6163, 0, 2.5437, 1.2327, -0.866, -2.3032, 0.5, -0.866, 2.3031, -0.5, -0.866, 2.3031, 0.5, -0.866, -2.3032, 0.5, -0.866, -2.3032, -0.5, -0.866, 2.3031, -0.5, -0.866, -2.3032, -0.5, 0, 2.3031, -1, -0.866, 2.3031, -0.5, -0.866, -2.3032, -0.5, 0, -2.3032, -1, 0, 2.3031, -1, 0, 2.3031, 1, 1.0675, 2.3031, 0.6163, 0.866, 2.3031, 0.5, 0, 2.3031, 1, 0, 2.3031, 1.2327, 1.0675, 2.3031, 0.6163, 0, -2.3032, -1, 1.0675, -2.3032, -0.6163, 0.866, -2.3032, -0.5, 0, -2.3032, -1, 0, -2.3032, -1.2326, 1.0675, -2.3032, -0.6163, 0, -2.5437, 0.9023, 1.0675, -2.5437, 0.6163, 0.7814, -2.5437, 0.4511, 0, -2.5437, 0.9023, 0, -2.5437, 1.2327, 1.0675, -2.5437, 0.6163, 0.866, -2.3032, 0.5, 0, -2.3032, 1.2327, 0, -2.3032, 1, 0.866, -2.3032, 0.5, 1.0675, -2.3032, 0.6163, 0, -2.3032, 1.2327, -0.7814, 2.5437, -0.4511, 0, 2.5437, -1.2326, 0, 2.5437, -0.9023, -0.7814, 2.5437, -0.4511, -1.0675, 2.5437, -0.6163, 0, 2.5437, -1.2326, -0.866, 2.3031, -0.5, -1.0675, 2.3031, 0.6163, -0.866, 2.3031, 0.5, -0.866, 2.3031, -0.5, -1.0675, 2.3031, -0.6163, -1.0675, 2.3031, 0.6163, 0.7814, 2.5437, -0.4511, 1.0675, 2.5437, 0.6163, 0.7814, 2.5437, 0.4511, 0.7814, 2.5437, -0.4511, 1.0675, 2.5437, -0.6163, 1.0675, 2.5437, 0.6163, 0, -2.5437, -0.9023, -1.0675, -2.5437, -0.6163, -0.7814, -2.5437, -0.4511, 0, -2.5437, -0.9023, 0, -2.5437, -1.2326, -1.0675, -2.5437, -0.6163, -0.866, -2.3032, 0.5, -1.0675, -2.3032, -0.6163, -0.866, -2.3032, -0.5, -0.866, -2.3032, 0.5, -1.0675, -2.3032, 0.6163, -1.0675, -2.3032, -0.6163, 0.7814, -2.5437, 0.4511, 1.0675, -2.5437, -0.6163, 0.7814, -2.5437, -0.4511, 0.7814, -2.5437, 0.4511, 1.0675, -2.5437, 0.6163, 1.0675, -2.5437, -0.6163, 0.866, 2.3031, 0.5, 1.0675, 2.3031, -0.6163, 0.866, 2.3031, -0.5, 0.866, 2.3031, 0.5, 1.0675, 2.3031, 0.6163, 1.0675, 2.3031, -0.6163, -1.0675, -2.3032, -0.6163, 0, -2.5437, -1.2326, 0, -2.3032, -1.2326, -1.0675, -2.3032, -0.6163, -1.0675, -2.5437, -0.6163, 0, -2.5437, -1.2326, 1.0675, 2.3031, 0.6163, 1.0675, 2.5437, -0.6163, 1.0675, 2.3031, -0.6163, 1.0675, 2.3031, 0.6163, 1.0675, 2.5437, 0.6163, 1.0675, 2.5437, -0.6163, -1.0675, -2.3032, 0.6163, -1.0675, -2.5437, -0.6163, -1.0675, -2.3032, -0.6163, -1.0675, -2.3032, 0.6163, -1.0675, -2.5437, 0.6163, -1.0675, -2.5437, -0.6163, 0, -2.3032, 1.2327, -1.0675, -2.5437, 0.6163, -1.0675, -2.3032, 0.6163, 0, -2.3032, 1.2327, 0, -2.5437, 1.2327, -1.0675, -2.5437, 0.6163, 0, 2.3031, -1.2326, -1.0675, 2.5437, -0.6163, -1.0675, 2.3031, -0.6163, 0, 2.3031, -1.2326, 0, 2.5437, -1.2326, -1.0675, 2.5437, -0.6163, 0, -2.3032, -1.2326, 1.0675, -2.5437, -0.6163, 1.0675, -2.3032, -0.6163, 0, -2.3032, -1.2326, 0, -2.5437, -1.2326, 1.0675, -2.5437, -0.6163, 1.0675, -2.3032, 0.6163, 0, -2.5437, 1.2327, 0, -2.3032, 1.2327, 1.0675, -2.3032, 0.6163, 1.0675, -2.5437, 0.6163, 0, -2.5437, 1.2327, -1.0675, 2.3031, -0.6163, -1.0675, 2.5437, 0.6163, -1.0675, 2.3031, 0.6163, -1.0675, 2.3031, -0.6163, -1.0675, 2.5437, -0.6163, -1.0675, 2.5437, 0.6163, 1.0675, -2.3032, -0.6163, 1.0675, -2.5437, 0.6163, 1.0675, -2.3032, 0.6163, 1.0675, -2.3032, -0.6163, 1.0675, -2.5437, -0.6163, 1.0675, -2.5437, 0.6163, -1.0675, 2.3031, 0.6163, 0, 2.5437, 1.2327, 0, 2.3031, 1.2327, -1.0675, 2.3031, 0.6163, -1.0675, 2.5437, 0.6163, 0, 2.5437, 1.2327, 1.0675, 2.3031, -0.6163, 0, 2.5437, -1.2326, 0, 2.3031, -1.2326, 1.0675, 2.3031, -0.6163, 1.0675, 2.5437, -0.6163, 0, 2.5437, -1.2326, 0, 2.3031, 1.2327, 1.0675, 2.5437, 0.6163, 1.0675, 2.3031, 0.6163, 0, 2.3031, 1.2327, 0, 2.5437, 1.2327, 1.0675, 2.5437, 0.6163, 0.866, 2.3031, -0.5, 0, 2.3031, -1.2326, 0, 2.3031, -1, 0.866, 2.3031, -0.5, 1.0675, 2.3031, -0.6163, 0, 2.3031, -1.2326, -0.866, -2.3032, -0.5, 0, -2.3032, -1.2326, 0, -2.3032, -1, -0.866, -2.3032, -0.5, -1.0675, -2.3032, -0.6163, 0, -2.3032, -1.2326, -0.7814, -2.5437, 0.4511, 0, -2.5437, 1.2327, 0, -2.5437, 0.9023, -0.7814, -2.5437, 0.4511, -1.0675, -2.5437, 0.6163, 0, -2.5437, 1.2327, 0, 2.3031, -1, -1.0675, 2.3031, -0.6163, -0.866, 2.3031, -0.5, 0, 2.3031, -1, 0, 2.3031, -1.2326, -1.0675, 2.3031, -0.6163, 0, -2.3032, 1, -1.0675, -2.3032, 0.6163, -0.866, -2.3032, 0.5, 0, -2.3032, 1, 0, -2.3032, 1.2327, -1.0675, -2.3032, 0.6163, 0, 2.5437, 0.9023, -1.0675, 2.5437, 0.6163, -0.7814, 2.5437, 0.4511, 0, 2.5437, 0.9023, 0, 2.5437, 1.2327, -1.0675, 2.5437, 0.6163, 0.7814, -2.5437, -0.4511, 0, -2.5437, -1.2326, 0, -2.5437, -0.9023, 0.7814, -2.5437, -0.4511, 1.0675, -2.5437, -0.6163, 0, -2.5437, -1.2326, -0.866, 2.3031, 0.5, 0, 2.3031, 1.2327, 0, 2.3031, 1, -0.866, 2.3031, 0.5, -1.0675, 2.3031, 0.6163, 0, 2.3031, 1.2327, -0.7814, -2.5437, -0.4511, -1.0675, -2.5437, 0.6163, -0.7814, -2.5437, 0.4511, -0.7814, -2.5437, -0.4511, -1.0675, -2.5437, -0.6163, -1.0675, -2.5437, 0.6163, 0.866, -2.3032, -0.5, 1.0675, -2.3032, 0.6163, 0.866, -2.3032, 0.5, 0.866, -2.3032, -0.5, 1.0675, -2.3032, -0.6163, 1.0675, -2.3032, 0.6163, 0, 2.5437, -0.9023, 1.0675, 2.5437, -0.6163, 0.7814, 2.5437, -0.4511, 0, 2.5437, -0.9023, 0, 2.5437, -1.2326, 1.0675, 2.5437, -0.6163, -0.7814, 2.5437, 0.4511, -1.0675, 2.5437, -0.6163, -0.7814, 2.5437, -0.4511, -0.7814, 2.5437, 0.4511, -1.0675, 2.5437, 0.6163, -1.0675, 2.5437, -0.6163, 0, 2.5437, -0.9023, -0.7814, -2.5437, -0.4511, -0.7814, 2.5437, -0.4511, 0, 2.5437, -0.9023, 0, -2.5437, -0.9023, -0.7814, -2.5437, -0.4511, -0.7814, 2.5437, -0.4511, -0.7814, -2.5437, 0.4511, -0.7814, 2.5437, 0.4511, -0.7814, 2.5437, -0.4511, -0.7814, -2.5437, -0.4511, -0.7814, -2.5437, 0.4511, -0.7814, 2.5437, 0.4511, 0, -2.5437, 0.9023, 0, 2.5437, 0.9023, -0.7814, 2.5437, 0.4511, -0.7814, -2.5437, 0.4511, 0, -2.5437, 0.9023, 0, 2.5437, 0.9023, 0.7814, -2.5437, 0.4511, 0.7814, 2.5437, 0.4511, 0, 2.5437, 0.9023, 0, -2.5437, 0.9023, 0.7814, -2.5437, 0.4511, 0.7814, 2.5437, 0.4511, 0.7814, -2.5437, -0.4511, 0.7814, 2.5437, -0.4511, 0.7814, 2.5437, 0.4511, 0.7814, -2.5437, 0.4511, 0.7814, -2.5437, -0.4511, 0.7814, 2.5437, -0.4511, 0, -2.5437, -0.9023, 0, 2.5437, -0.9023, 0.7814, 2.5437, -0.4511, 0.7814, -2.5437, -0.4511, 0, -2.5437, -0.9023)
@@ -286,7 +391,7 @@ configuration = SubResource("Resource_gkxv8")
 environment = SubResource("Environment_138gm")
 
 [node name="Pawn" parent="." groups=["Pawn"] instance=ExtResource("1_3375c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.6432, 10.3707, -0.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -262.17, 41.7242, -0.75)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.04773, 0.495845, -25.6994)
@@ -338,7 +443,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -250.5
 transform = Transform3D(-2.5, 0, -3.77489e-07, 0, 2.5, 0, 3.77489e-07, 0, -2.5, -15.4618, 20.6954, 9.99055)
 
 [node name="EyeHolder" parent="DoorNode2/eye_switch" index="0"]
-surface_material_override/1 = SubResource("StandardMaterial3D_7j7q8")
+surface_material_override/1 = null
 
 [node name="OmniLight3D" parent="DoorNode2/eye_switch" index="3"]
 transform = Transform3D(0.4, 0, -7.10543e-15, 0, 0.4, 0, 7.10543e-15, 0, 0.4, 0.153801, 0, -0.517311)
@@ -348,7 +453,7 @@ transform = Transform3D(-2.68211e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -2.68211e-07, 
 visible = false
 
 [node name="EyeHolder" parent="DoorNode2/eye_switch2" index="0"]
-surface_material_override/1 = SubResource("StandardMaterial3D_7j7q8")
+surface_material_override/1 = null
 
 [node name="door" parent="DoorNode2" index="3" node_paths=PackedStringArray("eyes")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.425384, 10.5, 0)
@@ -360,347 +465,186 @@ transform = Transform3D(2.535, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
 
 [node name="PuzzleGeo" type="Node" parent="."]
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PuzzleGeo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -286.313, 25.7965, -4.78876)
+mesh = SubResource("PlaneMesh_y3p75")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PuzzleGeo/MeshInstance3D"]
+physics_material_override = SubResource("PhysicsMaterial_ty1f4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleGeo/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0631638, -3.00819)
+shape = SubResource("BoxShape3D_8vgu1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PuzzleGeo/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.43136, 26.7624)
+mesh = SubResource("PlaneMesh_y3p75")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PuzzleGeo/MeshInstance3D/MeshInstance3D"]
+physics_material_override = SubResource("PhysicsMaterial_ty1f4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleGeo/MeshInstance3D/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0318604, -0.896389, -3.03591)
+shape = SubResource("BoxShape3D_8vgu1")
+
 [node name="Pipes" type="Node3D" parent="PuzzleGeo"]
 
-[node name="MediumPipeOpen5" type="MeshInstance3D" parent="PuzzleGeo/Pipes"]
-transform = Transform3D(2, 0, 0, 0, 2, -2.38419e-07, 0, 2.38419e-07, 2, -216.878, 19.3829, 14.3754)
-mesh = SubResource("ArrayMesh_hhwd8")
+[node name="PipeCollider" type="CSGBox3D" parent="PuzzleGeo/Pipes"]
+transform = Transform3D(5.96046e-08, -1, 1.01148e-08, -1, -5.96046e-08, -4.93057e-08, 4.93057e-08, -1.01148e-08, -1, -217.385, 40.5463, 15.1031)
+use_collision = true
+size = Vector3(51, 3, 4.41309)
+material = SubResource("StandardMaterial3D_kbqtk")
+
+[node name="BigPipeCol" type="MeshInstance3D" parent="PuzzleGeo/Pipes/PipeCollider"]
+transform = Transform3D(-6.55671e-08, -1.5, -8.13152e-20, 1.5, -6.55671e-08, -1.69407e-20, 1.69407e-20, -8.13152e-20, 1.5, -7.5, 1.52588e-05, 0)
+mesh = SubResource("ArrayMesh_tow8o")
 skeleton = NodePath("")
 
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
+[node name="RegularPipeCol" type="MeshInstance3D" parent="PuzzleGeo/Pipes/PipeCollider/BigPipeCol"]
+transform = Transform3D(1, 2.98023e-08, 0, -2.98023e-08, 1, -1.35525e-20, -6.77626e-21, -1.35525e-20, 1, 0, -15, 0)
+mesh = SubResource("ArrayMesh_c268q")
 skeleton = NodePath("")
 
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen5/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
+[node name="ShortPipeCol" type="MeshInstance3D" parent="PuzzleGeo/Pipes/PipeCollider/BigPipeCol/RegularPipeCol"]
+transform = Transform3D(1, -5.96046e-08, -3.38813e-21, 5.96046e-08, 1, -4.06576e-20, -2.37169e-20, -4.06576e-20, 1, 0, -6, 0)
+mesh = SubResource("ArrayMesh_2hpea")
 skeleton = NodePath("")
 
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen5/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen5/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen5/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen5/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen5/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen5/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen5/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen5/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen5/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen5/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen5/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="PipeCollider" type="CSGBox3D" parent="PuzzleGeo/Pipes/MediumPipeOpen5"]
-transform = Transform3D(2.98023e-08, -0.5, 5.05741e-09, -0.5, -2.98023e-08, -8.42576e-08, 8.42576e-08, -5.05741e-09, -0.5, -0.253685, 10.5817, 0.0833354)
-visible = false
+[node name="PipeCollider2" type="CSGBox3D" parent="PuzzleGeo/Pipes"]
+transform = Transform3D(0.866025, -0.5, -2.13163e-13, 0.5, 0.866025, -8.52651e-14, -1.98952e-13, 3.01981e-14, 1, -222.408, 27.5024, 10.8607)
 use_collision = true
 size = Vector3(51, 3, 4)
+material = SubResource("StandardMaterial3D_kbqtk")
 
-[node name="MediumPipeOpen4" type="MeshInstance3D" parent="PuzzleGeo/Pipes"]
-transform = Transform3D(1, -1.73205, 3.01992e-07, -1.73205, -1, 1.50996e-07, 2.02296e-08, -3.3703e-07, -2, -203.826, 37.6447, 11.0274)
-mesh = SubResource("ArrayMesh_hhwd8")
+[node name="BigPipeCol" type="MeshInstance3D" parent="PuzzleGeo/Pipes/PipeCollider2"]
+transform = Transform3D(-6.55671e-08, -1.5, -8.13152e-20, 1.5, -6.55671e-08, -1.69407e-20, 1.69407e-20, -8.13152e-20, 1.5, -7.5, 1.52588e-05, 0)
+mesh = SubResource("ArrayMesh_tow8o")
 skeleton = NodePath("")
 
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
+[node name="RegularPipeCol" type="MeshInstance3D" parent="PuzzleGeo/Pipes/PipeCollider2/BigPipeCol"]
+transform = Transform3D(1, 2.98023e-08, 0, -2.98023e-08, 1, -1.35525e-20, -6.77626e-21, -1.35525e-20, 1, 0, -15, 0)
+mesh = SubResource("ArrayMesh_c268q")
 skeleton = NodePath("")
 
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen4/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
+[node name="ShortPipeCol" type="MeshInstance3D" parent="PuzzleGeo/Pipes/PipeCollider2/BigPipeCol/RegularPipeCol"]
+transform = Transform3D(1, -5.96046e-08, -3.38813e-21, 5.96046e-08, 1, -4.06576e-20, -2.37169e-20, -4.06576e-20, 1, 0, -6, 0)
+mesh = SubResource("ArrayMesh_2hpea")
 skeleton = NodePath("")
 
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen4/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen4/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen4/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen4/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen4/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen4/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen4/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="PipeCollider" type="CSGBox3D" parent="PuzzleGeo/Pipes/MediumPipeOpen4"]
-transform = Transform3D(2.98023e-08, -0.5, 5.05741e-09, -0.5, -2.98023e-08, -8.42576e-08, 8.42576e-08, -5.05741e-09, -0.5, -0.253685, 10.5817, 0.0833354)
-visible = false
+[node name="PipeCollider3" type="CSGBox3D" parent="PuzzleGeo/Pipes"]
+transform = Transform3D(1, 1.03316e-07, 1.68515e-07, 1.03316e-07, -1, 1.01148e-08, 1.68515e-07, -1.01148e-08, -1, -224.921, 29.7779, -15.8333)
 use_collision = true
-size = Vector3(51, 3, 4)
+size = Vector3(51, 4.88391, 4)
+material = SubResource("StandardMaterial3D_kbqtk")
 
-[node name="MediumPipeOpen3" type="MeshInstance3D" parent="PuzzleGeo/Pipes"]
-transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -203.758, 30.2272, -16)
-mesh = SubResource("ArrayMesh_hhwd8")
+[node name="BigPipeCol" type="MeshInstance3D" parent="PuzzleGeo/Pipes/PipeCollider3"]
+transform = Transform3D(-6.55671e-08, -1.5, -8.13152e-20, 1.5, -6.55671e-08, -1.69407e-20, 1.69407e-20, -8.13152e-20, 1.5, -7.5, 1.52588e-05, 0)
+mesh = SubResource("ArrayMesh_tow8o")
 skeleton = NodePath("")
 
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
+[node name="RegularPipeCol" type="MeshInstance3D" parent="PuzzleGeo/Pipes/PipeCollider3/BigPipeCol"]
+transform = Transform3D(1, 2.98023e-08, 0, -2.98023e-08, 1, -1.35525e-20, -6.77626e-21, -1.35525e-20, 1, 0, -15, 0)
+mesh = SubResource("ArrayMesh_c268q")
 skeleton = NodePath("")
 
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen3/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
+[node name="ShortPipeCol" type="MeshInstance3D" parent="PuzzleGeo/Pipes/PipeCollider3/BigPipeCol/RegularPipeCol"]
+transform = Transform3D(1, -5.96046e-08, -3.38813e-21, 5.96046e-08, 1, -4.06576e-20, -2.37169e-20, -4.06576e-20, 1, 0, -6, 0)
+mesh = SubResource("ArrayMesh_2hpea")
 skeleton = NodePath("")
 
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen3/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen3/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen3/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen3/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen3/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen3/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen2" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen3/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen3/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen3/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen2/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen3/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen2/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen3/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen2/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen3/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen2/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen3/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen2/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="PipeCollider" type="CSGBox3D" parent="PuzzleGeo/Pipes/MediumPipeOpen3"]
-transform = Transform3D(2.98023e-08, -0.5, 5.05741e-09, -0.5, -2.98023e-08, -8.42576e-08, 8.42576e-08, -5.05741e-09, -0.5, 0.246317, 10.5817, 0.0833354)
-visible = false
+[node name="PipeCollider4" type="CSGBox3D" parent="PuzzleGeo/Pipes"]
+transform = Transform3D(5.96046e-08, -1, 1.01148e-08, 1, 5.96046e-08, 1.75192e-08, -1.75192e-08, 1.01148e-08, 1, -217.386, 52.4356, -15.9277)
 use_collision = true
-size = Vector3(51, 3, 4)
+size = Vector3(73, 3, 4)
+material = SubResource("StandardMaterial3D_kbqtk")
 
-[node name="MediumPipeOpen2" type="MeshInstance3D" parent="PuzzleGeo/Pipes"]
-transform = Transform3D(2, 0, 0, 0, -2, 3.01992e-07, 0, -3.01992e-07, -2, -216.879, 84.599, -15.761)
-mesh = SubResource("ArrayMesh_hhwd8")
+[node name="BigPipeCol" type="MeshInstance3D" parent="PuzzleGeo/Pipes/PipeCollider4"]
+transform = Transform3D(-6.55671e-08, -1.5, -8.13152e-20, 1.5, -6.55671e-08, -1.69407e-20, 1.69407e-20, -8.13152e-20, 1.5, -7.5, 1.52588e-05, 0)
+mesh = SubResource("ArrayMesh_tow8o")
 skeleton = NodePath("")
 
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
+[node name="RegularPipeCol" type="MeshInstance3D" parent="PuzzleGeo/Pipes/PipeCollider4/BigPipeCol"]
+transform = Transform3D(1, 2.98023e-08, 0, -2.98023e-08, 1, -1.35525e-20, -6.77626e-21, -1.35525e-20, 1, 0, -15, 0)
+mesh = SubResource("ArrayMesh_c268q")
 skeleton = NodePath("")
 
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen2/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
+[node name="ShortPipeCol" type="MeshInstance3D" parent="PuzzleGeo/Pipes/PipeCollider4/BigPipeCol/RegularPipeCol"]
+transform = Transform3D(1, -5.96046e-08, -3.38813e-21, 5.96046e-08, 1, -4.06576e-20, -2.37169e-20, -4.06576e-20, 1, 0, -6, 0)
+mesh = SubResource("ArrayMesh_2hpea")
 skeleton = NodePath("")
 
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen2/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen2/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen2/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen2/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen2/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen2/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen2/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen2/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen2/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen2/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen2/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="PipeCollider" type="CSGBox3D" parent="PuzzleGeo/Pipes/MediumPipeOpen2"]
-transform = Transform3D(2.98023e-08, -0.5, 5.05741e-09, -0.5, -2.98023e-08, -8.42576e-08, 8.42576e-08, -5.05741e-09, -0.5, -0.253685, 10.5817, 0.0833354)
-visible = false
+[node name="PipeCollider5" type="CSGBox3D" parent="PuzzleGeo/Pipes"]
+transform = Transform3D(5.96046e-08, -1, 1.01148e-08, 2.12227e-07, -1.01148e-08, -1, 1, 5.96046e-08, 2.12227e-07, -217.245, 29.3296, -3.88548)
 use_collision = true
-size = Vector3(51, 3, 4)
+size = Vector3(45.189, 3, 4)
+material = SubResource("StandardMaterial3D_kbqtk")
 
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes"]
-transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -216.879, 30.4201, 14.373)
-mesh = SubResource("ArrayMesh_hhwd8")
+[node name="BigPipeCol" type="MeshInstance3D" parent="PuzzleGeo/Pipes/PipeCollider5"]
+transform = Transform3D(-6.55671e-08, -1.5, -8.13152e-20, 1.5, -6.55671e-08, -1.69407e-20, 1.69407e-20, -8.13152e-20, 1.5, -7.5, 1.52588e-05, 0)
+mesh = SubResource("ArrayMesh_tow8o")
 skeleton = NodePath("")
 
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
+[node name="RegularPipeCol" type="MeshInstance3D" parent="PuzzleGeo/Pipes/PipeCollider5/BigPipeCol"]
+transform = Transform3D(1, 2.98023e-08, 0, -2.98023e-08, 1, -1.35525e-20, -6.77626e-21, -1.35525e-20, 1, 0, -15, 0)
+mesh = SubResource("ArrayMesh_c268q")
 skeleton = NodePath("")
 
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
+[node name="ShortPipeCol" type="MeshInstance3D" parent="PuzzleGeo/Pipes/PipeCollider5/BigPipeCol/RegularPipeCol"]
+transform = Transform3D(1, -5.96046e-08, -3.38813e-21, 5.96046e-08, 1, -4.06576e-20, -2.37169e-20, -4.06576e-20, 1, 0, -6, 0)
+mesh = SubResource("ArrayMesh_2hpea")
 skeleton = NodePath("")
 
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="PipeCollider" type="CSGBox3D" parent="PuzzleGeo/Pipes/MediumPipeOpen"]
-transform = Transform3D(2.98023e-08, -0.5, 5.05741e-09, -0.5, -2.98023e-08, -8.42576e-08, 8.42576e-08, -5.05741e-09, -0.5, -0.182999, 10.582, -0.189488)
-visible = false
-use_collision = true
-size = Vector3(51, 3, 4)
-
-[node name="HideEyeBox" type="CSGBox3D" parent="PuzzleGeo"]
+[node name="EyeMesh" type="Node3D" parent="PuzzleGeo"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -235.928, 37.8021, 13.5)
-size = Vector3(1, 4, 8)
-material = SubResource("StandardMaterial3D_2l2e1")
 
-[node name="HideEyeBox2" type="CSGBox3D" parent="PuzzleGeo"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -239.096, 35.2897, 13.5097)
-size = Vector3(1, 7.4472, 8)
-material = SubResource("StandardMaterial3D_2l2e1")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PuzzleGeo/EyeMesh"]
+mesh = SubResource("PlaneMesh_iqaqa")
+skeleton = NodePath("")
 
-[node name="HideEyeBox3" type="CSGBox3D" parent="PuzzleGeo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -242.299, 37.8021, 13.5)
-size = Vector3(1, 4, 8)
-material = SubResource("StandardMaterial3D_2l2e1")
+[node name="StaticBody3D" type="StaticBody3D" parent="PuzzleGeo/EyeMesh/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 235.928, -37.8021, -13.5)
 
-[node name="HideEyeBox4" type="CSGBox3D" parent="PuzzleGeo"]
-transform = Transform3D(1.31134e-07, -1, 0, 1, 1.31134e-07, 0, 0, 0, 1, -239.074, 40.3057, 13.5097)
-size = Vector3(1, 7.4472, 8)
-material = SubResource("StandardMaterial3D_2l2e1")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleGeo/EyeMesh/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -235.955, 37.8857, 12.4772)
+shape = SubResource("BoxShape3D_lmkqr")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="PuzzleGeo/EyeMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.32942, 0, 0)
+mesh = SubResource("PlaneMesh_iqaqa")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PuzzleGeo/EyeMesh/MeshInstance3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 235.928, -37.8021, -13.5)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="PuzzleGeo/EyeMesh/MeshInstance3D2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -235.955, 37.8857, 12.4772)
+shape = SubResource("BoxShape3D_lmkqr")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="PuzzleGeo/EyeMesh"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -3.14838, 3.07392, 0)
+mesh = SubResource("PlaneMesh_iqaqa")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PuzzleGeo/EyeMesh/MeshInstance3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 235.928, -37.8021, -13.5)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="PuzzleGeo/EyeMesh/MeshInstance3D3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -235.955, 37.8857, 12.4772)
+shape = SubResource("BoxShape3D_lmkqr")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="PuzzleGeo/EyeMesh"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -3.14838, -3.11939, 0)
+mesh = SubResource("PlaneMesh_iqaqa")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PuzzleGeo/EyeMesh/MeshInstance3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 235.928, -37.8021, -13.5)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="PuzzleGeo/EyeMesh/MeshInstance3D4/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -235.955, 37.8857, 12.4772)
+shape = SubResource("BoxShape3D_lmkqr")
 
 [node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -520, 18.7686, -4.00801)
@@ -1090,23 +1034,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -368.434, 31.3555, -12.1682)
 [node name="Sprinter5" parent="CombatArea3/Wave3" instance=ExtResource("6_uwyct")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -437.979, 29.2218, 4.75499)
 
+[node name="Checkpoint2" parent="." instance=ExtResource("13_evw7p")]
+transform = Transform3D(1.46806, 0, 1.19034, 0, 1.89, 0, -1.19034, 0, 1.46806, -272.053, 26.421, 0.701482)
+
+[node name="checkpoint_sign" parent="Checkpoint2" index="0"]
+transform = Transform3D(0.956202, -0.0422516, -0.289643, 0.0170901, 0.995898, -0.0888567, 0.292209, 0.080015, 0.953001, -0.30394, -1.65582, 0.558935)
+
+[node name="OmniLight3D" parent="Checkpoint2/checkpoint_sign" index="1"]
+visible = false
+
+[node name="CSGBox3D" parent="Checkpoint2" index="1"]
+transform = Transform3D(0.956202, -0.0422516, -0.289643, 0.0170901, 0.995898, -0.0888567, 0.292209, 0.080015, 0.953001, -0.279877, -3.68191, 0.377321)
+
 [node name="Checkpoint" parent="." instance=ExtResource("13_evw7p")]
 transform = Transform3D(1.67711, -0.197117, -0.848844, 0.104404, 1.8732, -0.228714, 0.865153, 0.156062, 1.6731, -497.11, 21.0153, -4.83598)
 
 [node name="OmniLight3D" parent="Checkpoint/checkpoint_sign" index="1"]
 visible = false
 
-[node name="concrete_bench" parent="." instance=ExtResource("14_6o8b6")]
-transform = Transform3D(-7.64949e-08, 0, -1.75, 0, 1.75, 0, 1.75, 0, -7.64949e-08, -492.918, 17.079, -6.33139)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="concrete_bench"]
-transform = Transform3D(0.571429, 2.13163e-14, 9.52912e-22, 0, -2.49779e-08, 0.571429, 2.13163e-14, -0.571429, -2.49779e-08, 0.579653, 12.5714, 0)
-light_energy = 18.0
-light_indirect_energy = 0.0
-light_volumetric_fog_energy = 18.0
-shadow_enabled = true
-spot_range = 49.0
-spot_angle = 20.4389
+[node name="concrete_bench" parent="Checkpoint" index="2"]
+transform = Transform3D(0.454354, 0.0673409, -0.804055, 0.0486295, 0.918807, 0.104431, 0.805404, -0.0934659, 0.447288, 1.27686, -2.25971, -1.15812)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -723.255, 22.1238, 4.10861)
@@ -1136,4 +1083,5 @@ omni_range = 40.0
 [editable path="DoorNode2"]
 [editable path="CombatArea2"]
 [editable path="CombatArea3"]
+[editable path="Checkpoint2"]
 [editable path="Checkpoint"]
