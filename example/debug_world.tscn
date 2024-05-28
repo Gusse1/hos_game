@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://dafpnrc0x0g1s"]
+[gd_scene load_steps=55 format=3 uid="uid://dafpnrc0x0g1s"]
 
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://addons/GoldGdt/Pawn.tscn" id="1_3375c"]
 [ext_resource type="Script" path="res://addons/post_processing/node/post_process.gd" id="1_ch810"]
@@ -6,9 +6,9 @@
 [ext_resource type="Script" path="res://src/room_gen/room_generation.gd" id="2_lsoh3"]
 [ext_resource type="Script" path="res://src/room_gen/grid_printer.gd" id="3_u2wbk"]
 [ext_resource type="PackedScene" uid="uid://53bbkhmk5ik0" path="res://assets/rooms/tutorial_map.tscn" id="4_iyluc"]
-[ext_resource type="PackedScene" uid="uid://bv5731sysdvcl" path="res://assets/interactables/eye_door.tscn" id="5_nt10f"]
 [ext_resource type="PackedScene" uid="uid://by8poq58ac6jv" path="res://assets/interactables/room_trigger.tscn" id="6_12kqi"]
 [ext_resource type="PackedScene" uid="uid://bg0cfyn7q5vd5" path="res://assets/enemies/sprinter.tscn" id="6_uwyct"]
+[ext_resource type="PackedScene" uid="uid://blmdihl70wchk" path="res://assets/interactables/door_node.tscn" id="7_j8fdy"]
 [ext_resource type="Script" path="res://src/enemy_logic/CombatArea.gd" id="7_yk14u"]
 [ext_resource type="Texture2D" uid="uid://buj8surx5vl06" path="res://textures/Grating_23-128x128.png" id="9_ltbfv"]
 [ext_resource type="Texture2D" uid="uid://de5gtsehkfba7" path="res://assets/external/TexturesCom_Pipes0071_1_M_P.jpg" id="10_u40uv"]
@@ -117,23 +117,6 @@ volumetric_fog_density = 0.035
 volumetric_fog_albedo = Color(0.52549, 0, 0.0156863, 1)
 volumetric_fog_length = 256.0
 volumetric_fog_temporal_reprojection_amount = 0.95
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_hx0o0"]
-viewport_path = NodePath("DoorNode/door/SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_gmrx2"]
-viewport_path = NodePath("DoorNode/door/SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21lby"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_hx0o0")
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
-emission_operator = 1
-emission_texture = SubResource("ViewportTexture_gmrx2")
-uv1_scale = Vector3(-0.169, -12.178, 0.562)
-uv1_offset = Vector3(3.23, 2.35, 0.43)
-uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_anh6g"]
 resource_name = "Pipe1"
@@ -268,21 +251,6 @@ data = PackedVector3Array(0, -2.3032, -1, 0.866, 2.3031, -0.5, 0, 2.3031, -1, 0,
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_56t2x"]
 data = PackedVector3Array(0, -2.3032, -1, 0.866, 2.3031, -0.5, 0, 2.3031, -1, 0, -2.3032, -1, 0.866, -2.3032, -0.5, 0.866, 2.3031, -0.5, 0.866, -2.3032, -0.5, 0.866, 2.3031, 0.5, 0.866, 2.3031, -0.5, 0.866, -2.3032, -0.5, 0.866, -2.3032, 0.5, 0.866, 2.3031, 0.5, 0.866, -2.3032, 0.5, 0, 2.3031, 1, 0.866, 2.3031, 0.5, 0.866, -2.3032, 0.5, 0, -2.3032, 1, 0, 2.3031, 1, 0, -2.3032, 1, -0.866, 2.3031, 0.5, 0, 2.3031, 1, 0, -2.3032, 1, -0.866, -2.3032, 0.5, -0.866, 2.3031, 0.5, 0.7814, 2.5437, 0.4511, 0, 2.5437, 1.2327, 0, 2.5437, 0.9023, 0.7814, 2.5437, 0.4511, 1.0675, 2.5437, 0.6163, 0, 2.5437, 1.2327, -0.866, -2.3032, 0.5, -0.866, 2.3031, -0.5, -0.866, 2.3031, 0.5, -0.866, -2.3032, 0.5, -0.866, -2.3032, -0.5, -0.866, 2.3031, -0.5, -0.866, -2.3032, -0.5, 0, 2.3031, -1, -0.866, 2.3031, -0.5, -0.866, -2.3032, -0.5, 0, -2.3032, -1, 0, 2.3031, -1, 0, 2.3031, 1, 1.0675, 2.3031, 0.6163, 0.866, 2.3031, 0.5, 0, 2.3031, 1, 0, 2.3031, 1.2327, 1.0675, 2.3031, 0.6163, 0, -2.3032, -1, 1.0675, -2.3032, -0.6163, 0.866, -2.3032, -0.5, 0, -2.3032, -1, 0, -2.3032, -1.2326, 1.0675, -2.3032, -0.6163, 0, -2.5437, 0.9023, 1.0675, -2.5437, 0.6163, 0.7814, -2.5437, 0.4511, 0, -2.5437, 0.9023, 0, -2.5437, 1.2327, 1.0675, -2.5437, 0.6163, 0.866, -2.3032, 0.5, 0, -2.3032, 1.2327, 0, -2.3032, 1, 0.866, -2.3032, 0.5, 1.0675, -2.3032, 0.6163, 0, -2.3032, 1.2327, -0.7814, 2.5437, -0.4511, 0, 2.5437, -1.2326, 0, 2.5437, -0.9023, -0.7814, 2.5437, -0.4511, -1.0675, 2.5437, -0.6163, 0, 2.5437, -1.2326, -0.866, 2.3031, -0.5, -1.0675, 2.3031, 0.6163, -0.866, 2.3031, 0.5, -0.866, 2.3031, -0.5, -1.0675, 2.3031, -0.6163, -1.0675, 2.3031, 0.6163, 0.7814, 2.5437, -0.4511, 1.0675, 2.5437, 0.6163, 0.7814, 2.5437, 0.4511, 0.7814, 2.5437, -0.4511, 1.0675, 2.5437, -0.6163, 1.0675, 2.5437, 0.6163, 0, -2.5437, -0.9023, -1.0675, -2.5437, -0.6163, -0.7814, -2.5437, -0.4511, 0, -2.5437, -0.9023, 0, -2.5437, -1.2326, -1.0675, -2.5437, -0.6163, -0.866, -2.3032, 0.5, -1.0675, -2.3032, -0.6163, -0.866, -2.3032, -0.5, -0.866, -2.3032, 0.5, -1.0675, -2.3032, 0.6163, -1.0675, -2.3032, -0.6163, 0.7814, -2.5437, 0.4511, 1.0675, -2.5437, -0.6163, 0.7814, -2.5437, -0.4511, 0.7814, -2.5437, 0.4511, 1.0675, -2.5437, 0.6163, 1.0675, -2.5437, -0.6163, 0.866, 2.3031, 0.5, 1.0675, 2.3031, -0.6163, 0.866, 2.3031, -0.5, 0.866, 2.3031, 0.5, 1.0675, 2.3031, 0.6163, 1.0675, 2.3031, -0.6163, -1.0675, -2.3032, -0.6163, 0, -2.5437, -1.2326, 0, -2.3032, -1.2326, -1.0675, -2.3032, -0.6163, -1.0675, -2.5437, -0.6163, 0, -2.5437, -1.2326, 1.0675, 2.3031, 0.6163, 1.0675, 2.5437, -0.6163, 1.0675, 2.3031, -0.6163, 1.0675, 2.3031, 0.6163, 1.0675, 2.5437, 0.6163, 1.0675, 2.5437, -0.6163, -1.0675, -2.3032, 0.6163, -1.0675, -2.5437, -0.6163, -1.0675, -2.3032, -0.6163, -1.0675, -2.3032, 0.6163, -1.0675, -2.5437, 0.6163, -1.0675, -2.5437, -0.6163, 0, -2.3032, 1.2327, -1.0675, -2.5437, 0.6163, -1.0675, -2.3032, 0.6163, 0, -2.3032, 1.2327, 0, -2.5437, 1.2327, -1.0675, -2.5437, 0.6163, 0, 2.3031, -1.2326, -1.0675, 2.5437, -0.6163, -1.0675, 2.3031, -0.6163, 0, 2.3031, -1.2326, 0, 2.5437, -1.2326, -1.0675, 2.5437, -0.6163, 0, -2.3032, -1.2326, 1.0675, -2.5437, -0.6163, 1.0675, -2.3032, -0.6163, 0, -2.3032, -1.2326, 0, -2.5437, -1.2326, 1.0675, -2.5437, -0.6163, 1.0675, -2.3032, 0.6163, 0, -2.5437, 1.2327, 0, -2.3032, 1.2327, 1.0675, -2.3032, 0.6163, 1.0675, -2.5437, 0.6163, 0, -2.5437, 1.2327, -1.0675, 2.3031, -0.6163, -1.0675, 2.5437, 0.6163, -1.0675, 2.3031, 0.6163, -1.0675, 2.3031, -0.6163, -1.0675, 2.5437, -0.6163, -1.0675, 2.5437, 0.6163, 1.0675, -2.3032, -0.6163, 1.0675, -2.5437, 0.6163, 1.0675, -2.3032, 0.6163, 1.0675, -2.3032, -0.6163, 1.0675, -2.5437, -0.6163, 1.0675, -2.5437, 0.6163, -1.0675, 2.3031, 0.6163, 0, 2.5437, 1.2327, 0, 2.3031, 1.2327, -1.0675, 2.3031, 0.6163, -1.0675, 2.5437, 0.6163, 0, 2.5437, 1.2327, 1.0675, 2.3031, -0.6163, 0, 2.5437, -1.2326, 0, 2.3031, -1.2326, 1.0675, 2.3031, -0.6163, 1.0675, 2.5437, -0.6163, 0, 2.5437, -1.2326, 0, 2.3031, 1.2327, 1.0675, 2.5437, 0.6163, 1.0675, 2.3031, 0.6163, 0, 2.3031, 1.2327, 0, 2.5437, 1.2327, 1.0675, 2.5437, 0.6163, 0.866, 2.3031, -0.5, 0, 2.3031, -1.2326, 0, 2.3031, -1, 0.866, 2.3031, -0.5, 1.0675, 2.3031, -0.6163, 0, 2.3031, -1.2326, -0.866, -2.3032, -0.5, 0, -2.3032, -1.2326, 0, -2.3032, -1, -0.866, -2.3032, -0.5, -1.0675, -2.3032, -0.6163, 0, -2.3032, -1.2326, -0.7814, -2.5437, 0.4511, 0, -2.5437, 1.2327, 0, -2.5437, 0.9023, -0.7814, -2.5437, 0.4511, -1.0675, -2.5437, 0.6163, 0, -2.5437, 1.2327, 0, 2.3031, -1, -1.0675, 2.3031, -0.6163, -0.866, 2.3031, -0.5, 0, 2.3031, -1, 0, 2.3031, -1.2326, -1.0675, 2.3031, -0.6163, 0, -2.3032, 1, -1.0675, -2.3032, 0.6163, -0.866, -2.3032, 0.5, 0, -2.3032, 1, 0, -2.3032, 1.2327, -1.0675, -2.3032, 0.6163, 0, 2.5437, 0.9023, -1.0675, 2.5437, 0.6163, -0.7814, 2.5437, 0.4511, 0, 2.5437, 0.9023, 0, 2.5437, 1.2327, -1.0675, 2.5437, 0.6163, 0.7814, -2.5437, -0.4511, 0, -2.5437, -1.2326, 0, -2.5437, -0.9023, 0.7814, -2.5437, -0.4511, 1.0675, -2.5437, -0.6163, 0, -2.5437, -1.2326, -0.866, 2.3031, 0.5, 0, 2.3031, 1.2327, 0, 2.3031, 1, -0.866, 2.3031, 0.5, -1.0675, 2.3031, 0.6163, 0, 2.3031, 1.2327, -0.7814, -2.5437, -0.4511, -1.0675, -2.5437, 0.6163, -0.7814, -2.5437, 0.4511, -0.7814, -2.5437, -0.4511, -1.0675, -2.5437, -0.6163, -1.0675, -2.5437, 0.6163, 0.866, -2.3032, -0.5, 1.0675, -2.3032, 0.6163, 0.866, -2.3032, 0.5, 0.866, -2.3032, -0.5, 1.0675, -2.3032, -0.6163, 1.0675, -2.3032, 0.6163, 0, 2.5437, -0.9023, 1.0675, 2.5437, -0.6163, 0.7814, 2.5437, -0.4511, 0, 2.5437, -0.9023, 0, 2.5437, -1.2326, 1.0675, 2.5437, -0.6163, -0.7814, 2.5437, 0.4511, -1.0675, 2.5437, -0.6163, -0.7814, 2.5437, -0.4511, -0.7814, 2.5437, 0.4511, -1.0675, 2.5437, 0.6163, -1.0675, 2.5437, -0.6163, 0, 2.5437, -0.9023, -0.7814, -2.5437, -0.4511, -0.7814, 2.5437, -0.4511, 0, 2.5437, -0.9023, 0, -2.5437, -0.9023, -0.7814, -2.5437, -0.4511, -0.7814, 2.5437, -0.4511, -0.7814, -2.5437, 0.4511, -0.7814, 2.5437, 0.4511, -0.7814, 2.5437, -0.4511, -0.7814, -2.5437, -0.4511, -0.7814, -2.5437, 0.4511, -0.7814, 2.5437, 0.4511, 0, -2.5437, 0.9023, 0, 2.5437, 0.9023, -0.7814, 2.5437, 0.4511, -0.7814, -2.5437, 0.4511, 0, -2.5437, 0.9023, 0, 2.5437, 0.9023, 0.7814, -2.5437, 0.4511, 0.7814, 2.5437, 0.4511, 0, 2.5437, 0.9023, 0, -2.5437, 0.9023, 0.7814, -2.5437, 0.4511, 0.7814, 2.5437, 0.4511, 0.7814, -2.5437, -0.4511, 0.7814, 2.5437, -0.4511, 0.7814, 2.5437, 0.4511, 0.7814, -2.5437, 0.4511, 0.7814, -2.5437, -0.4511, 0.7814, 2.5437, -0.4511, 0, -2.5437, -0.9023, 0, 2.5437, -0.9023, 0.7814, 2.5437, -0.4511, 0.7814, -2.5437, -0.4511, 0, -2.5437, -0.9023)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_d07sy"]
-viewport_path = NodePath("DoorNode2/door/SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_4f116"]
-viewport_path = NodePath("DoorNode2/door/SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5qk7r"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_d07sy")
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 3.0
-emission_operator = 1
-emission_texture = SubResource("ViewportTexture_4f116")
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ilr3"]
 size = Vector3(144.954, 26.1779, 79.2984)
 
@@ -330,23 +298,7 @@ transform = Transform3D(0.1001, -0.810856, -0.576622, 0.00948397, -0.578729, 0.8
 light_color = Color(1, 0.188235, 0.227451, 1)
 shadow_enabled = true
 
-[node name="DoorNode" parent="." instance=ExtResource("5_nt10f")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67, -7.7751, 0)
-
-[node name="door" parent="DoorNode" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
-size = Vector3(14, 23, 0.5)
-
-[node name="SubViewport" parent="DoorNode/door" index="0"]
-transparent_bg = false
-render_target_update_mode = 2
-
-[node name="eye_switch" parent="DoorNode/door" index="1"]
-transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 11.8302, -7.02063, 1.87353)
-
-[node name="Cylinder" parent="DoorNode/door/eye_switch" index="0"]
-transform = Transform3D(0, 0.0748121, 0, -0.5975, 0, 0, 0, 2.22045e-15, 1.07125, 0, 0, 0)
-surface_material_override/1 = SubResource("StandardMaterial3D_21lby")
+[node name="DoorNode" parent="." instance=ExtResource("7_j8fdy")]
 
 [node name="CombatArea1" parent="." node_paths=PackedStringArray("waves") instance=ExtResource("6_12kqi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.6155, 6.38274, 0.46447)
@@ -676,21 +628,6 @@ mesh = SubResource("ArrayMesh_hhwd8")
 skeleton = NodePath("")
 
 [node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-mesh = SubResource("ArrayMesh_hhwd8")
-skeleton = NodePath("")
-
-[node name="MediumPipeOpen" type="MeshInstance3D" parent="PuzzleGeo/Pipes/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen/MediumPipeOpen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 mesh = SubResource("ArrayMesh_hhwd8")
 skeleton = NodePath("")
@@ -1026,23 +963,6 @@ shape = SubResource("ConcavePolygonShape3D_06l88")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleGeo/MediumPipeOpen5/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_56t2x")
 
-[node name="DoorNode2" parent="." instance=ExtResource("5_nt10f")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -247, 18.45, 0)
-
-[node name="door" parent="DoorNode2" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
-size = Vector3(38, 23, 0.5)
-
-[node name="VideoStreamPlayer" parent="DoorNode2/door/SubViewport" index="0"]
-autoplay = false
-
-[node name="eye_switch" parent="DoorNode2/door" index="1"]
-transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, -16.3096, 8.97937, 7.48846)
-
-[node name="Cylinder" parent="DoorNode2/door/eye_switch" index="0"]
-transform = Transform3D(0, 0.0748121, 0, -0.5975, 0, 0, 0, 8.88178e-16, 1.07125, 0, 0, 0)
-surface_material_override/1 = SubResource("StandardMaterial3D_5qk7r")
-
 [node name="CombatArea2" parent="." node_paths=PackedStringArray("waves") instance=ExtResource("6_12kqi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -373.619, 15.5162, 1.38228)
 script = ExtResource("7_yk14u")
@@ -1168,11 +1088,7 @@ omni_range = 40.0
 [connection signal="area_entered" from="CombatArea2" to="CombatArea2" method="_on_area_entered"]
 [connection signal="area_entered" from="CombatArea3" to="CombatArea3" method="_on_area_entered"]
 
-[editable path="DoorNode"]
-[editable path="DoorNode/door/eye_switch"]
 [editable path="CombatArea1"]
-[editable path="DoorNode2"]
-[editable path="DoorNode2/door/eye_switch"]
 [editable path="CombatArea2"]
 [editable path="CombatArea3"]
 [editable path="Checkpoint"]

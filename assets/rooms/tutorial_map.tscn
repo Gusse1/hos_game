@@ -297,11 +297,11 @@ omni_range = 123.266
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.5966, -24.8697, 0.468955)
 light_color = Color(0.568627, 0.0784314, 0.027451, 1)
-light_energy = 14.0
+light_energy = 28.0
 light_indirect_energy = 35.0
 light_volumetric_fog_energy = 0.0
 shadow_enabled = true
-omni_range = 25.4336
+omni_range = 37.2569
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="."]
 transform = Transform3D(0.996855, 1.03913e-08, 0.0792421, -0.0792421, 1.30722e-07, 0.996855, 0, -1, 1.31134e-07, 92.7819, -16.3376, -0.248554)

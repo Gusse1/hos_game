@@ -5,11 +5,6 @@
 [ext_resource type="VideoStream" path="res://videos/hosEye.ogv" id="2_d3lfo"]
 [ext_resource type="Script" path="res://src/interactable_scripts/Eye.gd" id="2_nr3jb"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fagp0"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_rt6j0"]
-size = Vector3(7.72699, 4.38135, 1)
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_670uy"]
 viewport_path = NodePath("door/SubViewport")
 
@@ -26,6 +21,11 @@ emission_texture = SubResource("ViewportTexture_bs57q")
 uv1_scale = Vector3(-0.169, -12.178, 0.562)
 uv1_offset = Vector3(3.23, 2.35, 0.43)
 uv1_triplanar = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fagp0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rt6j0"]
+size = Vector3(7.72699, 4.38135, 1)
 
 [node name="DoorNode" type="Node3D"]
 
@@ -63,6 +63,13 @@ buffering_msec = 1000
 [node name="eye_switch" parent="door" instance=ExtResource("1_p18i6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 13.6904, -7.02063, -9.51155)
 
+[node name="Cylinder" parent="door/eye_switch" index="0"]
+transform = Transform3D(0, 0.0748121, 0, -0.5975, 0, 0, 0, 6.66134e-16, 1.07125, 0, 0, 0)
+surface_material_override/1 = SubResource("StandardMaterial3D_57uwk")
+
+[node name="Cylinder_001" parent="door/eye_switch" index="1"]
+visible = false
+
 [node name="eye_collider" type="StaticBody3D" parent="door/eye_switch"]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0, 0)
 physics_material_override = SubResource("PhysicsMaterial_fagp0")
@@ -71,13 +78,6 @@ script = ExtResource("2_nr3jb")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door/eye_switch/eye_collider"]
 transform = Transform3D(1, 0, 8.63974e-20, 0, 1, 0, 0, 0, 1, 0.00650024, -0.0686035, 0)
 shape = SubResource("BoxShape3D_rt6j0")
-
-[node name="Cylinder" parent="door/eye_switch" index="1"]
-transform = Transform3D(0, 0.0748121, 0, -0.5975, 0, 0, 0, 6.66134e-16, 1.07125, 0, 0, 0)
-surface_material_override/1 = SubResource("StandardMaterial3D_57uwk")
-
-[node name="Cylinder_001" parent="door/eye_switch" index="2"]
-visible = false
 
 [node name="OmniLight3D" type="OmniLight3D" parent="door/eye_switch"]
 transform = Transform3D(0.2, 0, -1.77636e-15, 0, 0.2, 0, 1.77636e-15, 0, 0.2, -0.246199, 0, -0.0397146)
