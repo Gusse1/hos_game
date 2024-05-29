@@ -1,25 +1,25 @@
-[gd_scene load_steps=21 format=3 uid="uid://blmdihl70wchk"]
+[gd_scene load_steps=22 format=3 uid="uid://blmdihl70wchk"]
 
+[ext_resource type="Script" path="res://example/VideoMan.gd" id="1_dj0bu"]
 [ext_resource type="Texture2D" uid="uid://gfsioaau67h5" path="res://textures/Stone_18-128x128.png" id="1_vqaoi"]
 [ext_resource type="Material" uid="uid://cjf626usjxei7" path="res://materials/eye_switch_mat.tres" id="2_a2yb5"]
 [ext_resource type="Texture2D" uid="uid://8qa8sha3w5pi" path="res://textures/Dirt_03-128x128.png" id="3_4by5d"]
 [ext_resource type="Script" path="res://src/interactable_scripts/Eye.gd" id="4_qcx75"]
-[ext_resource type="VideoStream" path="res://videos/hosEye.ogv" id="5_qpodr"]
 [ext_resource type="Texture2D" uid="uid://bst8amvx5wnx3" path="res://textures/Metal_04-128x128.png" id="6_mtoyk"]
 [ext_resource type="Script" path="res://src/interactable_scripts/EyeDoor.gd" id="7_451e1"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tr5ll"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u012p"]
 resource_name = "EyeStone"
 cull_mode = 2
 albedo_texture = ExtResource("1_vqaoi")
 roughness = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yrhso"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eu6hb"]
 resource_name = "EyeVideoMat"
 cull_mode = 2
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_el5kt"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_mtr4v"]
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
 "format": 34896613377,
@@ -43,7 +43,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_do2vl"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_hn2uj"]
 resource_name = "eye_switch_Cylinder"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
@@ -51,7 +51,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 54,
 "index_data": PackedByteArray(18, 0, 6, 0, 3, 0, 18, 0, 20, 0, 6, 0, 21, 0, 11, 0, 7, 0, 21, 0, 24, 0, 11, 0, 5, 0, 15, 0, 2, 0, 5, 0, 10, 0, 15, 0, 22, 0, 14, 0, 9, 0, 22, 0, 26, 0, 14, 0, 25, 0, 1, 0, 13, 0, 25, 0, 16, 0, 1, 0, 4, 0, 17, 0, 0, 0, 4, 0, 19, 0, 17, 0, 8, 0, 19, 0, 4, 0, 8, 0, 23, 0, 19, 0, 12, 0, 23, 0, 8, 0, 12, 0, 27, 0, 23, 0, 0, 0, 27, 0, 12, 0, 0, 0, 17, 0, 27, 0),
-"material": SubResource("StandardMaterial3D_tr5ll"),
+"material": SubResource("StandardMaterial3D_u012p"),
 "name": "EyeStone",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -63,7 +63,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 30,
 "index_data": PackedByteArray(2, 0, 14, 0, 4, 0, 2, 0, 11, 0, 14, 0, 9, 0, 15, 0, 13, 0, 9, 0, 17, 0, 15, 0, 5, 0, 18, 0, 6, 0, 5, 0, 16, 0, 18, 0, 0, 0, 12, 0, 3, 0, 0, 0, 8, 0, 12, 0, 7, 0, 10, 0, 1, 0, 7, 0, 19, 0, 10, 0),
-"material": SubResource("StandardMaterial3D_yrhso"),
+"material": SubResource("StandardMaterial3D_eu6hb"),
 "name": "EyeVideoMat",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -71,14 +71,14 @@ _surfaces = [{
 "vertex_data": PackedByteArray(255, 127, 0, 0, 0, 0, 83, 150, 255, 127, 0, 0, 0, 0, 83, 150, 255, 255, 0, 0, 255, 127, 170, 233, 255, 255, 0, 0, 255, 127, 83, 150, 255, 127, 0, 0, 255, 255, 170, 233, 255, 127, 0, 0, 255, 255, 170, 233, 0, 0, 0, 0, 255, 127, 170, 233, 0, 0, 0, 0, 255, 127, 83, 150, 255, 127, 255, 255, 0, 0, 83, 150, 255, 127, 255, 255, 0, 0, 255, 191, 255, 127, 255, 255, 0, 0, 83, 150, 255, 255, 255, 255, 255, 127, 170, 233, 255, 255, 255, 255, 255, 127, 83, 150, 255, 255, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 255, 170, 233, 255, 127, 255, 255, 255, 255, 255, 191, 255, 127, 255, 255, 255, 255, 170, 233, 0, 0, 255, 255, 255, 127, 255, 191, 0, 0, 255, 255, 255, 127, 170, 233, 0, 0, 255, 255, 255, 127, 83, 150, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 0, 0, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 0, 0)
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_el5kt")
+shadow_mesh = SubResource("ArrayMesh_mtr4v")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_067rx"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1yjo"]
 resource_name = "EyeClosed"
 cull_mode = 2
 albedo_texture = ExtResource("3_4by5d")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_baul3"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_yhxpb"]
 _surfaces = [{
 "aabb": AABB(-0.69879, 0.388442, -0.69879, 1.39758, 1.00136e-05, 1.39758),
 "format": 34896613377,
@@ -92,7 +92,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_xtih8"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_addty"]
 resource_name = "eye_switch_Cylinder_001"
 _surfaces = [{
 "aabb": AABB(-0.69879, 0.388442, -0.69879, 1.39758, 1.00136e-05, 1.39758),
@@ -100,7 +100,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0),
-"material": SubResource("StandardMaterial3D_067rx"),
+"material": SubResource("StandardMaterial3D_u1yjo"),
 "name": "EyeClosed",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -108,14 +108,14 @@ _surfaces = [{
 "vertex_data": PackedByteArray(255, 127, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 255, 127, 255, 191, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 255, 127, 255, 191, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127)
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_baul3")
+shadow_mesh = SubResource("ArrayMesh_yhxpb")
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fagp0"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ofkav"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_rt6j0"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_nwwo3"]
 size = Vector3(7.72699, 4.38135, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38buk"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_33dfe"]
 albedo_texture = ExtResource("6_mtoyk")
 metallic = 1.0
 metallic_specular = 0.0
@@ -123,45 +123,52 @@ roughness = 0.5
 subsurf_scatter_strength = 0.45
 subsurf_scatter_transmittance_color = Color(0.333333, 0.329412, 0.901961, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ghxq2"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iqfmp"]
 seed = 280
 frequency = 0.0375
 
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_pwye1"]
-noise = SubResource("FastNoiseLite_ghxq2")
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_ms7ql"]
+noise = SubResource("FastNoiseLite_iqfmp")
 
-[sub_resource type="FogMaterial" id="FogMaterial_cv6yb"]
+[sub_resource type="FogMaterial" id="FogMaterial_spoft"]
 density = 2.0885
 emission = Color(0.27451, 0.27451, 0.27451, 1)
-density_texture = SubResource("NoiseTexture3D_pwye1")
+density_texture = SubResource("NoiseTexture3D_ms7ql")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_57srf"]
+size = Vector3(14.34, 22.3708, 1)
 
 [node name="DoorNode" type="Node3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67, -7.7751, 0)
+
+[node name="video_man" type="Node" parent="."]
+script = ExtResource("1_dj0bu")
+target_swap_video_int = 1
 
 [node name="eye_switch" type="Node3D" parent="."]
 transform = Transform3D(-2.68211e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -2.68211e-07, -9.76997, 15.0953, 2.20148)
 
 [node name="EyeHolder" type="MeshInstance3D" parent="eye_switch"]
 transform = Transform3D(0, 0.0748121, 0, -0.5975, 0, 0, 0, 5.77316e-15, 1.07125, 0.391479, 0, -0.503728)
-mesh = SubResource("ArrayMesh_do2vl")
+mesh = SubResource("ArrayMesh_hn2uj")
 skeleton = NodePath("")
 surface_material_override/1 = ExtResource("2_a2yb5")
 
 [node name="EyeBlind" type="MeshInstance3D" parent="eye_switch"]
 transform = Transform3D(0, 0.0748121, -2.84217e-14, -0.5975, 0, 0, 0, -3.55271e-15, 1.07125, 0.286707, 0, -0.503728)
 visible = false
-mesh = SubResource("ArrayMesh_xtih8")
+mesh = SubResource("ArrayMesh_addty")
 skeleton = NodePath("")
 
 [node name="eye_collider" type="StaticBody3D" parent="eye_switch" node_paths=PackedStringArray("eye_blind")]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74229e-09, 0.4, 0, -0.477597)
-physics_material_override = SubResource("PhysicsMaterial_fagp0")
+physics_material_override = SubResource("PhysicsMaterial_ofkav")
 script = ExtResource("4_qcx75")
 eye_blind = NodePath("../EyeBlind")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="eye_switch/eye_collider"]
 transform = Transform3D(1, 0, 8.63974e-20, 0, 1, 0, 0, 0, 1, 0.00650024, -0.0686035, 0)
-shape = SubResource("BoxShape3D_rt6j0")
+shape = SubResource("BoxShape3D_nwwo3")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="eye_switch"]
 transform = Transform3D(0.2, 0, -1.77636e-15, 0, 0.2, 0, 1.77636e-15, 0, 0.2, 0.153801, 0, -0.517311)
@@ -174,25 +181,25 @@ transform = Transform3D(-2.68211e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -2.68211e-07, 
 
 [node name="EyeHolder" type="MeshInstance3D" parent="eye_switch2"]
 transform = Transform3D(0, 0.0748121, 0, -0.5975, 0, 0, 0, 5.77316e-15, 1.07125, 0.391479, 0, -0.503728)
-mesh = SubResource("ArrayMesh_do2vl")
+mesh = SubResource("ArrayMesh_hn2uj")
 skeleton = NodePath("")
 surface_material_override/1 = ExtResource("2_a2yb5")
 
 [node name="EyeBlind" type="MeshInstance3D" parent="eye_switch2"]
 transform = Transform3D(0, 0.0748121, -2.84217e-14, -0.5975, 0, 0, 0, -3.55271e-15, 1.07125, 0.286707, 0, -0.503728)
 visible = false
-mesh = SubResource("ArrayMesh_xtih8")
+mesh = SubResource("ArrayMesh_addty")
 skeleton = NodePath("")
 
 [node name="eye_collider" type="StaticBody3D" parent="eye_switch2" node_paths=PackedStringArray("eye_blind")]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74229e-09, 0.4, 0, -0.477597)
-physics_material_override = SubResource("PhysicsMaterial_fagp0")
+physics_material_override = SubResource("PhysicsMaterial_ofkav")
 script = ExtResource("4_qcx75")
 eye_blind = NodePath("../EyeBlind")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="eye_switch2/eye_collider"]
 transform = Transform3D(1, 0, 8.63974e-20, 0, 1, 0, 0, 0, 1, 0.00650024, -0.0686035, 0)
-shape = SubResource("BoxShape3D_rt6j0")
+shape = SubResource("BoxShape3D_nwwo3")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="eye_switch2"]
 transform = Transform3D(0.2, 0, -1.77636e-15, 0, 0.2, 0, 1.77636e-15, 0, 0.2, 0.153801, 0, -0.517311)
@@ -200,34 +207,11 @@ light_color = Color(0.596078, 0.0235294, 0, 1)
 light_energy = 13.64
 light_indirect_energy = 6.0
 
-[node name="EyeVidViewport" type="SubViewport" parent="."]
-handle_input_locally = false
-size = Vector2i(1920, 1080)
-
-[node name="EyeVidPlayer" type="VideoStreamPlayer" parent="EyeVidViewport"]
-custom_minimum_size = Vector2(1920, 1080)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 40.0
-offset_top = -1040.0
-offset_right = 1960.0
-offset_bottom = 48.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5708
-stream = ExtResource("5_qpodr")
-autoplay = true
-loop = true
-buffering_msec = 1000
-
 [node name="door" type="CSGBox3D" parent="." node_paths=PackedStringArray("eyes", "door_fog")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
 use_collision = true
 size = Vector3(14, 23, 0.5)
-material = SubResource("StandardMaterial3D_38buk")
+material = SubResource("StandardMaterial3D_33dfe")
 script = ExtResource("7_451e1")
 eyes = [NodePath("../eye_switch/eye_collider"), NodePath("../eye_switch2/eye_collider")]
 door_fog = NodePath("../door_fog")
@@ -236,4 +220,10 @@ door_fog = NodePath("../door_fog")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
 visible = false
 size = Vector3(14, 23, 2)
-material = SubResource("FogMaterial_cv6yb")
+material = SubResource("FogMaterial_spoft")
+
+[node name="Area3D" type="Area3D" parent="door_fog"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0218487, 0)
+
+[node name="FogCollider" type="CollisionShape3D" parent="door_fog/Area3D"]
+shape = SubResource("BoxShape3D_57srf")
