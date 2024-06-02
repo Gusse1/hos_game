@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var player_node = get_tree().current_scene.get_node("Pawn").get_node("Body")
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
+@onready var enemy_model: Node3D = $enemy
 @onready var enemy_state: Node = $EnemyResources
 @onready var attack_float : float = 0
 @export var attack_float_cumulation : float = 1.25
@@ -34,7 +35,8 @@ func _physics_process(delta):
 
 		var current_agent_position: Vector3 = global_position
 		var next_path_position: Vector3 = navigation_agent.get_next_path_position()
-		
+		enemy_model.rotation += Vector3(0, 0.1, 0)
+		enemy_model.get_node("AnimationPlayer").play("walk")
 		
 		velocity = current_agent_position.direction_to(next_path_position) * enemy_state.MOVEMENT_SPEED
 		

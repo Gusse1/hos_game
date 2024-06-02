@@ -754,7 +754,7 @@ configuration = SubResource("Resource_gkxv8")
 environment = SubResource("Environment_138gm")
 
 [node name="Pawn" parent="." groups=["Pawn"] instance=ExtResource("1_3375c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.439, -1.64091, -0.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9046, 6.42428, -0.75)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.04773, 0.495845, -25.6994)
