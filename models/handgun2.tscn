@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://b34q6nrbu7sys"]
+[gd_scene load_steps=47 format=3 uid="uid://b34q6nrbu7sys"]
 
 [ext_resource type="Script" path="res://models/handgun_info.gd" id="1_goqh3"]
 [ext_resource type="Shader" path="res://assets/ui/ammo_display.gdshader" id="1_sfv7b"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bybw0d1jf3rie" path="res://textures/Metal_05-128x128.png" id="3_q6o8q"]
 [ext_resource type="Texture2D" uid="uid://nrt70c3prylj" path="res://textures/Elements_05-128x128.png" id="5_6o6we"]
 [ext_resource type="Texture2D" uid="uid://cofh4tmvlwryg" path="res://textures/Elements_14-128x128.png" id="5_syv3y"]
+[ext_resource type="FastNoiseLite" uid="uid://bmubs6juomn5f" path="res://materials/fast_noise.tres" id="8_idso5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_67135"]
 shader = ExtResource("1_sfv7b")
@@ -134,6 +135,11 @@ albedo_texture = ExtResource("3_q6o8q")
 metallic_specular = 0.0
 roughness = 0.0
 
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2jx34"]
+width = 16
+height = 16
+noise = ExtResource("8_idso5")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wj532"]
 resource_name = "BlackGrip"
 transparency = 1
@@ -147,6 +153,8 @@ emission = Color(0.8, 0, 0, 1)
 emission_energy_multiplier = 7.05
 emission_operator = 1
 emission_texture = ExtResource("5_6o6we")
+heightmap_enabled = true
+heightmap_texture = SubResource("NoiseTexture2D_2jx34")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3ipe8"]
 _surfaces = [{
@@ -730,6 +738,7 @@ show_percentage = false
 script = ExtResource("3_68agk")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/SubViewportContainer/SubViewport/ColorRect/BloodBar"]
+layout_mode = 0
 offset_top = 10.0
 offset_right = 40.0
 offset_bottom = 50.0

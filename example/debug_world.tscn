@@ -1,9 +1,12 @@
-[gd_scene load_steps=91 format=3 uid="uid://dafpnrc0x0g1s"]
+[gd_scene load_steps=101 format=3 uid="uid://dafpnrc0x0g1s"]
 
+[ext_resource type="Texture2D" uid="uid://bmeye3os7s6fg" path="res://textures/Gem_05-128x128.png" id="1_6lgns"]
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://addons/GoldGdt/Pawn.tscn" id="1_3375c"]
 [ext_resource type="Script" path="res://addons/post_processing/node/post_process.gd" id="1_ch810"]
+[ext_resource type="FastNoiseLite" uid="uid://bmubs6juomn5f" path="res://materials/fast_noise.tres" id="1_doeis"]
 [ext_resource type="Script" path="res://addons/post_processing/resource/post_processing_configuration.gd" id="2_e0qwb"]
 [ext_resource type="Script" path="res://src/room_gen/room_generation.gd" id="2_lsoh3"]
+[ext_resource type="Script" path="res://example/Warper.gd" id="2_rs1aj"]
 [ext_resource type="Script" path="res://src/room_gen/grid_printer.gd" id="3_u2wbk"]
 [ext_resource type="VideoStream" path="res://videos/Hos Video Heal Tutorial.ogv" id="3_uoexp"]
 [ext_resource type="PackedScene" uid="uid://53bbkhmk5ik0" path="res://assets/rooms/tutorial_map.tscn" id="4_iyluc"]
@@ -26,6 +29,43 @@
 [ext_resource type="Script" path="res://src/interactable_scripts/EyeDoor.gd" id="16_lipqe"]
 [ext_resource type="Material" uid="uid://cjf626usjxei7" path="res://materials/eye_switch_mat.tres" id="20_g37no"]
 [ext_resource type="PackedScene" uid="uid://b2wwbmnwgn1rh" path="res://assets/text_area_creator.tscn" id="26_20qvu"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_78i8t"]
+frequency = 0.301
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xshxp"]
+noise = SubResource("FastNoiseLite_78i8t")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ey1u5"]
+noise = ExtResource("1_doeis")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dulf4"]
+albedo_color = Color(0.568627, 0, 0.054902, 1)
+metallic = 1.0
+metallic_specular = 1.0
+metallic_texture = ExtResource("1_6lgns")
+metallic_texture_channel = 2
+roughness = 0.0
+emission_enabled = true
+emission = Color(0.567193, 0, 0.0532531, 1)
+emission_energy_multiplier = 15.95
+emission_operator = 1
+emission_texture = SubResource("NoiseTexture2D_xshxp")
+heightmap_enabled = true
+heightmap_texture = SubResource("NoiseTexture2D_ey1u5")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t1ivw"]
+frequency = 0.0975
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_gjdt4"]
+noise = SubResource("FastNoiseLite_t1ivw")
+
+[sub_resource type="FogMaterial" id="FogMaterial_6uekb"]
+density = 100.0
+albedo = Color(0.567193, 0, 0.0532531, 1)
+emission = Color(1, 0.270588, 0.254902, 1)
+edge_fade = 0.136604
+density_texture = SubResource("NoiseTexture3D_gjdt4")
 
 [sub_resource type="Resource" id="Resource_gkxv8"]
 script = ExtResource("2_e0qwb")
@@ -635,6 +675,18 @@ edge_fade = 2.5992
 
 [node name="Debug World" type="Node3D"]
 
+[node name="Warp" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -598.807, 15.7497, 4.11256)
+material_override = SubResource("StandardMaterial3D_dulf4")
+size = Vector3(60.4202, 1, 21.1016)
+script = ExtResource("2_rs1aj")
+fast_noise = ExtResource("1_doeis")
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1.89, 0, 0, 0, 1.89, 0, 0, 0, 1.89, -173.225, -32.431, 0)
+size = Vector3(914.902, 16.91, 130.62)
+material = SubResource("FogMaterial_6uekb")
+
 [node name="VideotapePlayer" type="SubViewport" parent="." node_paths=PackedStringArray("videostream")]
 transparent_bg = true
 handle_input_locally = false
@@ -671,10 +723,10 @@ configuration = SubResource("Resource_gkxv8")
 environment = SubResource("Environment_138gm")
 
 [node name="Pawn" parent="." groups=["Pawn"] instance=ExtResource("1_3375c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.0071, 3.03991, -0.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -493.595, 37.6611, -0.75)
 
 [node name="Interpolated Camera" parent="Pawn" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.710999, 0)
 
 [node name="RoomGeneration" type="Node3D" parent="." node_paths=PackedStringArray("grid_printer")]
 script = ExtResource("2_lsoh3")
@@ -813,7 +865,7 @@ spot_range = 2368.35
 spot_angle = 39.1079
 
 [node name="SpotLight3D13" type="SpotLight3D" parent="tutorial_map"]
-transform = Transform3D(1, 0, 0, 0, -0.474088, 0.880477, 0, -0.880477, -0.474088, -608.433, 77.0426, 9.37836)
+transform = Transform3D(1, 0, 0, 0, 0.947003, 0.321225, 0, -0.321225, 0.947003, -610.975, 34.8296, 70.9034)
 light_color = Color(0.596078, 0.0235294, 0, 1)
 light_energy = 228.0
 light_volumetric_fog_energy = 2.0
@@ -821,7 +873,7 @@ spot_range = 508.0
 spot_angle = 32.4941
 
 [node name="SpotLight3D14" type="SpotLight3D" parent="tutorial_map"]
-transform = Transform3D(1, 0, 0, 0, 0.287377, 0.957817, 0, -0.957817, 0.287377, -608.433, 77.0426, -2.60217)
+transform = Transform3D(1, 0, 0, 0, -0.975715, 0.219046, 0, -0.219046, -0.975715, -610.993, 31.5633, -71.9573)
 light_color = Color(0.596078, 0.0235294, 0, 1)
 light_energy = 228.0
 light_volumetric_fog_energy = 2.0
@@ -1000,7 +1052,7 @@ skeleton = NodePath("../VideotapePlayer")
 surface_material_override/0 = SubResource("StandardMaterial3D_2xcfd")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.1001, -0.810856, -0.576622, 0.00948397, -0.578729, 0.815465, -0.994932, -0.0870967, -0.0502406, -188, 168, 0)
+transform = Transform3D(-4.37114e-08, 0.734915, -0.67816, 0, 0.67816, 0.734915, 1, 3.21241e-08, -2.96433e-08, -188, 168, 0)
 light_color = Color(1, 0.188235, 0.227451, 1)
 shadow_enabled = true
 
@@ -1485,14 +1537,20 @@ transform = Transform3D(0.0102462, 0, -0.925943, 0, 0.926, 0, 0.925943, 0, 0.010
 [node name="SpotLight3D" parent="Checkpoint2/concrete_bench" index="4"]
 transform = Transform3D(0.571382, 2.98023e-08, 1.77636e-15, 0, -2.49759e-08, 0.571383, 2.98023e-08, -0.571382, -2.49758e-08, 0.579666, 12.5714, -7.62939e-06)
 
+[node name="Area3D" parent="Checkpoint2/CSGSphere3D" index="0" node_paths=PackedStringArray("player")]
+player = NodePath("../../../Pawn")
+
 [node name="Checkpoint" parent="." instance=ExtResource("13_evw7p")]
-transform = Transform3D(1.79765, -0.0290302, 0.582837, 0.104404, 1.8732, -0.228714, -0.57414, 0.249735, 1.78328, -494.556, 21.0153, 2.10582)
+transform = Transform3D(1.79765, -0.0290302, 0.582837, 0.104404, 1.8732, -0.228714, -0.57414, 0.249735, 1.78328, -494.556, 21.0153, 2.58765)
 
 [node name="OmniLight3D" parent="Checkpoint/checkpoint_sign" index="1"]
 visible = false
 
 [node name="concrete_bench" parent="Checkpoint" index="2"]
 transform = Transform3D(0.454354, 0.0673409, -0.804055, 0.0486295, 0.918807, 0.104431, 0.805404, -0.0934659, 0.447288, 1.54326, -1.67984, -0.766533)
+
+[node name="Area3D" parent="Checkpoint/CSGSphere3D" index="0" node_paths=PackedStringArray("player")]
+player = NodePath("../../../Pawn")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -723.255, 22.1238, 4.10861)

@@ -7,6 +7,8 @@ var current_health : float
 @export var blood_recovery_rate: float
 @export var difficulty: int = 20
 
+var current_checkpoint_location : Vector3
+
 # UI
 @export var blood_text : RichTextLabel
 @export var handgun : Node3D

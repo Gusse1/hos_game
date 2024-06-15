@@ -1,12 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://bg0cfyn7q5vd5"]
+[gd_scene load_steps=13 format=3 uid="uid://bg0cfyn7q5vd5"]
 
 [ext_resource type="Script" path="res://src/resources/EnemyState.gd" id="1_d8gm5"]
 [ext_resource type="Script" path="res://src/enemy_logic/SprinterMovement.gd" id="1_exyy8"]
 [ext_resource type="PackedScene" uid="uid://jvdcus8w4ndv" path="res://models/enemy.blend" id="3_sbuyp"]
 [ext_resource type="Texture2D" uid="uid://bbqxh5mxlmttw" path="res://textures/Animal_24-128x128.png" id="4_jofjt"]
+[ext_resource type="FastNoiseLite" uid="uid://bmubs6juomn5f" path="res://materials/fast_noise.tres" id="5_h73lu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vgwtl"]
 size = Vector3(0.609497, 2.06931, 1)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t7m14"]
+noise = ExtResource("5_h73lu")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o55go"]
 albedo_texture = ExtResource("4_jofjt")
@@ -15,6 +19,8 @@ emission = Color(0.494118, 0, 0.501961, 1)
 emission_energy_multiplier = 3.1
 emission_operator = 1
 emission_texture = ExtResource("4_jofjt")
+heightmap_enabled = true
+heightmap_texture = SubResource("NoiseTexture2D_t7m14")
 
 [sub_resource type="Animation" id="Animation_eyang"]
 length = 0.001
