@@ -1,6 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7a4mxf6n0has"]
+[gd_scene load_steps=12 format=3 uid="uid://c7a4mxf6n0has"]
 
 [ext_resource type="SphereMesh" uid="uid://jp3fdltcpbjl" path="res://blood_cloud.tres" id="1_nj7lj"]
+[ext_resource type="Script" path="res://assets/enemies/BloodDiamondRotator.gd" id="2_x30cq"]
+
+[sub_resource type="Curve" id="Curve_qx4uc"]
+max_value = 2.0
+_data = [Vector2(0, 0.479317), 0.0, 0.0, 0, 0, Vector2(0.504472, 1.95732), 0.0, 0.0, 0, 0, Vector2(1, 0.457978), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bfxil"]
+curve = SubResource("Curve_qx4uc")
 
 [sub_resource type="Curve" id="Curve_e8h6s"]
 max_value = 3.0
@@ -18,12 +27,11 @@ emission_sphere_radius = 0.5
 angle_min = -172.0
 angle_max = 269.5
 spread = 90.0
-initial_velocity_min = 0.1
-initial_velocity_max = 0.1
 gravity = Vector3(0, 0, 0)
 damping_max = 0.1
 scale_min = 0.4
 scale_max = 0.4
+scale_curve = SubResource("CurveTexture_bfxil")
 scale_over_velocity_max = 1.0
 scale_over_velocity_curve = SubResource("CurveTexture_km280")
 collision_mode = 1
@@ -50,15 +58,15 @@ size = Vector3(0.621033, 1.03125, 0.5)
 [node name="blood_cloud" type="Node3D"]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 cast_shadow = 0
-amount = 30
-lifetime = 15.0
-preprocess = 5.0
-speed_scale = 20.0
+amount = 2
+preprocess = 1.0
 randomness = 0.1
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_34dco")
 draw_pass_1 = ExtResource("1_nj7lj")
+script = ExtResource("2_x30cq")
 
 [node name="FogVolume" type="FogVolume" parent="."]
 size = Vector3(0.565293, 0.579982, 0.507906)

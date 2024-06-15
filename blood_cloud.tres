@@ -37,7 +37,7 @@ grow_amount = 0.03
 
 [resource]
 material = SubResource("StandardMaterial3D_gvlcq")
-radius = 0.165
-height = 0.344
+radius = 1.0
+height = 2.0
 radial_segments = 4
 rings = 1
