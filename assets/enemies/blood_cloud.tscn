@@ -8,7 +8,7 @@ max_value = 2.0
 _data = [Vector2(0, 0.479317), 0.0, 0.0, 0, 0, Vector2(0.504472, 1.95732), 0.0, 0.0, 0, 0, Vector2(1, 0.457978), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_bfxil"]
+[sub_resource type="CurveTexture" id="CurveTexture_c08im"]
 curve = SubResource("Curve_qx4uc")
 
 [sub_resource type="Curve" id="Curve_e8h6s"]
@@ -16,7 +16,7 @@ max_value = 3.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_km280"]
+[sub_resource type="CurveTexture" id="CurveTexture_t1di4"]
 curve = SubResource("Curve_e8h6s")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_34dco"]
@@ -31,9 +31,9 @@ gravity = Vector3(0, 0, 0)
 damping_max = 0.1
 scale_min = 0.4
 scale_max = 0.4
-scale_curve = SubResource("CurveTexture_bfxil")
+scale_curve = SubResource("CurveTexture_c08im")
 scale_over_velocity_max = 1.0
-scale_over_velocity_curve = SubResource("CurveTexture_km280")
+scale_over_velocity_curve = SubResource("CurveTexture_t1di4")
 collision_mode = 1
 collision_friction = 0.0
 collision_bounce = 0.6
@@ -42,7 +42,7 @@ collision_use_scale = true
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_6v4ip"]
 frequency = 0.057
 
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_iggtn"]
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_lbukl"]
 noise = SubResource("FastNoiseLite_6v4ip")
 
 [sub_resource type="FogMaterial" id="FogMaterial_q4jur"]
@@ -50,7 +50,7 @@ density = 100.0
 albedo = Color(0.580392, 0.0745098, 0.184314, 1)
 emission = Color(0.898039, 0, 0, 1)
 edge_fade = 0.303143
-density_texture = SubResource("NoiseTexture3D_iggtn")
+density_texture = SubResource("NoiseTexture3D_lbukl")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p6hkm"]
 size = Vector3(0.621033, 1.03125, 0.5)

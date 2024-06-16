@@ -7,6 +7,14 @@ extends CharacterBody3D
 @onready var attack_float : float = 0
 @export var attack_float_cumulation : float = 1.25
 
+var enemy_spawner = preload("res://assets/enemies/enemy_spawner.tscn")
+var start = true
+
+var timer_set = false
+var time: float
+var start_time: float
+var inst_enemy_spawner
+
 func _ready():
 	# These values need to be adjusted for the actor's speed
 	# and the navigation layout.
@@ -27,10 +35,32 @@ func actor_setup():
 func set_movement_target():
 	navigation_agent.set_target_position(player_node.global_position)
 
+func _enable_enemy():
+	start = true
+
 func _physics_process(delta):
-	
-	#if player_node.global_position.distance_to(navigation_agent.get_parent().global_position) < enemy_state.FOLLOW_THRESHOLD:
-	if enemy_state.ACTIVE:
+	time+=delta
+	if start:
+		if not timer_set:
+			start_time = time
+			timer_set = true
+			
+		enemy_state.ACTIVE = false
+		print_debug("ENEMY START")
+		if not is_instance_valid(inst_enemy_spawner):
+			inst_enemy_spawner = enemy_spawner.instantiate()
+			inst_enemy_spawner.position = position
+			add_child(inst_enemy_spawner)
+		enemy_model.visible = false
+
+		if time - start_time >= 2 and timer_set:
+			print_debug("FUCK THISAOPHUIFSH UIOJKLAESFGHYUIOKASDG HJL<YUIOPLÖ ESGryuiopdghN yuiop ERGHWERYUIOPGH nWEYUIOSGKL ")
+			enemy_model.visible = true
+			inst_enemy_spawner.queue_free()
+			start = false
+			enemy_state.ACTIVE = true
+		
+	if enemy_state.ACTIVE and not start:
 		navigation_agent.set_target_position(player_node.global_position)
 
 		var current_agent_position: Vector3 = global_position

@@ -27,7 +27,7 @@ func _spawn_blood_cloud():
 	print_debug("spawning blood_cloud")
 	var blood_cloud: PackedScene =  preload("res://assets/enemies/blood_cloud.tscn")
 	var inst_blood_cloud: Node3D = blood_cloud.instantiate()
-	inst_blood_cloud.position = get_parent().global_position + Vector3(0, 2, 0)
+	inst_blood_cloud.position = get_parent().global_position + Vector3(0, 1, 0)
 	get_tree().get_root().add_child(inst_blood_cloud)
 
 func _heal(amount: float):

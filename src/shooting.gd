@@ -84,6 +84,8 @@ func _shoot():
 			var local_bullet_impact = bullet_impact.instantiate()
 			self.get_tree().current_scene.add_child(local_bullet_impact)
 			local_bullet_impact.global_position = collision_point
+			local_bullet_impact.look_at(playerBody.global_transform.origin, Vector3.UP)
+			local_bullet_impact.get_node("Particles").emitting = true
 			bullet_impacts.append(local_bullet_impact)
 			
 			if bullet_impacts.size() > 10:

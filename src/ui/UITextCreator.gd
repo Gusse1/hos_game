@@ -19,25 +19,25 @@ var start_time: float
 
 func _create_word_salad():
 	if is_instance_valid(word_salad_json):
-		# Create and configure the label
-		label = Label.new()
-		
-		label.text = word_salad_json.data.pick_random()
-		label.theme = label_theme
-		add_child(label)
-		
-		# Randomly position the label on the screen
-		var screen_size = text_ui.size
-		
-		var rand_x = randi_range(200, screen_size.x - label.size.x - 200)
-		var rand_y = randi_range(200, screen_size.y - label.size.y - 200)
-		label.position = Vector2(rand_x, rand_y)
-		labels.append(label)
-		print_debug("Printed text to screen with rand_x: " + str(rand_x) + " and rand_y: " + str(rand_y))
-		
-		start_time = time
-	else:
-		print_debug("word_salad_json NULL")
+		for num in num_to_create:
+			# Create and configure the label
+			label = Label.new()
+			
+			label.text = word_salad_json.data.pick_random()
+			label.theme = label_theme
+			add_child(label)
+			
+			# Randomly position the label on the screen
+			var screen_size = text_ui.size
+			
+			var rand_x = randi_range(200, screen_size.x - label.size.x - 200)
+			var rand_y = randi_range(200, screen_size.y - label.size.y - 200)
+			label.position = Vector2(rand_x, rand_y)
+			labels.append(label)
+			print_debug("Printed text to screen with rand_x: " + str(rand_x) + " and rand_y: " + str(rand_y))
+			
+	start_time = time
+	
 
 func _create_custom_text():
 	for text in display_text:
@@ -76,3 +76,10 @@ func _on_area_entered(area):
 	if area.name == "PlayerArea" and not entered:
 		entered = true
 		_create_custom_text()
+
+
+func _on_checkpoint_area_area_entered(area):
+	print_debug("area named entered text area: ", area.name)
+	if area.name == "PlayerArea" and not entered:
+		entered = true
+		_create_word_salad()

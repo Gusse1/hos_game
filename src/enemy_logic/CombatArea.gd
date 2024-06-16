@@ -6,6 +6,8 @@ var curr_wave : int = 0
 var cleared : bool = false
 
 @export var waves : Array[Node3D]
+@export var enemy_spawner: Node3D
+
 
 func _ready():
 	for wave in waves:
@@ -19,14 +21,16 @@ func _process(delta):
 
 
 func _on_area_entered(area):
-	#for enemy in enemies.get_children():
-	#	print_debug(enemy)
-	#	enemy.get_node("CharacterBody3D/EnemyResources")._activate()
+
 	if area.name == "PlayerArea":
 		_progress_waves()
 
 func _progress_waves():
 	if curr_wave < waves.size():
+		for enemy in waves[curr_wave].get_children():
+			var char_body = enemy.get_node("CharacterBody3D")
+			char_body._enable_enemy()
+			
 		waves[curr_wave].process_mode = 0 # process_mode = 0 is normal mode
 		waves[curr_wave].visible = true
 		curr_wave += 1

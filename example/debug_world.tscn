@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://dafpnrc0x0g1s"]
+[gd_scene load_steps=103 format=3 uid="uid://dafpnrc0x0g1s"]
 
 [ext_resource type="Texture2D" uid="uid://bmeye3os7s6fg" path="res://textures/Gem_05-128x128.png" id="1_6lgns"]
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://addons/GoldGdt/Pawn.tscn" id="1_3375c"]
@@ -30,6 +30,7 @@
 [ext_resource type="Material" uid="uid://cjf626usjxei7" path="res://materials/eye_switch_mat.tres" id="20_g37no"]
 [ext_resource type="PackedScene" uid="uid://b2wwbmnwgn1rh" path="res://assets/text_area_creator.tscn" id="26_20qvu"]
 [ext_resource type="JSON" path="res://src/ui/word_salad.json" id="30_5n6cq"]
+[ext_resource type="PackedScene" uid="uid://c3jiahdj7tlk8" path="res://assets/enemies/enemy_spawner.tscn" id="31_y6hc3"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_78i8t"]
 frequency = 0.301
@@ -444,10 +445,10 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_el5kt")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_wtv2f"]
-viewport_path = NodePath("EyeVidViewport")
+viewport_path = NodePath(".")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_xdmsm"]
-viewport_path = NodePath("EyeVidViewport")
+viewport_path = NodePath(".")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o30fa"]
 resource_local_to_scene = true
@@ -731,7 +732,10 @@ configuration = SubResource("Resource_gkxv8")
 environment = SubResource("Environment_138gm")
 
 [node name="Pawn" parent="." groups=["Pawn"] instance=ExtResource("1_3375c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.0948, -0.959965, -0.749966)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135.512, 5.04293, -0.749966)
+
+[node name="PlayerState" parent="Pawn" index="5" node_paths=PackedStringArray("player_body")]
+player_body = NodePath("../Body")
 
 [node name="Interpolated Camera" parent="Pawn" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.710999, 0)
@@ -747,13 +751,13 @@ script = ExtResource("3_u2wbk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6406, 26.6272, 0.663253)
 
 [node name="VideotapeScreen3" type="MeshInstance3D" parent="tutorial_map"]
-transform = Transform3D(-9.05974e-08, 2, -2.62268e-08, -7.15492e-09, -8.74228e-08, -0.6, -0.6, -3.01991e-07, 7.15493e-09, 57.2569, -24.7024, 12.3409)
+transform = Transform3D(-9.05974e-08, 2, -2.62268e-08, -7.15492e-09, -8.74228e-08, -0.6, -0.6, -3.01991e-07, 7.15493e-09, 55.4824, -24.7024, 12.3409)
 mesh = SubResource("PlaneMesh_kvfhr")
 skeleton = NodePath("../../VideotapePlayer")
 surface_material_override/0 = SubResource("StandardMaterial3D_2xcfd")
 
 [node name="VideotapeScreen2" type="MeshInstance3D" parent="tutorial_map/VideotapeScreen3"]
-transform = Transform3D(1, 0, -4.44089e-15, -3.19744e-14, 3.333, -2.00801e-14, 1.77636e-15, 9.36821e-14, 1, 40.0944, 0.0852814, 0)
+transform = Transform3D(1, -1.13687e-13, -5.32907e-15, -2.84217e-14, 3.333, -2.00801e-14, 8.88178e-16, 9.36821e-14, 1, 40.0944, 0.0852814, 0)
 mesh = SubResource("PlaneMesh_kvfhr")
 skeleton = NodePath("../VideotapePlayer")
 surface_material_override/0 = SubResource("StandardMaterial3D_2xcfd")
@@ -1075,7 +1079,7 @@ videoswapper = NodePath("../../VideotapePlayer")
 target_swap_video_int = 1
 
 [node name="eye_switch" type="Node3D" parent="DoorNode"]
-transform = Transform3D(-2.68211e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -2.68211e-07, -9.76997, 15.0953, 3.58804)
+transform = Transform3D(-2.68211e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -2.68211e-07, -9.76997, 15.0953, 1.75699)
 
 [node name="EyeHolder" type="MeshInstance3D" parent="DoorNode/eye_switch"]
 transform = Transform3D(0, 0.0748121, 0, -0.5975, 0, 0, 0, 5.77316e-15, 1.07125, 0.391479, 0, -0.503728)
@@ -1106,10 +1110,10 @@ light_energy = 13.64
 light_indirect_energy = 6.0
 
 [node name="eye_switch2" type="Node3D" parent="DoorNode"]
-transform = Transform3D(-2.68211e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -2.68211e-07, 13.778, 15.0953, 3.59272)
+transform = Transform3D(-2.68211e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -2.68211e-07, 13.778, 15.0953, 1.76167)
 
 [node name="EyeHolder" type="MeshInstance3D" parent="DoorNode/eye_switch2"]
-transform = Transform3D(0, 0.0748121, 0, -0.5975, 0, 0, 0, 5.77316e-15, 1.07125, 0.391479, 0, -0.503728)
+transform = Transform3D(0, 0.0748121, 0, -0.5975, 0, 0, 0, 6.21725e-15, 1.07125, 0.391479, 0, -0.503728)
 mesh = SubResource("ArrayMesh_do2vl")
 skeleton = NodePath("")
 surface_material_override/1 = SubResource("StandardMaterial3D_o30fa")
@@ -1547,7 +1551,10 @@ transform = Transform3D(0.0102462, 0, -0.925943, 0, 0.926, 0, 0.925943, 0, 0.010
 [node name="SpotLight3D" parent="Checkpoint2/concrete_bench" index="4"]
 transform = Transform3D(0.571382, 2.98023e-08, 1.77636e-15, 0, -2.49759e-08, 0.571383, 2.98023e-08, -0.571382, -2.49758e-08, 0.579666, 12.5714, -7.62939e-06)
 
-[node name="Area3D" parent="Checkpoint2/CSGSphere3D" index="0" node_paths=PackedStringArray("player")]
+[node name="WordSaladCreator" parent="Checkpoint2/CSGSphere3D" index="0" node_paths=PackedStringArray("text_ui")]
+text_ui = NodePath("../../../Pawn/GameUI/TextUI")
+
+[node name="CheckpointArea" parent="Checkpoint2/CSGSphere3D" index="1" node_paths=PackedStringArray("player")]
 player = NodePath("../../../Pawn")
 
 [node name="Checkpoint" parent="." instance=ExtResource("13_evw7p")]
@@ -1559,7 +1566,10 @@ visible = false
 [node name="concrete_bench" parent="Checkpoint" index="2"]
 transform = Transform3D(0.454354, 0.0673409, -0.804055, 0.0486295, 0.918807, 0.104431, 0.805404, -0.0934659, 0.447288, 1.54326, -1.67984, -0.766533)
 
-[node name="Area3D" parent="Checkpoint/CSGSphere3D" index="0" node_paths=PackedStringArray("player")]
+[node name="WordSaladCreator" parent="Checkpoint/CSGSphere3D" index="0" node_paths=PackedStringArray("text_ui")]
+text_ui = NodePath("../../../Pawn/GameUI/TextUI")
+
+[node name="CheckpointArea" parent="Checkpoint/CSGSphere3D" index="1" node_paths=PackedStringArray("player")]
 player = NodePath("../../../Pawn")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
@@ -1698,6 +1708,9 @@ text_ui = NodePath("../Pawn/GameUI/TextUI")
 display_text = Array[String](["FOLLOW HIS LEAD", "CTRL TO CROUCH", "GO UNDER", "CTRL", "PRESS CTRL", "HOLD CTRL"])
 disappear_after = 8.0
 word_salad_json = ExtResource("30_5n6cq")
+
+[node name="EnemySpawner" parent="." instance=ExtResource("31_y6hc3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -145.923, 3.51253, 1.84076)
 
 [connection signal="area_entered" from="DoorNode/door_fog/Area3D" to="DoorNode/video_man" method="_on_area_3d_area_entered"]
 [connection signal="area_entered" from="CombatArea1" to="CombatArea1" method="_on_area_entered"]
