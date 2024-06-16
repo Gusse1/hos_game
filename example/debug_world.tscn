@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://dafpnrc0x0g1s"]
+[gd_scene load_steps=102 format=3 uid="uid://dafpnrc0x0g1s"]
 
 [ext_resource type="Texture2D" uid="uid://bmeye3os7s6fg" path="res://textures/Gem_05-128x128.png" id="1_6lgns"]
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://addons/GoldGdt/Pawn.tscn" id="1_3375c"]
@@ -29,6 +29,7 @@
 [ext_resource type="Script" path="res://src/interactable_scripts/EyeDoor.gd" id="16_lipqe"]
 [ext_resource type="Material" uid="uid://cjf626usjxei7" path="res://materials/eye_switch_mat.tres" id="20_g37no"]
 [ext_resource type="PackedScene" uid="uid://b2wwbmnwgn1rh" path="res://assets/text_area_creator.tscn" id="26_20qvu"]
+[ext_resource type="JSON" path="res://src/ui/word_salad.json" id="30_5n6cq"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_78i8t"]
 frequency = 0.301
@@ -730,7 +731,7 @@ configuration = SubResource("Resource_gkxv8")
 environment = SubResource("Environment_138gm")
 
 [node name="Pawn" parent="." groups=["Pawn"] instance=ExtResource("1_3375c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.3567, 4.95766, -0.749966)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.0948, -0.959965, -0.749966)
 
 [node name="Interpolated Camera" parent="Pawn" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.710999, 0)
@@ -1675,23 +1676,28 @@ omni_range = 142.824
 
 [node name="TextAreaCreator" parent="." node_paths=PackedStringArray("text_ui") instance=ExtResource("26_20qvu")]
 text_ui = NodePath("../Pawn/GameUI/TextUI")
+display_text = Array[String](["ABOMINATIONS ARE MADE OF BLOOD", "ABOMINATIONS ARE PINATAS", "BLOOD CRYSTALS PROVIDE SUSTENANCE"])
+disappear_after = 8.0
+word_salad_json = ExtResource("30_5n6cq")
 
 [node name="TextAreaCreator2" parent="." node_paths=PackedStringArray("text_ui") instance=ExtResource("26_20qvu")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -117.909, -1.44257, 0.848925)
 text_ui = NodePath("../Pawn/GameUI/TextUI")
-display_text = "THE SPLEEN IS DELICIOUS"
-disappear_after = 2.0
+display_text = Array[String](["THE EYES ARE THE KEY", "THE EYES SEE OUT THERE", "LET THEM DO IT FOR YOU"])
+word_salad_json = ExtResource("30_5n6cq")
 
 [node name="TextAreaCreator2" parent="TextAreaCreator2" node_paths=PackedStringArray("text_ui") instance=ExtResource("26_20qvu")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -117.909, -1.44257, 0.848925)
 text_ui = NodePath("../../Pawn/GameUI/TextUI")
-display_text = "THE SPLEEN IS DELICIOUS"
+display_text = Array[String]([])
 disappear_after = 2.0
 
 [node name="TextAreaCreator3" parent="." node_paths=PackedStringArray("text_ui") instance=ExtResource("26_20qvu")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -284.049, 24.3793, 10.4724)
 text_ui = NodePath("../Pawn/GameUI/TextUI")
-display_text = "FOLLOW HIS LEAD, CTRL TO CROUCH"
+display_text = Array[String](["FOLLOW HIS LEAD", "CTRL TO CROUCH", "GO UNDER", "CTRL", "PRESS CTRL", "HOLD CTRL"])
+disappear_after = 8.0
+word_salad_json = ExtResource("30_5n6cq")
 
 [connection signal="area_entered" from="DoorNode/door_fog/Area3D" to="DoorNode/video_man" method="_on_area_3d_area_entered"]
 [connection signal="area_entered" from="CombatArea1" to="CombatArea1" method="_on_area_entered"]
