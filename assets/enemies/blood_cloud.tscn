@@ -1,7 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7a4mxf6n0has"]
+[gd_scene load_steps=15 format=3 uid="uid://c7a4mxf6n0has"]
 
 [ext_resource type="SphereMesh" uid="uid://jp3fdltcpbjl" path="res://blood_cloud.tres" id="1_nj7lj"]
 [ext_resource type="Script" path="res://assets/enemies/BloodDiamondRotator.gd" id="2_x30cq"]
+[ext_resource type="Script" path="res://src/ui/UITextCreator.gd" id="3_141u6"]
+[ext_resource type="Theme" uid="uid://om37whdt5pb7" path="res://assets/ui/UITextStyle.tres" id="4_rvk6l"]
+[ext_resource type="JSON" path="res://src/ui/word_salad.json" id="5_nly66"]
 
 [sub_resource type="Curve" id="Curve_qx4uc"]
 max_value = 2.0
@@ -57,7 +60,7 @@ size = Vector3(0.621033, 1.03125, 0.5)
 
 [node name="blood_cloud" type="Node3D"]
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." node_paths=PackedStringArray("blood_cloud_ui_text")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 cast_shadow = 0
 amount = 2
@@ -67,6 +70,7 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_34dco")
 draw_pass_1 = ExtResource("1_nj7lj")
 script = ExtResource("2_x30cq")
+blood_cloud_ui_text = NodePath("../UITextCreator")
 
 [node name="FogVolume" type="FogVolume" parent="."]
 size = Vector3(0.565293, 0.579982, 0.507906)
@@ -85,3 +89,11 @@ omni_range = 0.679523
 [node name="blood_cloud_shape" type="CollisionShape3D" parent="blood_cloud_trigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00283813, 0.015625, -0.0119629)
 shape = SubResource("BoxShape3D_p6hkm")
+
+[node name="UITextCreator" type="Node" parent="."]
+script = ExtResource("3_141u6")
+disappear_after = 2.0
+shake_amount = 0.5
+num_to_create = 1
+label_theme = ExtResource("4_rvk6l")
+word_salad_json = ExtResource("5_nly66")

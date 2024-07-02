@@ -6,11 +6,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_rsbch"]
 size = Vector3(22.4246, 22.9706, 1)
 
-[node name="TextAreaCreator" type="Area3D" node_paths=PackedStringArray("text_ui")]
+[node name="TextAreaCreator" type="Area3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 44.7886, 0.0218487, 0.326797)
 script = ExtResource("1_twld4")
-text_ui = NodePath("")
-display_text = "ABOMINATIONS ARE MADE OF BLOOD"
 disappear_after = 5.0
 shake_amount = 3.0
 label_theme = ExtResource("2_h2f2w")

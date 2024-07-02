@@ -20,6 +20,7 @@ var spread : float
 @onready var ammo_display : RichTextLabel = $AmmoText
 @export var gun_model : Node3D
 @export var crosshair : Line2D
+@export var text_creator : Node
 	
 # Resource variables
 @export var playerState : PlayerState

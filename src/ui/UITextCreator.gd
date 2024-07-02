@@ -28,13 +28,14 @@ func _create_word_salad():
 			add_child(label)
 			
 			# Randomly position the label on the screen
-			var screen_size = text_ui.size
+			#var screen_size = text_ui.size
+			var screen_size = get_viewport().get_visible_rect().size   
 			
-			var rand_x = randi_range(200, screen_size.x - label.size.x - 200)
+			var rand_x = randi_range(200, screen_size.x - label.size.x - 400)
 			var rand_y = randi_range(200, screen_size.y - label.size.y - 200)
 			label.position = Vector2(rand_x, rand_y)
 			labels.append(label)
-			print_debug("Printed text to screen with rand_x: " + str(rand_x) + " and rand_y: " + str(rand_y))
+			print_debug("Printed text to screen with rand_x: " + str(rand_x) + " and rand_y: " + str(rand_y) + " while screen size is " + str(screen_size))
 			
 	start_time = time
 	

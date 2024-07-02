@@ -42,5 +42,6 @@ func _damage(amount: float):
 	if current_health <= 0:
 		current_health = 0
 		print_debug("is kill")
+		
 		_spawn_blood_cloud()
 		get_parent().get_parent().queue_free()
