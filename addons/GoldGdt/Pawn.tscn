@@ -355,6 +355,10 @@ margin = 0.1
 editor_description = "
 "
 
+[node name="PlayerLight" type="OmniLight3D" parent="Interpolated Camera/Arm/Arm Anchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0218899, 0.29307, 0.35838)
+light_volumetric_fog_energy = 0.0
+
 [node name="Camera" type="Camera3D" parent="Interpolated Camera/Arm/Arm Anchor"]
 cull_mask = 1048573
 current = true
