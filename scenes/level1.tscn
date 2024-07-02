@@ -445,10 +445,10 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_el5kt")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_wtv2f"]
-viewport_path = NodePath(".")
+viewport_path = NodePath("EyeVidViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_xdmsm"]
-viewport_path = NodePath(".")
+viewport_path = NodePath("EyeVidViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o30fa"]
 resource_local_to_scene = true
