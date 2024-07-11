@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
-@onready var player_node = get_tree().current_scene.get_node("Pawn").get_node("Body")
+@onready var player_node = get_tree().current_scene.get_node("Pawn").get_node("SVC").get_node("VC").get_node("Body")
+@onready var player_state = get_tree().current_scene.get_node("Pawn").get_node("PlayerState")
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var enemy_model: Node3D = $enemy
 @onready var enemy_state: Node = $EnemyResources
@@ -54,7 +55,6 @@ func _physics_process(delta):
 		enemy_model.visible = false
 
 		if time - start_time >= 2 and timer_set:
-			print_debug("FUCK THISAOPHUIFSH UIOJKLAESFGHYUIOKASDG HJL<YUIOPLÖ ESGryuiopdghN yuiop ERGHWERYUIOPGH nWEYUIOSGKL ")
 			enemy_model.visible = true
 			inst_enemy_spawner.queue_free()
 			start = false
@@ -82,5 +82,5 @@ func _physics_process(delta):
 func _damage_player(delta):
 	attack_float += attack_float_cumulation*delta
 	if attack_float > 1:
-		player_node.get_parent().get_node("PlayerState")._adjust_health(-enemy_state.ATTACK_DAMAGE)
+		player_state._adjust_health(-enemy_state.ATTACK_DAMAGE)
 		attack_float = 0

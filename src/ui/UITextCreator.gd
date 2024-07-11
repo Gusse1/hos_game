@@ -17,6 +17,8 @@ var labels: Array[Label]
 var time: float
 var start_time: float
 
+var growl_audio = preload("res://assets/audio_streams/growl_audio.tscn")
+
 func _create_word_salad():
 	if is_instance_valid(word_salad_json):
 		for num in num_to_create:
@@ -37,6 +39,9 @@ func _create_word_salad():
 			labels.append(label)
 			print_debug("Printed text to screen with rand_x: " + str(rand_x) + " and rand_y: " + str(rand_y) + " while screen size is " + str(screen_size))
 			
+	var growl_audio_instance = growl_audio.instantiate()
+	label.add_child(growl_audio_instance)
+			
 	start_time = time
 	
 
@@ -56,7 +61,10 @@ func _create_custom_text():
 		label.position = Vector2(rand_x, rand_y)
 		labels.append(label)
 		print_debug("Printed text to screen with rand_x: " + str(rand_x) + " and rand_y: " + str(rand_y))
-
+		
+	var growl_audio_instance = growl_audio.instantiate()
+	label.add_child(growl_audio_instance)
+		
 	print_debug("starting timer")
 	start_time = time
 

@@ -15,6 +15,17 @@
 [ext_resource type="Script" path="res://src/shooting.gd" id="9_tnwmm"]
 [ext_resource type="PackedScene" uid="uid://b34q6nrbu7sys" path="res://models/handgun2.tscn" id="13_lpmqc"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_j7pn1"]
+size = Vector3(0.813, 1.45627, 0.813)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_u4rs7"]
+custom_solver_bias = 1.0
+margin = 0.25
+radius = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5sid"]
+albedo_color = Color(0.694118, 0, 0.00392157, 0.537255)
+
 [sub_resource type="Theme" id="Theme_jc27t"]
 
 [sub_resource type="Resource" id="Resource_vwc4m"]
@@ -27,21 +38,146 @@ BASE_DAMAGE = 5.0
 BASE_SPREAD = 1.0
 SPREAD_MOVEMENT_MODIFIER = 0.5
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_j7pn1"]
-size = Vector3(0.813, 1.45627, 0.813)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_u4rs7"]
-custom_solver_bias = 1.0
-margin = 0.25
-radius = 0.15
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5sid"]
-albedo_color = Color(0.694118, 0, 0.00392157, 0.537255)
-
 [node name="Pawn" type="Node3D" node_paths=PackedStringArray("View", "Camera")]
 script = ExtResource("1_qx48f")
 View = NodePath("View Control")
-Camera = NodePath("Interpolated Camera")
+Camera = NodePath("SVC/VC/Interpolated Camera")
+
+[node name="SVC" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+stretch_shrink = 4
+
+[node name="VC" type="SubViewport" parent="SVC"]
+handle_input_locally = false
+msaa_3d = 3
+size = Vector2i(480, 270)
+render_target_update_mode = 4
+
+[node name="Body" type="CharacterBody3D" parent="SVC/VC" node_paths=PackedStringArray("View", "collision_hull", "duck_timer")]
+collision_layer = 2
+collision_mask = 3
+floor_constant_speed = true
+script = ExtResource("6_k6qi8")
+Parameters = ExtResource("2_m0ukv")
+View = NodePath("../../../View Control")
+collision_hull = NodePath("Collision Hull")
+duck_timer = NodePath("Duck Timer")
+
+[node name="PlayerArea" type="Area3D" parent="SVC/VC/Body"]
+
+[node name="Collision Hull" type="CollisionShape3D" parent="SVC/VC/Body/PlayerArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.186363, 0)
+shape = SubResource("BoxShape3D_j7pn1")
+
+[node name="Collision Hull" type="CollisionShape3D" parent="SVC/VC/Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.186363, 0)
+shape = SubResource("BoxShape3D_j7pn1")
+
+[node name="Duck Timer" type="Timer" parent="SVC/VC/Body"]
+
+[node name="Horizontal View" type="Node3D" parent="SVC/VC/Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711, 0)
+
+[node name="Vertical View" type="Node3D" parent="SVC/VC/Body/Horizontal View"]
+
+[node name="Camera Mount" type="Marker3D" parent="SVC/VC/Body/Horizontal View/Vertical View"]
+gizmo_extents = 0.5
+
+[node name="Interpolated Camera" type="Node3D" parent="SVC/VC" node_paths=PackedStringArray("target", "camera_arm", "camera_anchor", "camera", "gun_camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711, 0)
+script = ExtResource("7_3b78s")
+Parameters = ExtResource("2_m0ukv")
+target = NodePath("../Body/Horizontal View/Vertical View/Camera Mount")
+camera_arm = NodePath("Arm")
+camera_anchor = NodePath("Arm/Arm Anchor")
+camera = NodePath("Arm/Arm Anchor/Camera")
+gun_camera = NodePath("Arm/Arm Anchor/Camera/SubViewportContainer/SubViewport/Guncam")
+
+[node name="Arm" type="SpringArm3D" parent="SVC/VC/Interpolated Camera"]
+shape = SubResource("SphereShape3D_u4rs7")
+spring_length = 0.0
+margin = 0.1
+
+[node name="Arm Anchor" type="Node3D" parent="SVC/VC/Interpolated Camera/Arm"]
+editor_description = "
+"
+
+[node name="PlayerLight" type="OmniLight3D" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0218899, 0.29307, 0.35838)
+light_volumetric_fog_energy = 0.0
+
+[node name="Camera" type="Camera3D" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor"]
+cull_mask = 1048573
+current = true
+fov = 90.6
+near = 0.001
+
+[node name="handgun" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera" instance=ExtResource("13_lpmqc")]
+transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 0.47196, -0.572988, -1.19287)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(480, 270)
+render_target_update_mode = 4
+
+[node name="Guncam" type="Camera3D" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.045, 0.646, -0.045)
+cull_mask = 2
+fov = 90.0
+
+[node name="gun" type="CSGBox3D" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera" node_paths=PackedStringArray("raycast", "firerate", "reload_timer", "gun_model", "crosshair", "playerState", "playerBody")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.166886, -0.325985, -0.737846)
+visible = false
+layers = 2
+size = Vector3(0.162964, 0.118652, 0.481445)
+script = ExtResource("9_tnwmm")
+raycast = NodePath("../RayCast3D")
+firerate = NodePath("firerate")
+reload_timer = NodePath("reload_timer")
+reload_accumulation = 2.0
+maganize_size = 7
+gun_model = NodePath("../handgun")
+crosshair = NodePath("../../../../../../../GameUI/Crosshair/Line2D")
+playerState = NodePath("../../../../../../../PlayerState")
+playerBody = NodePath("../../../../../Body")
+
+[node name="reload_timer" type="Timer" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun"]
+one_shot = true
+
+[node name="firerate" type="Timer" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun"]
+wait_time = 0.2
+one_shot = true
+
+[node name="gun" type="CSGBox3D" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.70443e-05, -0.0894614, 0.17784)
+size = Vector3(0.162964, 0.118652, 0.263306)
+
+[node name="RayCast3D" type="RayCast3D" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-06, -1, 0, 100, -4.37114e-08, 0, 0, 0)
+debug_shape_custom_color = Color(0.87451, 0, 0, 1)
+
+[node name="laser_debug" type="CSGBox3D" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/RayCast3D"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 1.42109e-14, 0, -2.81375e-12, 0.05, 0, -0.467556, -9.53674e-07)
+visible = false
+layers = 512
+material_override = SubResource("StandardMaterial3D_s5sid")
+size = Vector3(1, 17.7839, 1)
 
 [node name="GameUI" type="Control" parent="."]
 layout_mode = 3
@@ -156,7 +292,7 @@ mouse_filter = 2
 script = ExtResource("7_vbtkw")
 Controls = NodePath("../User Input")
 View = NodePath("../View Control")
-Body = NodePath("../Body")
+Body = NodePath("../SVC/VC/Body")
 GameInfo = NodePath("Game/Info")
 ControlsInfo = NodePath("Controls/Info")
 ViewInfo = NodePath("View Control/Info")
@@ -278,153 +414,35 @@ fit_content = true
 [node name="User Input" type="Node" parent="." node_paths=PackedStringArray("Body", "Move", "View")]
 script = ExtResource("3_sa8ga")
 Parameters = ExtResource("2_m0ukv")
-Body = NodePath("../Body")
+Body = NodePath("../SVC/VC/Body")
 Move = NodePath("../Move Functions")
 View = NodePath("../View Control")
 
 [node name="View Control" type="Node" parent="." node_paths=PackedStringArray("Body", "horizontal_view", "vertical_view", "camera_mount")]
 script = ExtResource("5_say2d")
 Parameters = ExtResource("2_m0ukv")
-Body = NodePath("../Body")
-horizontal_view = NodePath("../Body/Horizontal View")
-vertical_view = NodePath("../Body/Horizontal View/Vertical View")
-camera_mount = NodePath("../Body/Horizontal View/Vertical View/Camera Mount")
+Body = NodePath("../SVC/VC/Body")
+horizontal_view = NodePath("../SVC/VC/Body/Horizontal View")
+vertical_view = NodePath("../SVC/VC/Body/Horizontal View/Vertical View")
+camera_mount = NodePath("../SVC/VC/Body/Horizontal View/Vertical View/Camera Mount")
 
 [node name="Move Functions" type="Node" parent="." node_paths=PackedStringArray("Body")]
 script = ExtResource("4_5gavo")
 Parameters = ExtResource("2_m0ukv")
-Body = NodePath("../Body")
+Body = NodePath("../SVC/VC/Body")
 
-[node name="PlayerState" type="Node" parent="." node_paths=PackedStringArray("blood_text", "handgun")]
+[node name="PlayerState" type="Node" parent="." node_paths=PackedStringArray("player_body", "blood_text", "handgun")]
 script = ExtResource("7_5xn01")
 playerVariables = SubResource("Resource_vwc4m")
 blood_recovery_rate = 0.5
+player_body = NodePath("../SVC/VC/Body")
 blood_text = NodePath("../GameUI/BloodDisplay/RichTextLabel")
-handgun = NodePath("../Interpolated Camera/Arm/Arm Anchor/Camera/handgun")
+handgun = NodePath("../SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/handgun")
 
 [node name="PlayerHealing" type="Node" parent="PlayerState" node_paths=PackedStringArray("playerState")]
 script = ExtResource("9_sve2w")
 playerState = NodePath("..")
 
-[node name="Body" type="CharacterBody3D" parent="." node_paths=PackedStringArray("View", "collision_hull", "duck_timer")]
-collision_layer = 2
-collision_mask = 3
-floor_constant_speed = true
-script = ExtResource("6_k6qi8")
-Parameters = ExtResource("2_m0ukv")
-View = NodePath("../View Control")
-collision_hull = NodePath("Collision Hull")
-duck_timer = NodePath("Duck Timer")
-
-[node name="PlayerArea" type="Area3D" parent="Body"]
-
-[node name="Collision Hull" type="CollisionShape3D" parent="Body/PlayerArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.186363, 0)
-shape = SubResource("BoxShape3D_j7pn1")
-
-[node name="Collision Hull" type="CollisionShape3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.186363, 0)
-shape = SubResource("BoxShape3D_j7pn1")
-
-[node name="Duck Timer" type="Timer" parent="Body"]
-
-[node name="Horizontal View" type="Node3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711, 0)
-
-[node name="Vertical View" type="Node3D" parent="Body/Horizontal View"]
-
-[node name="Camera Mount" type="Marker3D" parent="Body/Horizontal View/Vertical View"]
-gizmo_extents = 0.5
-
-[node name="Interpolated Camera" type="Node3D" parent="." node_paths=PackedStringArray("target", "camera_arm", "camera_anchor", "camera", "gun_camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711, 0)
-script = ExtResource("7_3b78s")
-Parameters = ExtResource("2_m0ukv")
-target = NodePath("../Body/Horizontal View/Vertical View/Camera Mount")
-camera_arm = NodePath("Arm")
-camera_anchor = NodePath("Arm/Arm Anchor")
-camera = NodePath("Arm/Arm Anchor/Camera")
-gun_camera = NodePath("Arm/Arm Anchor/Camera/SubViewportContainer/SubViewport/Guncam")
-
-[node name="Arm" type="SpringArm3D" parent="Interpolated Camera"]
-shape = SubResource("SphereShape3D_u4rs7")
-spring_length = 0.0
-margin = 0.1
-
-[node name="Arm Anchor" type="Node3D" parent="Interpolated Camera/Arm"]
-editor_description = "
-"
-
-[node name="PlayerLight" type="OmniLight3D" parent="Interpolated Camera/Arm/Arm Anchor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0218899, 0.29307, 0.35838)
-light_volumetric_fog_energy = 0.0
-
-[node name="Camera" type="Camera3D" parent="Interpolated Camera/Arm/Arm Anchor"]
-cull_mask = 1048573
-current = true
-fov = 90.6
-near = 0.001
-
-[node name="handgun" parent="Interpolated Camera/Arm/Arm Anchor/Camera" instance=ExtResource("13_lpmqc")]
-transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 0.47196, -0.572988, -1.19287)
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Interpolated Camera/Arm/Arm Anchor/Camera"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="Interpolated Camera/Arm/Arm Anchor/Camera/SubViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1920, 1080)
-render_target_update_mode = 4
-
-[node name="Guncam" type="Camera3D" parent="Interpolated Camera/Arm/Arm Anchor/Camera/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.045, 0.646, -0.045)
-cull_mask = 2
-fov = 90.0
-
-[node name="gun" type="CSGBox3D" parent="Interpolated Camera/Arm/Arm Anchor/Camera" node_paths=PackedStringArray("raycast", "firerate", "reload_timer", "gun_model", "crosshair", "playerState", "playerBody")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.166886, -0.325985, -0.737846)
-visible = false
-layers = 2
-size = Vector3(0.162964, 0.118652, 0.481445)
-script = ExtResource("9_tnwmm")
-raycast = NodePath("../RayCast3D")
-firerate = NodePath("firerate")
-reload_timer = NodePath("reload_timer")
-reload_accumulation = 2.0
-maganize_size = 7
-gun_model = NodePath("../handgun")
-crosshair = NodePath("../../../../../GameUI/Crosshair/Line2D")
-playerState = NodePath("../../../../../PlayerState")
-playerBody = NodePath("../../../../../Body")
-
-[node name="reload_timer" type="Timer" parent="Interpolated Camera/Arm/Arm Anchor/Camera/gun"]
-one_shot = true
-
-[node name="firerate" type="Timer" parent="Interpolated Camera/Arm/Arm Anchor/Camera/gun"]
-wait_time = 0.2
-one_shot = true
-
-[node name="gun" type="CSGBox3D" parent="Interpolated Camera/Arm/Arm Anchor/Camera/gun"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.70443e-05, -0.0894614, 0.17784)
-size = Vector3(0.162964, 0.118652, 0.263306)
-
-[node name="RayCast3D" type="RayCast3D" parent="Interpolated Camera/Arm/Arm Anchor/Camera"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-06, -1, 0, 100, -4.37114e-08, 0, 0, 0)
-debug_shape_custom_color = Color(0.87451, 0, 0, 1)
-
-[node name="laser_debug" type="CSGBox3D" parent="Interpolated Camera/Arm/Arm Anchor/Camera/RayCast3D"]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 1.42109e-14, 0, -2.81375e-12, 0.05, 0, -0.467556, -9.53674e-07)
-visible = false
-layers = 512
-material_override = SubResource("StandardMaterial3D_s5sid")
-size = Vector3(1, 17.7839, 1)
-
-[connection signal="area_entered" from="Body/PlayerArea" to="PlayerState" method="_on_player_area_area_entered"]
-[connection signal="timeout" from="Interpolated Camera/Arm/Arm Anchor/Camera/gun/reload_timer" to="Interpolated Camera/Arm/Arm Anchor/Camera/gun" method="_on_reload_timer_timeout"]
-[connection signal="timeout" from="Interpolated Camera/Arm/Arm Anchor/Camera/gun/firerate" to="Interpolated Camera/Arm/Arm Anchor/Camera/gun" method="_on_firerate_timeout"]
+[connection signal="area_entered" from="SVC/VC/Body/PlayerArea" to="PlayerState" method="_on_player_area_area_entered"]
+[connection signal="timeout" from="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun/reload_timer" to="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun" method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun/firerate" to="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun" method="_on_firerate_timeout"]
