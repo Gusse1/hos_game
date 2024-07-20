@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://b34q6nrbu7sys"]
+[gd_scene load_steps=48 format=3 uid="uid://b34q6nrbu7sys"]
 
 [ext_resource type="Script" path="res://models/handgun_info.gd" id="1_goqh3"]
 [ext_resource type="Shader" path="res://assets/ui/ammo_display.gdshader" id="1_sfv7b"]
@@ -12,6 +12,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_67135"]
 shader = ExtResource("1_sfv7b")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_454k0"]
+bg_color = Color(0.0745098, 0.298039, 0.211765, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_mbmmw"]
 variation_transform = Transform2D(1.12, 0, -0.37, 1.58, 0, 0)
@@ -686,11 +689,13 @@ offset_bottom = -64.06
 grow_horizontal = 2
 grow_vertical = 0
 tooltip_text = "BLOOD"
+theme_override_styles/fill = SubResource("StyleBoxFlat_454k0")
 fill_mode = 3
 show_percentage = false
 script = ExtResource("3_0d2ar")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/SubViewportContainer/SubViewport/ColorRect/HealthBar"]
+visible = false
 layout_mode = 0
 offset_top = 10.0
 offset_right = 40.0
@@ -737,6 +742,7 @@ show_percentage = false
 script = ExtResource("3_68agk")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/SubViewportContainer/SubViewport/ColorRect/BloodBar"]
+visible = false
 layout_mode = 0
 offset_top = 10.0
 offset_right = 40.0

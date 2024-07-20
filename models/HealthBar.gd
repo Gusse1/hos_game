@@ -5,7 +5,7 @@ extends ProgressBar
 func _ready():
 	var sb = StyleBoxFlat.new()
 	add_theme_stylebox_override("fill", sb)
-	sb.bg_color = Color("850101")
+	sb.bg_color = Color("379126")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

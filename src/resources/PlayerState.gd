@@ -8,6 +8,7 @@ var current_health : float
 @export var difficulty: int = 20
 @export var player_body: Node3D
 
+@export var level_start_checkpoint_location : Vector3
 var current_checkpoint_location : Vector3
 
 # UI
@@ -19,7 +20,7 @@ func _ready():
 	current_blood = playerVariables.MAX_BLOOD
 	current_health = playerVariables.MAX_HEALTH / 2
 	handgun._update_health_display(current_health, playerVariables.MAX_HEALTH)
-
+	current_checkpoint_location = level_start_checkpoint_location
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

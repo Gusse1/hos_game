@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://cdaxeyxys1tfs"]
+[gd_scene load_steps=106 format=3 uid="uid://cdaxeyxys1tfs"]
 
 [ext_resource type="FastNoiseLite" uid="uid://bmubs6juomn5f" path="res://materials/fast_noise.tres" id="1_dfkmm"]
 [ext_resource type="Texture2D" uid="uid://bmeye3os7s6fg" path="res://textures/Gem_05-128x128.png" id="2_4eh5v"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://b6ljyf4f4qj8t" path="res://assets/interactables/checkpoint.tscn" id="28_nn6ju"]
 [ext_resource type="PackedScene" uid="uid://b2wwbmnwgn1rh" path="res://assets/text_area_creator.tscn" id="29_fnewr"]
 [ext_resource type="JSON" path="res://src/ui/word_salad.json" id="30_vm8l0"]
+[ext_resource type="Script" path="res://src/interactable_scripts/KillZone.gd" id="33_glssu"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_78i8t"]
 frequency = 0.301
@@ -682,6 +683,9 @@ density = 0.0685
 albedo = Color(0.596078, 0.0235294, 0, 1)
 edge_fade = 2.5992
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_k4rwp"]
+size = Vector3(2000, 100, 200)
+
 [node name="Debug World" type="Node3D"]
 
 [node name="Warp2" type="CSGBox3D" parent="."]
@@ -747,7 +751,7 @@ volume_db = -12.417
 
 [node name="Creepy_Hum2" type="AudioStreamPlayer" parent="BackgroundAudio"]
 stream = ExtResource("12_8kbum")
-volume_db = -25.0
+volume_db = -21.119
 pitch_scale = 0.6
 autoplay = true
 
@@ -759,6 +763,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.036, 51.9381, 0)
 
 [node name="Interpolated Camera" parent="Pawn/SVC/VC" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.036, 52.6491, 0)
+
+[node name="PlayerState" parent="Pawn" index="6"]
+level_start_checkpoint_location = Vector3(167.968, 80.5037, 0.94486)
 
 [node name="RoomGeneration" type="Node3D" parent="." node_paths=PackedStringArray("grid_printer")]
 script = ExtResource("12_qgf58")
@@ -1729,11 +1736,20 @@ display_text = Array[String](["FOLLOW HIS LEAD", "CTRL TO CROUCH", "GO UNDER", "
 disappear_after = 8.0
 word_salad_json = ExtResource("30_vm8l0")
 
+[node name="KillZone" type="Area3D" parent="." node_paths=PackedStringArray("playerState")]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, -64.571, 0)
+script = ExtResource("33_glssu")
+playerState = NodePath("../Pawn/PlayerState")
+
+[node name="KillCollider" type="CollisionShape3D" parent="KillZone"]
+shape = SubResource("BoxShape3D_k4rwp")
+
 [connection signal="area_entered" from="DoorNode/door_fog/Area3D" to="DoorNode/video_man" method="_on_area_3d_area_entered"]
 [connection signal="area_entered" from="CombatArea1" to="CombatArea1" method="_on_area_entered"]
 [connection signal="area_entered" from="DoorNode2/door_fog/Area3D" to="DoorNode2/video_man" method="_on_area_3d_area_entered"]
 [connection signal="area_entered" from="CombatArea2" to="CombatArea2" method="_on_area_entered"]
 [connection signal="area_entered" from="CombatArea3" to="CombatArea3" method="_on_area_entered"]
+[connection signal="area_entered" from="KillZone" to="KillZone" method="_on_area_entered"]
 
 [editable path="EyeVidViewport"]
 [editable path="Pawn"]
