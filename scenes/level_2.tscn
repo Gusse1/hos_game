@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://bbibnw3wxy20d"]
+
+[ext_resource type="PackedScene" uid="uid://dmra7k702xhnr" path="res://assets/rooms/hub_level.tscn" id="1_gu0a6"]
+[ext_resource type="PackedScene" uid="uid://d4u3qwcrc37p" path="res://scenes/level_pieces/background_audio.tscn" id="2_o7ds6"]
+[ext_resource type="PackedScene" uid="uid://bb44urkanokx" path="res://scenes/level_pieces/bottom_fog.tscn" id="3_dhw5e"]
+[ext_resource type="PackedScene" uid="uid://qawdt8k11fsu" path="res://scenes/level_pieces/post_process_layer.tscn" id="4_wt8c4"]
+[ext_resource type="PackedScene" uid="uid://b6ro3qtuffgog" path="res://scenes/level_pieces/videotape_player.tscn" id="5_4vc7l"]
+[ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://addons/GoldGdt/Pawn.tscn" id="7_3g35l"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ixcmd"]
+sky_top_color = Color(0.2, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_4yols"]
+sky_material = SubResource("ProceduralSkyMaterial_ixcmd")
+
+[sub_resource type="Environment" id="Environment_1i4cx"]
+background_mode = 2
+sky = SubResource("Sky_4yols")
+ambient_light_source = 1
+ambient_light_color = Color(0.592157, 0, 0.105882, 1)
+ambient_light_energy = 4.7
+tonemap_mode = 3
+ssr_max_steps = 512
+ssr_fade_in = 0.0039417
+ssr_fade_out = 1e-05
+ssr_depth_tolerance = 128.0
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_read_sky_light = false
+sdfgi_min_cell_size = 1.17744
+glow_enabled = true
+glow_bloom = 0.2
+fog_light_color = Color(0.52549, 0, 0.0156863, 1)
+fog_density = 0.04
+fog_height = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0146
+volumetric_fog_albedo = Color(0.52549, 0, 0.0156863, 1)
+volumetric_fog_length = 256.0
+volumetric_fog_temporal_reprojection_amount = 0.95
+adjustment_enabled = true
+
+[node name="level2" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-3.78552e-08, 0.5, -0.866025, 2.18557e-08, 0.866025, 0.5, 1, 0, -4.37114e-08, -588.042, 213.773, 9.97335)
+light_color = Color(1, 0.188235, 0.227451, 1)
+
+[node name="hub_level" parent="." instance=ExtResource("1_gu0a6")]
+
+[node name="BackgroundAudio" parent="." instance=ExtResource("2_o7ds6")]
+
+[node name="FogVolume" parent="." instance=ExtResource("3_dhw5e")]
+transform = Transform3D(1.89, 0, 0, 0, 1.89, 0, 0, 0, 1.89, -13.3765, -88.5212, -0.8528)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("4_wt8c4")]
+
+[node name="VideotapePlayer" parent="." instance=ExtResource("5_4vc7l")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1i4cx")
+
+[node name="Pawn" parent="." instance=ExtResource("7_3g35l")]
+
+[node name="Body" parent="Pawn/SVC/VC" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 11)
+
+[node name="Interpolated Camera" parent="Pawn/SVC/VC" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.711, 11)
+
+[editable path="Pawn"]

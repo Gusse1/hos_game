@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb44urkanokx"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t1ivw"]
+frequency = 0.0975
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_gjdt4"]
+noise = SubResource("FastNoiseLite_t1ivw")
+
+[sub_resource type="FogMaterial" id="FogMaterial_6uekb"]
+density = 100.0
+albedo = Color(0.567193, 0, 0.0532531, 1)
+emission = Color(1, 0.270588, 0.254902, 1)
+edge_fade = 0.136604
+density_texture = SubResource("NoiseTexture3D_gjdt4")
+
+[node name="FogVolume" type="FogVolume"]
+transform = Transform3D(1.89, 0, 0, 0, 1.89, 0, 0, 0, 1.89, -173.225, -32.431, 0)
+size = Vector3(914.902, 16.91, 130.62)
+material = SubResource("FogMaterial_6uekb")

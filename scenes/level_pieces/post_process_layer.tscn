@@ -1,0 +1,128 @@
+[gd_scene load_steps=19 format=3 uid="uid://qawdt8k11fsu"]
+
+[ext_resource type="Script" path="res://addons/post_processing/node/post_process.gd" id="1_dymw5"]
+[ext_resource type="Script" path="res://addons/post_processing/resource/post_processing_configuration.gd" id="2_sctrc"]
+[ext_resource type="PackedScene" uid="uid://ccxkudlhbgmv7" path="res://addons/post_processing/node/children/ChromaticAberration.tscn" id="3_p64bl"]
+[ext_resource type="PackedScene" uid="uid://cxsuld87nxd0v" path="res://addons/post_processing/node/children/blur.tscn" id="4_htctu"]
+[ext_resource type="PackedScene" uid="uid://c5qv7q54m4xn6" path="res://addons/post_processing/node/children/fish_eye.tscn" id="5_ablha"]
+[ext_resource type="PackedScene" uid="uid://crm7gskny246i" path="res://addons/post_processing/node/children/vignette.tscn" id="6_nr12e"]
+[ext_resource type="PackedScene" uid="uid://dwioerk4ps6rr" path="res://addons/post_processing/node/children/glitch.tscn" id="7_ynfb0"]
+[ext_resource type="PackedScene" uid="uid://c0d4h1un0350r" path="res://addons/post_processing/node/children/outline.tscn" id="8_seqqq"]
+[ext_resource type="PackedScene" uid="uid://b7k7vdwyhgqpd" path="res://addons/post_processing/node/children/screen_shake.tscn" id="9_078wa"]
+[ext_resource type="PackedScene" uid="uid://ctdvjs742haos" path="res://addons/post_processing/node/children/analog_monitor.tscn" id="10_gnphd"]
+[ext_resource type="PackedScene" uid="uid://b2fkqs44w2304" path="res://addons/post_processing/node/children/grain.tscn" id="11_t3u41"]
+[ext_resource type="PackedScene" uid="uid://b0770lwctcbti" path="res://addons/post_processing/node/children/circular_waves.tscn" id="12_t28gd"]
+[ext_resource type="PackedScene" uid="uid://whsu0j72038r" path="res://addons/post_processing/node/children/speed_lines.tscn" id="13_ws3qm"]
+[ext_resource type="PackedScene" uid="uid://k8tnsut5pohj" path="res://addons/post_processing/node/children/ascii.tscn" id="14_qg7nc"]
+[ext_resource type="PackedScene" uid="uid://mfrkdk8k6ojn" path="res://addons/post_processing/node/children/CRT.tscn" id="15_hbbu0"]
+[ext_resource type="PackedScene" uid="uid://q8472v8awese" path="res://addons/post_processing/node/children/color_correction.tscn" id="16_6usmy"]
+[ext_resource type="PackedScene" uid="uid://bs1yan5h4eao8" path="res://addons/post_processing/node/children/pixelate.tscn" id="17_v67bh"]
+
+[sub_resource type="Resource" id="Resource_gkxv8"]
+script = ExtResource("2_sctrc")
+reload = false
+ASCII = false
+ASCIISize = Vector2(4, 9)
+ChromaticAberration = false
+StrenghtCA = 1.0
+Blur = false
+L_O_D = 2.787
+FishEye = true
+FishEyeAspect = 0.1
+FishEyeDistortion = 0.55
+FishEyeRadius = 1.0
+FishEyeAlpha = 1.0
+FishEyeCrop = 1.0
+FishEyeCropColor = Color(0, 0, 0, 1)
+Vignette = true
+VignetteIntensity = 0.4
+VignetteOpacity = 0.2
+VignetteR_G_B = Color(0, 0, 0, 1)
+Glitch = false
+GlitchRange = 0.0
+GlitchNoiseQuality = 250.0
+GlitchIntenity = 0.002
+GlitchOffset = 0.003
+GlitchColorOffset = 0.0
+Outline = false
+OutlineColor = Color(0, 0, 0, 1)
+OutlineThreshold = 0.0
+OutlineBlend = 0.01
+Grain = false
+GrainPower = 75
+CircularWaves = false
+CircularWavesAmplitude = 2.0
+CircularWavesFrequency = 12.69
+CircularWavesRippleRate = 9.2
+SpeedLines = false
+SpeedLinesColor = Color(1, 1, 1, 1)
+SpeedLinesCount = 2
+SpeedLineDensity = 0.072
+SpeedLineSpeed = 20
+ColorCorrection = false
+ColorCorrectionTint = Color(0, 0, 0, 1)
+ColorCorrectionBrightness = 0.0
+ColorCorrectionSaturation = 0.0
+Pixelate = false
+PixelatePixelSize = 3
+CRT = false
+overlay = false
+scanlines_opacity = 0.4
+scanlines_width = 0.25
+grille_opacity = 0.3
+pixelate = true
+roll_speed = 8.0
+roll_size = 15.0
+roll_variation = 1.8
+distort_intensity = 0.05
+noise_opacity = 0.4
+noise_speed = 5.0
+static_noise_intensity = 0.06
+aberration = 0.03
+brightness = 1.4
+discolor = true
+warp_amount = 1.0
+clip_warp = false
+vignette_intensity = 0.4
+vignette_opacity = 0.5
+AnalogMonitor = false
+AnalogMonitorResolution = Vector2(256, 256)
+ScreenShake = false
+ScreenShakePower = 0.88
+
+[node name="CanvasLayer" type="CanvasLayer"]
+follow_viewport_enabled = true
+script = ExtResource("1_dymw5")
+configuration = SubResource("Resource_gkxv8")
+
+[node name="ChromaticAberration" parent="." instance=ExtResource("3_p64bl")]
+
+[node name="Blur" parent="." instance=ExtResource("4_htctu")]
+
+[node name="FishEye" parent="." instance=ExtResource("5_ablha")]
+visible = true
+
+[node name="Vignette" parent="." instance=ExtResource("6_nr12e")]
+visible = true
+
+[node name="Glitch" parent="." instance=ExtResource("7_ynfb0")]
+
+[node name="Outline" parent="." instance=ExtResource("8_seqqq")]
+
+[node name="ScreenShake" parent="." instance=ExtResource("9_078wa")]
+
+[node name="AnalogMonitor" parent="." instance=ExtResource("10_gnphd")]
+
+[node name="Grain" parent="." instance=ExtResource("11_t3u41")]
+
+[node name="CircularWaves" parent="." instance=ExtResource("12_t28gd")]
+
+[node name="SpeedLines" parent="." instance=ExtResource("13_ws3qm")]
+
+[node name="Ascii" parent="." instance=ExtResource("14_qg7nc")]
+
+[node name="CRT" parent="." instance=ExtResource("15_hbbu0")]
+
+[node name="ColorCorrection" parent="." instance=ExtResource("16_6usmy")]
+
+[node name="Pixelate" parent="." instance=ExtResource("17_v67bh")]

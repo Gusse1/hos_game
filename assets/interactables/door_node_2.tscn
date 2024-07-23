@@ -1,0 +1,233 @@
+[gd_scene load_steps=22 format=3 uid="uid://c6oq0nebp4hc4"]
+
+[ext_resource type="Script" path="res://example/VideoMan.gd" id="1_7line"]
+[ext_resource type="Texture2D" uid="uid://gfsioaau67h5" path="res://textures/Stone_18-128x128.png" id="2_esh75"]
+[ext_resource type="Material" uid="uid://cjf626usjxei7" path="res://materials/eye_switch_mat.tres" id="3_hv5f8"]
+[ext_resource type="Texture2D" uid="uid://8qa8sha3w5pi" path="res://textures/Dirt_03-128x128.png" id="4_tjabc"]
+[ext_resource type="Script" path="res://src/interactable_scripts/Eye.gd" id="5_w7ame"]
+[ext_resource type="Texture2D" uid="uid://bst8amvx5wnx3" path="res://textures/Metal_04-128x128.png" id="6_ihjsm"]
+[ext_resource type="Script" path="res://src/interactable_scripts/EyeDoor.gd" id="7_c3hlo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u012p"]
+resource_name = "EyeStone"
+cull_mode = 2
+albedo_texture = ExtResource("2_esh75")
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eu6hb"]
+resource_name = "EyeVideoMat"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_mtr4v"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 54,
+"index_data": PackedByteArray(8, 0, 3, 0, 1, 0, 8, 0, 9, 0, 3, 0, 9, 0, 5, 0, 3, 0, 9, 0, 10, 0, 5, 0, 3, 0, 7, 0, 1, 0, 3, 0, 5, 0, 7, 0, 10, 0, 7, 0, 5, 0, 10, 0, 11, 0, 7, 0, 11, 0, 1, 0, 7, 0, 11, 0, 8, 0, 1, 0, 2, 0, 8, 0, 0, 0, 2, 0, 9, 0, 8, 0, 4, 0, 9, 0, 2, 0, 4, 0, 10, 0, 9, 0, 6, 0, 10, 0, 4, 0, 6, 0, 11, 0, 10, 0, 0, 0, 11, 0, 6, 0, 0, 0, 8, 0, 11, 0),
+"name": "EyeStone",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray(255, 127, 0, 0, 141, 38, 0, 0, 255, 127, 255, 255, 0, 0, 0, 0, 113, 217, 0, 0, 255, 127, 0, 0, 255, 255, 255, 255, 255, 127, 0, 0, 255, 127, 0, 0, 113, 217, 0, 0, 255, 127, 255, 255, 255, 255, 0, 0, 141, 38, 0, 0, 255, 127, 0, 0, 0, 0, 255, 255, 255, 127, 0, 0, 255, 127, 0, 0, 5, 16, 0, 0, 249, 239, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 249, 239, 0, 0, 5, 16, 0, 0, 255, 127, 0, 0)
+}, {
+"aabb": AABB(-0.69879, -1, -0.69879, 1.39758, 1.38844, 1.39758),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray(1, 0, 6, 0, 2, 0, 1, 0, 5, 0, 6, 0, 4, 0, 6, 0, 5, 0, 4, 0, 7, 0, 6, 0, 2, 0, 7, 0, 3, 0, 2, 0, 6, 0, 7, 0, 0, 0, 5, 0, 1, 0, 0, 0, 4, 0, 5, 0, 3, 0, 4, 0, 0, 0, 3, 0, 7, 0, 4, 0),
+"name": "EyeVideoMat",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(255, 127, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 127, 0, 0, 255, 127, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 255, 127, 0, 0, 255, 127, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 127, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hn2uj"]
+resource_name = "eye_switch_Cylinder"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray(255, 191, 235, 142, 0, 0, 0, 0, 255, 63, 142, 130, 255, 255, 0, 0, 18, 241, 255, 191, 112, 125, 255, 191, 255, 191, 0, 0, 255, 191, 0, 0, 255, 191, 18, 241, 255, 127, 0, 0, 255, 63, 111, 253, 255, 127, 0, 0, 235, 142, 255, 191, 255, 63, 0, 0, 255, 63, 0, 0, 143, 2, 255, 191, 0, 0, 255, 127, 255, 191, 142, 130, 255, 255, 255, 127, 111, 253, 255, 191, 255, 191, 255, 127, 255, 191, 255, 127, 255, 127, 255, 127, 255, 191, 111, 253, 255, 127, 255, 127, 255, 63, 255, 127, 255, 63, 255, 127, 142, 130, 255, 191),
+"format": 34896613399,
+"index_count": 54,
+"index_data": PackedByteArray(18, 0, 6, 0, 3, 0, 18, 0, 20, 0, 6, 0, 21, 0, 11, 0, 7, 0, 21, 0, 24, 0, 11, 0, 5, 0, 15, 0, 2, 0, 5, 0, 10, 0, 15, 0, 22, 0, 14, 0, 9, 0, 22, 0, 26, 0, 14, 0, 25, 0, 1, 0, 13, 0, 25, 0, 16, 0, 1, 0, 4, 0, 17, 0, 0, 0, 4, 0, 19, 0, 17, 0, 8, 0, 19, 0, 4, 0, 8, 0, 23, 0, 19, 0, 12, 0, 23, 0, 8, 0, 12, 0, 27, 0, 23, 0, 0, 0, 27, 0, 12, 0, 0, 0, 17, 0, 27, 0),
+"material": SubResource("StandardMaterial3D_u012p"),
+"name": "EyeStone",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 28,
+"vertex_data": PackedByteArray(255, 127, 0, 0, 141, 38, 255, 191, 255, 127, 255, 255, 0, 0, 1, 224, 255, 127, 255, 255, 0, 0, 255, 191, 255, 127, 255, 255, 0, 0, 1, 224, 113, 217, 0, 0, 255, 127, 255, 191, 255, 255, 255, 255, 255, 127, 255, 191, 255, 255, 255, 255, 255, 127, 1, 224, 255, 255, 255, 255, 255, 127, 11, 160, 255, 127, 0, 0, 113, 217, 255, 191, 255, 127, 255, 255, 255, 255, 11, 160, 255, 127, 255, 255, 255, 255, 255, 191, 255, 127, 255, 255, 255, 255, 11, 160, 141, 38, 0, 0, 255, 127, 255, 191, 0, 0, 255, 255, 255, 127, 1, 224, 0, 0, 255, 255, 255, 127, 11, 160, 0, 0, 255, 255, 255, 127, 255, 191, 255, 127, 0, 0, 5, 16, 1, 224, 255, 127, 0, 0, 5, 16, 255, 191, 255, 127, 0, 0, 5, 16, 1, 224, 249, 239, 0, 0, 255, 127, 255, 191, 249, 239, 0, 0, 255, 127, 1, 224, 249, 239, 0, 0, 255, 127, 11, 160, 255, 127, 0, 0, 249, 239, 11, 160, 255, 127, 0, 0, 249, 239, 255, 191, 255, 127, 0, 0, 249, 239, 11, 160, 5, 16, 0, 0, 255, 127, 1, 224, 5, 16, 0, 0, 255, 127, 11, 160, 5, 16, 0, 0, 255, 127, 255, 191, 0, 0, 255, 127, 29, 124, 219, 254, 255, 255, 255, 127, 220, 126, 225, 3, 0, 0, 255, 127, 255, 255, 255, 127, 220, 126, 225, 3, 165, 121, 252, 8, 0, 0, 255, 127, 3, 119, 164, 249, 255, 255, 255, 127, 165, 121, 252, 8, 0, 0, 255, 127, 29, 124, 219, 254, 3, 119, 164, 249, 255, 255, 255, 127, 29, 124, 219, 254, 0, 0, 255, 127, 220, 126, 225, 3, 0, 0, 255, 127, 220, 126, 225, 3, 165, 121, 252, 8, 3, 119, 164, 249, 0, 0, 255, 127, 165, 121, 252, 8, 29, 124, 219, 254, 3, 119, 164, 249, 0, 0, 255, 127)
+}, {
+"aabb": AABB(-0.69879, -1, -0.69879, 1.39758, 1.38844, 1.39758),
+"attribute_data": PackedByteArray(255, 191, 235, 142, 255, 191, 235, 142, 18, 241, 255, 191, 18, 241, 255, 191, 255, 191, 18, 241, 255, 191, 18, 241, 235, 142, 255, 191, 235, 142, 255, 191, 255, 191, 235, 142, 255, 191, 235, 142, 255, 191, 235, 142, 18, 241, 255, 191, 18, 241, 255, 191, 18, 241, 255, 191, 255, 191, 18, 241, 255, 191, 18, 241, 255, 191, 18, 241, 235, 142, 255, 191, 235, 142, 255, 191, 235, 142, 255, 191),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray(2, 0, 14, 0, 4, 0, 2, 0, 11, 0, 14, 0, 9, 0, 15, 0, 13, 0, 9, 0, 17, 0, 15, 0, 5, 0, 18, 0, 6, 0, 5, 0, 16, 0, 18, 0, 0, 0, 12, 0, 3, 0, 0, 0, 8, 0, 12, 0, 7, 0, 10, 0, 1, 0, 7, 0, 19, 0, 10, 0),
+"material": SubResource("StandardMaterial3D_eu6hb"),
+"name": "EyeVideoMat",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray(255, 127, 0, 0, 0, 0, 83, 150, 255, 127, 0, 0, 0, 0, 83, 150, 255, 255, 0, 0, 255, 127, 170, 233, 255, 255, 0, 0, 255, 127, 83, 150, 255, 127, 0, 0, 255, 255, 170, 233, 255, 127, 0, 0, 255, 255, 170, 233, 0, 0, 0, 0, 255, 127, 170, 233, 0, 0, 0, 0, 255, 127, 83, 150, 255, 127, 255, 255, 0, 0, 83, 150, 255, 127, 255, 255, 0, 0, 255, 191, 255, 127, 255, 255, 0, 0, 83, 150, 255, 255, 255, 255, 255, 127, 170, 233, 255, 255, 255, 255, 255, 127, 83, 150, 255, 255, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 255, 170, 233, 255, 127, 255, 255, 255, 255, 255, 191, 255, 127, 255, 255, 255, 255, 170, 233, 0, 0, 255, 255, 255, 127, 255, 191, 0, 0, 255, 255, 255, 127, 170, 233, 0, 0, 255, 255, 255, 127, 83, 150, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 0, 0, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 0, 0)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_mtr4v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1yjo"]
+resource_name = "EyeClosed"
+cull_mode = 2
+albedo_texture = ExtResource("4_tjabc")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yhxpb"]
+_surfaces = [{
+"aabb": AABB(-0.69879, 0.388442, -0.69879, 1.39758, 1.00136e-05, 1.39758),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0),
+"name": "EyeClosed",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 127, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 127, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_addty"]
+resource_name = "eye_switch_Cylinder_001"
+_surfaces = [{
+"aabb": AABB(-0.69879, 0.388442, -0.69879, 1.39758, 1.00136e-05, 1.39758),
+"attribute_data": PackedByteArray(255, 191, 235, 142, 18, 241, 255, 191, 255, 191, 18, 241, 235, 142, 255, 191),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0),
+"material": SubResource("StandardMaterial3D_u1yjo"),
+"name": "EyeClosed",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 127, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 255, 127, 255, 191, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 255, 127, 255, 191, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_yhxpb")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ofkav"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nwwo3"]
+size = Vector3(7.72699, 4.38135, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_33dfe"]
+albedo_texture = ExtResource("6_ihjsm")
+metallic = 1.0
+metallic_specular = 0.0
+roughness = 0.5
+subsurf_scatter_strength = 0.45
+subsurf_scatter_transmittance_color = Color(0.333333, 0.329412, 0.901961, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iqfmp"]
+seed = 280
+frequency = 0.0375
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_ms7ql"]
+noise = SubResource("FastNoiseLite_iqfmp")
+
+[sub_resource type="FogMaterial" id="FogMaterial_spoft"]
+density = 2.0885
+emission = Color(0.27451, 0.27451, 0.27451, 1)
+density_texture = SubResource("NoiseTexture3D_ms7ql")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_57srf"]
+size = Vector3(14.34, 22.3708, 1)
+
+[node name="DoorNode2" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -250.532, 17.2249, 0.147946)
+
+[node name="video_man" type="Node" parent="." node_paths=PackedStringArray("videoswapper")]
+script = ExtResource("1_7line")
+videoswapper = NodePath("")
+original_video_int = 1
+target_swap_video_int = 2
+
+[node name="eye_switch" type="Node3D" parent="."]
+transform = Transform3D(-2.5, 0, -3.77489e-07, 0, 2.5, 0, 3.77489e-07, 0, -2.5, -15.4618, 20.6954, 9.99055)
+
+[node name="EyeHolder" type="MeshInstance3D" parent="eye_switch"]
+transform = Transform3D(0, 0.0748121, 0, -0.5975, 0, 0, 0, 5.77316e-15, 1.07125, 0.391479, 0, -0.503728)
+mesh = SubResource("ArrayMesh_hn2uj")
+skeleton = NodePath("")
+surface_material_override/1 = ExtResource("3_hv5f8")
+
+[node name="EyeBlind" type="MeshInstance3D" parent="eye_switch"]
+transform = Transform3D(0, 0.0748121, -2.84217e-14, -0.5975, 0, 0, 0, -3.55271e-15, 1.07125, 0.286707, 0, -0.503728)
+visible = false
+mesh = SubResource("ArrayMesh_addty")
+skeleton = NodePath("")
+
+[node name="eye_collider" type="StaticBody3D" parent="eye_switch" node_paths=PackedStringArray("eye_blind")]
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74229e-09, 0.4, 0, -0.477597)
+physics_material_override = SubResource("PhysicsMaterial_ofkav")
+script = ExtResource("5_w7ame")
+eye_blind = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="eye_switch/eye_collider"]
+transform = Transform3D(1, 0, 8.63974e-20, 0, 1, 0, 0, 0, 1, 0.00650024, -0.0686035, 0)
+shape = SubResource("BoxShape3D_nwwo3")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="eye_switch"]
+transform = Transform3D(0.4, 0, -7.10543e-15, 0, 0.4, 0, 7.10543e-15, 0, 0.4, 0.153801, 0, -0.517311)
+light_color = Color(0.596078, 0.0235294, 0, 1)
+light_energy = 13.64
+light_indirect_energy = 6.0
+
+[node name="eye_switch2" type="Node3D" parent="."]
+transform = Transform3D(-2.68211e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -2.68211e-07, 13.778, 22.3449, 2.20148)
+visible = false
+
+[node name="EyeHolder" type="MeshInstance3D" parent="eye_switch2"]
+transform = Transform3D(0, 0.0748121, 0, -0.5975, 0, 0, 0, 5.77316e-15, 1.07125, 0.391479, 0, -0.503728)
+mesh = SubResource("ArrayMesh_hn2uj")
+skeleton = NodePath("")
+
+[node name="EyeBlind" type="MeshInstance3D" parent="eye_switch2"]
+transform = Transform3D(0, 0.0748121, -2.84217e-14, -0.5975, 0, 0, 0, -3.55271e-15, 1.07125, 0.286707, 0, -0.503728)
+visible = false
+mesh = SubResource("ArrayMesh_addty")
+skeleton = NodePath("")
+
+[node name="eye_collider" type="StaticBody3D" parent="eye_switch2" node_paths=PackedStringArray("eye_blind")]
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74229e-09, 0.4, 0, -0.477597)
+physics_material_override = SubResource("PhysicsMaterial_ofkav")
+script = ExtResource("5_w7ame")
+eye_blind = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="eye_switch2/eye_collider"]
+transform = Transform3D(1, 0, 8.63974e-20, 0, 1, 0, 0, 0, 1, 0.00650024, -0.0686035, 0)
+shape = SubResource("BoxShape3D_nwwo3")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="eye_switch2"]
+transform = Transform3D(0.2, 0, -1.77636e-15, 0, 0.2, 0, 1.77636e-15, 0, 0.2, 0.153801, 0, -0.517311)
+light_color = Color(0.596078, 0.0235294, 0, 1)
+light_energy = 13.64
+light_indirect_energy = 6.0
+
+[node name="door" type="CSGBox3D" parent="." node_paths=PackedStringArray("eyes", "door_fog")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.425384, 10.5, 0)
+use_collision = true
+size = Vector3(34.7667, 23, 0.5)
+material = SubResource("StandardMaterial3D_33dfe")
+script = ExtResource("7_c3hlo")
+eyes = [NodePath("")]
+door_fog = NodePath("")
+
+[node name="door_fog" type="FogVolume" parent="."]
+transform = Transform3D(2.535, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
+visible = false
+size = Vector3(14, 23, 2)
+material = SubResource("FogMaterial_spoft")
+
+[node name="Area3D" type="Area3D" parent="door_fog"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0218487, 0)
+
+[node name="FogCollider" type="CollisionShape3D" parent="door_fog/Area3D"]
+shape = SubResource("BoxShape3D_57srf")
+
+[connection signal="area_entered" from="door_fog/Area3D" to="video_man" method="_on_area_3d_area_entered"]
