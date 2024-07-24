@@ -20,7 +20,7 @@ func _start_new_game():
 	#get_tree().change_scene_to_file("res://scenes/level1.tscn")
 
 func _load_first_level():
-	get_tree().change_scene_to_file("res://scenes/level1.tscn")
+	get_tree().change_scene_to_file("res://scenes/level_1.tscn")
 
 func _on_menu_items_item_clicked(index, at_position, mouse_button_index):
 	print_debug(index)

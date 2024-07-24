@@ -94,6 +94,7 @@ ScreenShakePower = 0.88
 follow_viewport_enabled = true
 script = ExtResource("1_dymw5")
 configuration = SubResource("Resource_gkxv8")
+dynamically_update = false
 
 [node name="ChromaticAberration" parent="." instance=ExtResource("3_p64bl")]
 

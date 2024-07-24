@@ -1,0 +1,347 @@
+[gd_scene load_steps=32 format=3 uid="uid://8lkw4atb18x7"]
+
+[ext_resource type="PackedScene" uid="uid://d4u3qwcrc37p" path="res://scenes/level_pieces/background_audio.tscn" id="1_hlakb"]
+[ext_resource type="PackedScene" uid="uid://bb44urkanokx" path="res://scenes/level_pieces/bottom_fog.tscn" id="2_ggxi8"]
+[ext_resource type="Script" path="res://addons/post_processing/node/post_process.gd" id="4_78mxi"]
+[ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://addons/GoldGdt/Pawn.tscn" id="4_87p0o"]
+[ext_resource type="PackedScene" uid="uid://b6ro3qtuffgog" path="res://scenes/level_pieces/videotape_player.tscn" id="4_aaw8j"]
+[ext_resource type="Script" path="res://addons/post_processing/resource/post_processing_configuration.gd" id="5_1dwi3"]
+[ext_resource type="PackedScene" uid="uid://ccxkudlhbgmv7" path="res://addons/post_processing/node/children/ChromaticAberration.tscn" id="6_5a4w7"]
+[ext_resource type="PackedScene" uid="uid://cxsuld87nxd0v" path="res://addons/post_processing/node/children/blur.tscn" id="7_srbjm"]
+[ext_resource type="PackedScene" uid="uid://c5qv7q54m4xn6" path="res://addons/post_processing/node/children/fish_eye.tscn" id="8_shx0v"]
+[ext_resource type="PackedScene" uid="uid://crm7gskny246i" path="res://addons/post_processing/node/children/vignette.tscn" id="9_xvk05"]
+[ext_resource type="PackedScene" uid="uid://dwioerk4ps6rr" path="res://addons/post_processing/node/children/glitch.tscn" id="10_4d4on"]
+[ext_resource type="PackedScene" uid="uid://c0d4h1un0350r" path="res://addons/post_processing/node/children/outline.tscn" id="11_121cn"]
+[ext_resource type="PackedScene" uid="uid://b7k7vdwyhgqpd" path="res://addons/post_processing/node/children/screen_shake.tscn" id="12_u5v0n"]
+[ext_resource type="PackedScene" uid="uid://ctdvjs742haos" path="res://addons/post_processing/node/children/analog_monitor.tscn" id="13_wm0rv"]
+[ext_resource type="PackedScene" uid="uid://b2fkqs44w2304" path="res://addons/post_processing/node/children/grain.tscn" id="14_t0lhy"]
+[ext_resource type="PackedScene" uid="uid://b0770lwctcbti" path="res://addons/post_processing/node/children/circular_waves.tscn" id="15_yqilr"]
+[ext_resource type="PackedScene" uid="uid://whsu0j72038r" path="res://addons/post_processing/node/children/speed_lines.tscn" id="16_x0ix7"]
+[ext_resource type="PackedScene" uid="uid://k8tnsut5pohj" path="res://addons/post_processing/node/children/ascii.tscn" id="17_tomac"]
+[ext_resource type="PackedScene" uid="uid://mfrkdk8k6ojn" path="res://addons/post_processing/node/children/CRT.tscn" id="18_h57dh"]
+[ext_resource type="PackedScene" uid="uid://q8472v8awese" path="res://addons/post_processing/node/children/color_correction.tscn" id="19_2djcl"]
+[ext_resource type="PackedScene" uid="uid://bs1yan5h4eao8" path="res://addons/post_processing/node/children/pixelate.tscn" id="20_8kjws"]
+[ext_resource type="PackedScene" uid="uid://dddjopbxtx1sf" path="res://scenes/level_pieces/pillar.tscn" id="22_qhulv"]
+[ext_resource type="PackedScene" uid="uid://clw4r621qroff" path="res://assets/decorations/giant.tscn" id="23_fvk8j"]
+[ext_resource type="Material" uid="uid://o2bxr0fy8tfb" path="res://materials/see_thru_mesh_dense.tres" id="23_j5nca"]
+[ext_resource type="PackedScene" uid="uid://b6ljyf4f4qj8t" path="res://assets/interactables/checkpoint.tscn" id="25_t40dq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aks8w"]
+sky_top_color = Color(0.2, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_4yols"]
+sky_material = SubResource("ProceduralSkyMaterial_aks8w")
+
+[sub_resource type="Environment" id="Environment_wy03h"]
+background_mode = 2
+sky = SubResource("Sky_4yols")
+ambient_light_source = 1
+ambient_light_color = Color(0.592157, 0, 0.105882, 1)
+ambient_light_energy = 4.7
+tonemap_mode = 3
+ssr_max_steps = 512
+ssr_fade_in = 0.0039417
+ssr_fade_out = 1e-05
+ssr_depth_tolerance = 128.0
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_read_sky_light = false
+sdfgi_min_cell_size = 1.17744
+glow_enabled = true
+glow_bloom = 0.2
+fog_light_color = Color(0.52549, 0, 0.0156863, 1)
+fog_density = 0.04
+fog_height = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0146
+volumetric_fog_albedo = Color(0.52549, 0, 0.0156863, 1)
+volumetric_fog_length = 256.0
+volumetric_fog_temporal_reprojection_amount = 0.95
+adjustment_enabled = true
+
+[sub_resource type="Resource" id="Resource_a88oh"]
+script = ExtResource("5_1dwi3")
+reload = false
+ASCII = false
+ASCIISize = Vector2(4, 9)
+ChromaticAberration = false
+StrenghtCA = 1.0
+Blur = false
+L_O_D = 2.787
+FishEye = true
+FishEyeAspect = 0.1
+FishEyeDistortion = 0.55
+FishEyeRadius = 1.0
+FishEyeAlpha = 1.0
+FishEyeCrop = 1.0
+FishEyeCropColor = Color(0, 0, 0, 1)
+Vignette = true
+VignetteIntensity = 0.4
+VignetteOpacity = 0.2
+VignetteR_G_B = Color(0, 0, 0, 1)
+Glitch = false
+GlitchRange = 0.0
+GlitchNoiseQuality = 250.0
+GlitchIntenity = 0.002
+GlitchOffset = 0.003
+GlitchColorOffset = 0.0
+Outline = false
+OutlineColor = Color(0, 0, 0, 1)
+OutlineThreshold = 0.0
+OutlineBlend = 0.01
+Grain = false
+GrainPower = 75
+CircularWaves = false
+CircularWavesAmplitude = 2.0
+CircularWavesFrequency = 12.69
+CircularWavesRippleRate = 9.2
+SpeedLines = false
+SpeedLinesColor = Color(1, 1, 1, 1)
+SpeedLinesCount = 2
+SpeedLineDensity = 0.072
+SpeedLineSpeed = 20
+ColorCorrection = false
+ColorCorrectionTint = Color(0, 0, 0, 1)
+ColorCorrectionBrightness = 0.0
+ColorCorrectionSaturation = 0.0
+Pixelate = false
+PixelatePixelSize = 3
+CRT = false
+overlay = false
+scanlines_opacity = 0.4
+scanlines_width = 0.25
+grille_opacity = 0.3
+pixelate = true
+roll_speed = 8.0
+roll_size = 15.0
+roll_variation = 1.8
+distort_intensity = 0.05
+noise_opacity = 0.4
+noise_speed = 5.0
+static_noise_intensity = 0.06
+aberration = 0.03
+brightness = 1.4
+discolor = true
+warp_amount = 1.0
+clip_warp = false
+vignette_intensity = 0.4
+vignette_opacity = 0.5
+AnalogMonitor = false
+AnalogMonitorResolution = Vector2(256, 256)
+ScreenShake = false
+ScreenShakePower = 0.88
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lndbg"]
+material = ExtResource("23_j5nca")
+size = Vector2(50, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p7f36"]
+size = Vector3(50, 1, 50)
+
+[node name="level_3" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-3.78552e-08, 0.5, -0.866025, 2.18557e-08, 0.866025, 0.5, 1, 0, -4.37114e-08, -588.042, 213.773, 9.97335)
+light_color = Color(1, 0.188235, 0.227451, 1)
+
+[node name="BackgroundAudio" parent="." instance=ExtResource("1_hlakb")]
+
+[node name="FogVolume" parent="." instance=ExtResource("2_ggxi8")]
+transform = Transform3D(1.89, 0, 0, 0, 1.89, 0, 0, 0, 1.89, -13.3765, -101.633, -0.8528)
+
+[node name="FogVolume" parent="FogVolume" instance=ExtResource("2_ggxi8")]
+transform = Transform3D(1.89, 0, 0, 0, 1.89, 0, 0, 0, 1.89, 0, -90.9814, 0)
+
+[node name="VideotapePlayer" parent="." instance=ExtResource("4_aaw8j")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wy03h")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+script = ExtResource("4_78mxi")
+configuration = SubResource("Resource_a88oh")
+dynamically_update = false
+
+[node name="ChromaticAberration" parent="CanvasLayer" instance=ExtResource("6_5a4w7")]
+
+[node name="Blur" parent="CanvasLayer" instance=ExtResource("7_srbjm")]
+
+[node name="FishEye" parent="CanvasLayer" instance=ExtResource("8_shx0v")]
+visible = true
+
+[node name="Vignette" parent="CanvasLayer" instance=ExtResource("9_xvk05")]
+visible = true
+
+[node name="Glitch" parent="CanvasLayer" instance=ExtResource("10_4d4on")]
+
+[node name="Outline" parent="CanvasLayer" instance=ExtResource("11_121cn")]
+
+[node name="ScreenShake" parent="CanvasLayer" instance=ExtResource("12_u5v0n")]
+
+[node name="AnalogMonitor" parent="CanvasLayer" instance=ExtResource("13_wm0rv")]
+
+[node name="Grain" parent="CanvasLayer" instance=ExtResource("14_t0lhy")]
+
+[node name="CircularWaves" parent="CanvasLayer" instance=ExtResource("15_yqilr")]
+
+[node name="SpeedLines" parent="CanvasLayer" instance=ExtResource("16_x0ix7")]
+
+[node name="Ascii" parent="CanvasLayer" instance=ExtResource("17_tomac")]
+
+[node name="CRT" parent="CanvasLayer" instance=ExtResource("18_h57dh")]
+
+[node name="ColorCorrection" parent="CanvasLayer" instance=ExtResource("19_2djcl")]
+
+[node name="Pixelate" parent="CanvasLayer" instance=ExtResource("20_8kjws")]
+
+[node name="Pawn" parent="." instance=ExtResource("4_87p0o")]
+
+[node name="Body" parent="Pawn/SVC/VC" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.0785, -150.387, -41.859)
+
+[node name="Interpolated Camera" parent="Pawn/SVC/VC" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.0785, -149.676, -41.859)
+
+[node name="LevelTerrain" type="Node3D" parent="."]
+transform = Transform3D(6.5403, 0, 99.7859, 0, 100, 0, -99.7859, 0, 6.5403, -83.5857, -136.655, 2.55685)
+
+[node name="pillar" parent="LevelTerrain" instance=ExtResource("22_qhulv")]
+transform = Transform3D(0.00065403, 0, -0.00997859, 0, 0.01, 0, 0.00997859, 0, 0.00065403, 0.0801813, 0.0445595, 0.832395)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="LevelTerrain/pillar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.62939e-06, 127.658, 0)
+mesh = SubResource("PlaneMesh_lndbg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LevelTerrain/pillar/CSGMesh3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelTerrain/pillar/CSGMesh3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.121965, 0)
+shape = SubResource("BoxShape3D_p7f36")
+
+[node name="IndicatorLight1" type="OmniLight3D" parent="LevelTerrain"]
+transform = Transform3D(-0.00991445, 0, -0.00130526, 0, 0.01, 0, 0.00130526, 0, -0.00991445, 0.423853, 0.551413, 0.387788)
+light_color = Color(0.811765, 0, 0, 1)
+light_energy = 160.0
+light_volumetric_fog_energy = 160.0
+omni_range = 18.9001
+
+[node name="IndicatorLight2" type="OmniLight3D" parent="LevelTerrain/IndicatorLight1"]
+transform = Transform3D(-0.991445, 0, -0.130526, 0, 1, 0, 0.130526, 0, -0.991445, 39.294, -170.722, 118.136)
+light_color = Color(0.811765, 0, 0, 1)
+light_energy = 160.0
+light_volumetric_fog_energy = 160.0
+omni_range = 18.9001
+
+[node name="pillar2" parent="LevelTerrain" instance=ExtResource("22_qhulv")]
+transform = Transform3D(-0.00991445, 0, -0.00130526, 0, 0.01, 0, 0.00130526, 0, -0.00991445, 0.423853, -1.52845, 0.387788)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="LevelTerrain/pillar2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 126.456, 0)
+mesh = SubResource("PlaneMesh_lndbg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LevelTerrain/pillar2/CSGMesh3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelTerrain/pillar2/CSGMesh3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.121965, 0)
+shape = SubResource("BoxShape3D_p7f36")
+
+[node name="pillar3" parent="LevelTerrain" instance=ExtResource("22_qhulv")]
+transform = Transform3D(0.00965926, 0, 0.00258819, 0, 0.01, 0, -0.00258819, 0, 0.00965926, 0.255021, -1.86283, -0.289989)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="LevelTerrain/pillar3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 126.456, 0)
+mesh = SubResource("PlaneMesh_lndbg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LevelTerrain/pillar3/CSGMesh3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelTerrain/pillar3/CSGMesh3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.121965, 0)
+shape = SubResource("BoxShape3D_p7f36")
+
+[node name="pillar4" parent="LevelTerrain" instance=ExtResource("22_qhulv")]
+transform = Transform3D(0.00866026, 0, 0.00499999, 0, 0.01, 0, -0.00499999, 0, 0.00866026, -0.133347, -3.56622, -0.751578)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="LevelTerrain/pillar4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 126.456, 0)
+mesh = SubResource("PlaneMesh_lndbg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LevelTerrain/pillar4/CSGMesh3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelTerrain/pillar4/CSGMesh3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.121965, 0)
+shape = SubResource("BoxShape3D_p7f36")
+
+[node name="Giant" parent="LevelTerrain" instance=ExtResource("23_fvk8j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.140181, 0)
+
+[node name="Skeleton3D" parent="LevelTerrain/Giant/Armature" index="0"]
+bones/0/rotation = Quaternion(0, 0.499153, 0, 0.866514)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/position = Vector3(0.045475, 0.609475, 0.000474975)
+bones/1/rotation = Quaternion(-0.366525, 0.051475, -0.656525, 0.474475)
+bones/2/rotation = Quaternion(0.335475, 0.201475, -0.361525, 0.910475)
+bones/3/position = Vector3(-1.71112e-07, 0.256854, -1.75531e-08)
+bones/3/rotation = Quaternion(0.392352, 0.175235, -0.464515, 0.774324)
+bones/3/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(-0.292525, 0.142475, 0.859475, 0.503475)
+bones/6/position = Vector3(0.010475, 0.226475, 0.000474975)
+bones/6/rotation = Quaternion(1.53848, 0.748475, 0.046475, 0.721475)
+bones/7/rotation = Quaternion(0.105475, 0.228475, 0.125475, 0.489475)
+bones/9/rotation = Quaternion(0.245475, 0.084475, -0.00752503, 0.999475)
+
+[node name="Checkpoint" parent="LevelTerrain" instance=ExtResource("25_t40dq")]
+transform = Transform3D(0.00942769, 0, -0.00333445, 0, 0.01, 0, 0.00333445, 0, 0.00942769, 0.23616, -0.533175, -0.277548)
+
+[node name="WordSaladCreator" parent="LevelTerrain/Checkpoint/CSGSphere3D" index="0" node_paths=PackedStringArray("text_ui")]
+text_ui = NodePath("../../../../Pawn/GameUI/TextUI")
+
+[node name="CheckpointArea" parent="LevelTerrain/Checkpoint/CSGSphere3D" index="1" node_paths=PackedStringArray("player")]
+player = NodePath("../../../../Pawn")
+
+[node name="Giant2" parent="LevelTerrain" instance=ExtResource("23_fvk8j")]
+transform = Transform3D(0.875321, 0, 0.483542, 0, 1, 0, -0.483542, 0, 0.875321, -0.0733512, -1.72921, -1.32747)
+
+[node name="Skeleton3D" parent="LevelTerrain/Giant2/Armature" index="0"]
+bones/0/rotation = Quaternion(0, 0.499153, 0, 0.866514)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/position = Vector3(0.0454753, 0.609475, 0.00047481)
+bones/1/rotation = Quaternion(-0.33351, 0.439488, 0.707587, -0.441523)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/position = Vector3(-1.49083e-07, 0.24443, -7.82553e-08)
+bones/2/rotation = Quaternion(0.339835, -0.217456, -0.48512, 0.775811)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/position = Vector3(-1.71112e-07, 0.256854, -1.75531e-08)
+bones/3/rotation = Quaternion(0.392352, 0.175235, -0.464515, 0.774324)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(-0.0307243, 0.243834, -0.0177041)
+bones/4/rotation = Quaternion(0.240214, 0.102919, 0.499166, 0.826159)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(3.50697e-08, 0.609431, -2.95953e-07)
+bones/5/rotation = Quaternion(-0.367532, 0.0823854, 0.784591, 0.492494)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/position = Vector3(0.0104757, 0.226475, 0.000474403)
+bones/6/rotation = Quaternion(0.0131447, 0.364955, -0.15724, 0.917557)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/position = Vector3(-5.72168e-08, 0.255211, 4.04306e-08)
+bones/7/rotation = Quaternion(0.0825367, 0.281521, 0.644541, 0.706046)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(1.56862e-07, 0.248038, 3.23056e-08)
+bones/8/rotation = Quaternion(0.310049, -0.0656431, 0.290379, 0.902907)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/position = Vector3(1.38191e-07, 0.609431, -3.55759e-07)
+bones/9/rotation = Quaternion(0.224293, -0.751367, 0.199528, 0.587646)
+bones/9/scale = Vector3(1, 1, 1)
+bones/12/position = Vector3(-0.220089, 0.0799098, 0.0293761)
+bones/12/rotation = Quaternion(-0.000152649, 0.00128995, -0.0130744, 0.999914)
+bones/12/scale = Vector3(1, 1, 1)
+bones/15/scale = Vector3(1, 1, 1)
+
+[editable path="Pawn"]
+[editable path="LevelTerrain/Giant"]
+[editable path="LevelTerrain/Checkpoint"]
+[editable path="LevelTerrain/Giant2"]

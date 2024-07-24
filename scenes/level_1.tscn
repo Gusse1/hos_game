@@ -1,36 +1,37 @@
-[gd_scene load_steps=112 format=3 uid="uid://cdaxeyxys1tfs"]
+[gd_scene load_steps=113 format=3 uid="uid://cdaxeyxys1tfs"]
 
-[ext_resource type="FastNoiseLite" uid="uid://bmubs6juomn5f" path="res://materials/fast_noise.tres" id="1_dfkmm"]
-[ext_resource type="Texture2D" uid="uid://bmeye3os7s6fg" path="res://textures/Gem_05-128x128.png" id="2_4eh5v"]
-[ext_resource type="Script" path="res://example/Warper.gd" id="3_qa67u"]
-[ext_resource type="Script" path="res://src/ui/video_swapper.gd" id="4_iqety"]
-[ext_resource type="VideoStream" path="res://videos/Hos Tutorial Video Reload.ogv" id="5_nqkhn"]
-[ext_resource type="VideoStream" path="res://videos/Hos Video Heal Tutorial.ogv" id="6_g6k8e"]
-[ext_resource type="VideoStream" path="res://videos/Hos Video Screen 1.ogv" id="7_uonnt"]
-[ext_resource type="PackedScene" uid="uid://2t0muetkxk5o" path="res://assets/ui/eye_vid_viewport.tscn" id="8_jxva3"]
-[ext_resource type="Script" path="res://addons/post_processing/node/post_process.gd" id="9_6nxyj"]
-[ext_resource type="Script" path="res://addons/post_processing/resource/post_processing_configuration.gd" id="10_pqjpd"]
-[ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://addons/GoldGdt/Pawn.tscn" id="11_3wk6j"]
-[ext_resource type="Script" path="res://src/room_gen/room_generation.gd" id="12_qgf58"]
-[ext_resource type="Script" path="res://src/room_gen/grid_printer.gd" id="13_8wphi"]
-[ext_resource type="PackedScene" uid="uid://53bbkhmk5ik0" path="res://assets/rooms/tutorial_map.tscn" id="14_w1hie"]
-[ext_resource type="Material" uid="uid://o2bxr0fy8tfb" path="res://materials/see_thru_mesh_dense.tres" id="15_f52tp"]
-[ext_resource type="Texture2D" uid="uid://de5gtsehkfba7" path="res://assets/external/TexturesCom_Pipes0071_1_M_P.jpg" id="16_gg16y"]
-[ext_resource type="Script" path="res://example/VideoMan.gd" id="17_xkjvd"]
-[ext_resource type="Texture2D" uid="uid://gfsioaau67h5" path="res://textures/Stone_18-128x128.png" id="18_cspyv"]
-[ext_resource type="Texture2D" uid="uid://8qa8sha3w5pi" path="res://textures/Dirt_03-128x128.png" id="19_y6215"]
-[ext_resource type="Script" path="res://src/interactable_scripts/Eye.gd" id="20_jg3vb"]
-[ext_resource type="Texture2D" uid="uid://bst8amvx5wnx3" path="res://textures/Metal_04-128x128.png" id="21_qwcro"]
-[ext_resource type="Script" path="res://src/interactable_scripts/EyeDoor.gd" id="22_2ew2a"]
-[ext_resource type="PackedScene" uid="uid://by8poq58ac6jv" path="res://assets/interactables/room_trigger.tscn" id="23_jyalo"]
-[ext_resource type="Script" path="res://src/enemy_logic/CombatArea.gd" id="24_ghxga"]
-[ext_resource type="PackedScene" uid="uid://bg0cfyn7q5vd5" path="res://assets/enemies/sprinter.tscn" id="25_k7ow2"]
-[ext_resource type="Material" uid="uid://bqw1sxjxt8ged" path="res://materials/see_thru_mesh.tres" id="27_c1l3y"]
-[ext_resource type="PackedScene" uid="uid://b6ljyf4f4qj8t" path="res://assets/interactables/checkpoint.tscn" id="28_nn6ju"]
-[ext_resource type="PackedScene" uid="uid://b2wwbmnwgn1rh" path="res://assets/text_area_creator.tscn" id="29_fnewr"]
-[ext_resource type="JSON" path="res://src/ui/word_salad.json" id="30_vm8l0"]
-[ext_resource type="Script" path="res://src/game_management/level_swapper.gd" id="31_pg3gg"]
-[ext_resource type="Script" path="res://src/interactable_scripts/KillZone.gd" id="33_glssu"]
+[ext_resource type="FastNoiseLite" uid="uid://bmubs6juomn5f" path="res://materials/fast_noise.tres" id="1_4tqfa"]
+[ext_resource type="Texture2D" uid="uid://bmeye3os7s6fg" path="res://textures/Gem_05-128x128.png" id="2_04pw4"]
+[ext_resource type="Script" path="res://example/Warper.gd" id="3_qyvtk"]
+[ext_resource type="Script" path="res://src/ui/video_swapper.gd" id="4_uqhlp"]
+[ext_resource type="VideoStream" path="res://videos/Hos Tutorial Video Reload.ogv" id="5_a1fmg"]
+[ext_resource type="VideoStream" path="res://videos/Hos Video Heal Tutorial.ogv" id="6_p42yn"]
+[ext_resource type="VideoStream" path="res://videos/Hos Video Screen 1.ogv" id="7_cx4ho"]
+[ext_resource type="PackedScene" uid="uid://2t0muetkxk5o" path="res://assets/ui/eye_vid_viewport.tscn" id="8_priwm"]
+[ext_resource type="Script" path="res://addons/post_processing/node/post_process.gd" id="9_lfpyh"]
+[ext_resource type="Script" path="res://addons/post_processing/resource/post_processing_configuration.gd" id="10_8prys"]
+[ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://addons/GoldGdt/Pawn.tscn" id="11_riuqh"]
+[ext_resource type="Script" path="res://src/room_gen/room_generation.gd" id="12_uqc5t"]
+[ext_resource type="Script" path="res://src/room_gen/grid_printer.gd" id="13_25uk2"]
+[ext_resource type="PackedScene" uid="uid://53bbkhmk5ik0" path="res://assets/rooms/tutorial_map.tscn" id="14_1ejbt"]
+[ext_resource type="Material" uid="uid://o2bxr0fy8tfb" path="res://materials/see_thru_mesh_dense.tres" id="15_bve1q"]
+[ext_resource type="Texture2D" uid="uid://de5gtsehkfba7" path="res://assets/external/TexturesCom_Pipes0071_1_M_P.jpg" id="16_pybac"]
+[ext_resource type="Script" path="res://example/VideoMan.gd" id="17_c7603"]
+[ext_resource type="Texture2D" uid="uid://gfsioaau67h5" path="res://textures/Stone_18-128x128.png" id="18_no02b"]
+[ext_resource type="Texture2D" uid="uid://8qa8sha3w5pi" path="res://textures/Dirt_03-128x128.png" id="19_d347v"]
+[ext_resource type="Script" path="res://src/interactable_scripts/Eye.gd" id="20_418mv"]
+[ext_resource type="Texture2D" uid="uid://bst8amvx5wnx3" path="res://textures/Metal_04-128x128.png" id="21_17jsd"]
+[ext_resource type="Script" path="res://src/interactable_scripts/EyeDoor.gd" id="22_adn34"]
+[ext_resource type="PackedScene" uid="uid://by8poq58ac6jv" path="res://assets/interactables/room_trigger.tscn" id="23_2fg2j"]
+[ext_resource type="Script" path="res://src/enemy_logic/CombatArea.gd" id="24_wu02v"]
+[ext_resource type="PackedScene" uid="uid://bg0cfyn7q5vd5" path="res://assets/enemies/sprinter.tscn" id="25_5ej04"]
+[ext_resource type="Material" uid="uid://bqw1sxjxt8ged" path="res://materials/see_thru_mesh.tres" id="26_phljc"]
+[ext_resource type="PackedScene" uid="uid://b6ljyf4f4qj8t" path="res://assets/interactables/checkpoint.tscn" id="27_5u2rx"]
+[ext_resource type="PackedScene" uid="uid://b2wwbmnwgn1rh" path="res://assets/text_area_creator.tscn" id="28_o65il"]
+[ext_resource type="JSON" path="res://src/ui/word_salad.json" id="29_v2qf0"]
+[ext_resource type="Script" path="res://src/interactable_scripts/KillZone.gd" id="30_i0kwy"]
+[ext_resource type="Script" path="res://src/game_management/level_swapper.gd" id="31_inc88"]
+[ext_resource type="PackedScene" uid="uid://clw4r621qroff" path="res://assets/decorations/giant.tscn" id="32_3fakg"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_78i8t"]
 frequency = 0.301
@@ -39,12 +40,12 @@ frequency = 0.301
 noise = SubResource("FastNoiseLite_78i8t")
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ey1u5"]
-noise = ExtResource("1_dfkmm")
+noise = ExtResource("1_4tqfa")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dulf4"]
 albedo_color = Color(0.568627, 0, 0.054902, 1)
 metallic_specular = 0.0
-metallic_texture = ExtResource("2_4eh5v")
+metallic_texture = ExtResource("2_04pw4")
 metallic_texture_channel = 2
 roughness = 0.45
 emission_enabled = true
@@ -69,7 +70,7 @@ edge_fade = 0.136604
 density_texture = SubResource("NoiseTexture3D_gjdt4")
 
 [sub_resource type="Resource" id="Resource_gkxv8"]
-script = ExtResource("10_pqjpd")
+script = ExtResource("10_8prys")
 reload = false
 ASCII = false
 ASCIISize = Vector2(4, 9)
@@ -244,7 +245,7 @@ edge_fade = 1.65642
 density_texture = SubResource("NoiseTexture3D_5qoit")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_y3p75"]
-material = ExtResource("15_f52tp")
+material = ExtResource("15_bve1q")
 size = Vector2(26.755, 17.78)
 orientation = 0
 
@@ -261,7 +262,7 @@ albedo_color = Color(1, 1, 1, 0)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o2op7"]
 resource_name = "Pipe1"
 cull_mode = 2
-albedo_texture = ExtResource("16_gg16y")
+albedo_texture = ExtResource("16_pybac")
 metallic = 0.556818
 roughness = 0.5
 
@@ -332,7 +333,7 @@ shadow_mesh = SubResource("ArrayMesh_cd7i4")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ma5af"]
 resource_name = "Pipe1"
 cull_mode = 2
-albedo_texture = ExtResource("16_gg16y")
+albedo_texture = ExtResource("16_pybac")
 metallic = 0.556818
 roughness = 0.5
 
@@ -405,7 +406,7 @@ shadow_mesh = SubResource("ArrayMesh_j5ots")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tr5ll"]
 resource_name = "EyeStone"
 cull_mode = 2
-albedo_texture = ExtResource("18_cspyv")
+albedo_texture = ExtResource("18_no02b")
 roughness = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yrhso"]
@@ -487,7 +488,7 @@ uv1_triplanar = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_067rx"]
 resource_name = "EyeClosed"
 cull_mode = 2
-albedo_texture = ExtResource("19_y6215")
+albedo_texture = ExtResource("19_d347v")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_baul3"]
 _surfaces = [{
@@ -527,7 +528,7 @@ shadow_mesh = SubResource("ArrayMesh_baul3")
 size = Vector3(7.72699, 4.38135, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38buk"]
-albedo_texture = ExtResource("21_qwcro")
+albedo_texture = ExtResource("21_17jsd")
 metallic = 1.0
 metallic_specular = 0.0
 roughness = 0.5
@@ -552,7 +553,7 @@ size = Vector3(14.34, 22.3708, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u012p"]
 resource_name = "EyeStone"
 cull_mode = 2
-albedo_texture = ExtResource("18_cspyv")
+albedo_texture = ExtResource("18_no02b")
 roughness = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eu6hb"]
@@ -634,7 +635,7 @@ uv1_triplanar = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1yjo"]
 resource_name = "EyeClosed"
 cull_mode = 2
-albedo_texture = ExtResource("19_y6215")
+albedo_texture = ExtResource("19_d347v")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_yhxpb"]
 _surfaces = [{
@@ -674,7 +675,7 @@ shadow_mesh = SubResource("ArrayMesh_yhxpb")
 size = Vector3(7.72699, 4.38135, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_33dfe"]
-albedo_texture = ExtResource("21_qwcro")
+albedo_texture = ExtResource("21_17jsd")
 metallic = 1.0
 metallic_specular = 0.0
 roughness = 0.5
@@ -700,7 +701,7 @@ size = Vector3(14.34, 22.3708, 1)
 size = Vector3(1, 17.0319, 32.6736)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_iqaqa"]
-material = ExtResource("27_c1l3y")
+material = ExtResource("26_phljc")
 size = Vector2(10.82, 6.3)
 orientation = 0
 
@@ -727,15 +728,15 @@ size = Vector3(85.0579, 15.7714, 26.8831)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -598.102, 103.709, 4.02453)
 material_override = SubResource("StandardMaterial3D_dulf4")
 size = Vector3(60.4202, 1, 20.7472)
-script = ExtResource("3_qa67u")
-fast_noise = ExtResource("1_dfkmm")
+script = ExtResource("3_qyvtk")
+fast_noise = ExtResource("1_4tqfa")
 
 [node name="Warp" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -598.807, 15.7497, 4.11256)
 material_override = SubResource("StandardMaterial3D_dulf4")
 size = Vector3(60.4202, 1, 21.1016)
-script = ExtResource("3_qa67u")
-fast_noise = ExtResource("1_dfkmm")
+script = ExtResource("3_qyvtk")
+fast_noise = ExtResource("1_4tqfa")
 
 [node name="FogVolume" type="FogVolume" parent="."]
 transform = Transform3D(1.89, 0, 0, 0, 1.89, 0, 0, 0, 1.89, -173.225, -32.431, 0)
@@ -746,8 +747,8 @@ material = SubResource("FogMaterial_6uekb")
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1920, 1080)
-script = ExtResource("4_iqety")
-videos = Array[VideoStreamTheora]([ExtResource("5_nqkhn"), ExtResource("6_g6k8e"), ExtResource("7_uonnt")])
+script = ExtResource("4_uqhlp")
+videos = Array[VideoStreamTheora]([ExtResource("5_a1fmg"), ExtResource("6_p42yn"), ExtResource("7_cx4ho")])
 videostream = NodePath("VideoStreamPlayer")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="VideotapePlayer"]
@@ -763,16 +764,16 @@ offset_right = 960.0
 offset_bottom = 548.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("5_nqkhn")
+stream = ExtResource("5_a1fmg")
 autoplay = true
 loop = true
 buffering_msec = 1000
 
-[node name="EyeVidViewport" parent="." instance=ExtResource("8_jxva3")]
+[node name="EyeVidViewport" parent="." instance=ExtResource("8_priwm")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
-script = ExtResource("9_6nxyj")
+script = ExtResource("9_lfpyh")
 configuration = SubResource("Resource_gkxv8")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -791,7 +792,7 @@ volume_db = -21.119
 pitch_scale = 0.6
 autoplay = true
 
-[node name="Pawn" parent="." groups=["Pawn"] instance=ExtResource("11_3wk6j")]
+[node name="Pawn" parent="." groups=["Pawn"] instance=ExtResource("11_riuqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 167.968, 80.5037, 0.94486)
 
 [node name="Body" parent="Pawn/SVC/VC" index="0"]
@@ -804,13 +805,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.036, 52.6491, 0)
 level_start_checkpoint_location = Vector3(167.968, 80.5037, 0.94486)
 
 [node name="RoomGeneration" type="Node3D" parent="." node_paths=PackedStringArray("grid_printer")]
-script = ExtResource("12_qgf58")
+script = ExtResource("12_uqc5t")
 grid_printer = NodePath("../GridPrinter")
 
 [node name="GridPrinter" type="Node" parent="."]
-script = ExtResource("13_8wphi")
+script = ExtResource("13_25uk2")
 
-[node name="tutorial_map" parent="." instance=ExtResource("14_w1hie")]
+[node name="tutorial_map" parent="." instance=ExtResource("14_1ejbt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6406, 26.6272, 0.663253)
 
 [node name="VideotapeScreen3" type="MeshInstance3D" parent="tutorial_map"]
@@ -1145,7 +1146,7 @@ shadow_enabled = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67, -7.7751, 0.899479)
 
 [node name="video_man" type="Node" parent="DoorNode" node_paths=PackedStringArray("videoswapper")]
-script = ExtResource("17_xkjvd")
+script = ExtResource("17_c7603")
 videoswapper = NodePath("../../VideotapePlayer")
 target_swap_video_int = 1
 
@@ -1167,7 +1168,7 @@ skeleton = NodePath("")
 [node name="eye_collider" type="StaticBody3D" parent="DoorNode/eye_switch" node_paths=PackedStringArray("eye_blind")]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74229e-09, 0.4, 0, -0.477597)
 physics_material_override = SubResource("PhysicsMaterial_fagp0")
-script = ExtResource("20_jg3vb")
+script = ExtResource("20_418mv")
 eye_blind = NodePath("../EyeBlind")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorNode/eye_switch/eye_collider"]
@@ -1198,7 +1199,7 @@ skeleton = NodePath("")
 [node name="eye_collider" type="StaticBody3D" parent="DoorNode/eye_switch2" node_paths=PackedStringArray("eye_blind")]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74229e-09, 0.4, 0, -0.477597)
 physics_material_override = SubResource("PhysicsMaterial_fagp0")
-script = ExtResource("20_jg3vb")
+script = ExtResource("20_418mv")
 eye_blind = NodePath("../EyeBlind")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorNode/eye_switch2/eye_collider"]
@@ -1216,7 +1217,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
 use_collision = true
 size = Vector3(14, 23, 0.5)
 material = SubResource("StandardMaterial3D_38buk")
-script = ExtResource("22_2ew2a")
+script = ExtResource("22_adn34")
 eyes = [NodePath("../eye_switch/eye_collider"), NodePath("../eye_switch2/eye_collider")]
 door_fog = NodePath("../door_fog")
 
@@ -1232,9 +1233,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0218487, 0)
 [node name="FogCollider" type="CollisionShape3D" parent="DoorNode/door_fog/Area3D"]
 shape = SubResource("BoxShape3D_8h7bt")
 
-[node name="CombatArea1" parent="." node_paths=PackedStringArray("waves") instance=ExtResource("23_jyalo")]
+[node name="CombatArea1" parent="." node_paths=PackedStringArray("waves") instance=ExtResource("23_2fg2j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.6155, 6.38274, 0.46447)
-script = ExtResource("24_ghxga")
+script = ExtResource("24_wu02v")
 waves = [NodePath("Wave1")]
 
 [node name="room_trigger_shape" parent="CombatArea1" index="0"]
@@ -1243,14 +1244,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9991, 7.711, -0.18988)
 [node name="Wave1" type="Node3D" parent="CombatArea1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.6155, -6.38274, -0.46447)
 
-[node name="Sprinter" parent="CombatArea1/Wave1" instance=ExtResource("25_k7ow2")]
+[node name="Sprinter" parent="CombatArea1/Wave1" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.4711, -4.94881, 0)
 
 [node name="DoorNode2" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -250.532, 17.2249, 0.147946)
 
 [node name="video_man" type="Node" parent="DoorNode2" node_paths=PackedStringArray("videoswapper")]
-script = ExtResource("17_xkjvd")
+script = ExtResource("17_c7603")
 videoswapper = NodePath("../../VideotapePlayer")
 original_video_int = 1
 target_swap_video_int = 2
@@ -1273,7 +1274,7 @@ skeleton = NodePath("")
 [node name="eye_collider" type="StaticBody3D" parent="DoorNode2/eye_switch" node_paths=PackedStringArray("eye_blind")]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74229e-09, 0.4, 0, -0.477597)
 physics_material_override = SubResource("PhysicsMaterial_ofkav")
-script = ExtResource("20_jg3vb")
+script = ExtResource("20_418mv")
 eye_blind = NodePath("../EyeBlind")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorNode2/eye_switch/eye_collider"]
@@ -1304,7 +1305,7 @@ skeleton = NodePath("")
 [node name="eye_collider" type="StaticBody3D" parent="DoorNode2/eye_switch2" node_paths=PackedStringArray("eye_blind")]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74229e-09, 0.4, 0, -0.477597)
 physics_material_override = SubResource("PhysicsMaterial_ofkav")
-script = ExtResource("20_jg3vb")
+script = ExtResource("20_418mv")
 eye_blind = NodePath("../EyeBlind")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorNode2/eye_switch2/eye_collider"]
@@ -1322,7 +1323,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.425384, 10.5, 0)
 use_collision = true
 size = Vector3(34.7667, 23, 0.5)
 material = SubResource("StandardMaterial3D_33dfe")
-script = ExtResource("22_2ew2a")
+script = ExtResource("22_adn34")
 eyes = [NodePath("../eye_switch/eye_collider")]
 door_fog = NodePath("../door_fog")
 
@@ -1521,9 +1522,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 235.928, -37.8021, -13.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -235.955, 37.8857, 12.4772)
 shape = SubResource("BoxShape3D_lmkqr")
 
-[node name="CombatArea2" parent="." node_paths=PackedStringArray("waves") instance=ExtResource("23_jyalo")]
+[node name="CombatArea2" parent="." node_paths=PackedStringArray("waves") instance=ExtResource("23_2fg2j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -373.619, 15.5162, 1.38228)
-script = ExtResource("24_ghxga")
+script = ExtResource("24_wu02v")
 waves = [NodePath("Wave1")]
 
 [node name="room_trigger_shape" parent="CombatArea2" index="0"]
@@ -1532,21 +1533,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.31543, 7.711, -0.18988)
 [node name="Wave1" type="Node3D" parent="CombatArea2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 373.619, -15.5162, -1.38228)
 
-[node name="Sprinter" parent="CombatArea2/Wave1" instance=ExtResource("25_k7ow2")]
+[node name="Sprinter" parent="CombatArea2/Wave1" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -381.19, 25.1345, -4.8618)
 
-[node name="Sprinter2" parent="CombatArea2/Wave1" instance=ExtResource("25_k7ow2")]
+[node name="Sprinter2" parent="CombatArea2/Wave1" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -411.737, 22.4052, 6.54181)
 
-[node name="Sprinter3" parent="CombatArea2/Wave1" instance=ExtResource("25_k7ow2")]
+[node name="Sprinter3" parent="CombatArea2/Wave1" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -345.42, 22.0848, 8.14527)
 
-[node name="Sprinter4" parent="CombatArea2/Wave1" instance=ExtResource("25_k7ow2")]
+[node name="Sprinter4" parent="CombatArea2/Wave1" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -446.186, 19.0882, -5.26096)
 
-[node name="CombatArea3" parent="." node_paths=PackedStringArray("waves") instance=ExtResource("23_jyalo")]
+[node name="CombatArea3" parent="." node_paths=PackedStringArray("waves") instance=ExtResource("23_2fg2j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -596.943, 31.0324, 2.76456)
-script = ExtResource("24_ghxga")
+script = ExtResource("24_wu02v")
 waves = [NodePath("Wave1"), NodePath("Wave2"), NodePath("Wave3")]
 
 [node name="room_trigger_shape" parent="CombatArea3" index="0"]
@@ -1556,55 +1557,55 @@ shape = SubResource("BoxShape3D_3ilr3")
 [node name="Wave1" type="Node3D" parent="CombatArea3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 373.619, -40.9996, -1.38228)
 
-[node name="Sprinter" parent="CombatArea3/Wave1" instance=ExtResource("25_k7ow2")]
+[node name="Sprinter" parent="CombatArea3/Wave1" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -354.09, 26.7257, -24.5438)
 
-[node name="Sprinter2" parent="CombatArea3/Wave1" instance=ExtResource("25_k7ow2")]
+[node name="Sprinter2" parent="CombatArea3/Wave1" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -399.194, 26.7257, 25.1997)
 
-[node name="Sprinter3" parent="CombatArea3/Wave1" instance=ExtResource("25_k7ow2")]
+[node name="Sprinter3" parent="CombatArea3/Wave1" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -338.224, 26.7257, 2.32573)
 
-[node name="Sprinter4" parent="CombatArea3/Wave1" instance=ExtResource("25_k7ow2")]
+[node name="Sprinter4" parent="CombatArea3/Wave1" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -415.42, 26.7257, 3.72268)
 
 [node name="Wave2" type="Node3D" parent="CombatArea3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 373.619, -40.9996, -1.38228)
 
-[node name="Sprinter" parent="CombatArea3/Wave2" instance=ExtResource("25_k7ow2")]
+[node name="Sprinter" parent="CombatArea3/Wave2" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -319.791, 26.7257, -18.8509)
 
-[node name="Sprinter2" parent="CombatArea3/Wave2" instance=ExtResource("25_k7ow2")]
+[node name="Sprinter2" parent="CombatArea3/Wave2" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -332.577, 26.7257, 25.8269)
 
-[node name="Sprinter3" parent="CombatArea3/Wave2" instance=ExtResource("25_k7ow2")]
+[node name="Sprinter3" parent="CombatArea3/Wave2" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -374.969, 31.2531, 12.3678)
 
-[node name="Sprinter4" parent="CombatArea3/Wave2" instance=ExtResource("25_k7ow2")]
+[node name="Sprinter4" parent="CombatArea3/Wave2" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -377.924, 31.3555, -13.7683)
 
-[node name="Sprinter5" parent="CombatArea3/Wave2" instance=ExtResource("25_k7ow2")]
+[node name="Sprinter5" parent="CombatArea3/Wave2" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -404.366, 29.2218, 13.9537)
 
 [node name="Wave3" type="Node3D" parent="CombatArea3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 373.619, -40.9996, -1.38228)
 
-[node name="Sprinter" parent="CombatArea3/Wave3" instance=ExtResource("25_k7ow2")]
+[node name="Sprinter" parent="CombatArea3/Wave3" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -330.689, 26.7257, -12.9193)
 
-[node name="Sprinter2" parent="CombatArea3/Wave3" instance=ExtResource("25_k7ow2")]
+[node name="Sprinter2" parent="CombatArea3/Wave3" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -416.612, 26.7257, -15.3701)
 
-[node name="Sprinter3" parent="CombatArea3/Wave3" instance=ExtResource("25_k7ow2")]
+[node name="Sprinter3" parent="CombatArea3/Wave3" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -368.379, 31.2531, 16.2478)
 
-[node name="Sprinter4" parent="CombatArea3/Wave3" instance=ExtResource("25_k7ow2")]
+[node name="Sprinter4" parent="CombatArea3/Wave3" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -368.434, 31.3555, -12.1682)
 
-[node name="Sprinter5" parent="CombatArea3/Wave3" instance=ExtResource("25_k7ow2")]
+[node name="Sprinter5" parent="CombatArea3/Wave3" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -437.979, 29.2218, 4.75499)
 
-[node name="Checkpoint2" parent="." instance=ExtResource("28_nn6ju")]
+[node name="Checkpoint2" parent="." instance=ExtResource("27_5u2rx")]
 transform = Transform3D(1.46806, 0, 1.19034, 0, 1.89, 0, -1.19034, 0, 1.46806, -272.053, 26.421, 0.701482)
 
 [node name="checkpoint_sign" parent="Checkpoint2" index="0"]
@@ -1625,7 +1626,7 @@ transform = Transform3D(0.571382, 2.98023e-08, 1.77636e-15, 0, -2.49759e-08, 0.5
 [node name="CheckpointArea" parent="Checkpoint2/CSGSphere3D" index="1" node_paths=PackedStringArray("player")]
 player = NodePath("../../../Pawn")
 
-[node name="Checkpoint" parent="." instance=ExtResource("28_nn6ju")]
+[node name="Checkpoint" parent="." instance=ExtResource("27_5u2rx")]
 transform = Transform3D(1.79765, -0.0290302, 0.582837, 0.104404, 1.8732, -0.228714, -0.57414, 0.249735, 1.78328, -494.556, 21.0153, 2.58765)
 
 [node name="OmniLight3D" parent="Checkpoint/checkpoint_sign" index="1"]
@@ -1749,32 +1750,32 @@ light_indirect_energy = 128.0
 light_volumetric_fog_energy = 2.524
 omni_range = 142.824
 
-[node name="TextAreaCreator" parent="." node_paths=PackedStringArray("text_ui") instance=ExtResource("29_fnewr")]
+[node name="TextAreaCreator" parent="." node_paths=PackedStringArray("text_ui") instance=ExtResource("28_o65il")]
 text_ui = NodePath("../Pawn/GameUI/TextUI")
 display_text = Array[String](["ABOMINATIONS ARE MADE OF BLOOD", "ABOMINATIONS ARE PINATAS", "BLOOD CRYSTALS PROVIDE SUSTENANCE"])
 disappear_after = 8.0
-word_salad_json = ExtResource("30_vm8l0")
+word_salad_json = ExtResource("29_v2qf0")
 
-[node name="TextAreaCreator2" parent="." node_paths=PackedStringArray("text_ui") instance=ExtResource("29_fnewr")]
+[node name="TextAreaCreator2" parent="." node_paths=PackedStringArray("text_ui") instance=ExtResource("28_o65il")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -117.909, -1.44257, 0.848925)
 text_ui = NodePath("../Pawn/GameUI/TextUI")
 display_text = Array[String](["THE EYES ARE THE KEY", "THE EYES SEE OUT THERE", "LET THEM DO IT FOR YOU"])
-word_salad_json = ExtResource("30_vm8l0")
+word_salad_json = ExtResource("29_v2qf0")
 
-[node name="TextAreaCreator2" parent="TextAreaCreator2" instance=ExtResource("29_fnewr")]
+[node name="TextAreaCreator2" parent="TextAreaCreator2" instance=ExtResource("28_o65il")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -117.909, -1.44257, 0.848925)
 disappear_after = 2.0
 
-[node name="TextAreaCreator3" parent="." node_paths=PackedStringArray("text_ui") instance=ExtResource("29_fnewr")]
+[node name="TextAreaCreator3" parent="." node_paths=PackedStringArray("text_ui") instance=ExtResource("28_o65il")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -284.049, 24.3793, 10.4724)
 text_ui = NodePath("../Pawn/GameUI/TextUI")
 display_text = Array[String](["FOLLOW HIS LEAD", "CTRL TO CROUCH", "GO UNDER", "CTRL", "PRESS CTRL", "HOLD CTRL"])
 disappear_after = 8.0
-word_salad_json = ExtResource("30_vm8l0")
+word_salad_json = ExtResource("29_v2qf0")
 
 [node name="KillZone" type="Area3D" parent="." node_paths=PackedStringArray("playerState")]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, -64.571, 0)
-script = ExtResource("33_glssu")
+script = ExtResource("30_i0kwy")
 playerState = NodePath("../Pawn/PlayerState")
 
 [node name="KillCollider" type="CollisionShape3D" parent="KillZone"]
@@ -1782,11 +1783,36 @@ shape = SubResource("BoxShape3D_k4rwp")
 
 [node name="LevelSwapArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -715.357, 24.5351, 4.08823)
-script = ExtResource("31_pg3gg")
+script = ExtResource("31_inc88")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelSwapArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.80994, 0.142548, 1.22522)
 shape = SubResource("BoxShape3D_ms1n0")
+
+[node name="Giant3" parent="." instance=ExtResource("32_3fakg")]
+transform = Transform3D(91.4649, 0, 40.4248, 0, 100, 0, -40.4248, 0, 91.4649, -612.273, -104.19, -70.7545)
+
+[node name="Skeleton3D" parent="Giant3/Armature" index="0"]
+bones/1/scale = Vector3(1, 1, 1)
+bones/6/position = Vector3(8.31849e-08, 0.22674, 3.03358e-07)
+bones/6/rotation = Quaternion(0.779067, 0.313517, 0.0783617, 0.537235)
+bones/8/position = Vector3(0.0176884, 0.379435, -0.0555498)
+bones/8/rotation = Quaternion(0.00317465, 0.0027452, 0.0288935, 0.999574)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.290475, -0.000525026, -0.00752503, 0.999475)
+
+[node name="Giant" parent="." instance=ExtResource("32_3fakg")]
+transform = Transform3D(-60.5572, 0, 79.5791, 0, 100, 0, -79.5791, 0, -60.5572, -198.557, -52.4165, 59.6485)
+
+[node name="Skeleton3D" parent="Giant/Armature" index="0"]
+bones/1/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.290475, -0.000525026, -0.00752503, 0.999475)
+
+[node name="Giant2" parent="." instance=ExtResource("32_3fakg")]
+transform = Transform3D(32.0398, 0, 94.7283, 0, 100, 0, -94.7283, 0, 32.0398, -203.344, -52.4165, -52.3411)
+
+[node name="Skeleton3D" parent="Giant2/Armature" index="0"]
+bones/9/rotation = Quaternion(0.205475, -0.210525, -0.00752503, 0.999475)
 
 [connection signal="area_entered" from="DoorNode/door_fog/Area3D" to="DoorNode/video_man" method="_on_area_3d_area_entered"]
 [connection signal="area_entered" from="CombatArea1" to="CombatArea1" method="_on_area_entered"]
@@ -1805,3 +1831,6 @@ shape = SubResource("BoxShape3D_ms1n0")
 [editable path="Checkpoint"]
 [editable path="TextAreaCreator2"]
 [editable path="TextAreaCreator2/TextAreaCreator2"]
+[editable path="Giant3"]
+[editable path="Giant"]
+[editable path="Giant2"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbibnw3wxy20d"]
+[gd_scene load_steps=11 format=3 uid="uid://bbibnw3wxy20d"]
 
 [ext_resource type="PackedScene" uid="uid://dmra7k702xhnr" path="res://assets/rooms/hub_level.tscn" id="1_gu0a6"]
 [ext_resource type="PackedScene" uid="uid://d4u3qwcrc37p" path="res://scenes/level_pieces/background_audio.tscn" id="2_o7ds6"]
@@ -44,6 +44,11 @@ volumetric_fog_length = 256.0
 volumetric_fog_temporal_reprojection_amount = 0.95
 adjustment_enabled = true
 
+[sub_resource type="FogMaterial" id="FogMaterial_qbm30"]
+density = 0.0685
+albedo = Color(0.596078, 0.0235294, 0, 1)
+edge_fade = 2.5992
+
 [node name="level2" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -71,5 +76,47 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 11)
 
 [node name="Interpolated Camera" parent="Pawn/SVC/VC" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.711, 11)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -392.755, 14.2476, 155.343)
+light_color = Color(0.596078, 0.0235294, 0, 1)
+light_energy = 228.0
+light_indirect_energy = 6.0
+light_volumetric_fog_energy = 16.0
+spot_range = 55.0
+spot_angle = 77.3438
+
+[node name="FogVolume" type="FogVolume" parent="SpotLight3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+size = Vector3(26.85, 42, 95.99)
+material = SubResource("FogMaterial_qbm30")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SpotLight3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -61)
+light_color = Color(0.596078, 0.0235294, 0, 1)
+light_energy = 36.0
+light_indirect_energy = 8.0
+omni_range = 40.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -311.255, 14.1238, -171.891)
+light_color = Color(0.596078, 0.0235294, 0, 1)
+light_energy = 228.0
+light_indirect_energy = 6.0
+light_volumetric_fog_energy = 16.0
+spot_range = 55.0
+spot_angle = 77.3438
+
+[node name="FogVolume" type="FogVolume" parent="SpotLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+size = Vector3(26.85, 42, 95.99)
+material = SubResource("FogMaterial_qbm30")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SpotLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -61)
+light_color = Color(0.596078, 0.0235294, 0, 1)
+light_energy = 36.0
+light_indirect_energy = 8.0
+omni_range = 40.0
 
 [editable path="Pawn"]
