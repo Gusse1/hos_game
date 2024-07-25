@@ -6,8 +6,6 @@ var curr_wave : int = 0
 var cleared : bool = false
 
 @export var waves : Array[Node3D]
-@export var enemy_spawner: Node3D
-
 
 func _ready():
 	for wave in waves:
@@ -19,9 +17,7 @@ func _process(delta):
 		if waves[curr_wave-1].get_child_count() == 0: # All enemies dead (freed from scene)
 			_progress_waves()
 
-
 func _on_area_entered(area):
-
 	if area.name == "PlayerArea":
 		_progress_waves()
 

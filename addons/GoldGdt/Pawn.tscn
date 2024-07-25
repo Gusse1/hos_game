@@ -7,12 +7,12 @@
 [ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_Move.gd" id="4_5gavo"]
 [ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_View.gd" id="5_say2d"]
 [ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_Body.gd" id="6_k6qi8"]
+[ext_resource type="Script" path="res://src/player_actions/Shooting.gd" id="6_ug7h0"]
 [ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_Camera.gd" id="7_3b78s"]
 [ext_resource type="Script" path="res://src/resources/PlayerState.gd" id="7_5xn01"]
 [ext_resource type="Script" path="res://src/resources/PlayerVariables.gd" id="7_m0na8"]
 [ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_DebugUI.gd" id="7_vbtkw"]
 [ext_resource type="Script" path="res://src/resources/PlayerHealing.gd" id="9_sve2w"]
-[ext_resource type="Script" path="res://src/shooting.gd" id="9_tnwmm"]
 [ext_resource type="PackedScene" uid="uid://b34q6nrbu7sys" path="res://models/handgun2.tscn" id="13_lpmqc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j7pn1"]
@@ -141,21 +141,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.045, 0.646, -0.045)
 cull_mask = 2
 fov = 90.0
 
-[node name="gun" type="CSGBox3D" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera" node_paths=PackedStringArray("raycast", "firerate", "reload_timer", "gun_model", "crosshair", "playerState", "playerBody")]
+[node name="gun" type="CSGBox3D" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera" node_paths=PackedStringArray("raycast", "firerate", "gun_model", "crosshair")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.166886, -0.325985, -0.737846)
 visible = false
 layers = 2
 size = Vector3(0.162964, 0.118652, 0.481445)
-script = ExtResource("9_tnwmm")
+script = ExtResource("6_ug7h0")
 raycast = NodePath("../RayCast3D")
 firerate = NodePath("firerate")
-reload_timer = NodePath("reload_timer")
 reload_accumulation = 2.0
 maganize_size = 7
 gun_model = NodePath("../handgun")
 crosshair = NodePath("../../../../../../../GameUI/Crosshair/Line2D")
-playerState = NodePath("../../../../../../../PlayerState")
-playerBody = NodePath("../../../../../Body")
 
 [node name="reload_timer" type="Timer" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun"]
 one_shot = true
@@ -439,9 +436,8 @@ player_body = NodePath("../SVC/VC/Body")
 blood_text = NodePath("../GameUI/BloodDisplay/RichTextLabel")
 handgun = NodePath("../SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/handgun")
 
-[node name="PlayerHealing" type="Node" parent="PlayerState" node_paths=PackedStringArray("playerState")]
+[node name="PlayerHealing" type="Node" parent="PlayerState"]
 script = ExtResource("9_sve2w")
-playerState = NodePath("..")
 
 [connection signal="area_entered" from="SVC/VC/Body/PlayerArea" to="PlayerState" method="_on_player_area_area_entered"]
 [connection signal="timeout" from="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun/reload_timer" to="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun" method="_on_reload_timer_timeout"]

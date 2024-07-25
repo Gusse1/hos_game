@@ -9,6 +9,7 @@ func _ready():
 	door_fog.process_mode = 4
 	door_fog.visible = false
 
+
 func _process_eye(eye : Node3D):
 	var all_eyes_active = true
 
