@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://cdaxeyxys1tfs"]
+[gd_scene load_steps=113 format=3 uid="uid://cdaxeyxys1tfs"]
 
 [ext_resource type="FastNoiseLite" uid="uid://bmubs6juomn5f" path="res://materials/fast_noise.tres" id="1_4tqfa"]
 [ext_resource type="Script" path="res://src/resources/SharedVariables.gd" id="1_odsn5"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://2t0muetkxk5o" path="res://assets/ui/eye_vid_viewport.tscn" id="8_priwm"]
 [ext_resource type="Script" path="res://addons/post_processing/node/post_process.gd" id="9_lfpyh"]
 [ext_resource type="Script" path="res://addons/post_processing/resource/post_processing_configuration.gd" id="10_8prys"]
+[ext_resource type="AudioStream" uid="uid://cs72bq2egwcr7" path="res://audio/fx/gun_shot_dry.ogg" id="10_v3ouk"]
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://addons/GoldGdt/Pawn.tscn" id="11_riuqh"]
 [ext_resource type="PackedScene" uid="uid://53bbkhmk5ik0" path="res://assets/rooms/tutorial_map.tscn" id="14_1ejbt"]
 [ext_resource type="Material" uid="uid://o2bxr0fy8tfb" path="res://materials/see_thru_mesh_dense.tres" id="15_bve1q"]
@@ -789,11 +790,22 @@ autoplay = true
 [node name="Pawn" parent="." groups=["Pawn"] instance=ExtResource("11_riuqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 167.968, 80.5037, 0.94486)
 
+[node name="VC" parent="Pawn/SVC" index="0"]
+audio_listener_enable_3d = true
+
 [node name="Body" parent="Pawn/SVC/VC" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.036, 51.9381, 0)
 
 [node name="Interpolated Camera" parent="Pawn/SVC/VC" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.036, 52.6491, 0)
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Pawn/SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera" index="0"]
+current = true
+
+[node name="GunShotAudioPlayer" parent="Pawn/SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun" index="0"]
+stream = ExtResource("10_v3ouk")
+attenuation_model = 2
+volume_db = -7.705
 
 [node name="PlayerState" parent="Pawn" index="6"]
 level_start_checkpoint_location = Vector3(167.968, 80.5037, 0.94486)

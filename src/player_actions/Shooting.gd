@@ -13,6 +13,7 @@ var bullet_impacts = []
 var muzzle_flash = preload("res://assets/effects/muzzle_flash.tscn")
 var screen_shake_activation_timer : Timer
 var post_process_config : PostProcessingConfiguration
+@export var gunshot_audio_player : AudioStreamPlayer3D
 
 # Reload variables
 @export var reload_accumulation : float # Speed of reload
@@ -111,6 +112,11 @@ func _shooting_effects():
 	post_process_config.ScreenShake = true
 	screen_shake_activation_timer.set_wait_time(0.4)
 	screen_shake_activation_timer.start()
+	
+	# Gunshot audio
+	gunshot_audio_player.stop()
+	gunshot_audio_player.global_position = gun_model.gun_tip_position.global_position
+	gunshot_audio_player.play()
 	
 func _on_firerate_timeout():
 	can_shoot = true

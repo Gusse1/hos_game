@@ -6,8 +6,8 @@
 [ext_resource type="VideoStream" path="res://videos/Hos Intro With Audio.ogv" id="2_q6vdl"]
 [ext_resource type="FontFile" uid="uid://mu4fafoxri40" path="res://fonts/Cinzel-VariableFont_wght.ttf" id="3_7ysx4"]
 [ext_resource type="Script" path="res://src/ui/MenuItemsTooltipDisable.gd" id="5_jngpb"]
-[ext_resource type="AudioStream" uid="uid://duruah65ds4op" path="res://audio/creepy_building_hum.ogg" id="7_n0wja"]
-[ext_resource type="AudioStream" uid="uid://cndwqaxk0susv" path="res://audio/whirr.ogg" id="8_miaub"]
+[ext_resource type="AudioStream" uid="uid://duruah65ds4op" path="res://audio/ambiance/creepy_building_hum.ogg" id="7_n0wja"]
+[ext_resource type="AudioStream" uid="uid://cndwqaxk0susv" path="res://audio/ambiance/whirr.ogg" id="8_miaub"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rne6i"]
 bg_color = Color(0.2, 0, 0.00784314, 1)

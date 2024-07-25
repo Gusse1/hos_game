@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d4h44iubj7b4d"]
 
-[ext_resource type="AudioStream" uid="uid://746xeu7tb2je" path="res://audio/strong_growl.ogg" id="1_jih6t"]
+[ext_resource type="AudioStream" uid="uid://746xeu7tb2je" path="res://audio/ambiance/strong_growl.ogg" id="1_jih6t"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_5qt3h"]
 mix_rate = 44580.0
