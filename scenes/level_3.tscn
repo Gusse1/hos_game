@@ -1,5 +1,6 @@
-[gd_scene load_steps=32 format=3 uid="uid://8lkw4atb18x7"]
+[gd_scene load_steps=33 format=3 uid="uid://8lkw4atb18x7"]
 
+[ext_resource type="Script" path="res://src/resources/SharedVariables.gd" id="1_el3gr"]
 [ext_resource type="PackedScene" uid="uid://d4u3qwcrc37p" path="res://scenes/level_pieces/background_audio.tscn" id="1_hlakb"]
 [ext_resource type="PackedScene" uid="uid://bb44urkanokx" path="res://scenes/level_pieces/bottom_fog.tscn" id="2_ggxi8"]
 [ext_resource type="Script" path="res://addons/post_processing/node/post_process.gd" id="4_78mxi"]
@@ -144,6 +145,13 @@ size = Vector3(50, 1, 50)
 
 [node name="level_3" type="Node3D"]
 
+[node name="SharedVariables" type="Node" parent="." node_paths=PackedStringArray("player_node", "player_body", "player_state", "post_process_layer")]
+script = ExtResource("1_el3gr")
+player_node = NodePath("../Pawn")
+player_body = NodePath("../Pawn/SVC/VC/Body")
+player_state = NodePath("../Pawn/PlayerState")
+post_process_layer = NodePath("../CanvasLayer")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-3.78552e-08, 0.5, -0.866025, 2.18557e-08, 0.866025, 0.5, 1, 0, -4.37114e-08, -588.042, 213.773, 9.97335)
 light_color = Color(1, 0.188235, 0.227451, 1)
@@ -202,10 +210,10 @@ visible = true
 [node name="Pawn" parent="." instance=ExtResource("4_87p0o")]
 
 [node name="Body" parent="Pawn/SVC/VC" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.0785, -150.387, -41.859)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.635475, 9.87616, -2.67123)
 
 [node name="Interpolated Camera" parent="Pawn/SVC/VC" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.0785, -149.676, -41.859)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.635475, 10.5872, -2.67123)
 
 [node name="LevelTerrain" type="Node3D" parent="."]
 transform = Transform3D(6.5403, 0, 99.7859, 0, 100, 0, -99.7859, 0, 6.5403, -83.5857, -136.655, 2.55685)

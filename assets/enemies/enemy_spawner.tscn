@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3jiahdj7tlk8"]
+[gd_scene load_steps=7 format=3 uid="uid://c3jiahdj7tlk8"]
 
+[ext_resource type="AudioStream" uid="uid://cjvaaxgpt8b05" path="res://audio/fx/enemy_spawning.ogg" id="2_3jbow"]
 [ext_resource type="FastNoiseLite" uid="uid://bmubs6juomn5f" path="res://materials/fast_noise.tres" id="4_71e8f"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0bktd"]
@@ -37,3 +38,8 @@ heightmap_texture = SubResource("NoiseTexture2D_oog14")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.35158, 0)
 size = Vector3(2, 10, 2)
 material = SubResource("StandardMaterial3D_tovp4")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_3jbow")
+volume_db = -5.439
+autoplay = true
