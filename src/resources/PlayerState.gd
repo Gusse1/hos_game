@@ -1,5 +1,7 @@
 class_name PlayerState extends Node
 
+@onready var shared_variables: Node = get_tree().current_scene.get_node("SharedVariables")
+
 @export var playerVariables : PlayerVariables
 var blood_accumulation_float : float # Player gets blood in bursts according to this value
 var current_blood : float
@@ -15,17 +17,32 @@ var current_checkpoint_location : Vector3
 @export var blood_text : RichTextLabel
 @export var handgun : Node3D
 
+# FX
+var shot_effect_timer : float
+var post_process_config : PostProcessingConfiguration
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_blood = playerVariables.MAX_BLOOD
 	current_health = playerVariables.MAX_HEALTH / 2
 	handgun._update_health_display(current_health, playerVariables.MAX_HEALTH)
 	current_checkpoint_location = level_start_checkpoint_location
+	
+	shot_effect_timer = 1
+	post_process_config = shared_variables.post_process_layer.configuration
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	_passive_blood_accumulation(delta * blood_recovery_rate)
-	pass
+	
+	if shot_effect_timer < 1:
+		shot_effect_timer += delta
+	else:
+		# Stopping shot effect
+		post_process_config.ChromaticAberration = false
+		post_process_config.Glitch = false
+		print_debug("Stopping")
+		pass
 	
 func _passive_blood_accumulation(amount: float):
 	blood_accumulation_float += amount
@@ -60,6 +77,10 @@ func _kill_player():
 	_adjust_health(999)
 	_adjust_blood(999)
 
+func _camera_flash():
+	post_process_config.ChromaticAberration = true
+	post_process_config.Glitch = true
+	shot_effect_timer = 0
 	
 func _on_player_area_area_entered(area):
 	print_debug("Area entered player ", area.name)

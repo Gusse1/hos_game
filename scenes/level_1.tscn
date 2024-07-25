@@ -52,7 +52,7 @@ reload = false
 ASCII = false
 ASCIISize = Vector2(4, 9)
 ChromaticAberration = false
-StrenghtCA = 1.0
+StrenghtCA = 64.78
 Blur = false
 L_O_D = 2.787
 FishEye = true
@@ -67,30 +67,30 @@ VignetteIntensity = 0.4
 VignetteOpacity = 0.2
 VignetteR_G_B = Color(0, 0, 0, 1)
 Glitch = false
-GlitchRange = 0.0
+GlitchRange = 0.1
 GlitchNoiseQuality = 250.0
 GlitchIntenity = 0.002
 GlitchOffset = 0.003
-GlitchColorOffset = 0.0
+GlitchColorOffset = 1.125
 Outline = false
 OutlineColor = Color(0, 0, 0, 1)
 OutlineThreshold = 0.0
 OutlineBlend = 0.01
 Grain = false
-GrainPower = 75
+GrainPower = 150
 CircularWaves = false
-CircularWavesAmplitude = 2.0
-CircularWavesFrequency = 12.69
-CircularWavesRippleRate = 9.2
+CircularWavesAmplitude = 0.16
+CircularWavesFrequency = 15.0
+CircularWavesRippleRate = 9.5
 SpeedLines = false
 SpeedLinesColor = Color(1, 1, 1, 1)
 SpeedLinesCount = 2
 SpeedLineDensity = 0.072
 SpeedLineSpeed = 20
 ColorCorrection = false
-ColorCorrectionTint = Color(0, 0, 0, 1)
+ColorCorrectionTint = Color(1, 1, 1, 1)
 ColorCorrectionBrightness = 0.0
-ColorCorrectionSaturation = 0.0
+ColorCorrectionSaturation = 1.0
 Pixelate = false
 PixelatePixelSize = 3
 CRT = false
@@ -770,6 +770,7 @@ buffering_msec = 1000
 follow_viewport_enabled = true
 script = ExtResource("9_lfpyh")
 configuration = SubResource("Resource_gkxv8")
+dynamically_update = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_138gm")
@@ -794,10 +795,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 167.968, 80.5037, 0.94486)
 audio_listener_enable_3d = true
 
 [node name="Body" parent="Pawn/SVC/VC" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.036, 51.9381, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.3915, 51.9381, 0)
 
 [node name="Interpolated Camera" parent="Pawn/SVC/VC" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.036, 52.6491, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.3915, 52.6491, 0)
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Pawn/SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera" index="0"]
 current = true

@@ -11,7 +11,7 @@ var bullet_impact = preload("res://assets/effects/bulletImpact.tscn")
 var bullet_impacts = []
 
 var muzzle_flash = preload("res://assets/effects/muzzle_flash.tscn")
-var screen_shake_activation_timer : Timer
+var screen_shake_activation_timer : float = 1
 var post_process_config : PostProcessingConfiguration
 @export var gunshot_audio_player : AudioStreamPlayer3D
 
@@ -33,13 +33,14 @@ var reloading : bool
 func _ready():
 	ammo_display = get_parent().get_node('handgun').AmmoText
 	ammo_display.text = str(current_magazine_size)
-	screen_shake_activation_timer = Timer.new()
 	post_process_config = shared_variables.post_process_layer.configuration
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	if screen_shake_activation_timer.is_stopped():
+	if screen_shake_activation_timer < 0.1:
+		screen_shake_activation_timer += delta
+	else:
 		post_process_config.ScreenShake = false
 	
 	if Input.is_action_pressed("shoot") and can_shoot and not reloading and (current_magazine_size > 0):
@@ -110,8 +111,7 @@ func _shooting_effects():
 	
 	# Screen shake
 	post_process_config.ScreenShake = true
-	screen_shake_activation_timer.set_wait_time(0.4)
-	screen_shake_activation_timer.start()
+	screen_shake_activation_timer = 0
 	
 	# Gunshot audio
 	gunshot_audio_player.stop()
