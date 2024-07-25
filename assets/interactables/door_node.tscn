@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://blmdihl70wchk"]
 
-[ext_resource type="Script" path="res://example/VideoMan.gd" id="1_dj0bu"]
+[ext_resource type="Script" path="res://src/game_management/VideoMan.gd" id="1_dj0bu"]
 [ext_resource type="Texture2D" uid="uid://gfsioaau67h5" path="res://textures/Stone_18-128x128.png" id="1_vqaoi"]
 [ext_resource type="Material" uid="uid://cjf626usjxei7" path="res://materials/eye_switch_mat.tres" id="2_a2yb5"]
 [ext_resource type="Texture2D" uid="uid://8qa8sha3w5pi" path="res://textures/Dirt_03-128x128.png" id="3_4by5d"]

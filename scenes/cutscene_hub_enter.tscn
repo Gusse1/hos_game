@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://2xiyr3xu08mi"]
 
-[ext_resource type="Script" path="res://src/game_management/level_swapper.gd" id="1_tkiya"]
+[ext_resource type="Script" path="res://src/game_management/LevelSwapper.gd" id="1_tkiya"]
 [ext_resource type="VideoStream" path="res://videos/Hos Hub Video Audio.ogv" id="1_y2lx3"]
 
 [node name="CutsceneHubEnter" type="Control"]
