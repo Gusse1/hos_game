@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://bst8amvx5wnx3" path="res://textures/Metal_04-128x128.png" id="15_vcas5"]
 [ext_resource type="Script" path="res://src/interactable_scripts/EyeDoor.gd" id="16_lipqe"]
 [ext_resource type="Material" uid="uid://cjf626usjxei7" path="res://materials/eye_switch_mat.tres" id="20_g37no"]
-[ext_resource type="PackedScene" uid="uid://b2wwbmnwgn1rh" path="res://assets/text_area_creator.tscn" id="26_20qvu"]
+[ext_resource type="PackedScene" uid="uid://b2wwbmnwgn1rh" path="res://assets/effects/text_area_creator.tscn" id="26_20qvu"]
 [ext_resource type="JSON" path="res://src/ui/word_salad.json" id="30_5n6cq"]
 [ext_resource type="PackedScene" uid="uid://c3jiahdj7tlk8" path="res://assets/enemies/enemy_spawner.tscn" id="31_y6hc3"]
 

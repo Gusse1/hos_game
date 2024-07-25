@@ -631,12 +631,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2nsvs")
 
-[node name="handgun" type="Node3D" node_paths=PackedStringArray("AmmoText", "blood_bar", "health_bar")]
+[node name="handgun" type="Node3D" node_paths=PackedStringArray("AmmoText", "blood_bar", "health_bar", "gun_tip_position")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 script = ExtResource("1_goqh3")
 AmmoText = NodePath("Control/SubViewportContainer/SubViewport/ColorRect/AmmoText")
 blood_bar = NodePath("Control/SubViewportContainer/SubViewport/ColorRect/BloodBar")
 health_bar = NodePath("Control/SubViewportContainer/SubViewport/ColorRect/HealthBar")
+gun_tip_position = NodePath("gun_and_hand/GunTip")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -1443,3 +1444,6 @@ light_volumetric_fog_energy = 0.0
 light_bake_mode = 0
 shadow_bias = 5.0
 omni_range = 0.0863814
+
+[node name="GunTip" type="Node3D" parent="gun_and_hand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.535589, 0.29347, 0.0324198)

@@ -5,8 +5,14 @@ class_name shooting extends Node
 var can_shoot = true
 @export var raycast : RayCast3D
 @export var firerate : Timer
-var bullet_impact = preload("res://assets/bulletImpact.tscn")
+
+# Effects
+var bullet_impact = preload("res://assets/effects/bulletImpact.tscn")
 var bullet_impacts = []
+
+var muzzle_flash = preload("res://assets/effects/muzzle_flash.tscn")
+var screen_shake_activation_timer : Timer
+var post_process_config : PostProcessingConfiguration
 
 # Reload variables
 @export var reload_accumulation : float # Speed of reload
@@ -26,10 +32,15 @@ var reloading : bool
 func _ready():
 	ammo_display = get_parent().get_node('handgun').AmmoText
 	ammo_display.text = str(current_magazine_size)
-
+	screen_shake_activation_timer = Timer.new()
+	post_process_config = shared_variables.post_process_layer.configuration
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	if screen_shake_activation_timer.is_stopped():
+		post_process_config.ScreenShake = false
+	
 	if Input.is_action_pressed("shoot") and can_shoot and not reloading and (current_magazine_size > 0):
 		gun_model.get_node("AnimationPlayer").stop()
 		gun_model.get_node("AnimationPlayer").play("shoot")
@@ -55,6 +66,8 @@ func _process(delta):
 
 
 func _shoot():
+	_shooting_effects()
+	
 	raycast.force_raycast_update()
 	if raycast.is_colliding():
 		var collision_point = raycast.get_collision_point()
@@ -62,7 +75,7 @@ func _shoot():
 		var target = raycast.get_collider()
 		
 		if target != null:
-			_handle_bullet_impact(collision_point)
+			_bullet_impact(collision_point)
 				
 			var enemy_resources = target.get_node("EnemyResources")
 			var door_eye = target.name
@@ -73,7 +86,7 @@ func _shoot():
 				target._shot_eye()
 
 
-func _handle_bullet_impact(collision_point: Vector3):
+func _bullet_impact(collision_point: Vector3):
 	var local_bullet_impact = bullet_impact.instantiate()
 	self.get_tree().current_scene.add_child(local_bullet_impact)
 	local_bullet_impact.global_position = collision_point
@@ -84,8 +97,21 @@ func _handle_bullet_impact(collision_point: Vector3):
 	if bullet_impacts.size() > 10:
 		bullet_impacts[0].queue_free()
 		bullet_impacts.remove_at(0)
+	
 
-
+func _shooting_effects():
+	# Muzzle flash
+	var local_muzzle_flash = muzzle_flash.instantiate()
+	self.get_tree().current_scene.add_child(local_muzzle_flash)
+	local_muzzle_flash.global_position = gun_model.gun_tip_position.global_position
+	local_muzzle_flash.look_at(shared_variables.player_body.global_transform.origin, Vector3.UP)
+	local_muzzle_flash.get_node("Particles").emitting = true
+	
+	# Screen shake
+	post_process_config.ScreenShake = true
+	screen_shake_activation_timer.set_wait_time(0.4)
+	screen_shake_activation_timer.start()
+	
 func _on_firerate_timeout():
 	can_shoot = true
 

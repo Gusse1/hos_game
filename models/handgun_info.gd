@@ -4,6 +4,7 @@ extends Node3D
 
 @export var  blood_bar : ProgressBar
 @export var health_bar : ProgressBar
+@export var gun_tip_position : Node3D
 
 func _update_blood_display(current_blood : float, max_blood : float):
 	blood_bar.value = (current_blood/max_blood) * 100

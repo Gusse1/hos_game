@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://bg0cfyn7q5vd5" path="res://assets/enemies/sprinter.tscn" id="25_5ej04"]
 [ext_resource type="Material" uid="uid://bqw1sxjxt8ged" path="res://materials/see_thru_mesh.tres" id="26_phljc"]
 [ext_resource type="PackedScene" uid="uid://b6ljyf4f4qj8t" path="res://assets/interactables/checkpoint.tscn" id="27_5u2rx"]
-[ext_resource type="PackedScene" uid="uid://b2wwbmnwgn1rh" path="res://assets/text_area_creator.tscn" id="28_o65il"]
+[ext_resource type="PackedScene" uid="uid://b2wwbmnwgn1rh" path="res://assets/effects/text_area_creator.tscn" id="28_o65il"]
 [ext_resource type="JSON" path="res://src/ui/word_salad.json" id="29_v2qf0"]
 [ext_resource type="Script" path="res://src/interactable_scripts/KillZone.gd" id="30_i0kwy"]
 [ext_resource type="Script" path="res://src/game_management/LevelSwapper.gd" id="31_inc88"]
@@ -723,11 +723,12 @@ size = Vector3(85.0579, 15.7714, 26.8831)
 
 [node name="level_1" type="Node3D"]
 
-[node name="SharedVariables" type="Node" parent="." node_paths=PackedStringArray("player_node", "player_body", "player_state", "video_screen_player", "eye_screen_player")]
+[node name="SharedVariables" type="Node" parent="." node_paths=PackedStringArray("player_node", "player_body", "player_state", "post_process_layer", "video_screen_player", "eye_screen_player")]
 script = ExtResource("1_odsn5")
 player_node = NodePath("../Pawn")
 player_body = NodePath("../Pawn/SVC/VC/Body")
 player_state = NodePath("../Pawn/PlayerState")
+post_process_layer = NodePath("../CanvasLayer")
 video_screen_player = NodePath("../VideotapePlayer")
 eye_screen_player = NodePath("../EyeVidViewport")
 
