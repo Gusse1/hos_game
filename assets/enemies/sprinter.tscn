@@ -603,6 +603,7 @@ height = 1.0673
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 script = ExtResource("1_exyy8")
+attack_float_cumulation = 2.5
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
 path_desired_distance = 0.1

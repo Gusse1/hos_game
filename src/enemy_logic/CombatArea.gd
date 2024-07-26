@@ -7,6 +7,8 @@ var cleared : bool = false
 
 @export var waves : Array[Node3D]
 
+signal wave_cleared
+
 func _ready():
 	for wave in waves:
 		wave.process_mode = 4 # process_mode = 4 is disabled
@@ -33,3 +35,4 @@ func _progress_waves():
 	else:
 		print_debug("Combat area finished")
 		cleared = true
+		wave_cleared.emit()

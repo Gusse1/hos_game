@@ -39,6 +39,9 @@ func _heal(amount: float):
 
 
 func _damage(amount: float):
+	if current_health == MAX_HEALTH:
+		MOVEMENT_SPEED *= 0.66
+		
 	current_health -= amount
 	
 	if current_health <= 0:

@@ -59,7 +59,7 @@ func _process(delta):
 			reloading = true
 			reload_float += reload_accumulation*delta
 			shared_variables.player_state._adjust_blood(-(reload_accumulation*delta))
-		if reload_float >= 1.5:
+		if reload_float >= 1:
 			_reload_singular_bullet()
 			reload_float = 0
 	if Input.is_action_just_released("reload"):
@@ -125,4 +125,8 @@ func _on_firerate_timeout():
 func _reload_singular_bullet():
 	if current_magazine_size < maganize_size:
 		current_magazine_size += 1
+		
+		if current_magazine_size > maganize_size:
+			current_magazine_size = maganize_size
+			
 		ammo_display.text = str(current_magazine_size)

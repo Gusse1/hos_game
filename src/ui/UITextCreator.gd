@@ -30,10 +30,9 @@ func _create_word_salad():
 			add_child(label)
 			
 			# Randomly position the label on the screen
-			#var screen_size = text_ui.size
 			var screen_size = get_viewport().get_visible_rect().size   
 			
-			var rand_x = randi_range(200, screen_size.x - label.size.x - 400)
+			var rand_x = randi_range(200, screen_size.x - label.size.x - 600)
 			var rand_y = randi_range(200, screen_size.y - label.size.y - 200)
 			label.position = Vector2(rand_x, rand_y)
 			labels.append(label)
@@ -54,9 +53,9 @@ func _create_custom_text():
 		add_child(label)
 		
 		# Randomly position the label on the screen
-		var screen_size = text_ui.size
+		var screen_size = get_viewport().get_visible_rect().size
 		
-		var rand_x = randi_range(200, screen_size.x - label.size.x - 200)
+		var rand_x = randi_range(200, screen_size.x - label.size.x - 600)
 		var rand_y = randi_range(200, screen_size.y - label.size.y - 200)
 		label.position = Vector2(rand_x, rand_y)
 		labels.append(label)
@@ -91,4 +90,4 @@ func _on_checkpoint_area_area_entered(area):
 	print_debug("area named entered text area: ", area.name)
 	if area.name == "PlayerArea" and not entered:
 		entered = true
-		_create_word_salad()
+		_create_custom_text()

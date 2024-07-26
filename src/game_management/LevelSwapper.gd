@@ -3,6 +3,7 @@ extends Node
 @export var level_to_swap_to : String
 
 func _swap_level():
+	print_debug("Swapping level to: " + level_to_swap_to)
 	get_tree().change_scene_to_file("res://scenes/" + level_to_swap_to + ".tscn")
 
 

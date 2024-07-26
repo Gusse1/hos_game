@@ -41,8 +41,6 @@ func _process(delta):
 		# Stopping shot effect
 		post_process_config.ChromaticAberration = false
 		post_process_config.Glitch = false
-		print_debug("Stopping")
-		pass
 	
 func _passive_blood_accumulation(amount: float):
 	blood_accumulation_float += amount

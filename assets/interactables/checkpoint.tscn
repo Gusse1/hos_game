@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6ljyf4f4qj8t"]
+[gd_scene load_steps=12 format=3 uid="uid://b6ljyf4f4qj8t"]
 
 [ext_resource type="PackedScene" uid="uid://sk7spv88orwg" path="res://models/checkpoint_sign.blend" id="1_p3obf"]
 [ext_resource type="Texture2D" uid="uid://dckmk45o6edcu" path="res://textures/Metal_12-128x128.png" id="2_u07t0"]
@@ -12,6 +12,9 @@
 albedo_texture = ExtResource("2_u07t0")
 metallic = 1.0
 metallic_specular = 0.2
+
+[sub_resource type="FogMaterial" id="FogMaterial_cl4hh"]
+emission = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_33fes"]
 transparency = 1
@@ -44,13 +47,19 @@ transform = Transform3D(0.0102463, 0, -0.925943, 0, 0.926, 0, 0.925943, 0, 0.010
 
 [node name="OmniLight3D" type="OmniLight3D" parent="concrete_bench"]
 transform = Transform3D(1.07991, 0, 5.55112e-17, 0, -4.72044e-08, 1.07991, 0, -1.07991, -4.72045e-08, 0.579653, 3.3106, 4.76837e-07)
-light_color = Color(0.699535, 0.000412577, 0.709176, 1)
+light_color = Color(0.360784, 1, 0.968627, 1)
 light_energy = 10.905
 light_indirect_energy = 9.127
 light_volumetric_fog_energy = 2.145
 light_specular = 1.973
 shadow_enabled = true
 omni_range = 6.0
+
+[node name="FogVolume" type="FogVolume" parent="concrete_bench/OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.50791e-15, 0, 1.50747e-15, 1, 0, 2.38419e-07, -2.8289)
+size = Vector3(7.78518, 5.95464, 2)
+shape = 0
+material = SubResource("FogMaterial_cl4hh")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="concrete_bench"]
 transform = Transform3D(1.07991, 0, 0, 0, -4.72044e-08, 1.07991, 0, -1.07991, -4.72044e-08, 0.579653, 3.3106, 4.76837e-07)
@@ -69,8 +78,8 @@ material = SubResource("StandardMaterial3D_33fes")
 
 [node name="WordSaladCreator" type="Node" parent="CSGSphere3D"]
 script = ExtResource("4_v6ly3")
+display_text = Array[String](["CHECKPOINT"])
 shake_amount = 1.0
-num_to_create = 7
 label_theme = ExtResource("5_55lmd")
 word_salad_json = ExtResource("6_ji5ss")
 

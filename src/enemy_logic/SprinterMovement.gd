@@ -84,7 +84,7 @@ func _damage_player(delta):
 	if attack_float > 1:
 		shared_variables.player_state._adjust_health(-enemy_state.ATTACK_DAMAGE)
 		shared_variables.player_state._camera_flash()
-		shared_variables.player_body.global_position += Vector3(velocity.normalized().x * 4, 1.5, velocity.normalized().z * 4)
-		global_position -= Vector3(velocity.normalized().x * 4, 1.5, velocity.normalized().z * 4)
+		#shared_variables.player_body.global_position += Vector3(velocity.normalized().x * 4, 1.5, velocity.normalized().z * 4)
+		global_position -= Vector3(velocity.normalized().x * 4, -1.5, velocity.normalized().z * 4)
 		print_debug("Player attacked with these vars: " + str(shared_variables.player_body.global_position) + "agent velocity: " + str(velocity.normalized()))
 		attack_float = 0

@@ -1,11 +1,13 @@
 extends CSGBox3D
 
 @export var eyes : Array[Node3D]
-@export var door_fog : Node3D
+var door_fog : Node3D
 var active_eyes : int
 var is_door_open : bool
 
 func _ready():
+	door_fog = get_parent().get_node("door_fog")
+	
 	door_fog.process_mode = 4
 	door_fog.visible = false
 
@@ -16,6 +18,7 @@ func _process_eye(eye : Node3D):
 	for i in eyes:
 		if not i.is_eye_shot:
 			all_eyes_active = false
+			_close_door()
 			break
 	
 	if all_eyes_active:
@@ -28,4 +31,11 @@ func _open_door():
 	
 	use_collision = false
 	visible = false
-	print_debug("Door opened")
+
+
+func _close_door():
+	door_fog.process_mode = 4
+	door_fog.visible = false
+	
+	use_collision = true
+	visible = true

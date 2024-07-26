@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://src/player_actions/Shooting.gd" id="6_ug7h0"]
 [ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_Camera.gd" id="7_3b78s"]
 [ext_resource type="Script" path="res://src/resources/PlayerState.gd" id="7_5xn01"]
-[ext_resource type="AudioStream" uid="uid://bleljv2b185h5" path="res://audio/fx/gun_shot.ogg" id="7_bc6q1"]
+[ext_resource type="AudioStream" uid="uid://cs72bq2egwcr7" path="res://audio/fx/gun_shot_dry.ogg" id="7_avyjm"]
 [ext_resource type="Script" path="res://src/resources/PlayerVariables.gd" id="7_m0na8"]
 [ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_DebugUI.gd" id="7_vbtkw"]
 [ext_resource type="Script" path="res://src/resources/PlayerHealing.gd" id="9_sve2w"]
@@ -31,9 +31,9 @@ albedo_color = Color(0.694118, 0, 0.00392157, 0.537255)
 
 [sub_resource type="Resource" id="Resource_vwc4m"]
 script = ExtResource("7_m0na8")
-MAX_HEALTH = 10.0
+MAX_HEALTH = 15.0
 MAX_BLOOD = 11.0
-HEALING_SPEED = 1.0
+HEALING_SPEED = 2.0
 PICKUP_BLOOD_GAIN = 3.0
 BASE_DAMAGE = 5.0
 BASE_SPREAD = 1.0
@@ -58,6 +58,7 @@ stretch_shrink = 4
 [node name="VC" type="SubViewport" parent="SVC"]
 handle_input_locally = false
 msaa_3d = 3
+audio_listener_enable_3d = true
 size = Vector2i(480, 270)
 render_target_update_mode = 4
 
@@ -151,13 +152,13 @@ script = ExtResource("6_ug7h0")
 raycast = NodePath("../RayCast3D")
 firerate = NodePath("firerate")
 gunshot_audio_player = NodePath("GunShotAudioPlayer")
-reload_accumulation = 2.0
-maganize_size = 7
+reload_accumulation = 2.5
+maganize_size = 8
 gun_model = NodePath("../handgun")
 crosshair = NodePath("../../../../../../../GameUI/Crosshair/Line2D")
 
 [node name="GunShotAudioPlayer" type="AudioStreamPlayer3D" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun"]
-stream = ExtResource("7_bc6q1")
+stream = ExtResource("7_avyjm")
 
 [node name="reload_timer" type="Timer" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun"]
 one_shot = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://cdaxeyxys1tfs"]
+[gd_scene load_steps=109 format=3 uid="uid://cdaxeyxys1tfs"]
 
 [ext_resource type="FastNoiseLite" uid="uid://bmubs6juomn5f" path="res://materials/fast_noise.tres" id="1_4tqfa"]
 [ext_resource type="Script" path="res://src/resources/SharedVariables.gd" id="1_odsn5"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://2t0muetkxk5o" path="res://assets/ui/eye_vid_viewport.tscn" id="8_priwm"]
 [ext_resource type="Script" path="res://addons/post_processing/node/post_process.gd" id="9_lfpyh"]
 [ext_resource type="Script" path="res://addons/post_processing/resource/post_processing_configuration.gd" id="10_8prys"]
-[ext_resource type="AudioStream" uid="uid://cs72bq2egwcr7" path="res://audio/fx/gun_shot_dry.ogg" id="10_v3ouk"]
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://addons/GoldGdt/Pawn.tscn" id="11_riuqh"]
 [ext_resource type="PackedScene" uid="uid://53bbkhmk5ik0" path="res://assets/rooms/tutorial_map.tscn" id="14_1ejbt"]
 [ext_resource type="Material" uid="uid://o2bxr0fy8tfb" path="res://materials/see_thru_mesh_dense.tres" id="15_bve1q"]
@@ -20,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://gfsioaau67h5" path="res://textures/Stone_18-128x128.png" id="18_no02b"]
 [ext_resource type="Texture2D" uid="uid://8qa8sha3w5pi" path="res://textures/Dirt_03-128x128.png" id="19_d347v"]
 [ext_resource type="Script" path="res://src/interactable_scripts/Eye.gd" id="20_418mv"]
+[ext_resource type="Material" uid="uid://dt5a2t18cojln" path="res://materials/level_1_eye_material.tres" id="20_clj41"]
 [ext_resource type="Texture2D" uid="uid://bst8amvx5wnx3" path="res://textures/Metal_04-128x128.png" id="21_17jsd"]
 [ext_resource type="Script" path="res://src/interactable_scripts/EyeDoor.gd" id="22_adn34"]
 [ext_resource type="PackedScene" uid="uid://by8poq58ac6jv" path="res://assets/interactables/room_trigger.tscn" id="23_2fg2j"]
@@ -479,23 +479,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mtr4v")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_c17ln"]
-viewport_path = NodePath(".")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_phutw"]
-viewport_path = NodePath(".")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nt5ls"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_c17ln")
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
-emission_operator = 1
-emission_texture = SubResource("ViewportTexture_phutw")
-uv1_scale = Vector3(-0.169, -12.178, 0.562)
-uv1_offset = Vector3(3.23, 2.35, 0.43)
-uv1_triplanar = true
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1yjo"]
 resource_name = "EyeClosed"
 cull_mode = 2
@@ -537,6 +520,13 @@ shadow_mesh = SubResource("ArrayMesh_yhxpb")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nwwo3"]
 size = Vector3(7.72699, 4.38135, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rkcsm"]
+viewport_path = NodePath(".")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t6pns"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_rkcsm")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_33dfe"]
 albedo_texture = ExtResource("21_17jsd")
@@ -625,23 +615,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_el5kt")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_wtv2f"]
-viewport_path = NodePath(".")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_xdmsm"]
-viewport_path = NodePath(".")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o30fa"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_wtv2f")
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
-emission_operator = 1
-emission_texture = SubResource("ViewportTexture_xdmsm")
-uv1_scale = Vector3(-0.169, -12.178, 0.562)
-uv1_offset = Vector3(3.23, 2.35, 0.43)
-uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_067rx"]
 resource_name = "EyeClosed"
@@ -791,20 +764,16 @@ autoplay = true
 [node name="Pawn" parent="." groups=["Pawn"] instance=ExtResource("11_riuqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 167.968, 80.5037, 0.94486)
 
-[node name="VC" parent="Pawn/SVC" index="0"]
-audio_listener_enable_3d = true
-
 [node name="Body" parent="Pawn/SVC/VC" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.3915, 51.9381, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.479, 51.9381, 1.70181)
 
 [node name="Interpolated Camera" parent="Pawn/SVC/VC" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.3915, 52.6491, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.479, 52.6491, 1.70181)
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Pawn/SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera" index="0"]
 current = true
 
 [node name="GunShotAudioPlayer" parent="Pawn/SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun" index="0"]
-stream = ExtResource("10_v3ouk")
 attenuation_model = 2
 volume_db = -7.705
 
@@ -939,7 +908,7 @@ shadow_enabled = true
 omni_range = 123.266
 
 [node name="SpotLight3D12" type="SpotLight3D" parent="tutorial_map"]
-transform = Transform3D(1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, -504.412, 29.9432, -43.1519)
+transform = Transform3D(1, 0, 0, 0, -0.952603, 0.304216, 0, -0.304216, -0.952603, -510.475, 34.881, -31.6761)
 light_color = Color(0.596078, 0.0235294, 0, 1)
 light_energy = 304.0
 light_indirect_energy = 2.0
@@ -1350,7 +1319,7 @@ transform = Transform3D(-2.5, 0, -3.77489e-07, 0, 2.5, 0, 3.77489e-07, 0, -2.5, 
 transform = Transform3D(0, 0.0748121, 0, -0.5975, 0, 0, 0, 5.77316e-15, 1.07125, 0.391479, 0, -0.503728)
 mesh = SubResource("ArrayMesh_hn2uj")
 skeleton = NodePath("")
-surface_material_override/1 = SubResource("StandardMaterial3D_nt5ls")
+surface_material_override/1 = ExtResource("20_clj41")
 
 [node name="EyeBlind" type="MeshInstance3D" parent="LevelTerrrain/DoorNode2/eye_switch"]
 transform = Transform3D(0, 0.0748121, -2.84217e-14, -0.5975, 0, 0, 0, -3.55271e-15, 1.07125, 0.286707, 0, -0.503728)
@@ -1358,11 +1327,12 @@ visible = false
 mesh = SubResource("ArrayMesh_addty")
 skeleton = NodePath("")
 
-[node name="eye_collider" type="StaticBody3D" parent="LevelTerrrain/DoorNode2/eye_switch" node_paths=PackedStringArray("eye_blind")]
+[node name="eye_collider" type="StaticBody3D" parent="LevelTerrrain/DoorNode2/eye_switch"]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74229e-09, 0.4, 0, -0.477597)
 physics_material_override = SubResource("PhysicsMaterial_ofkav")
 script = ExtResource("20_418mv")
-eye_blind = NodePath("../EyeBlind")
+is_timed_eye = true
+timed_eye_time = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelTerrrain/DoorNode2/eye_switch/eye_collider"]
 transform = Transform3D(1, 0, 8.63974e-20, 0, 1, 0, 0, 0, 1, 0.00650024, -0.0686035, 0)
@@ -1382,6 +1352,7 @@ visible = false
 transform = Transform3D(0, 0.0748121, 0, -0.5975, 0, 0, 0, 5.77316e-15, 1.07125, 0.391479, 0, -0.503728)
 mesh = SubResource("ArrayMesh_hn2uj")
 skeleton = NodePath("")
+surface_material_override/1 = SubResource("StandardMaterial3D_t6pns")
 
 [node name="EyeBlind" type="MeshInstance3D" parent="LevelTerrrain/DoorNode2/eye_switch2"]
 transform = Transform3D(0, 0.0748121, -2.84217e-14, -0.5975, 0, 0, 0, -3.55271e-15, 1.07125, 0.286707, 0, -0.503728)
@@ -1389,11 +1360,10 @@ visible = false
 mesh = SubResource("ArrayMesh_addty")
 skeleton = NodePath("")
 
-[node name="eye_collider" type="StaticBody3D" parent="LevelTerrrain/DoorNode2/eye_switch2" node_paths=PackedStringArray("eye_blind")]
+[node name="eye_collider" type="StaticBody3D" parent="LevelTerrrain/DoorNode2/eye_switch2"]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74229e-09, 0.4, 0, -0.477597)
 physics_material_override = SubResource("PhysicsMaterial_ofkav")
 script = ExtResource("20_418mv")
-eye_blind = NodePath("../EyeBlind")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelTerrrain/DoorNode2/eye_switch2/eye_collider"]
 transform = Transform3D(1, 0, 8.63974e-20, 0, 1, 0, 0, 0, 1, 0.00650024, -0.0686035, 0)
@@ -1405,14 +1375,13 @@ light_color = Color(0.596078, 0.0235294, 0, 1)
 light_energy = 13.64
 light_indirect_energy = 6.0
 
-[node name="door" type="CSGBox3D" parent="LevelTerrrain/DoorNode2" node_paths=PackedStringArray("eyes", "door_fog")]
+[node name="door" type="CSGBox3D" parent="LevelTerrrain/DoorNode2" node_paths=PackedStringArray("eyes")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.425384, 10.5, 0)
 use_collision = true
 size = Vector3(34.7667, 23, 0.5)
 material = SubResource("StandardMaterial3D_33dfe")
 script = ExtResource("22_adn34")
 eyes = [NodePath("../eye_switch/eye_collider")]
-door_fog = NodePath("../door_fog")
 
 [node name="door_fog" type="FogVolume" parent="LevelTerrrain/DoorNode2"]
 transform = Transform3D(2.535, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
@@ -1441,7 +1410,7 @@ transform = Transform3D(-2.68211e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -2.68211e-07, 
 transform = Transform3D(0, 0.0748121, 0, -0.5975, 0, 0, 0, 7.10543e-15, 1.07125, 0.324289, 0, -0.503728)
 mesh = SubResource("ArrayMesh_do2vl")
 skeleton = NodePath("")
-surface_material_override/1 = SubResource("StandardMaterial3D_o30fa")
+surface_material_override/1 = ExtResource("20_clj41")
 
 [node name="EyeBlind" type="MeshInstance3D" parent="LevelTerrrain/DoorNode/eye_switch"]
 transform = Transform3D(0, 0.0748121, -2.84217e-14, -0.5975, 0, 0, 0, -3.55271e-15, 1.07125, 0.286707, 0, -0.503728)
@@ -1449,11 +1418,10 @@ visible = false
 mesh = SubResource("ArrayMesh_xtih8")
 skeleton = NodePath("")
 
-[node name="eye_collider" type="StaticBody3D" parent="LevelTerrrain/DoorNode/eye_switch" node_paths=PackedStringArray("eye_blind")]
+[node name="eye_collider" type="StaticBody3D" parent="LevelTerrrain/DoorNode/eye_switch"]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74229e-09, 0.4, 0, -0.477597)
 physics_material_override = SubResource("PhysicsMaterial_fagp0")
 script = ExtResource("20_418mv")
-eye_blind = NodePath("../EyeBlind")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelTerrrain/DoorNode/eye_switch/eye_collider"]
 transform = Transform3D(1, 0, 8.63974e-20, 0, 1, 0, 0, 0, 1, 0.00650024, -0.0686035, 0)
@@ -1472,7 +1440,7 @@ transform = Transform3D(-2.68211e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -2.68211e-07, 
 transform = Transform3D(0, 0.0748121, 0, -0.5975, 0, 0, 0, 7.10543e-15, 1.07125, 0.35873, 0, -0.503729)
 mesh = SubResource("ArrayMesh_do2vl")
 skeleton = NodePath("")
-surface_material_override/1 = SubResource("StandardMaterial3D_o30fa")
+surface_material_override/1 = ExtResource("20_clj41")
 
 [node name="EyeBlind" type="MeshInstance3D" parent="LevelTerrrain/DoorNode/eye_switch2"]
 transform = Transform3D(0, 0.0748121, -2.84217e-14, -0.5975, 0, 0, 0, -3.55271e-15, 1.07125, 0.286707, 0, -0.503728)
@@ -1480,11 +1448,10 @@ visible = false
 mesh = SubResource("ArrayMesh_xtih8")
 skeleton = NodePath("")
 
-[node name="eye_collider" type="StaticBody3D" parent="LevelTerrrain/DoorNode/eye_switch2" node_paths=PackedStringArray("eye_blind")]
+[node name="eye_collider" type="StaticBody3D" parent="LevelTerrrain/DoorNode/eye_switch2"]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74229e-09, 0.4, 0, -0.477597)
 physics_material_override = SubResource("PhysicsMaterial_fagp0")
 script = ExtResource("20_418mv")
-eye_blind = NodePath("../EyeBlind")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelTerrrain/DoorNode/eye_switch2/eye_collider"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00400352, -0.0686035, 0)
@@ -1496,14 +1463,13 @@ light_color = Color(0.596078, 0.0235294, 0, 1)
 light_energy = 13.64
 light_indirect_energy = 6.0
 
-[node name="door" type="CSGBox3D" parent="LevelTerrrain/DoorNode" node_paths=PackedStringArray("eyes", "door_fog")]
+[node name="door" type="CSGBox3D" parent="LevelTerrrain/DoorNode" node_paths=PackedStringArray("eyes")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
 use_collision = true
 size = Vector3(14, 23, 0.5)
 material = SubResource("StandardMaterial3D_38buk")
 script = ExtResource("22_adn34")
 eyes = [NodePath("../eye_switch/eye_collider"), NodePath("../eye_switch2/eye_collider")]
-door_fog = NodePath("../door_fog")
 
 [node name="door_fog" type="FogVolume" parent="LevelTerrrain/DoorNode"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
@@ -1769,7 +1735,7 @@ word_salad_json = ExtResource("29_v2qf0")
 [node name="TextAreaCreator2" parent="InteractAreas" node_paths=PackedStringArray("text_ui") instance=ExtResource("28_o65il")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -117.909, -1.44257, 0.848925)
 text_ui = NodePath("../../Pawn/GameUI/TextUI")
-display_text = Array[String](["THE EYES ARE THE KEY", "THE EYES SEE OUT THERE", "LET THEM DO IT FOR YOU"])
+display_text = Array[String](["THE GIANTS ARE ALLIES", "DON'T TRUST THEM", "THEY WILL HELP YOU"])
 word_salad_json = ExtResource("29_v2qf0")
 
 [node name="TextAreaCreator2" parent="InteractAreas/TextAreaCreator2" instance=ExtResource("28_o65il")]
@@ -1793,6 +1759,7 @@ shape = SubResource("BoxShape3D_k4rwp")
 [node name="LevelSwapArea" type="Area3D" parent="InteractAreas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -715.357, 24.5351, 4.08823)
 script = ExtResource("31_inc88")
+level_to_swap_to = "cutscene_hub_enter"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractAreas/LevelSwapArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.80994, 0.142548, 1.22522)
@@ -1809,6 +1776,10 @@ visible = false
 [node name="concrete_bench" parent="Checkpoints/Checkpoint" index="2"]
 transform = Transform3D(0.454354, 0.0673409, -0.804055, 0.0486295, 0.918807, 0.104431, 0.805404, -0.0934659, 0.447288, 1.54326, -1.67984, -0.766533)
 
+[node name="FogVolume" parent="Checkpoints/Checkpoint/concrete_bench/OmniLight3D" index="0"]
+transform = Transform3D(1, 0, -2.51457e-08, 0, 1, -5.58794e-09, 0, -2.6077e-08, 0.999998, 0.318665, -0.320984, -7.00092)
+size = Vector3(14.4479, 14.6637, 2)
+
 [node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("27_5u2rx")]
 transform = Transform3D(1.46806, 0, 1.19034, 0, 1.89, 0, -1.19034, 0, 1.46806, -272.053, 26.421, 0.701482)
 
@@ -1823,6 +1794,10 @@ transform = Transform3D(0.956202, -0.0422516, -0.289643, 0.0170901, 0.995898, -0
 
 [node name="concrete_bench" parent="Checkpoints/Checkpoint2" index="2"]
 transform = Transform3D(0.0102462, 0, -0.925943, 0, 0.926, 0, 0.925943, 0, 0.0102462, 1.39674, -3.916, -0.42189)
+
+[node name="FogVolume" parent="Checkpoints/Checkpoint2/concrete_bench/OmniLight3D" index="0"]
+transform = Transform3D(0.999999, 1.78814e-07, 7.10543e-15, -1.78814e-07, 0.999999, -3.01981e-14, 8.88178e-15, -3.19744e-14, 1, -0.514389, 0.0255737, -7.26616)
+size = Vector3(12.8036, 13.7779, 2)
 
 [node name="SpotLight3D" parent="Checkpoints/Checkpoint2/concrete_bench" index="4"]
 transform = Transform3D(0.571382, 2.98023e-08, 1.77636e-15, 0, -2.49759e-08, 0.571383, 2.98023e-08, -0.571382, -2.49758e-08, 0.579666, 12.5714, -7.62939e-06)

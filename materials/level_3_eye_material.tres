@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://t0he6h2p3mel"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_f1vfm"]
+viewport_path = NodePath("EyeVidViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_sybsc"]
+viewport_path = NodePath("EyeVidViewport")
+
+[resource]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_f1vfm")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+emission_texture = SubResource("ViewportTexture_sybsc")
+uv1_scale = Vector3(-0.169, -12.178, 0.562)
+uv1_offset = Vector3(3.23, 2.35, 0.43)
+uv1_triplanar = true
