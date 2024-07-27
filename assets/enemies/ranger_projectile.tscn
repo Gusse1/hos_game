@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://ckkc3hb2vwwlm"]
+
+[ext_resource type="PackedScene" uid="uid://bjgska4202amt" path="res://models/ranger.blend" id="1_kl0gw"]
+[ext_resource type="Script" path="res://src/enemy_logic/RangerProjectile.gd" id="2_j1dae"]
+[ext_resource type="Texture2D" uid="uid://bmeye3os7s6fg" path="res://textures/Gem_05-128x128.png" id="2_msrj2"]
+[ext_resource type="Texture2D" uid="uid://cbst2t5m443o3" path="res://textures/Gem_08-128x128.png" id="3_3k6le"]
+[ext_resource type="FastNoiseLite" uid="uid://bmubs6juomn5f" path="res://materials/fast_noise.tres" id="3_7de3w"]
+[ext_resource type="Texture2D" uid="uid://dc6ac30yxl1e2" path="res://textures/Gem_18-128x128.png" id="4_oynst"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t7m14"]
+noise = ExtResource("3_7de3w")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fp4cv"]
+albedo_color = Color(0.321569, 0.172549, 0, 1)
+albedo_texture = ExtResource("2_msrj2")
+metallic = 1.0
+metallic_specular = 0.0
+emission_enabled = true
+emission = Color(0.294118, 0, 0.490196, 1)
+emission_energy_multiplier = 3.1
+emission_operator = 1
+emission_texture = ExtResource("4_oynst")
+heightmap_enabled = true
+heightmap_scale = -16.0
+heightmap_texture = SubResource("NoiseTexture2D_t7m14")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_drjbq"]
+albedo_color = Color(0.638286, 0, 0.0306298, 1)
+albedo_texture = ExtResource("3_3k6le")
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.6
+emission_enabled = true
+emission = Color(0.638286, 0, 0.0306298, 1)
+emission_energy_multiplier = 35.7
+emission_operator = 1
+emission_texture = ExtResource("4_oynst")
+
+[sub_resource type="FogMaterial" id="FogMaterial_8ch0n"]
+density = 3.0
+albedo = Color(0.295677, 0.000892729, 0.491307, 1)
+emission = Color(0.295677, 0.000892729, 0.491307, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ls7xi"]
+radius = 0.144
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l788h"]
+albedo_color = Color(0.694118, 0, 0.00392157, 0.537255)
+
+[node name="ranger_projectile" node_paths=PackedStringArray("raycast") instance=ExtResource("1_kl0gw")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
+script = ExtResource("2_j1dae")
+projectile_speed = 20.0
+raycast = NodePath("RayCast3D")
+
+[node name="HumanoidBase_NotOverlapping" parent="." index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.655, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_fp4cv")
+surface_material_override/1 = SubResource("StandardMaterial3D_drjbq")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 0, -0.1979)
+light_color = Color(0.295677, 0.000892729, 0.491307, 1)
+light_energy = 100.0
+light_volumetric_fog_energy = 5.0
+shadow_enabled = true
+omni_range = 3.08486
+
+[node name="FogVolume" type="FogVolume" parent="OmniLight3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.299684, 0.846822)
+size = Vector3(2, 2, 3.53562)
+material = SubResource("FogMaterial_8ch0n")
+
+[node name="ProjectileArea" type="Area3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectileArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0292406, -0.0365016)
+shape = SubResource("SphereShape3D_ls7xi")
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="3"]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-07, -0.1, 0, 10, -4.37114e-09, 0, 0, 0)
+debug_shape_custom_color = Color(0.87451, 0, 0, 1)
+
+[node name="laser_debug" type="CSGBox3D" parent="RayCast3D" index="0"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 1.42109e-14, 0, -2.81375e-12, 0.05, 0, -0.467556, -9.53674e-07)
+visible = false
+layers = 512
+material_override = SubResource("StandardMaterial3D_l788h")
+size = Vector3(1, 17.7839, 1)

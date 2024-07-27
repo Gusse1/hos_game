@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpobx26i0toh0"]
+
+[ext_resource type="Script" path="res://src/enemy_logic/RangerMovement.gd" id="1_tkl4h"]
+[ext_resource type="Script" path="res://src/resources/EnemyState.gd" id="2_17hnm"]
+[ext_resource type="Material" uid="uid://bxxxiasg01ykj" path="res://materials/sprinter_weak.tres" id="3_pdowq"]
+[ext_resource type="PackedScene" uid="uid://ev2ewh0uh7h7" path="res://assets/enemies/ranger_head.tscn" id="4_re4le"]
+
+[node name="ranger" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+motion_mode = 1
+script = ExtResource("1_tkl4h")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
+path_desired_distance = 0.1
+target_desired_distance = 0.1
+avoidance_enabled = true
+height = 2.0
+radius = 1.0
+
+[node name="EnemyResources" type="Node" parent="CharacterBody3D" node_paths=PackedStringArray("enemy_mesh")]
+script = ExtResource("2_17hnm")
+FOLLOW_THRESHOLD = 100.0
+MOVEMENT_SPEED = 10.0
+enemy_mesh = NodePath("../enemy/HumanoidBase_NotOverlapping")
+weak_material = ExtResource("3_pdowq")
+
+[node name="enemy" parent="CharacterBody3D" instance=ExtResource("4_re4le")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[editable path="CharacterBody3D/enemy"]

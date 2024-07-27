@@ -292,7 +292,7 @@ density_texture = SubResource("NoiseTexture3D_ms7ql")
 [sub_resource type="BoxShape3D" id="BoxShape3D_57srf"]
 size = Vector3(14.34, 22.3708, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p05lw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rvf2c"]
 transparency = 1
 cull_mode = 2
 albedo_texture = ExtResource("25_7wdli")
@@ -302,7 +302,7 @@ roughness = 0.75
 uv1_scale = Vector3(6, 24, 6)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ga8id"]
-material = SubResource("StandardMaterial3D_p05lw")
+material = SubResource("StandardMaterial3D_rvf2c")
 size = Vector2(50, 200)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r47ia"]
