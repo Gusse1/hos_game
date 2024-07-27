@@ -24,3 +24,7 @@ func _on_artifact_zone_area_entered(area):
 
 func _on_combat_area_2_wave_cleared():
 	_enable()
+
+
+func _on_text_area_creator_area_entered(area):
+	_enable()

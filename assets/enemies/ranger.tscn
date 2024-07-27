@@ -1,15 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpobx26i0toh0"]
+[gd_scene load_steps=7 format=3 uid="uid://bpobx26i0toh0"]
 
 [ext_resource type="Script" path="res://src/enemy_logic/RangerMovement.gd" id="1_tkl4h"]
 [ext_resource type="Script" path="res://src/resources/EnemyState.gd" id="2_17hnm"]
 [ext_resource type="Material" uid="uid://bxxxiasg01ykj" path="res://materials/sprinter_weak.tres" id="3_pdowq"]
 [ext_resource type="PackedScene" uid="uid://ev2ewh0uh7h7" path="res://assets/enemies/ranger_head.tscn" id="4_re4le"]
 
+[sub_resource type="FogMaterial" id="FogMaterial_7uvjy"]
+density = 3.0
+albedo = Color(0.295677, 0.000892729, 0.491307, 1)
+emission = Color(0.295677, 0.000892729, 0.491307, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i2u7x"]
+size = Vector3(0.609497, 0.537585, 0.802734)
+
 [node name="ranger" type="Node3D"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 motion_mode = 1
 script = ExtResource("1_tkl4h")
+attack_float_cumulation = 2.5
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
 path_desired_distance = 0.1
@@ -22,10 +31,29 @@ radius = 1.0
 script = ExtResource("2_17hnm")
 FOLLOW_THRESHOLD = 100.0
 MOVEMENT_SPEED = 10.0
+IS_RANGED_ENEMY = true
 enemy_mesh = NodePath("../enemy/HumanoidBase_NotOverlapping")
 weak_material = ExtResource("3_pdowq")
 
 [node name="enemy" parent="CharacterBody3D" instance=ExtResource("4_re4le")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D/enemy"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.0232572, -0.197729)
+visible = false
+light_color = Color(0.295677, 0.000892729, 0.491307, 1)
+light_energy = 100.0
+light_volumetric_fog_energy = 5.0
+shadow_enabled = true
+omni_range = 3.08486
+
+[node name="FogVolume" type="FogVolume" parent="CharacterBody3D/enemy/OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.299684, 0.846822)
+size = Vector3(2, 2, 3.53562)
+material = SubResource("FogMaterial_7uvjy")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.0229966, 0.323446, -0.096308)
+shape = SubResource("BoxShape3D_i2u7x")
 
 [editable path="CharacterBody3D/enemy"]

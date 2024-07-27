@@ -50,7 +50,7 @@ albedo_color = Color(0.694118, 0, 0.00392157, 0.537255)
 [node name="ranger_projectile" node_paths=PackedStringArray("raycast") instance=ExtResource("1_kl0gw")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 script = ExtResource("2_j1dae")
-projectile_speed = 20.0
+projectile_speed = 60.0
 raycast = NodePath("RayCast3D")
 
 [node name="HumanoidBase_NotOverlapping" parent="." index="0"]
@@ -87,3 +87,5 @@ visible = false
 layers = 512
 material_override = SubResource("StandardMaterial3D_l788h")
 size = Vector3(1, 17.7839, 1)
+
+[connection signal="area_entered" from="ProjectileArea" to="." method="_on_projectile_area_area_entered"]

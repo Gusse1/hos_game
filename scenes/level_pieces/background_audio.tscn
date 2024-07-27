@@ -16,6 +16,7 @@ loop = true
 [node name="Creepy_Hum" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_8whrx")
 volume_db = -12.417
+autoplay = true
 
 [node name="Creepy_Hum2" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamOggVorbis_l233k")

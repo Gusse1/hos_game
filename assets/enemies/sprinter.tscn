@@ -674,4 +674,12 @@ shape = SubResource("CapsuleShape3D_hvunb")
 visible = false
 radius = 0.741825
 
+[node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.150012, 3.26195, 0.592076)
+light_color = Color(0.295677, 0.000892729, 0.491307, 1)
+light_energy = 4.0
+light_volumetric_fog_energy = 2.0
+shadow_enabled = true
+omni_range = 7.02764
+
 [editable path="CharacterBody3D/enemy"]

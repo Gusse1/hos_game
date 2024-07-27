@@ -10,6 +10,7 @@ extends Node
 @export var MOVEMENT_SPEED: float = 5
 @export var ATTACK_RANGE: float = 2
 @export var ATTACK_DAMAGE: float = 4
+@export var IS_RANGED_ENEMY: bool = false
 
 @export_group("Other")
 @export var COST: int = 1
@@ -28,10 +29,11 @@ func _activate():
 
 
 func _spawn_blood_cloud():
-	var blood_cloud: PackedScene =  preload("res://assets/enemies/blood_cloud.tscn")
-	var inst_blood_cloud: Node3D = blood_cloud.instantiate()
-	inst_blood_cloud.position = get_parent().global_position + Vector3(0, 1, 0)
-	get_tree().get_root().add_child(inst_blood_cloud)
+	if not IS_RANGED_ENEMY:
+		var blood_cloud: PackedScene =  preload("res://assets/enemies/blood_cloud.tscn")
+		var inst_blood_cloud: Node3D = blood_cloud.instantiate()
+		inst_blood_cloud.position = get_parent().global_position + Vector3(0, 1, 0)
+		get_tree().get_root().add_child(inst_blood_cloud)
 
 
 func _heal(amount: float):

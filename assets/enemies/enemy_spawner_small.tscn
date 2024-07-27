@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bjfbe70pdkwti"]
+
+[ext_resource type="PackedScene" uid="uid://c3jiahdj7tlk8" path="res://assets/enemies/enemy_spawner.tscn" id="1_vaslr"]
+[ext_resource type="FastNoiseLite" uid="uid://bmubs6juomn5f" path="res://materials/fast_noise.tres" id="2_khr4l"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0bktd"]
+width = 16
+height = 16
+noise = ExtResource("2_khr4l")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dnf08"]
+width = 16
+height = 16
+noise = ExtResource("2_khr4l")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oog14"]
+width = 16
+height = 16
+noise = ExtResource("2_khr4l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xcpvo"]
+transparency = 1
+albedo_texture = SubResource("NoiseTexture2D_0bktd")
+metallic = 0.19
+metallic_specular = 1.0
+roughness = 0.25
+emission_enabled = true
+emission = Color(0.508602, 0.576514, 5.77569e-07, 1)
+emission_energy_multiplier = 11.31
+emission_operator = 1
+emission_texture = SubResource("NoiseTexture2D_dnf08")
+heightmap_enabled = true
+heightmap_texture = SubResource("NoiseTexture2D_oog14")
+
+[node name="enemy_spawner_small" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.275, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("1_vaslr")]
+
+[node name="CSGBox3D" parent="EnemySpawner" index="0"]
+material = SubResource("StandardMaterial3D_xcpvo")
+
+[editable path="EnemySpawner"]

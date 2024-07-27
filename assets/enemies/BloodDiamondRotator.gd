@@ -1,10 +1,12 @@
 extends GPUParticles3D
 
 @export var blood_cloud_ui_text : Node
+@export var text_enabled: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_spawn_random_text()
+	if text_enabled:
+		_spawn_random_text()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

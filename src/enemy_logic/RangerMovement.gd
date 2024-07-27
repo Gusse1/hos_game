@@ -7,8 +7,9 @@ extends CharacterBody3D
 @onready var enemy_state: Node = $EnemyResources
 @onready var attack_float : float = 0
 @export var attack_float_cumulation : float = 1.25
+@onready var indicator_light: OmniLight3D = $enemy/OmniLight3D
 
-var enemy_spawner = preload("res://assets/enemies/enemy_spawner.tscn")
+var enemy_spawner = preload("res://assets/enemies/enemy_spawner_small.tscn")
 var start = true
 
 var projectile = preload("res://assets/enemies/ranger_projectile.tscn")
@@ -61,6 +62,9 @@ func _physics_process(delta):
 		var current_agent_position: Vector3 = global_position
 		enemy_model.look_at(shared_variables.player_body.global_transform.origin, Vector3.UP)
 		
+		if attack_float > 4:
+			indicator_light.visible = true
+		
 		# Attack player if in attack range
 		if attack_float > 5:
 			_shoot_projectile()
@@ -70,6 +74,7 @@ func _physics_process(delta):
 
 
 func _shoot_projectile():
+	indicator_light.visible = false
 	print_debug("im bussin")
 	var direction = (shared_variables.player_body.global_transform.origin - global_transform.origin).normalized()
 	var projectile_instance = projectile.instantiate()
@@ -78,7 +83,7 @@ func _shoot_projectile():
 	projectile_instance.global_position = self.global_position
 	projectile_instance.look_at(shared_variables.player_body.global_transform.origin, Vector3.UP)
 	projectile_instance.move_direction = direction
-	projectile_instance.scale = Vector3(3,3,3)
+	projectile_instance.scale = Vector3(5,5,5)
 	get_tree().get_root().add_child(projectile_instance)
 	
 	attack_float = 0

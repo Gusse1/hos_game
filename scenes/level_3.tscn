@@ -173,7 +173,7 @@ resource_name = "EyeVideoMat"
 cull_mode = 2
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_mtr4v"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_rnvmh"]
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
 "format": 34896613377,
@@ -225,14 +225,14 @@ _surfaces = [{
 "vertex_data": PackedByteArray(255, 127, 0, 0, 0, 0, 83, 150, 255, 127, 0, 0, 0, 0, 83, 150, 255, 255, 0, 0, 255, 127, 170, 233, 255, 255, 0, 0, 255, 127, 83, 150, 255, 127, 0, 0, 255, 255, 170, 233, 255, 127, 0, 0, 255, 255, 170, 233, 0, 0, 0, 0, 255, 127, 170, 233, 0, 0, 0, 0, 255, 127, 83, 150, 255, 127, 255, 255, 0, 0, 83, 150, 255, 127, 255, 255, 0, 0, 255, 191, 255, 127, 255, 255, 0, 0, 83, 150, 255, 255, 255, 255, 255, 127, 170, 233, 255, 255, 255, 255, 255, 127, 83, 150, 255, 255, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 255, 170, 233, 255, 127, 255, 255, 255, 255, 255, 191, 255, 127, 255, 255, 255, 255, 170, 233, 0, 0, 255, 255, 255, 127, 255, 191, 0, 0, 255, 255, 255, 127, 170, 233, 0, 0, 255, 255, 255, 127, 83, 150, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 0, 0, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 0, 0)
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_mtr4v")
+shadow_mesh = SubResource("ArrayMesh_rnvmh")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1yjo"]
 resource_name = "EyeClosed"
 cull_mode = 2
 albedo_texture = ExtResource("30_e3mvi")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_yhxpb"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_dxesn"]
 _surfaces = [{
 "aabb": AABB(-0.69879, 0.388442, -0.69879, 1.39758, 1.00136e-05, 1.39758),
 "format": 34896613377,
@@ -262,7 +262,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray(255, 127, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 255, 127, 255, 191, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 255, 127, 255, 191, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127)
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_yhxpb")
+shadow_mesh = SubResource("ArrayMesh_dxesn")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ofkav"]
 
@@ -281,13 +281,13 @@ subsurf_scatter_transmittance_color = Color(0.333333, 0.329412, 0.901961, 1)
 seed = 280
 frequency = 0.0375
 
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_ms7ql"]
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_w86lk"]
 noise = SubResource("FastNoiseLite_iqfmp")
 
 [sub_resource type="FogMaterial" id="FogMaterial_spoft"]
 density = 2.0885
 emission = Color(0.411765, 0.411765, 0.411765, 1)
-density_texture = SubResource("NoiseTexture3D_ms7ql")
+density_texture = SubResource("NoiseTexture3D_w86lk")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_57srf"]
 size = Vector3(14.34, 22.3708, 1)

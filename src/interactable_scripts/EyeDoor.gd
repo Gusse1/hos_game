@@ -39,3 +39,11 @@ func _close_door():
 	
 	use_collision = true
 	visible = true
+
+
+func _on_combat_area_1_wave_cleared():
+	_open_door()
+
+
+func _on_combat_area_2_wave_cleared():
+	_open_door()
