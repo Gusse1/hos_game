@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://8lkw4atb18x7"]
+[gd_scene load_steps=90 format=3 uid="uid://8lkw4atb18x7"]
 
 [ext_resource type="Script" path="res://src/resources/SharedVariables.gd" id="1_el3gr"]
 [ext_resource type="PackedScene" uid="uid://d4u3qwcrc37p" path="res://scenes/level_pieces/background_audio.tscn" id="1_hlakb"]
@@ -38,6 +38,7 @@
 [ext_resource type="Script" path="res://src/interactable_scripts/Eye.gd" id="31_vn7ym"]
 [ext_resource type="Texture2D" uid="uid://bst8amvx5wnx3" path="res://textures/Metal_04-128x128.png" id="32_0qqmg"]
 [ext_resource type="Script" path="res://src/interactable_scripts/EyeDoor.gd" id="33_wemho"]
+[ext_resource type="Script" path="res://src/game_management/WaveCopier.gd" id="38_eefnd"]
 [ext_resource type="PackedScene" uid="uid://chu0cfdqwvu6w" path="res://scenes/level_pieces/level_3_battle_arena.tscn" id="38_nmn7n"]
 [ext_resource type="PackedScene" uid="uid://bng1qbpnibdq5" path="res://assets/interactables/artifact_1.tscn" id="39_gj3yt"]
 [ext_resource type="Script" path="res://src/interactable_scripts/KillZone.gd" id="41_t6l0r"]
@@ -462,10 +463,6 @@ visible = true
 [node name="Interpolated Camera" parent="Pawn/SVC/VC" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="gun" parent="Pawn/SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera" index="2"]
-reload_accumulation = 3.0
-maganize_size = 9
-
 [node name="LevelTerrain" type="Node3D" parent="."]
 transform = Transform3D(6.5403, 0, 99.7859, 0, 100, 0, -99.7859, 0, 6.5403, -83.5857, -136.655, 2.55685)
 
@@ -489,6 +486,16 @@ light_color = Color(0.811765, 0, 0, 1)
 light_energy = 160.0
 light_volumetric_fog_energy = 160.0
 omni_range = 18.9001
+
+[node name="IndicatorLight4" type="OmniLight3D" parent="LevelTerrain/IndicatorLight1/IndicatorLight2/IndicatorLight3"]
+transform = Transform3D(-0.991445, 0, -0.130526, 0, 1, 0, 0.130526, 0, -0.991445, -209.753, -760.988, 348.445)
+light_color = Color(0.811765, 0, 0, 1)
+light_energy = 160.0
+light_volumetric_fog_energy = 160.0
+omni_range = 34.6983
+
+[node name="FogVolume" type="FogVolume" parent="LevelTerrain/IndicatorLight1/IndicatorLight2/IndicatorLight3/IndicatorLight4"]
+size = Vector3(50, 50, 50)
 
 [node name="pillar" parent="LevelTerrain" instance=ExtResource("22_qhulv")]
 transform = Transform3D(0.00065403, 0, -0.00997859, 0, 0.01, 0, 0.00997859, 0, 0.00065403, 0.0801813, 0.0445595, 0.832395)
@@ -1047,7 +1054,7 @@ mesh = SubResource("ArrayMesh_addty")
 skeleton = NodePath("")
 
 [node name="eye_collider" type="StaticBody3D" parent="LevelTerrain/DoorNode/eye_switch"]
-transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74229e-09, 0.4, 0, -0.477597)
+transform = Transform3D(-6.87994e-09, -0.2, 7.45058e-09, -1.36618e-08, -3.72529e-08, -0.2, 0.2, -6.30418e-09, 1.39264e-09, 0.394079, -0.0116158, -0.525867)
 physics_material_override = SubResource("PhysicsMaterial_ofkav")
 script = ExtResource("31_vn7ym")
 is_timed_eye = true
@@ -1587,10 +1594,10 @@ shape = SubResource("BoxShape3D_diik7")
 
 [node name="CombatAreas" type="Node" parent="."]
 
-[node name="CombatArea1" parent="CombatAreas" node_paths=PackedStringArray("waves") instance=ExtResource("27_lcvw4")]
+[node name="CombatArea1" parent="CombatAreas" instance=ExtResource("27_lcvw4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.6155, 6.38274, 0.46447)
 script = ExtResource("28_4xsmk")
-waves = [NodePath("Wave1")]
+num_of_waves = 1
 
 [node name="room_trigger_shape" parent="CombatAreas/CombatArea1" index="0"]
 transform = Transform3D(0.936672, 0, 0.350207, 0, 1, 0, -0.350207, 0, 0.936672, -207.349, -350.555, 50.0314)
@@ -1598,42 +1605,44 @@ shape = SubResource("BoxShape3D_bhpry")
 
 [node name="Wave1" type="Node3D" parent="CombatAreas/CombatArea1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.6155, -6.38274, -0.46447)
+script = ExtResource("38_eefnd")
 
 [node name="Sprinter" parent="CombatAreas/CombatArea1/Wave1" instance=ExtResource("29_qb3oi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -226.451, -364.285, 33.6507)
 
 [node name="Sprinter2" parent="CombatAreas/CombatArea1/Wave1" instance=ExtResource("29_qb3oi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -243.386, -364.285, 68.5165)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -199.633, -364.285, 28.1483)
 
-[node name="Sprinter3" parent="CombatAreas/CombatArea1/Wave1" instance=ExtResource("29_qb3oi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -276.627, -364.285, 56.7024)
+[node name="Sprinter4" parent="CombatAreas/CombatArea1/Wave1" instance=ExtResource("29_qb3oi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224.451, -364.285, 51.6507)
 
-[node name="CombatArea2" parent="CombatAreas" node_paths=PackedStringArray("waves") instance=ExtResource("27_lcvw4")]
+[node name="CombatArea2" parent="CombatAreas" instance=ExtResource("27_lcvw4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -543.78, -1007.33, 0.46447)
 script = ExtResource("28_4xsmk")
-waves = [NodePath("Wave1"), NodePath("Wave2"), NodePath("Wave3"), NodePath("Wave4")]
+num_of_waves = 4
 
 [node name="room_trigger_shape" parent="CombatAreas/CombatArea2" index="0"]
 transform = Transform3D(0.395914, 0, 0.918287, 0, 1, 0, -0.918287, 0, 0.395914, -199.133, -350.555, 19.4528)
 shape = SubResource("BoxShape3D_bhpry")
 
 [node name="Wave1" type="Node3D" parent="CombatAreas/CombatArea2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.6155, -6.38274, -0.46447)
+script = ExtResource("38_eefnd")
 
 [node name="Sprinter" parent="CombatAreas/CombatArea2/Wave1" instance=ExtResource("29_qb3oi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.117, -353.146, -47.2314)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -159.447, -353.146, -53.0047)
 
 [node name="Sprinter2" parent="CombatAreas/CombatArea2/Wave1" instance=ExtResource("29_qb3oi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250.087, -353.146, 83.0622)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -219.417, -353.146, 77.2889)
 
 [node name="Sprinter3" parent="CombatAreas/CombatArea2/Wave1" instance=ExtResource("29_qb3oi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -276.627, -353.146, 92.519)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -245.957, -353.146, 86.7457)
 
 [node name="Sprinter4" parent="CombatAreas/CombatArea2/Wave1" instance=ExtResource("29_qb3oi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -260.499, -353.146, 72.7567)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -229.829, -353.146, 66.9834)
 
 [node name="Wave2" type="Node3D" parent="CombatAreas/CombatArea2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.231, -12.7655, -0.92894)
+script = ExtResource("38_eefnd")
 
 [node name="Sprinter" parent="CombatAreas/CombatArea2/Wave2" instance=ExtResource("29_qb3oi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -251.516, -346.764, 23.3201)
@@ -1655,6 +1664,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -263.62, -346.764, 53.5475)
 
 [node name="Wave3" type="Node3D" parent="CombatAreas/CombatArea2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.231, -12.7655, -0.92894)
+script = ExtResource("38_eefnd")
 
 [node name="Sprinter" parent="CombatAreas/CombatArea2/Wave3" instance=ExtResource("29_qb3oi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -238.513, -346.764, -6.01273)
@@ -1676,6 +1686,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -285.544, -346.764, 93.5483)
 
 [node name="Wave4" type="Node3D" parent="CombatAreas/CombatArea2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.231, -12.7655, -0.92894)
+script = ExtResource("38_eefnd")
 
 [node name="Sprinter" parent="CombatAreas/CombatArea2/Wave4" instance=ExtResource("29_qb3oi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224.111, -346.764, -38.0295)
@@ -1793,6 +1804,68 @@ script = ExtResource("48_dnnbc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint/CSGSphere3D/CheckpointArea"]
 shape = SubResource("SphereShape3D_mdp5s")
 
+[node name="Checkpoint2" type="Node3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -745.622, -949.744, 20.0139)
+
+[node name="checkpoint_sign" parent="Checkpoint2" instance=ExtResource("42_lix75")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Checkpoint2/checkpoint_sign"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22531, 5.36442e-07, 0.0634452)
+light_energy = 3.0
+omni_range = 4.0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Checkpoint2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.064743, -2.03333, 0)
+size = Vector3(0.079, 5.067, 0.28)
+material = SubResource("StandardMaterial3D_g60bd")
+
+[node name="concrete_bench" parent="Checkpoint2" instance=ExtResource("44_ncaeg")]
+transform = Transform3D(0.405685, 0, -0.832403, 0, 0.926, 0, 0.832404, 0, 0.405685, 1.36545, -3.58289, -1.11095)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Checkpoint2/concrete_bench"]
+transform = Transform3D(1.07991, 0, 5.55112e-17, 0, -4.72044e-08, 1.07991, 0, -1.07991, -4.72045e-08, 0.579653, 3.3106, 4.76837e-07)
+light_color = Color(0.360784, 1, 0.968627, 1)
+light_energy = 10.905
+light_indirect_energy = 9.127
+light_volumetric_fog_energy = 2.145
+light_specular = 1.973
+shadow_enabled = true
+omni_range = 6.0
+
+[node name="FogVolume" type="FogVolume" parent="Checkpoint2/concrete_bench/OmniLight3D"]
+transform = Transform3D(1, -5.93066e-06, -0.000366063, -6.07967e-06, 0.999453, -0.033083, 0.000366136, 0.0330834, 0.999453, 0.575996, -1.86197, -10.5076)
+size = Vector3(25.1502, 22.1745, 2)
+shape = 0
+material = SubResource("FogMaterial_bgv8b")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Checkpoint2/concrete_bench"]
+transform = Transform3D(1.07991, 0, 0, 0, -4.72044e-08, 1.07991, 0, -1.07991, -4.72044e-08, 0.579653, 3.3106, 4.76837e-07)
+visible = false
+light_energy = 18.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 18.0
+shadow_enabled = true
+spot_range = 100.396
+spot_angle = 20.4389
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Checkpoint2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39057, -2.05794, 0)
+radius = 4.0885
+material = SubResource("StandardMaterial3D_fe1xr")
+
+[node name="WordSaladCreator" type="Node" parent="Checkpoint2/CSGSphere3D"]
+script = ExtResource("45_n4cqm")
+display_text = Array[String](["CHECKPOINT"])
+shake_amount = 1.0
+label_theme = ExtResource("46_hiud1")
+word_salad_json = ExtResource("47_55u8a")
+
+[node name="CheckpointArea" type="Area3D" parent="Checkpoint2/CSGSphere3D"]
+script = ExtResource("48_dnnbc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint2/CSGSphere3D/CheckpointArea"]
+shape = SubResource("SphereShape3D_mdp5s")
+
 [connection signal="area_entered" from="CombatAreas/CombatArea1" to="CombatAreas/CombatArea1" method="_on_area_entered"]
 [connection signal="area_entered" from="CombatAreas/CombatArea2" to="CombatAreas/CombatArea2" method="_on_area_entered"]
 [connection signal="wave_cleared" from="CombatAreas/CombatArea2" to="artifact1" method="_on_combat_area_2_wave_cleared"]
@@ -1801,6 +1874,8 @@ shape = SubResource("SphereShape3D_mdp5s")
 [connection signal="area_entered" from="KillZone/KillZone2" to="KillZone/KillZone2" method="_on_area_entered"]
 [connection signal="area_entered" from="Checkpoint/CSGSphere3D/CheckpointArea" to="Checkpoint/CSGSphere3D/WordSaladCreator" method="_on_checkpoint_area_area_entered"]
 [connection signal="area_entered" from="Checkpoint/CSGSphere3D/CheckpointArea" to="Checkpoint/CSGSphere3D/CheckpointArea" method="_on_area_entered"]
+[connection signal="area_entered" from="Checkpoint2/CSGSphere3D/CheckpointArea" to="Checkpoint2/CSGSphere3D/WordSaladCreator" method="_on_checkpoint_area_area_entered"]
+[connection signal="area_entered" from="Checkpoint2/CSGSphere3D/CheckpointArea" to="Checkpoint2/CSGSphere3D/CheckpointArea" method="_on_area_entered"]
 
 [editable path="EyeVidViewport"]
 [editable path="Pawn"]

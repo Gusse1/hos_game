@@ -7,6 +7,7 @@
 noise = ExtResource("2_5i2mx")
 
 [resource]
+resource_local_to_scene = true
 albedo_texture = ExtResource("1_ok613")
 emission_enabled = true
 emission = Color(0.494118, 0, 0.501961, 1)

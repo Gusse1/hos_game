@@ -130,7 +130,7 @@ func _check_shader_visibility(_name: String) -> bool:
 		if _name.begins_with("CRT"):
 			return true if configuration.CRT else false
 		# get_children() returning all _names leading Always to:
-		push_error("#Undefined type Post Processing addon - verify it has been properly integrated.")
+		#push_error("#Undefined type Post Processing addon - verify it has been properly integrated.")
 		return false # bad!
 
 func _enter_tree():
@@ -158,7 +158,7 @@ func _add_canvas_layer_children(_path : String, _name: String) -> void:
 	add_child(child_instance)
 	var material_instance = child_instance.get_children()[0].material.duplicate()
 	child_instance.get_children()[0].material = material_instance
-	print_debug("Successfully added child canvas-layer: " + _name + " to PostProcess addon node.")
+	#print_debug("Successfully added child canvas-layer: " + _name + " to PostProcess addon node.")
 
 func _process(delta):
 	if not configuration:

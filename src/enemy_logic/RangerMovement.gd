@@ -75,7 +75,6 @@ func _physics_process(delta):
 
 func _shoot_projectile():
 	indicator_light.visible = false
-	print_debug("im bussin")
 	var direction = (shared_variables.player_body.global_transform.origin - global_transform.origin).normalized()
 	var projectile_instance = projectile.instantiate()
 

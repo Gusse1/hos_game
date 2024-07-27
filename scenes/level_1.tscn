@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://cdaxeyxys1tfs"]
+[gd_scene load_steps=111 format=3 uid="uid://cdaxeyxys1tfs"]
 
 [ext_resource type="FastNoiseLite" uid="uid://bmubs6juomn5f" path="res://materials/fast_noise.tres" id="1_4tqfa"]
 [ext_resource type="Script" path="res://src/resources/SharedVariables.gd" id="1_odsn5"]
@@ -29,6 +29,7 @@
 [ext_resource type="Material" uid="uid://bqw1sxjxt8ged" path="res://materials/see_thru_mesh.tres" id="26_phljc"]
 [ext_resource type="PackedScene" uid="uid://b6ljyf4f4qj8t" path="res://assets/interactables/checkpoint.tscn" id="27_5u2rx"]
 [ext_resource type="PackedScene" uid="uid://b2wwbmnwgn1rh" path="res://assets/effects/text_area_creator.tscn" id="28_o65il"]
+[ext_resource type="Script" path="res://src/game_management/WaveCopier.gd" id="28_un4gr"]
 [ext_resource type="JSON" path="res://src/ui/word_salad.json" id="29_v2qf0"]
 [ext_resource type="Script" path="res://src/interactable_scripts/KillZone.gd" id="30_i0kwy"]
 [ext_resource type="Script" path="res://src/game_management/LevelSwapper.gd" id="31_inc88"]
@@ -1629,30 +1630,32 @@ omni_range = 142.824
 
 [node name="CombatAreas" type="Node" parent="."]
 
-[node name="CombatArea1" parent="CombatAreas" node_paths=PackedStringArray("waves") instance=ExtResource("23_2fg2j")]
+[node name="CombatArea1" parent="CombatAreas" instance=ExtResource("23_2fg2j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.6155, 6.38274, 0.46447)
 script = ExtResource("24_wu02v")
-waves = [NodePath("Wave1")]
+num_of_waves = 1
 
 [node name="room_trigger_shape" parent="CombatAreas/CombatArea1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9991, 7.711, -0.18988)
 
 [node name="Wave1" type="Node3D" parent="CombatAreas/CombatArea1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.6155, -6.38274, -0.46447)
+script = ExtResource("28_un4gr")
 
 [node name="Sprinter" parent="CombatAreas/CombatArea1/Wave1" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.4711, -4.94881, 0)
 
-[node name="CombatArea2" parent="CombatAreas" node_paths=PackedStringArray("waves") instance=ExtResource("23_2fg2j")]
+[node name="CombatArea2" parent="CombatAreas" instance=ExtResource("23_2fg2j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -373.619, 15.5162, 1.38228)
 script = ExtResource("24_wu02v")
-waves = [NodePath("Wave1")]
+num_of_waves = 1
 
 [node name="room_trigger_shape" parent="CombatAreas/CombatArea2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.31543, 7.711, -0.18988)
 
 [node name="Wave1" type="Node3D" parent="CombatAreas/CombatArea2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 373.619, -15.5162, -1.38228)
+script = ExtResource("28_un4gr")
 
 [node name="Sprinter" parent="CombatAreas/CombatArea2/Wave1" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -381.19, 25.1345, -4.8618)
@@ -1666,10 +1669,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -345.42, 22.0848, 8.14527)
 [node name="Sprinter4" parent="CombatAreas/CombatArea2/Wave1" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -446.186, 19.0882, -5.26096)
 
-[node name="CombatArea3" parent="CombatAreas" node_paths=PackedStringArray("waves") instance=ExtResource("23_2fg2j")]
+[node name="CombatArea3" parent="CombatAreas" instance=ExtResource("23_2fg2j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -596.943, 31.0324, 2.76456)
 script = ExtResource("24_wu02v")
-waves = [NodePath("Wave1"), NodePath("Wave2"), NodePath("Wave3")]
+num_of_waves = 3
 
 [node name="room_trigger_shape" parent="CombatAreas/CombatArea3" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04633, -1.92273, -0.408553)
@@ -1677,6 +1680,7 @@ shape = SubResource("BoxShape3D_3ilr3")
 
 [node name="Wave1" type="Node3D" parent="CombatAreas/CombatArea3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 373.619, -40.9996, -1.38228)
+script = ExtResource("28_un4gr")
 
 [node name="Sprinter" parent="CombatAreas/CombatArea3/Wave1" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -354.09, 26.7257, -24.5438)
@@ -1692,6 +1696,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -415.42, 26.7257, 3.72268)
 
 [node name="Wave2" type="Node3D" parent="CombatAreas/CombatArea3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 373.619, -40.9996, -1.38228)
+script = ExtResource("28_un4gr")
 
 [node name="Sprinter" parent="CombatAreas/CombatArea3/Wave2" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -319.791, 26.7257, -18.8509)
@@ -1710,6 +1715,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -404.366, 29.2218, 13.9537)
 
 [node name="Wave3" type="Node3D" parent="CombatAreas/CombatArea3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 373.619, -40.9996, -1.38228)
+script = ExtResource("28_un4gr")
 
 [node name="Sprinter" parent="CombatAreas/CombatArea3/Wave3" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -330.689, 26.7257, -12.9193)
@@ -1728,15 +1734,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -437.979, 29.2218, 4.75499)
 
 [node name="InteractAreas" type="Node" parent="."]
 
-[node name="TextAreaCreator" parent="InteractAreas" node_paths=PackedStringArray("text_ui") instance=ExtResource("28_o65il")]
-text_ui = NodePath("../../Pawn/GameUI/TextUI")
+[node name="TextAreaCreator" parent="InteractAreas" instance=ExtResource("28_o65il")]
 display_text = Array[String](["ABOMINATIONS ARE MADE OF BLOOD", "ABOMINATIONS ARE PINATAS", "BLOOD CRYSTALS PROVIDE SUSTENANCE"])
 disappear_after = 8.0
 word_salad_json = ExtResource("29_v2qf0")
 
-[node name="TextAreaCreator2" parent="InteractAreas" node_paths=PackedStringArray("text_ui") instance=ExtResource("28_o65il")]
+[node name="TextAreaCreator2" parent="InteractAreas" instance=ExtResource("28_o65il")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -117.909, -1.44257, 0.848925)
-text_ui = NodePath("../../Pawn/GameUI/TextUI")
 display_text = Array[String](["THE GIANTS ARE ALLIES", "DON'T TRUST THEM", "THEY WILL HELP YOU"])
 word_salad_json = ExtResource("29_v2qf0")
 
@@ -1744,9 +1748,8 @@ word_salad_json = ExtResource("29_v2qf0")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -117.909, -1.44257, 0.848925)
 disappear_after = 2.0
 
-[node name="TextAreaCreator3" parent="InteractAreas" node_paths=PackedStringArray("text_ui") instance=ExtResource("28_o65il")]
+[node name="TextAreaCreator3" parent="InteractAreas" instance=ExtResource("28_o65il")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -284.049, 24.3793, 10.4724)
-text_ui = NodePath("../../Pawn/GameUI/TextUI")
 display_text = Array[String](["FOLLOW HIS LEAD", "CTRL TO CROUCH", "GO UNDER", "CTRL", "PRESS CTRL", "HOLD CTRL"])
 disappear_after = 8.0
 word_salad_json = ExtResource("29_v2qf0")

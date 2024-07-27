@@ -17,11 +17,12 @@ extends Node
 
 var current_health: float
 
-@export var enemy_mesh: MeshInstance3D
-@export var weak_material: StandardMaterial3D
+@export var enemy_mesh_path: String
+var weak_material: StandardMaterial3D
 
 func _ready():
 	current_health = MAX_HEALTH
+	weak_material = preload("res://materials/sprinter_weak.tres")
 
 
 func _activate():
@@ -46,7 +47,11 @@ func _heal(amount: float):
 func _damage(amount: float):
 	if current_health == MAX_HEALTH:
 		MOVEMENT_SPEED *= 0.5
-		enemy_mesh.set_surface_override_material(0, weak_material)
+		var material = preload("res://materials/sprinter_weak.tres")
+		#var enemy_mesh_2 = get_parent().get_node("enemy/Armature/Skeleton3D/HumanoidBase_NotOverlapping")
+		var enemy_mesh = get_parent().get_node(enemy_mesh_path)
+		enemy_mesh.set_surface_override_material(0, material)
+		print_debug("set material: " + preload("res://materials/sprinter_weak.tres").resource_path)
 		
 	current_health -= amount
 	

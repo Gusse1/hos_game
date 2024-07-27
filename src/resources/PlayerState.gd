@@ -73,6 +73,9 @@ func _adjust_health(amount: float):
 		current_health = playerVariables.MAX_HEALTH
 
 func _kill_player():
+	for combat_area in shared_variables.combat_areas.get_children():
+		combat_area._reset_area()
+	
 	player_body.global_position = current_checkpoint_location
 	_adjust_health(999)
 	_adjust_blood(999)

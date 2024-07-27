@@ -10,3 +10,9 @@ extends Node
 @export_category("Video")
 @export var video_screen_player : SubViewport
 @export var eye_screen_player : SubViewport
+
+@export_category("Enemies")
+var combat_areas : Node
+
+func _ready():
+	combat_areas = get_parent().get_node("CombatAreas")
