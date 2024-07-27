@@ -45,7 +45,7 @@ func _heal(amount: float):
 
 func _damage(amount: float):
 	if current_health == MAX_HEALTH:
-		MOVEMENT_SPEED *= 0.66
+		MOVEMENT_SPEED *= 0.5
 		enemy_mesh.set_surface_override_material(0, weak_material)
 		
 	current_health -= amount

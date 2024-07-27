@@ -31,8 +31,8 @@ albedo_color = Color(0.694118, 0, 0.00392157, 0.537255)
 
 [sub_resource type="Resource" id="Resource_vwc4m"]
 script = ExtResource("7_m0na8")
-MAX_HEALTH = 15.0
-MAX_BLOOD = 11.0
+MAX_HEALTH = 30.0
+MAX_BLOOD = 15.0
 HEALING_SPEED = 2.0
 PICKUP_BLOOD_GAIN = 3.0
 BASE_DAMAGE = 5.0

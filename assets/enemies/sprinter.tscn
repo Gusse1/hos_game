@@ -602,7 +602,7 @@ radius = 1.0
 [node name="EnemyResources" type="Node" parent="CharacterBody3D" node_paths=PackedStringArray("enemy_mesh")]
 script = ExtResource("1_d8gm5")
 FOLLOW_THRESHOLD = 100.0
-MOVEMENT_SPEED = 10.0
+MOVEMENT_SPEED = 12.5
 enemy_mesh = NodePath("../enemy/Armature/Skeleton3D/HumanoidBase_NotOverlapping")
 weak_material = ExtResource("4_k3i6f")
 

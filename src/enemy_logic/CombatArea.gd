@@ -4,8 +4,10 @@ extends Node
 
 var curr_wave : int = 0
 var cleared : bool = false
+var active : bool = false
 
 @export var waves : Array[Node3D]
+var copy_waves : Array[Node3D]
 
 signal wave_cleared
 
@@ -14,13 +16,17 @@ func _ready():
 		wave.process_mode = 4 # process_mode = 4 is disabled
 		wave.visible = false
 
+func _copy_waves():
+	copy_waves = waves.duplicate(true)
+
 func _process(delta):
 	if curr_wave > 0 and not cleared:
 		if waves[curr_wave-1].get_child_count() == 0: # All enemies dead (freed from scene)
 			_progress_waves()
 
 func _on_area_entered(area):
-	if area.name == "PlayerArea":
+	if area.name == "PlayerArea" && not active:
+		active = true
 		_progress_waves()
 
 func _progress_waves():

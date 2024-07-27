@@ -82,7 +82,7 @@ environment = SubResource("Environment_1i4cx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 11)
 
 [node name="Interpolated Camera" parent="Pawn/SVC/VC" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.711, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="hub_level" parent="." instance=ExtResource("1_gu0a6")]
 

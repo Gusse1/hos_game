@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://duobdywj3j1ji"
+path="res://.godot/imported/hub_level_final.map-519d2311ddc50bd9966e397cc454ec2c.tres"
+
+[deps]
+
+source_file="res://maps/hub_level_final.map"
+dest_files=["res://.godot/imported/hub_level_final.map-519d2311ddc50bd9966e397cc454ec2c.tres"]
+
+[params]
+

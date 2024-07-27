@@ -60,6 +60,8 @@ func _adjust_blood(amount: float):
 		current_blood = playerVariables.MAX_BLOOD
 		
 func _adjust_health(amount: float):
+	if amount < 0:
+		_camera_flash()
 	current_health += amount
 	handgun._update_health_display(current_health, playerVariables.MAX_HEALTH)
 	
