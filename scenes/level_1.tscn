@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://cdaxeyxys1tfs"]
+[gd_scene load_steps=110 format=3 uid="uid://cdaxeyxys1tfs"]
 
 [ext_resource type="FastNoiseLite" uid="uid://bmubs6juomn5f" path="res://materials/fast_noise.tres" id="1_4tqfa"]
 [ext_resource type="Script" path="res://src/resources/SharedVariables.gd" id="1_odsn5"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bst8amvx5wnx3" path="res://textures/Metal_04-128x128.png" id="21_17jsd"]
 [ext_resource type="Script" path="res://src/interactable_scripts/EyeDoor.gd" id="22_adn34"]
 [ext_resource type="PackedScene" uid="uid://by8poq58ac6jv" path="res://assets/interactables/room_trigger.tscn" id="23_2fg2j"]
+[ext_resource type="Script" path="res://src/interactable_scripts/EyeHolder.gd" id="24_kff1u"]
 [ext_resource type="Script" path="res://src/enemy_logic/CombatArea.gd" id="24_wu02v"]
 [ext_resource type="PackedScene" uid="uid://bg0cfyn7q5vd5" path="res://assets/enemies/sprinter.tscn" id="25_5ej04"]
 [ext_resource type="Material" uid="uid://bqw1sxjxt8ged" path="res://materials/see_thru_mesh.tres" id="26_phljc"]
@@ -1441,6 +1442,7 @@ transform = Transform3D(0, 0.0748121, 0, -0.5975, 0, 0, 0, 7.10543e-15, 1.07125,
 mesh = SubResource("ArrayMesh_do2vl")
 skeleton = NodePath("")
 surface_material_override/1 = ExtResource("20_clj41")
+script = ExtResource("24_kff1u")
 
 [node name="EyeBlind" type="MeshInstance3D" parent="LevelTerrrain/DoorNode/eye_switch2"]
 transform = Transform3D(0, 0.0748121, -2.84217e-14, -0.5975, 0, 0, 0, -3.55271e-15, 1.07125, 0.286707, 0, -0.503728)

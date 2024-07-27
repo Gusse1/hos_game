@@ -53,13 +53,13 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 stretch = true
-stretch_shrink = 4
+stretch_shrink = 3
 
 [node name="VC" type="SubViewport" parent="SVC"]
 handle_input_locally = false
 msaa_3d = 3
 audio_listener_enable_3d = true
-size = Vector2i(480, 270)
+size = Vector2i(640, 360)
 render_target_update_mode = 4
 
 [node name="Body" type="CharacterBody3D" parent="SVC/VC" node_paths=PackedStringArray("View", "collision_hull", "duck_timer")]
@@ -135,7 +135,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(480, 270)
+size = Vector2i(640, 360)
 render_target_update_mode = 4
 
 [node name="Guncam" type="Camera3D" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/SubViewportContainer/SubViewport"]
