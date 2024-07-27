@@ -1,7 +1,9 @@
 extends Node
 
+@onready var shared_variables: Node = get_tree().current_scene.get_node("SharedVariables")
+
 # Variables to specify the text, shake duration, and disappearance time
-@export var text_ui: Control
+var text_ui: Control
 @export var display_text: Array[String]
 @export var disappear_after: float = 3.0
 @export var shake_amount : float
@@ -18,6 +20,9 @@ var time: float
 var start_time: float
 
 var growl_audio = preload("res://assets/audio_streams/growl_audio.tscn")
+
+func _ready():
+	text_ui = shared_variables.text_ui
 
 func _create_word_salad():
 	if is_instance_valid(word_salad_json):

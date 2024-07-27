@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://cwlb5ak0vi5w1"]
+[gd_scene load_steps=68 format=3 uid="uid://cwlb5ak0vi5w1"]
 
 [ext_resource type="Script" path="res://src/resources/SharedVariables.gd" id="1_075lf"]
 [ext_resource type="PackedScene" uid="uid://bb44urkanokx" path="res://scenes/level_pieces/bottom_fog.tscn" id="2_ymr8v"]
@@ -30,6 +30,7 @@
 [ext_resource type="Theme" uid="uid://om37whdt5pb7" path="res://assets/ui/UITextStyle.tres" id="28_xqxvh"]
 [ext_resource type="JSON" path="res://src/ui/word_salad.json" id="29_0f4dw"]
 [ext_resource type="Script" path="res://src/interactable_scripts/CheckpointLogic.gd" id="30_eoa77"]
+[ext_resource type="Script" path="res://src/interactable_scripts/KillZone.gd" id="31_rkpki"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ixcmd"]
 sky_top_color = Color(0.2, 0, 0, 1)
@@ -88,13 +89,13 @@ subsurf_scatter_transmittance_color = Color(0.333333, 0.329412, 0.901961, 1)
 seed = 280
 frequency = 0.0375
 
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_ms7ql"]
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_n1fyc"]
 noise = SubResource("FastNoiseLite_oaq1a")
 
 [sub_resource type="FogMaterial" id="FogMaterial_0gqb2"]
 density = 2.0885
 emission = Color(0.411765, 0.411765, 0.411765, 1)
-density_texture = SubResource("NoiseTexture3D_ms7ql")
+density_texture = SubResource("NoiseTexture3D_n1fyc")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8bdc0"]
 size = Vector3(14.34, 22.3708, 1)
@@ -278,14 +279,18 @@ backlight = Color(1, 1, 1, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_2wsx6"]
 radius = 4.05802
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5snop"]
+size = Vector3(2000, 100, 724)
+
 [node name="level5" type="Node3D"]
 
-[node name="SharedVariables" type="Node" parent="." node_paths=PackedStringArray("player_node", "player_body", "player_state", "post_process_layer", "eye_screen_player")]
+[node name="SharedVariables" type="Node" parent="." node_paths=PackedStringArray("player_node", "player_body", "player_state", "post_process_layer", "text_ui", "eye_screen_player")]
 script = ExtResource("1_075lf")
 player_node = NodePath("../Pawn")
 player_body = NodePath("../Pawn/SVC/VC/Body")
 player_state = NodePath("../Pawn/PlayerState")
 post_process_layer = NodePath("../CanvasLayer")
+text_ui = NodePath("../Pawn/GameUI/TextUI")
 eye_screen_player = NodePath("../EyeVidViewport")
 
 [node name="FogVolume" parent="." instance=ExtResource("2_ymr8v")]
@@ -305,10 +310,13 @@ environment = SubResource("Environment_1i4cx")
 [node name="Pawn" parent="." instance=ExtResource("6_x1euv")]
 
 [node name="Body" parent="Pawn/SVC/VC" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -405.287, -2, 10.228)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -338.648, -2, 106.019)
 
 [node name="Interpolated Camera" parent="Pawn/SVC/VC" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -405.287, -1.289, 10.228)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -338.648, -1.289, 106.019)
+
+[node name="PlayerState" parent="Pawn" index="6"]
+level_start_checkpoint_location = Vector3(-338.648, -2, 106.019)
 
 [node name="hub_level_final" parent="." instance=ExtResource("7_a08k4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151, 0, 0)
@@ -1348,6 +1356,14 @@ script = ExtResource("30_eoa77")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint/CSGSphere3D/CheckpointArea"]
 shape = SubResource("SphereShape3D_2wsx6")
 
+[node name="KillZone" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -101.847, 0)
+script = ExtResource("31_rkpki")
+
+[node name="KillCollider" type="CollisionShape3D" parent="KillZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+shape = SubResource("BoxShape3D_5snop")
+
 [connection signal="area_entered" from="LevelTerrain/Level3Entrance/LevelSwapArea" to="LevelTerrain/Level3Entrance/LevelSwapArea" method="_on_area_entered"]
 [connection signal="area_entered" from="CombatAreas/CombatArea1" to="CombatAreas/CombatArea1" method="_on_area_entered"]
 [connection signal="wave_cleared" from="CombatAreas/CombatArea1" to="CombatAreas/CombatArea1/DoorNode/door" method="_on_combat_area_2_wave_cleared"]
@@ -1359,6 +1375,7 @@ shape = SubResource("SphereShape3D_2wsx6")
 [connection signal="wave_cleared" from="CombatAreas/CombatArea4" to="CombatAreas/CombatArea4/DoorNode/door" method="_on_combat_area_2_wave_cleared"]
 [connection signal="area_entered" from="Checkpoint/CSGSphere3D/CheckpointArea" to="Checkpoint/CSGSphere3D/WordSaladCreator" method="_on_checkpoint_area_area_entered"]
 [connection signal="area_entered" from="Checkpoint/CSGSphere3D/CheckpointArea" to="Checkpoint/CSGSphere3D/CheckpointArea" method="_on_area_entered"]
+[connection signal="area_entered" from="KillZone" to="KillZone" method="_on_area_entered"]
 
 [editable path="EyeVidViewport"]
 [editable path="Pawn"]

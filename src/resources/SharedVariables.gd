@@ -5,6 +5,7 @@ extends Node
 @export var player_body : Node3D
 @export var player_state : PlayerState
 @export var post_process_layer : CanvasLayer
+@export var text_ui : Control
 
 @export_category("Video")
 @export var video_screen_player : SubViewport
