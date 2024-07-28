@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpobx26i0toh0"]
+[gd_scene load_steps=11 format=3 uid="uid://bpobx26i0toh0"]
 
 [ext_resource type="Script" path="res://src/enemy_logic/RangerMovement.gd" id="1_tkl4h"]
 [ext_resource type="Script" path="res://src/resources/EnemyState.gd" id="2_17hnm"]
+[ext_resource type="AudioStream" uid="uid://dm4m1wyxok3k2" path="res://audio/fx/ranger_shoot.ogg" id="2_lkk51"]
 [ext_resource type="PackedScene" uid="uid://ev2ewh0uh7h7" path="res://assets/enemies/ranger_head.tscn" id="4_re4le"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bddo1"]
@@ -84,6 +85,11 @@ size = Vector3(1.218, 1.701, 1.606)
 motion_mode = 1
 script = ExtResource("1_tkl4h")
 attack_float_cumulation = 2.5
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CharacterBody3D"]
+stream = ExtResource("2_lkk51")
+volume_db = 4.816
+panning_strength = 5.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
 path_desired_distance = 0.1

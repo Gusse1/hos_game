@@ -25,6 +25,7 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 stream = ExtResource("1_y2lx3")
+volume_db = -8.0
 autoplay = true
 metadata/_edit_use_anchors_ = true
 

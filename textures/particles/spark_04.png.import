@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://5qg7o6o5hn47"
-path="res://.godot/imported/spark_04.png-f70c9b2d016f70bfd60a7a77965cd3cb.ctex"
+path="res://godot/imported/spark_04.png-f70c9b2d016f70bfd60a7a77965cd3cb.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://textures/particles/spark_04.png"
-dest_files=["res://.godot/imported/spark_04.png-f70c9b2d016f70bfd60a7a77965cd3cb.ctex"]
+dest_files=["res://godot/imported/spark_04.png-f70c9b2d016f70bfd60a7a77965cd3cb.ctex"]
 
 [params]
 

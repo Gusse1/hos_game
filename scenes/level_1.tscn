@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://cdaxeyxys1tfs"]
+[gd_scene load_steps=120 format=3 uid="uid://cdaxeyxys1tfs"]
 
 [ext_resource type="FastNoiseLite" uid="uid://bmubs6juomn5f" path="res://materials/fast_noise.tres" id="1_4tqfa"]
 [ext_resource type="PackedScene" uid="uid://dfryp7psbhdr7" path="res://assets/ui/pause_menu.tscn" id="1_geitg"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://2t0muetkxk5o" path="res://assets/ui/eye_vid_viewport.tscn" id="8_priwm"]
 [ext_resource type="Script" path="res://addons/post_processing/node/post_process.gd" id="9_lfpyh"]
 [ext_resource type="Script" path="res://addons/post_processing/resource/post_processing_configuration.gd" id="10_8prys"]
+[ext_resource type="AudioStream" uid="uid://ds07s30d3fxw6" path="res://audio/ambiance/weeping_sages.ogg" id="11_bbqq3"]
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://addons/GoldGdt/Pawn.tscn" id="11_riuqh"]
 [ext_resource type="PackedScene" uid="uid://53bbkhmk5ik0" path="res://assets/rooms/tutorial_map.tscn" id="14_1ejbt"]
 [ext_resource type="Material" uid="uid://o2bxr0fy8tfb" path="res://materials/see_thru_mesh_dense.tres" id="15_bve1q"]
@@ -802,13 +803,19 @@ environment = SubResource("Environment_138gm")
 
 [node name="Creepy_Hum" type="AudioStreamPlayer" parent="BackgroundAudio"]
 stream = SubResource("AudioStreamOggVorbis_o0iq0")
-volume_db = -18.899
+volume_db = -29.682
 autoplay = true
 
 [node name="Creepy_Hum2" type="AudioStreamPlayer" parent="BackgroundAudio"]
 stream = SubResource("AudioStreamOggVorbis_guumt")
 volume_db = -21.119
 pitch_scale = 0.6
+autoplay = true
+
+[node name="Angels" type="AudioStreamPlayer" parent="BackgroundAudio"]
+stream = ExtResource("11_bbqq3")
+volume_db = -25.0
+pitch_scale = 0.5
 autoplay = true
 
 [node name="Pawn" parent="." groups=["Pawn"] instance=ExtResource("11_riuqh")]
@@ -822,10 +829,10 @@ msaa_3d = 0
 use_occlusion_culling = true
 
 [node name="Body" parent="Pawn/SVC/VC" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.479, 51.9381, 1.70181)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.11, 95.9317, 1.41697)
 
 [node name="Interpolated Camera" parent="Pawn/SVC/VC" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.479, 52.6491, 1.70181)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.11, 96.6427, 1.41697)
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Pawn/SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera" index="0"]
 current = true

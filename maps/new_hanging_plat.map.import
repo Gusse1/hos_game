@@ -3,12 +3,12 @@
 importer="qodot.map"
 type="Resource"
 uid="uid://b0x8orv5fexc7"
-path="res://.godot/imported/new_hanging_plat.map-bae8945f761ec2d7bc23fdf2ba9cd19f.tres"
+path="res://godot/imported/new_hanging_plat.map-bae8945f761ec2d7bc23fdf2ba9cd19f.tres"
 
 [deps]
 
 source_file="res://maps/new_hanging_plat.map"
-dest_files=["res://.godot/imported/new_hanging_plat.map-bae8945f761ec2d7bc23fdf2ba9cd19f.tres"]
+dest_files=["res://godot/imported/new_hanging_plat.map-bae8945f761ec2d7bc23fdf2ba9cd19f.tres"]
 
 [params]
 

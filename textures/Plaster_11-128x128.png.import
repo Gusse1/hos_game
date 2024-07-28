@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://vobtn2hj1g3t"
-path="res://.godot/imported/Plaster_11-128x128.png-51364db8cb6b3c00a9a820e4d9a7895e.ctex"
+path="res://godot/imported/Plaster_11-128x128.png-51364db8cb6b3c00a9a820e4d9a7895e.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://textures/Plaster_11-128x128.png"
-dest_files=["res://.godot/imported/Plaster_11-128x128.png-51364db8cb6b3c00a9a820e4d9a7895e.ctex"]
+dest_files=["res://godot/imported/Plaster_11-128x128.png-51364db8cb6b3c00a9a820e4d9a7895e.ctex"]
 
 [params]
 

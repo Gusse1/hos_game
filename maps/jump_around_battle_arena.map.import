@@ -3,12 +3,12 @@
 importer="qodot.map"
 type="Resource"
 uid="uid://dp4ce0d6e24ra"
-path="res://.godot/imported/jump_around_battle_arena.map-fd3eb6cb329c2472dc743a60ce482bef.tres"
+path="res://godot/imported/jump_around_battle_arena.map-fd3eb6cb329c2472dc743a60ce482bef.tres"
 
 [deps]
 
 source_file="res://maps/jump_around_battle_arena.map"
-dest_files=["res://.godot/imported/jump_around_battle_arena.map-fd3eb6cb329c2472dc743a60ce482bef.tres"]
+dest_files=["res://godot/imported/jump_around_battle_arena.map-fd3eb6cb329c2472dc743a60ce482bef.tres"]
 
 [params]
 

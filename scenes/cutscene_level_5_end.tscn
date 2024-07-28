@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq8h7jokfseiy"]
+[gd_scene load_steps=6 format=3 uid="uid://dq8h7jokfseiy"]
 
-[ext_resource type="Script" path="res://src/game_management/LevelSwapper.gd" id="1_pqned"]
-[ext_resource type="VideoStream" path="res://videos/Final Hos Level 5 End.ogv" id="2_mi3my"]
+[ext_resource type="Script" path="res://src/game_management/Level5EndLogic.gd" id="1_mh3p0"]
+[ext_resource type="VideoStream" path="res://videos/LEVEL5HOSHIGHQUALITY.ogv" id="2_pb1jw"]
+[ext_resource type="Theme" uid="uid://d20hm5kwnmbwg" path="res://assets/ui/UITextStyle_MENU.tres" id="3_qc2j4"]
+[ext_resource type="StyleBox" uid="uid://b82ffn5jyqng4" path="res://styles/main_menu.tres" id="4_ukjux"]
+[ext_resource type="FontFile" uid="uid://mu4fafoxri40" path="res://fonts/Cinzel-VariableFont_wght.ttf" id="5_3kkgk"]
 
 [node name="Level5End" type="Control"]
 layout_mode = 3
@@ -10,8 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_pqned")
-level_to_swap_to = "main_menu"
+script = ExtResource("1_mh3p0")
 
 [node name="CutsceneVideo" type="VideoStreamPlayer" parent="."]
 layout_mode = 1
@@ -24,8 +26,93 @@ offset_right = 960.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("2_mi3my")
+stream = ExtResource("2_pb1jw")
+volume_db = -10.0
 autoplay = true
 metadata/_edit_use_anchors_ = true
+
+[node name="Credits" type="Panel" parent="."]
+visible = false
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -540.0
+offset_right = 296.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_qc2j4")
+theme_override_styles/panel = ExtResource("4_ukjux")
+
+[node name="CreditsLabel" type="Label" parent="Credits"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 118.0
+grow_horizontal = 2
+theme = ExtResource("3_qc2j4")
+theme_override_fonts/font = ExtResource("5_3kkgk")
+theme_override_font_sizes/font_size = 87
+text = "CREDITS"
+horizontal_alignment = 1
+
+[node name="CreditsLabel2" type="Label" parent="Credits"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 136.0
+offset_bottom = 304.0
+grow_horizontal = 2
+theme = ExtResource("3_qc2j4")
+theme_override_fonts/font = ExtResource("5_3kkgk")
+theme_override_font_sizes/font_size = 55
+text = "GAME CREATED BY
+MIKAEL GUSTAFSSON"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CreditsLabel4" type="Label" parent="Credits"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 264.0
+offset_bottom = 1216.0
+grow_horizontal = 2
+theme = ExtResource("3_qc2j4")
+theme_override_fonts/font = ExtResource("5_3kkgk")
+theme_override_font_sizes/font_size = 40
+text = "
+ADDITIONAL SOUNDS BY
+ONNI TUOMELA
+
+THANK YOU FOR PLAYING"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CreditsLabel3" type="Label" parent="Credits"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -8.0
+offset_top = 672.0
+offset_right = -8.0
+offset_bottom = 1304.0
+grow_horizontal = 2
+theme = ExtResource("3_qc2j4")
+theme_override_fonts/font = ExtResource("5_3kkgk")
+theme_override_font_sizes/font_size = 30
+text = "ATTRIBUTIONS:
+GOLD_GDT CHARACTER CONTROLLER BY RATMARROW
+
+CRACKING KNUCKLES SOUND BY Clearwavsound ON FREESOUND.ORG
+
+CHOIR OF WEEPING ANGLES BY nlux ON FREESOUND.ORG"
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [connection signal="finished" from="CutsceneVideo" to="." method="_on_cutscene_video_finished"]

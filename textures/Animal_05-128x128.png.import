@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ccdplydqehpou"
-path="res://.godot/imported/Animal_05-128x128.png-c1b1356078d525fbd7b4caa34c3cc734.ctex"
+path="res://godot/imported/Animal_05-128x128.png-c1b1356078d525fbd7b4caa34c3cc734.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://textures/Animal_05-128x128.png"
-dest_files=["res://.godot/imported/Animal_05-128x128.png-c1b1356078d525fbd7b4caa34c3cc734.ctex"]
+dest_files=["res://godot/imported/Animal_05-128x128.png-c1b1356078d525fbd7b4caa34c3cc734.ctex"]
 
 [params]
 

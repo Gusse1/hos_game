@@ -3,12 +3,12 @@
 importer="qodot.map"
 type="Resource"
 uid="uid://cb050mh6rbyiu"
-path="res://.godot/imported/hub_level.3.map-54e4cc92ed2704caa9c3c61d1a3adde1.tres"
+path="res://godot/imported/hub_level.3.map-54e4cc92ed2704caa9c3c61d1a3adde1.tres"
 
 [deps]
 
 source_file="res://maps/autosave/hub_level.3.map"
-dest_files=["res://.godot/imported/hub_level.3.map-54e4cc92ed2704caa9c3c61d1a3adde1.tres"]
+dest_files=["res://godot/imported/hub_level.3.map-54e4cc92ed2704caa9c3c61d1a3adde1.tres"]
 
 [params]
 

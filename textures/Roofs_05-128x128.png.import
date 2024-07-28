@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dlfgd7tjuv1bb"
-path="res://.godot/imported/Roofs_05-128x128.png-090671a106ea757966e3228baebaf6ac.ctex"
+path="res://godot/imported/Roofs_05-128x128.png-090671a106ea757966e3228baebaf6ac.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://textures/Roofs_05-128x128.png"
-dest_files=["res://.godot/imported/Roofs_05-128x128.png-090671a106ea757966e3228baebaf6ac.ctex"]
+dest_files=["res://godot/imported/Roofs_05-128x128.png-090671a106ea757966e3228baebaf6ac.ctex"]
 
 [params]
 

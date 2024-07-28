@@ -3,12 +3,12 @@
 importer="qodot.map"
 type="Resource"
 uid="uid://djahcl5lka4c4"
-path="res://.godot/imported/jump_around.map-7d2d4f77ca561e9518c3ac41693c0343.tres"
+path="res://godot/imported/jump_around.map-7d2d4f77ca561e9518c3ac41693c0343.tres"
 
 [deps]
 
 source_file="res://maps/jump_around.map"
-dest_files=["res://.godot/imported/jump_around.map-7d2d4f77ca561e9518c3ac41693c0343.tres"]
+dest_files=["res://godot/imported/jump_around.map-7d2d4f77ca561e9518c3ac41693c0343.tres"]
 
 [params]
 

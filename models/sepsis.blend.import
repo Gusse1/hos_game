@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://njs20pl41rxm"
-path="res://.godot/imported/sepsis.blend-00888d06c55d311942e3254a987c79e7.scn"
+path="res://godot/imported/sepsis.blend-00888d06c55d311942e3254a987c79e7.scn"
 
 [deps]
 
 source_file="res://models/sepsis.blend"
-dest_files=["res://.godot/imported/sepsis.blend-00888d06c55d311942e3254a987c79e7.scn"]
+dest_files=["res://godot/imported/sepsis.blend-00888d06c55d311942e3254a987c79e7.scn"]
 
 [params]
 

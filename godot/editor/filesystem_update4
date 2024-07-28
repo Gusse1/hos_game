@@ -1,0 +1,8 @@
+res://scenes/main_menu.tscn
+res://assets/ui/UITextStyle_MENU.tres
+res://assets/enemies/blood_cloud.tres
+res://materials/level_1_eye_material.tres
+res://materials/level_3_eye_material.tres
+res://materials/level_4_eye_material.tres
+res://materials/level_5_eye_material.tres
+res://scenes/level_5.tscn

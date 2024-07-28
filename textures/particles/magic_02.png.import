@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cweqbvlj2kgir"
-path="res://.godot/imported/magic_02.png-e8135f6d1c1f75f1dc18a9bcd1f62c96.ctex"
+path="res://godot/imported/magic_02.png-e8135f6d1c1f75f1dc18a9bcd1f62c96.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://textures/particles/magic_02.png"
-dest_files=["res://.godot/imported/magic_02.png-e8135f6d1c1f75f1dc18a9bcd1f62c96.ctex"]
+dest_files=["res://godot/imported/magic_02.png-e8135f6d1c1f75f1dc18a9bcd1f62c96.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0n0gweqlspkf"
-path="res://.godot/imported/muzzle_03.png-cf7c7ff8a90b3230de9214ace2f6347f.ctex"
+path="res://godot/imported/muzzle_03.png-cf7c7ff8a90b3230de9214ace2f6347f.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://textures/particles/muzzle_03.png"
-dest_files=["res://.godot/imported/muzzle_03.png-cf7c7ff8a90b3230de9214ace2f6347f.ctex"]
+dest_files=["res://godot/imported/muzzle_03.png-cf7c7ff8a90b3230de9214ace2f6347f.ctex"]
 
 [params]
 

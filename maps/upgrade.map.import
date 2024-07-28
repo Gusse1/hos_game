@@ -3,12 +3,12 @@
 importer="qodot.map"
 type="Resource"
 uid="uid://dmpp0ocyi355f"
-path="res://.godot/imported/upgrade.map-7cb531d5b207e7c18ce9fe97bc87524b.tres"
+path="res://godot/imported/upgrade.map-7cb531d5b207e7c18ce9fe97bc87524b.tres"
 
 [deps]
 
 source_file="res://maps/upgrade.map"
-dest_files=["res://.godot/imported/upgrade.map-7cb531d5b207e7c18ce9fe97bc87524b.tres"]
+dest_files=["res://godot/imported/upgrade.map-7cb531d5b207e7c18ce9fe97bc87524b.tres"]
 
 [params]
 

@@ -31,6 +31,12 @@ func _open_door():
 	
 	use_collision = false
 	visible = false
+	
+	var audio_source = AudioStreamPlayer3D.new()
+	audio_source.stream = preload("res://audio/fx/door_open.ogg")
+	audio_source.volume_db += 35
+	add_child(audio_source)
+	audio_source.play()
 
 
 func _close_door():

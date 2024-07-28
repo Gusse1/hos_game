@@ -3,12 +3,12 @@
 importer="qodot.map"
 type="Resource"
 uid="uid://ct1k6evdet55f"
-path="res://.godot/imported/jump_around_battle.2.map-ad20e4113c1183a6d240d01cb9d7d8d8.tres"
+path="res://godot/imported/jump_around_battle.2.map-ad20e4113c1183a6d240d01cb9d7d8d8.tres"
 
 [deps]
 
 source_file="res://maps/autosave/jump_around_battle.2.map"
-dest_files=["res://.godot/imported/jump_around_battle.2.map-ad20e4113c1183a6d240d01cb9d7d8d8.tres"]
+dest_files=["res://godot/imported/jump_around_battle.2.map-ad20e4113c1183a6d240d01cb9d7d8d8.tres"]
 
 [params]
 

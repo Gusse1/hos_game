@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://kh3mfuxwf71v"
-path="res://.godot/imported/Weave_14-128x128.png-50da1cd3c5addd7633a39ac0ead74c20.ctex"
+path="res://godot/imported/Weave_14-128x128.png-50da1cd3c5addd7633a39ac0ead74c20.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://textures/Weave_14-128x128.png"
-dest_files=["res://.godot/imported/Weave_14-128x128.png-50da1cd3c5addd7633a39ac0ead74c20.ctex"]
+dest_files=["res://godot/imported/Weave_14-128x128.png-50da1cd3c5addd7633a39ac0ead74c20.ctex"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="qodot.map"
 type="Resource"
 uid="uid://dpcs88g3d2wos"
-path="res://.godot/imported/starting_room.8.map-c8100e8368bb61e88cffdfbd82aa009c.tres"
+path="res://godot/imported/starting_room.8.map-c8100e8368bb61e88cffdfbd82aa009c.tres"
 
 [deps]
 
 source_file="res://maps/autosave/starting_room.8.map"
-dest_files=["res://.godot/imported/starting_room.8.map-c8100e8368bb61e88cffdfbd82aa009c.tres"]
+dest_files=["res://godot/imported/starting_room.8.map-c8100e8368bb61e88cffdfbd82aa009c.tres"]
 
 [params]
 

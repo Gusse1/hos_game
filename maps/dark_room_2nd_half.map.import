@@ -3,12 +3,12 @@
 importer="qodot.map"
 type="Resource"
 uid="uid://b2shxlc5suifc"
-path="res://.godot/imported/dark_room_2nd_half.map-a69527aa11c641e91684c9befda9a9d7.tres"
+path="res://godot/imported/dark_room_2nd_half.map-a69527aa11c641e91684c9befda9a9d7.tres"
 
 [deps]
 
 source_file="res://maps/dark_room_2nd_half.map"
-dest_files=["res://.godot/imported/dark_room_2nd_half.map-a69527aa11c641e91684c9befda9a9d7.tres"]
+dest_files=["res://godot/imported/dark_room_2nd_half.map-a69527aa11c641e91684c9befda9a9d7.tres"]
 
 [params]
 

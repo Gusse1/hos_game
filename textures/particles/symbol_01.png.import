@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmdayxqys3gpt"
-path="res://.godot/imported/symbol_01.png-f04947829114775d5743f26451de3a29.ctex"
+path="res://godot/imported/symbol_01.png-f04947829114775d5743f26451de3a29.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://textures/particles/symbol_01.png"
-dest_files=["res://.godot/imported/symbol_01.png-f04947829114775d5743f26451de3a29.ctex"]
+dest_files=["res://godot/imported/symbol_01.png-f04947829114775d5743f26451de3a29.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bht8i6lmydldc"
-path="res://.godot/imported/flame_03.png-44df91566414ae082689fc244669ab9e.ctex"
+path="res://godot/imported/flame_03.png-44df91566414ae082689fc244669ab9e.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://textures/particles/flame_03.png"
-dest_files=["res://.godot/imported/flame_03.png-44df91566414ae082689fc244669ab9e.ctex"]
+dest_files=["res://godot/imported/flame_03.png-44df91566414ae082689fc244669ab9e.ctex"]
 
 [params]
 

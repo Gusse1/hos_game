@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dw8vskedv8rch"
-path="res://.godot/imported/Grating_19-128x128.png-7f58a65bebaf8be10e1c6001383432a0.ctex"
+path="res://godot/imported/Grating_19-128x128.png-7f58a65bebaf8be10e1c6001383432a0.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://textures/Grating_19-128x128.png"
-dest_files=["res://.godot/imported/Grating_19-128x128.png-7f58a65bebaf8be10e1c6001383432a0.ctex"]
+dest_files=["res://godot/imported/Grating_19-128x128.png-7f58a65bebaf8be10e1c6001383432a0.ctex"]
 
 [params]
 

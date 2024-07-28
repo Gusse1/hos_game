@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ojs1fjhogcw7"
-path="res://.godot/imported/smoke_01.png-6d23e621fdb0187b5565e9b45e5bbabf.ctex"
+path="res://godot/imported/smoke_01.png-6d23e621fdb0187b5565e9b45e5bbabf.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://textures/particles/smoke_01.png"
-dest_files=["res://.godot/imported/smoke_01.png-6d23e621fdb0187b5565e9b45e5bbabf.ctex"]
+dest_files=["res://godot/imported/smoke_01.png-6d23e621fdb0187b5565e9b45e5bbabf.ctex"]
 
 [params]
 

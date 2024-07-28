@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dkpfptvteapog"
-path="res://.godot/imported/Wood_10-128x128.png-ac4585c93958a81b55f5ce6e29b75caf.ctex"
+path="res://godot/imported/Wood_10-128x128.png-ac4585c93958a81b55f5ce6e29b75caf.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://textures/Wood_10-128x128.png"
-dest_files=["res://.godot/imported/Wood_10-128x128.png-ac4585c93958a81b55f5ce6e29b75caf.ctex"]
+dest_files=["res://godot/imported/Wood_10-128x128.png-ac4585c93958a81b55f5ce6e29b75caf.ctex"]
 
 [params]
 

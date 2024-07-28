@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cxh2qcd81kovp"
-path="res://.godot/imported/concrete_bench.blend-4ac786107511a7a67f3e47ef64762dc0.scn"
+path="res://godot/imported/concrete_bench.blend-4ac786107511a7a67f3e47ef64762dc0.scn"
 
 [deps]
 
 source_file="res://models/concrete_bench.blend"
-dest_files=["res://.godot/imported/concrete_bench.blend-4ac786107511a7a67f3e47ef64762dc0.scn"]
+dest_files=["res://godot/imported/concrete_bench.blend-4ac786107511a7a67f3e47ef64762dc0.scn"]
 
 [params]
 

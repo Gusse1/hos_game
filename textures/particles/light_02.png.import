@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://qnag36tlh338"
-path="res://.godot/imported/light_02.png-ec1587d78dc7e542529717003a098cb2.ctex"
+path="res://godot/imported/light_02.png-ec1587d78dc7e542529717003a098cb2.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://textures/particles/light_02.png"
-dest_files=["res://.godot/imported/light_02.png-ec1587d78dc7e542529717003a098cb2.ctex"]
+dest_files=["res://godot/imported/light_02.png-ec1587d78dc7e542529717003a098cb2.ctex"]
 
 [params]
 

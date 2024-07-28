@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4dp84lwvgqrg"]
+
+[ext_resource type="Script" path="res://src/ui/DeathVideo.gd" id="1_bffuy"]
+[ext_resource type="VideoStream" path="res://videos/Hos Game Over.ogv" id="2_oygiu"]
+
+[node name="DeathVideo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bffuy")
+
+[node name="DeathVideo" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_right = 960.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_oygiu")
+autoplay = true
+metadata/_edit_use_anchors_ = true
+
+[connection signal="finished" from="DeathVideo" to="." method="_on_death_video_finished"]
+[connection signal="finished" from="DeathVideo" to="." method="_on_cutscene_video_finished"]

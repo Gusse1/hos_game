@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b8wdvd0emyfjb"
-path="res://.godot/imported/handgun.blend-65bdd1254909e5d6bd88c4a95cdd8585.scn"
+path="res://godot/imported/handgun.blend-65bdd1254909e5d6bd88c4a95cdd8585.scn"
 
 [deps]
 
 source_file="res://models/handgun.blend"
-dest_files=["res://.godot/imported/handgun.blend-65bdd1254909e5d6bd88c4a95cdd8585.scn"]
+dest_files=["res://godot/imported/handgun.blend-65bdd1254909e5d6bd88c4a95cdd8585.scn"]
 
 [params]
 

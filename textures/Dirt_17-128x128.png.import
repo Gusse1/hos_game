@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cj1eo7fositqi"
-path="res://.godot/imported/Dirt_17-128x128.png-8bf76a3689b2f8e36ef6c1cf283a46ff.ctex"
+path="res://godot/imported/Dirt_17-128x128.png-8bf76a3689b2f8e36ef6c1cf283a46ff.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://textures/Dirt_17-128x128.png"
-dest_files=["res://.godot/imported/Dirt_17-128x128.png-8bf76a3689b2f8e36ef6c1cf283a46ff.ctex"]
+dest_files=["res://godot/imported/Dirt_17-128x128.png-8bf76a3689b2f8e36ef6c1cf283a46ff.ctex"]
 
 [params]
 

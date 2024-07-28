@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://cjvaaxgpt8b05"
-path="res://.godot/imported/enemy_spawning.ogg-db289622d5473eefdb05c00e0fd7b106.oggvorbisstr"
+path="res://godot/imported/enemy_spawning.ogg-db289622d5473eefdb05c00e0fd7b106.oggvorbisstr"
 
 [deps]
 
 source_file="res://audio/fx/enemy_spawning.ogg"
-dest_files=["res://.godot/imported/enemy_spawning.ogg-db289622d5473eefdb05c00e0fd7b106.oggvorbisstr"]
+dest_files=["res://godot/imported/enemy_spawning.ogg-db289622d5473eefdb05c00e0fd7b106.oggvorbisstr"]
 
 [params]
 

@@ -19,6 +19,9 @@ var current_checkpoint_location : Vector3
 
 # FX
 var shot_effect_timer : float
+var death_video = preload("res://scenes/death_video.tscn")
+@export var damage_sound: AudioStreamPlayer3D
+@export var blood_pickup_sound: AudioStreamPlayer3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -60,6 +63,9 @@ func _adjust_blood(amount: float):
 func _adjust_health(amount: float):
 	if amount < 0:
 		_camera_flash()
+		if not damage_sound.playing:
+			damage_sound.play()
+			
 	current_health += amount
 	handgun._update_health_display(current_health, playerVariables.MAX_HEALTH)
 	
@@ -74,6 +80,8 @@ func _kill_player():
 	for combat_area in shared_variables.combat_areas.get_children():
 		combat_area._reset_area()
 	
+	get_tree().current_scene.add_child(death_video.instantiate())
+	
 	player_body.global_position = current_checkpoint_location
 	_adjust_health(999)
 	_adjust_blood(999)
@@ -87,5 +95,7 @@ func _on_player_area_area_entered(area):
 	print_debug("Area entered player ", area.name)
 	if area.name == "blood_cloud_trigger":
 		_adjust_blood(playerVariables.PICKUP_BLOOD_GAIN)
+		if not blood_pickup_sound.playing:
+			blood_pickup_sound.play()
 		area.get_parent().queue_free()
 

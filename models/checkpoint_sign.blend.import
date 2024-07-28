@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://sk7spv88orwg"
-path="res://.godot/imported/checkpoint_sign.blend-7e3d1d7246809fb9820eb6b898ab133f.scn"
+path="res://godot/imported/checkpoint_sign.blend-7e3d1d7246809fb9820eb6b898ab133f.scn"
 
 [deps]
 
 source_file="res://models/checkpoint_sign.blend"
-dest_files=["res://.godot/imported/checkpoint_sign.blend-7e3d1d7246809fb9820eb6b898ab133f.scn"]
+dest_files=["res://godot/imported/checkpoint_sign.blend-7e3d1d7246809fb9820eb6b898ab133f.scn"]
 
 [params]
 

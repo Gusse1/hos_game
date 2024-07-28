@@ -14,6 +14,8 @@ var muzzle_flash = preload("res://assets/effects/muzzle_flash.tscn")
 var screen_shake_activation_timer : float = 1
 var post_process_config : PostProcessingConfiguration
 @export var gunshot_audio_player : AudioStreamPlayer3D
+@export var reload_audio_player : AudioStreamPlayer3D
+@export var reloaded_audio_player : AudioStreamPlayer3D
 
 # Reload variables
 @export var reload_accumulation : float # Speed of reload
@@ -52,10 +54,14 @@ func _process(delta):
 		current_magazine_size-=1
 		_shoot()
 		ammo_display.text = str(current_magazine_size)
-		
+	else:
+		if not gun_model.get_node("AnimationPlayer").is_playing():
+			gun_model.get_node("AnimationPlayer").play("idle")
 	# Weapon is reloaded by holding down the reload key where singular bullets are transmitted to the magazine
 	if Input.is_action_pressed("reload") and shared_variables.player_state.current_blood > 0:
 		if current_magazine_size < maganize_size:
+			if not reload_audio_player.playing:
+				reload_audio_player.play()
 			reloading = true
 			reload_float += reload_accumulation*delta
 			shared_variables.player_state._adjust_blood(-(reload_accumulation*delta))
@@ -63,6 +69,7 @@ func _process(delta):
 			_reload_singular_bullet()
 			reload_float = 0
 	if Input.is_action_just_released("reload"):
+		reload_audio_player.stop()
 		reloading = false
 		reload_float = 0
 
@@ -123,6 +130,8 @@ func _on_firerate_timeout():
 
 
 func _reload_singular_bullet():
+	reloaded_audio_player.stop()
+	reloaded_audio_player.play()
 	if current_magazine_size < maganize_size:
 		current_magazine_size += 1
 		

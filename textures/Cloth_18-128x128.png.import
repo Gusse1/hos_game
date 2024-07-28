@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8bs32amxqfjk"
-path="res://.godot/imported/Cloth_18-128x128.png-937d9ad37abf3af7876e6cad86ebce59.ctex"
+path="res://godot/imported/Cloth_18-128x128.png-937d9ad37abf3af7876e6cad86ebce59.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://textures/Cloth_18-128x128.png"
-dest_files=["res://.godot/imported/Cloth_18-128x128.png-937d9ad37abf3af7876e6cad86ebce59.ctex"]
+dest_files=["res://godot/imported/Cloth_18-128x128.png-937d9ad37abf3af7876e6cad86ebce59.ctex"]
 
 [params]
 

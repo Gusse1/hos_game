@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bg0cfyn7q5vd5"]
+[gd_scene load_steps=11 format=3 uid="uid://bg0cfyn7q5vd5"]
 
 [ext_resource type="Script" path="res://src/resources/EnemyState.gd" id="1_d8gm5"]
 [ext_resource type="Script" path="res://src/enemy_logic/SprinterMovement.gd" id="1_exyy8"]
 [ext_resource type="PackedScene" uid="uid://jvdcus8w4ndv" path="res://models/enemy.blend" id="3_sbuyp"]
 [ext_resource type="Material" uid="uid://bjgs4bxns5gma" path="res://materials/sprinter.tres" id="4_ipbn3"]
+[ext_resource type="AudioStream" uid="uid://832uuf26r67u" path="res://audio/fx/enemy_sound.ogg" id="5_3aim3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vgwtl"]
 size = Vector3(0.609497, 2.06931, 1)
@@ -664,6 +665,13 @@ root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_mt41t")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CharacterBody3D/enemy"]
+transform = Transform3D(0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 0.333333, 0, 1.25183, 0)
+stream = ExtResource("5_3aim3")
+volume_db = -5.351
+autoplay = true
+panning_strength = 3.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("CapsuleShape3D_hvunb")

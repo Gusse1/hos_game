@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://bleljv2b185h5"
-path="res://.godot/imported/gun_shot.ogg-9b0a015d1046b734225d8372be631f21.oggvorbisstr"
+path="res://godot/imported/gun_shot.ogg-9b0a015d1046b734225d8372be631f21.oggvorbisstr"
 
 [deps]
 
 source_file="res://audio/fx/gun_shot.ogg"
-dest_files=["res://.godot/imported/gun_shot.ogg-9b0a015d1046b734225d8372be631f21.oggvorbisstr"]
+dest_files=["res://godot/imported/gun_shot.ogg-9b0a015d1046b734225d8372be631f21.oggvorbisstr"]
 
 [params]
 

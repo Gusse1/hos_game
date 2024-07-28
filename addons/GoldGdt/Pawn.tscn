@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bk1exu1p74wrs"]
+[gd_scene load_steps=25 format=3 uid="uid://bk1exu1p74wrs"]
 
 [ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_Pawn.gd" id="1_qx48f"]
 [ext_resource type="Resource" uid="uid://c770d2068in3p" path="res://addons/GoldGdt/Default.tres" id="2_m0ukv"]
@@ -12,9 +12,13 @@
 [ext_resource type="AudioStream" uid="uid://cs72bq2egwcr7" path="res://audio/fx/gun_shot_dry.ogg" id="7_avyjm"]
 [ext_resource type="Script" path="res://src/resources/PlayerVariables.gd" id="7_m0na8"]
 [ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_DebugUI.gd" id="7_vbtkw"]
+[ext_resource type="AudioStream" uid="uid://b7530joa3xrs3" path="res://audio/fx/reload_heal.ogg" id="8_l2kbf"]
 [ext_resource type="Theme" uid="uid://d20hm5kwnmbwg" path="res://assets/ui/UITextStyle_MENU.tres" id="8_qi8l2"]
+[ext_resource type="AudioStream" uid="uid://dsgfyfvuvmdi0" path="res://audio/fx/reloaded.ogg" id="9_8bs64"]
 [ext_resource type="Script" path="res://src/resources/PlayerHealing.gd" id="9_sve2w"]
+[ext_resource type="AudioStream" uid="uid://dum6hmo1lb5rj" path="res://audio/fx/blood_pickup.ogg" id="11_m3iss"]
 [ext_resource type="PackedScene" uid="uid://b34q6nrbu7sys" path="res://models/handgun2.tscn" id="13_lpmqc"]
+[ext_resource type="AudioStream" uid="uid://c6nawpwrq1rdo" path="res://audio/fx/damage.ogg" id="18_bjpx4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j7pn1"]
 size = Vector3(0.813, 1.45627, 0.813)
@@ -143,7 +147,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.045, 0.646, -0.045)
 cull_mask = 2
 fov = 90.0
 
-[node name="gun" type="CSGBox3D" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera" node_paths=PackedStringArray("raycast", "firerate", "gunshot_audio_player", "gun_model", "crosshair")]
+[node name="gun" type="CSGBox3D" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera" node_paths=PackedStringArray("raycast", "firerate", "gunshot_audio_player", "reload_audio_player", "reloaded_audio_player", "gun_model", "crosshair")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.166886, -0.325985, -0.737846)
 visible = false
 layers = 2
@@ -152,6 +156,8 @@ script = ExtResource("6_ug7h0")
 raycast = NodePath("../RayCast3D")
 firerate = NodePath("firerate")
 gunshot_audio_player = NodePath("GunShotAudioPlayer")
+reload_audio_player = NodePath("Reloading")
+reloaded_audio_player = NodePath("Reloaded")
 reload_accumulation = 2.5
 maganize_size = 8
 gun_model = NodePath("../handgun")
@@ -159,6 +165,29 @@ crosshair = NodePath("../../../../../../../GameUI/Crosshair/Line2D")
 
 [node name="GunShotAudioPlayer" type="AudioStreamPlayer3D" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun"]
 stream = ExtResource("7_avyjm")
+
+[node name="Reloading" type="AudioStreamPlayer3D" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun"]
+stream = ExtResource("8_l2kbf")
+volume_db = -8.0
+pitch_scale = 0.33
+
+[node name="Reloaded" type="AudioStreamPlayer3D" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun"]
+stream = ExtResource("9_8bs64")
+volume_db = -24.358
+pitch_scale = 0.2
+
+[node name="DamageSound" type="AudioStreamPlayer3D" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.166886, -0.385015, 0.737846)
+stream = ExtResource("18_bjpx4")
+volume_db = 1.0
+panning_strength = 0.2
+
+[node name="BloodpickupSound" type="AudioStreamPlayer3D" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.166886, -0.385015, 0.737846)
+stream = ExtResource("11_m3iss")
+volume_db = 80.0
+pitch_scale = 0.2
+panning_strength = 0.2
 
 [node name="reload_timer" type="Timer" parent="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun"]
 one_shot = true
@@ -434,16 +463,19 @@ script = ExtResource("4_5gavo")
 Parameters = ExtResource("2_m0ukv")
 Body = NodePath("../SVC/VC/Body")
 
-[node name="PlayerState" type="Node" parent="." node_paths=PackedStringArray("player_body", "blood_text", "handgun")]
+[node name="PlayerState" type="Node" parent="." node_paths=PackedStringArray("player_body", "blood_text", "handgun", "damage_sound", "blood_pickup_sound")]
 script = ExtResource("7_5xn01")
 playerVariables = SubResource("Resource_vwc4m")
 blood_recovery_rate = 0.75
 player_body = NodePath("../SVC/VC/Body")
 blood_text = NodePath("../GameUI/BloodDisplay/RichTextLabel")
 handgun = NodePath("../SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/handgun")
+damage_sound = NodePath("../SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun/DamageSound")
+blood_pickup_sound = NodePath("../SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun/BloodpickupSound")
 
-[node name="PlayerHealing" type="Node" parent="PlayerState"]
+[node name="PlayerHealing" type="Node" parent="PlayerState" node_paths=PackedStringArray("healing_audio_stream")]
 script = ExtResource("9_sve2w")
+healing_audio_stream = NodePath("../../SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun/Reloading")
 
 [connection signal="area_entered" from="SVC/VC/Body/PlayerArea" to="PlayerState" method="_on_player_area_area_entered"]
 [connection signal="timeout" from="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun/reload_timer" to="SVC/VC/Interpolated Camera/Arm/Arm Anchor/Camera/gun" method="_on_reload_timer_timeout"]

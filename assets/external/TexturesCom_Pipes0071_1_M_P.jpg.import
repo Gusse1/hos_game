@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://de5gtsehkfba7"
-path.s3tc="res://.godot/imported/TexturesCom_Pipes0071_1_M_P.jpg-0b7899a239e3b7c49ac5b885b135b23c.s3tc.ctex"
+path.s3tc="res://godot/imported/TexturesCom_Pipes0071_1_M_P.jpg-0b7899a239e3b7c49ac5b885b135b23c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,7 +12,7 @@ metadata={
 [deps]
 
 source_file="res://assets/external/TexturesCom_Pipes0071_1_M_P.jpg"
-dest_files=["res://.godot/imported/TexturesCom_Pipes0071_1_M_P.jpg-0b7899a239e3b7c49ac5b885b135b23c.s3tc.ctex"]
+dest_files=["res://godot/imported/TexturesCom_Pipes0071_1_M_P.jpg-0b7899a239e3b7c49ac5b885b135b23c.s3tc.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://x521u52dows1"
-path.s3tc="res://.godot/imported/pipesP-6db9e946c902bfaf20bf90bd8ae89019_TexturesCom_Pipes0071_1_M_P.jpg-9f86659055dc80a0956c0114e4f3e570.s3tc.ctex"
+path.s3tc="res://godot/imported/pipesP-6db9e946c902bfaf20bf90bd8ae89019_TexturesCom_Pipes0071_1_M_P.jpg-9f86659055dc80a0956c0114e4f3e570.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -13,7 +13,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://assets/external/pipesP-6db9e946c902bfaf20bf90bd8ae89019_TexturesCom_Pipes0071_1_M_P.jpg"
-dest_files=["res://.godot/imported/pipesP-6db9e946c902bfaf20bf90bd8ae89019_TexturesCom_Pipes0071_1_M_P.jpg-9f86659055dc80a0956c0114e4f3e570.s3tc.ctex"]
+dest_files=["res://godot/imported/pipesP-6db9e946c902bfaf20bf90bd8ae89019_TexturesCom_Pipes0071_1_M_P.jpg-9f86659055dc80a0956c0114e4f3e570.s3tc.ctex"]
 
 [params]
 

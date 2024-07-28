@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://di28gjymtwik3"
-path="res://.godot/imported/eye_switch.blend-a3fa76fad927e896c1e3f0cf9cfff2af.scn"
+path="res://godot/imported/eye_switch.blend-a3fa76fad927e896c1e3f0cf9cfff2af.scn"
 
 [deps]
 
 source_file="res://models/eye_switch.blend"
-dest_files=["res://.godot/imported/eye_switch.blend-a3fa76fad927e896c1e3f0cf9cfff2af.scn"]
+dest_files=["res://godot/imported/eye_switch.blend-a3fa76fad927e896c1e3f0cf9cfff2af.scn"]
 
 [params]
 

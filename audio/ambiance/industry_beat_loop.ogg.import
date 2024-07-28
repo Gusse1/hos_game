@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://dlgieolyy8g84"
-path="res://.godot/imported/industry_beat_loop.ogg-e1977c32bfec833832495a439de5a762.oggvorbisstr"
+path="res://godot/imported/industry_beat_loop.ogg-e1977c32bfec833832495a439de5a762.oggvorbisstr"
 
 [deps]
 
 source_file="res://audio/ambiance/industry_beat_loop.ogg"
-dest_files=["res://.godot/imported/industry_beat_loop.ogg-e1977c32bfec833832495a439de5a762.oggvorbisstr"]
+dest_files=["res://godot/imported/industry_beat_loop.ogg-e1977c32bfec833832495a439de5a762.oggvorbisstr"]
 
 [params]
 

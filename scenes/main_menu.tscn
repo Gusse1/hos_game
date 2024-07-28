@@ -73,6 +73,7 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 stream = ExtResource("2_q6vdl")
+volume_db = -8.0
 metadata/_edit_use_anchors_ = true
 
 [node name="SettingsPanel" type="Panel" parent="."]

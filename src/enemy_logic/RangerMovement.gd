@@ -8,6 +8,7 @@ extends CharacterBody3D
 @onready var attack_float : float = 0
 @export var attack_float_cumulation : float = 1.25
 @onready var indicator_light: OmniLight3D = $enemy/OmniLight3D
+@onready var projectile_audio_player : AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 var enemy_spawner = preload("res://assets/enemies/enemy_spawner_small.tscn")
 var start = true
@@ -86,6 +87,9 @@ func _shoot_projectile():
 	get_tree().get_root().add_child(projectile_instance)
 	
 	attack_float = 0
+	
+	if not projectile_audio_player.playing:
+		projectile_audio_player.play()
 
 func _damage_player(delta):
 	attack_float += attack_float_cumulation*delta

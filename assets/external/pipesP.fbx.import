@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dbsjrnnn5vjaw"
-path="res://.godot/imported/pipesP.fbx-6db9e946c902bfaf20bf90bd8ae89019.scn"
+path="res://godot/imported/pipesP.fbx-6db9e946c902bfaf20bf90bd8ae89019.scn"
 
 [deps]
 
 source_file="res://assets/external/pipesP.fbx"
-dest_files=["res://.godot/imported/pipesP.fbx-6db9e946c902bfaf20bf90bd8ae89019.scn"]
+dest_files=["res://godot/imported/pipesP.fbx-6db9e946c902bfaf20bf90bd8ae89019.scn"]
 
 [params]
 
