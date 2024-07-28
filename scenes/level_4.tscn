@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://dkfjd2xgmdsu0"]
+[gd_scene load_steps=115 format=3 uid="uid://dkfjd2xgmdsu0"]
 
 [ext_resource type="Script" path="res://src/resources/SharedVariables.gd" id="1_72bsp"]
 [ext_resource type="PackedScene" uid="uid://bb44urkanokx" path="res://scenes/level_pieces/bottom_fog.tscn" id="2_d5pmq"]
@@ -370,6 +370,9 @@ size = Vector3(115, 68, 52)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_phxvv"]
 size = Vector3(115, 68, 107.906)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lfmn7"]
+size = Vector3(50.1214, 22.9706, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wyj8v"]
 size = Vector3(22.4246, 22.9706, 5.44348)
@@ -2230,11 +2233,63 @@ text_enabled = false
 
 [node name="InteractAreas" type="Node" parent="."]
 
+[node name="TextAreaCreator2" type="Area3D" parent="InteractAreas"]
+transform = Transform3D(0.997889, 0, 0.0649504, 0, 1, 0, -0.0649504, 0, 0.997889, 3.88036, 4.96382, -8.27045)
+script = ExtResource("32_fhxpm")
+display_text = Array[String](["A RANGER", "THE RANGER CAN DUPLICATE ITSELF", "A WICKED WITCH", "WATCH OUT FOR THE FIREBOLT", "KEEP MOVING", "THE RANGER CANNOT MOVE", "DON'T STOP MOVING"])
+disappear_after = 12.0
+shake_amount = 3.0
+label_theme = ExtResource("33_grh07")
+word_salad_json = ExtResource("34_jhkbs")
+
+[node name="TextCollider" type="CollisionShape3D" parent="InteractAreas/TextAreaCreator2"]
+transform = Transform3D(1.00001, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1.00001, 2.01793, 5.06586, 4.76837e-06)
+shape = SubResource("BoxShape3D_lfmn7")
+
+[node name="TextAreaCreator3" type="Area3D" parent="InteractAreas"]
+transform = Transform3D(0.99762, 0, -0.0689555, 0, 1, 0, 0.0689555, 0, 0.99762, -0.750896, 4.34571, -123.913)
+script = ExtResource("32_fhxpm")
+display_text = Array[String](["SLOW DOWN THE SPRINTERS FIRST", "THE SPRINTERS SLOW DOWN WHEN SHOT", "SPRINTERS ARE FAST"])
+disappear_after = 12.0
+shake_amount = 3.0
+label_theme = ExtResource("33_grh07")
+word_salad_json = ExtResource("34_jhkbs")
+
+[node name="TextCollider" type="CollisionShape3D" parent="InteractAreas/TextAreaCreator3"]
+transform = Transform3D(1.00001, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1.00001, 2.01793, 5.06586, 4.76837e-06)
+shape = SubResource("BoxShape3D_lfmn7")
+
+[node name="TextAreaCreator4" type="Area3D" parent="InteractAreas"]
+transform = Transform3D(0.99762, 0, -0.0689555, 0, 1, 0, 0.0689555, 0, 0.99762, -8.0215, -2.73139, -305.584)
+script = ExtResource("32_fhxpm")
+display_text = Array[String](["THIS PLACE IS FILTHY", "THE SAGES PALACE  WAS THE FIRST PLACE TO GO", "THEY LET SEPSIS IN", "SEPSIS CRUMBLED THEIR SOCIETY", "CULTURE AND ART CEASED TO EXIST"])
+disappear_after = 12.0
+shake_amount = 3.0
+label_theme = ExtResource("33_grh07")
+word_salad_json = ExtResource("34_jhkbs")
+
+[node name="TextCollider" type="CollisionShape3D" parent="InteractAreas/TextAreaCreator4"]
+transform = Transform3D(1.00001, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1.00001, 2.01793, 5.06586, 4.76837e-06)
+shape = SubResource("BoxShape3D_lfmn7")
+
+[node name="TextAreaCreator5" type="Area3D" parent="InteractAreas"]
+transform = Transform3D(0.99762, 0, -0.0689555, 0, 1, 0, 0.0689555, 0, 0.99762, -12.4778, -6.02516, -483.784)
+script = ExtResource("32_fhxpm")
+display_text = Array[String](["THE GIANTS ARE FOREVER STUCK IN DANCE", "A MARK OF THEIR CULTURE", "LAST WE WILL EVER SEE", "THE SAGES MUST BE ABLE TO HELP"])
+disappear_after = 12.0
+shake_amount = 3.0
+label_theme = ExtResource("33_grh07")
+word_salad_json = ExtResource("34_jhkbs")
+
+[node name="TextCollider" type="CollisionShape3D" parent="InteractAreas/TextAreaCreator5"]
+transform = Transform3D(1.00001, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1.00001, 2.01793, 5.06586, 4.76837e-06)
+shape = SubResource("BoxShape3D_lfmn7")
+
 [node name="TextAreaCreator" type="Area3D" parent="InteractAreas"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.97645, -5.8856, -613.336)
 script = ExtResource("32_fhxpm")
-display_text = Array[String](["THE SAGES SING FOR YOU", "YOU ARE BEING INSULTED", "YOU ARE BETRAYING THEM"])
-disappear_after = 8.0
+display_text = Array[String](["THE SAGES SING FOR YOU", "YOU ARE BEING INSULTED", "YOU ARE BETRAYING THEM", "THEY DON'T WANT YOU TO TAKE IT", "YOU ARE TOO WEAK", "LET SOMEONE ELSE TAKE IT", "GIVE UP"])
+disappear_after = 12.0
 shake_amount = 3.0
 label_theme = ExtResource("33_grh07")
 word_salad_json = ExtResource("34_jhkbs")
@@ -2442,6 +2497,10 @@ shape = SubResource("SphereShape3D_h65wt")
 [connection signal="wave_cleared" from="CombatAreas/CombatArea3" to="CombatAreas/CombatArea3/DoorNode/door" method="_on_combat_area_2_wave_cleared"]
 [connection signal="area_entered" from="CombatAreas/CombatArea4" to="CombatAreas/CombatArea4" method="_on_area_entered"]
 [connection signal="wave_cleared" from="CombatAreas/CombatArea4" to="CombatAreas/CombatArea4/DoorNode/door" method="_on_combat_area_2_wave_cleared"]
+[connection signal="area_entered" from="InteractAreas/TextAreaCreator2" to="InteractAreas/TextAreaCreator2" method="_on_area_entered"]
+[connection signal="area_entered" from="InteractAreas/TextAreaCreator3" to="InteractAreas/TextAreaCreator3" method="_on_area_entered"]
+[connection signal="area_entered" from="InteractAreas/TextAreaCreator4" to="InteractAreas/TextAreaCreator4" method="_on_area_entered"]
+[connection signal="area_entered" from="InteractAreas/TextAreaCreator5" to="InteractAreas/TextAreaCreator5" method="_on_area_entered"]
 [connection signal="area_entered" from="InteractAreas/TextAreaCreator" to="InteractAreas/TextAreaCreator" method="_on_area_entered"]
 [connection signal="area_entered" from="InteractAreas/TextAreaCreator" to="InteractAreas/TextAreaCreator/AudioStreamPlayer" method="_on_text_area_creator_area_entered"]
 [connection signal="area_entered" from="InteractAreas/TextAreaCreator" to="artifact1" method="_on_text_area_creator_area_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://cdaxeyxys1tfs"]
+[gd_scene load_steps=117 format=3 uid="uid://cdaxeyxys1tfs"]
 
 [ext_resource type="FastNoiseLite" uid="uid://bmubs6juomn5f" path="res://materials/fast_noise.tres" id="1_4tqfa"]
 [ext_resource type="Script" path="res://src/resources/SharedVariables.gd" id="1_odsn5"]
@@ -690,6 +690,32 @@ edge_fade = 2.5992
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ilr3"]
 size = Vector3(144.954, 26.1779, 79.2984)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_174cm"]
+albedo_texture = ExtResource("21_17jsd")
+metallic = 1.0
+metallic_specular = 0.0
+roughness = 0.5
+subsurf_scatter_strength = 0.45
+subsurf_scatter_transmittance_color = Color(0.333333, 0.329412, 0.901961, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r1xm4"]
+seed = 280
+frequency = 0.0375
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_w86lk"]
+noise = SubResource("FastNoiseLite_r1xm4")
+
+[sub_resource type="FogMaterial" id="FogMaterial_j6chs"]
+density = 2.0885
+emission = Color(0.411765, 0.411765, 0.411765, 1)
+density_texture = SubResource("NoiseTexture3D_w86lk")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6mc3f"]
+size = Vector3(14.34, 22.3708, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ara7"]
+size = Vector3(34.5462, 22.9706, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k4rwp"]
 size = Vector3(2000, 100, 200)
@@ -1732,6 +1758,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -368.434, 31.3555, -12.1682)
 [node name="Sprinter5" parent="CombatAreas/CombatArea3/Wave3" instance=ExtResource("25_5ej04")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -437.979, 29.2218, 4.75499)
 
+[node name="DoorNode" type="Node3D" parent="CombatAreas/CombatArea3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -79.7141, -7.79083, -3.04458)
+
+[node name="video_man" type="Node" parent="CombatAreas/CombatArea3/DoorNode"]
+script = ExtResource("17_c7603")
+target_swap_video_int = 1
+
+[node name="door" type="CSGBox3D" parent="CombatAreas/CombatArea3/DoorNode" node_paths=PackedStringArray("eyes")]
+use_collision = true
+size = Vector3(52.023, 27.0932, 0.5)
+material = SubResource("StandardMaterial3D_174cm")
+script = ExtResource("22_adn34")
+eyes = [null, null, null]
+
+[node name="door_fog" type="FogVolume" parent="CombatAreas/CombatArea3/DoorNode"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.20208, 0, 0)
+visible = false
+size = Vector3(27.6441, 17.5942, 2)
+material = SubResource("FogMaterial_j6chs")
+
+[node name="Area3D" type="Area3D" parent="CombatAreas/CombatArea3/DoorNode/door_fog"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0218487, 0)
+
+[node name="FogCollider" type="CollisionShape3D" parent="CombatAreas/CombatArea3/DoorNode/door_fog/Area3D"]
+shape = SubResource("BoxShape3D_6mc3f")
+
 [node name="InteractAreas" type="Node" parent="."]
 
 [node name="TextAreaCreator" parent="InteractAreas" instance=ExtResource("28_o65il")]
@@ -1745,6 +1797,20 @@ display_text = Array[String](["THE GIANTS ARE ALLIES", "DON'T TRUST THEM", "THEY
 word_salad_json = ExtResource("29_v2qf0")
 
 [node name="TextAreaCreator2" parent="InteractAreas/TextAreaCreator2" instance=ExtResource("28_o65il")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -117.909, -1.44257, 0.848925)
+disappear_after = 2.0
+
+[node name="TextAreaCreator4" parent="InteractAreas" instance=ExtResource("28_o65il")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -205.483, 22.462, -0.709831)
+display_text = Array[String](["GREEN EYES ARE TIMID", "THE GREEN ONES ARE SHY", "GREEN EYES CLOSE BY THEMSELVES", "BE QUICK", "SHOOT AND GO QUICKLY"])
+disappear_after = 12.0
+word_salad_json = ExtResource("29_v2qf0")
+
+[node name="TextCollider" parent="InteractAreas/TextAreaCreator4" index="0"]
+transform = Transform3D(1.00001, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1.00001, 2.2362, 5.06586, 0)
+shape = SubResource("BoxShape3D_8ara7")
+
+[node name="TextAreaCreator2" parent="InteractAreas/TextAreaCreator4" instance=ExtResource("28_o65il")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -117.909, -1.44257, 0.848925)
 disappear_after = 2.0
 
@@ -1812,6 +1878,7 @@ transform = Transform3D(0.571382, 2.98023e-08, 1.77636e-15, 0, -2.49759e-08, 0.5
 [connection signal="area_entered" from="CombatAreas/CombatArea1" to="CombatAreas/CombatArea1" method="_on_area_entered"]
 [connection signal="area_entered" from="CombatAreas/CombatArea2" to="CombatAreas/CombatArea2" method="_on_area_entered"]
 [connection signal="area_entered" from="CombatAreas/CombatArea3" to="CombatAreas/CombatArea3" method="_on_area_entered"]
+[connection signal="wave_cleared" from="CombatAreas/CombatArea3" to="CombatAreas/CombatArea3/DoorNode/door" method="_on_combat_area_3_wave_cleared"]
 [connection signal="area_entered" from="InteractAreas/KillZone" to="InteractAreas/KillZone" method="_on_area_entered"]
 [connection signal="area_entered" from="InteractAreas/LevelSwapArea" to="InteractAreas/LevelSwapArea" method="_on_area_entered"]
 
@@ -1825,5 +1892,7 @@ transform = Transform3D(0.571382, 2.98023e-08, 1.77636e-15, 0, -2.49759e-08, 0.5
 [editable path="CombatAreas/CombatArea3"]
 [editable path="InteractAreas/TextAreaCreator2"]
 [editable path="InteractAreas/TextAreaCreator2/TextAreaCreator2"]
+[editable path="InteractAreas/TextAreaCreator4"]
+[editable path="InteractAreas/TextAreaCreator4/TextAreaCreator2"]
 [editable path="Checkpoints/Checkpoint"]
 [editable path="Checkpoints/Checkpoint2"]

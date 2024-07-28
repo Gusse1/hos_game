@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cb7kykc3pq851"]
+[gd_scene load_steps=28 format=3 uid="uid://cb7kykc3pq851"]
 
 [ext_resource type="Script" path="res://src/resources/SharedVariables.gd" id="1_yfgsf"]
 [ext_resource type="PackedScene" uid="uid://bb44urkanokx" path="res://scenes/level_pieces/bottom_fog.tscn" id="2_yj87v"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://bst8amvx5wnx3" path="res://textures/Metal_04-128x128.png" id="10_puafn"]
 [ext_resource type="Script" path="res://src/interactable_scripts/EyeDoor.gd" id="11_ykahq"]
 [ext_resource type="Script" path="res://src/interactable_scripts/KillZone.gd" id="12_c4oan"]
+[ext_resource type="Script" path="res://src/ui/UITextCreator.gd" id="12_x1o42"]
+[ext_resource type="Theme" uid="uid://om37whdt5pb7" path="res://assets/ui/UITextStyle.tres" id="13_5tnk5"]
+[ext_resource type="JSON" path="res://src/ui/word_salad.json" id="14_tx0l1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ixcmd"]
 sky_top_color = Color(0.2, 0, 0, 1)
@@ -80,6 +83,9 @@ density_texture = SubResource("NoiseTexture3D_ms7ql")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_faaru"]
 size = Vector3(14.34, 22.3708, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7hi0i"]
+size = Vector3(50.1214, 22.9706, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i0qnu"]
 size = Vector3(2000, 100, 724)
@@ -242,6 +248,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0218487, 0)
 [node name="FogCollider" type="CollisionShape3D" parent="LevelTerrain/DoorNode3/door_fog/Area3D"]
 shape = SubResource("BoxShape3D_faaru")
 
+[node name="InteractionAreas" type="Node" parent="."]
+
+[node name="TextAreaCreator" type="Area3D" parent="InteractionAreas"]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -267.213, -7.97815, -99.5501)
+script = ExtResource("12_x1o42")
+display_text = Array[String](["BACK AT THE TERMINAL", "YOU HAVE THE ARTIFACT", "WHAT DID THE GIANTS SAY?", "WHAT WAS THEIR MESSAGE?", "WILL IT HELP US?", "AT THE TERMINAL AGAIN", "NEXT ARTIFACT IS SOMEWHERE ELSE"])
+disappear_after = 12.0
+shake_amount = 3.0
+label_theme = ExtResource("13_5tnk5")
+word_salad_json = ExtResource("14_tx0l1")
+
+[node name="TextCollider" type="CollisionShape3D" parent="InteractionAreas/TextAreaCreator"]
+transform = Transform3D(1.00001, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1.00001, 2.01793, 5.06586, 4.76837e-06)
+shape = SubResource("BoxShape3D_7hi0i")
+
+[node name="TextAreaCreator2" type="Area3D" parent="InteractionAreas"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -283.213, -11.9782, 43.4499)
+script = ExtResource("12_x1o42")
+display_text = Array[String](["A NEST OF ABOMINATIONS", "THE SAGES HALL IS FULL OF THEM", "THE SAGES MUST BE ABLE TO HELP YOU", "ONE OF THEM MUST BE ALIVE"])
+disappear_after = 12.0
+shake_amount = 3.0
+label_theme = ExtResource("13_5tnk5")
+word_salad_json = ExtResource("14_tx0l1")
+
+[node name="TextCollider" type="CollisionShape3D" parent="InteractionAreas/TextAreaCreator2"]
+transform = Transform3D(1.00001, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1.00001, 2.01793, 5.06586, 4.76837e-06)
+shape = SubResource("BoxShape3D_7hi0i")
+
 [node name="KillZone" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -101.847, 0)
 script = ExtResource("12_c4oan")
@@ -251,6 +285,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 shape = SubResource("BoxShape3D_i0qnu")
 
 [connection signal="area_entered" from="LevelTerrain/Level4Entrance/LevelSwapArea" to="LevelTerrain/Level4Entrance/LevelSwapArea" method="_on_area_entered"]
+[connection signal="area_entered" from="InteractionAreas/TextAreaCreator" to="InteractionAreas/TextAreaCreator" method="_on_area_entered"]
+[connection signal="area_entered" from="InteractionAreas/TextAreaCreator2" to="InteractionAreas/TextAreaCreator2" method="_on_area_entered"]
 [connection signal="area_entered" from="KillZone" to="KillZone" method="_on_area_entered"]
 
 [editable path="Pawn"]

@@ -41,9 +41,14 @@ func _close_door():
 	visible = true
 
 
+# Signals
 func _on_combat_area_1_wave_cleared():
 	_open_door()
 
 
 func _on_combat_area_2_wave_cleared():
+	_open_door()
+
+
+func _on_combat_area_3_wave_cleared():
 	_open_door()

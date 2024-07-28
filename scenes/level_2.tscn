@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bbibnw3wxy20d"]
+[gd_scene load_steps=26 format=3 uid="uid://bbibnw3wxy20d"]
 
 [ext_resource type="PackedScene" uid="uid://dmra7k702xhnr" path="res://assets/rooms/hub_level.tscn" id="1_gu0a6"]
 [ext_resource type="Script" path="res://src/resources/SharedVariables.gd" id="1_ld66a"]
@@ -11,7 +11,9 @@
 [ext_resource type="Script" path="res://src/game_management/VideoMan.gd" id="9_uoych"]
 [ext_resource type="Texture2D" uid="uid://bst8amvx5wnx3" path="res://textures/Metal_04-128x128.png" id="10_mgxv4"]
 [ext_resource type="Script" path="res://src/interactable_scripts/EyeDoor.gd" id="11_luwbu"]
+[ext_resource type="PackedScene" uid="uid://b2wwbmnwgn1rh" path="res://assets/effects/text_area_creator.tscn" id="12_36d4l"]
 [ext_resource type="Script" path="res://src/interactable_scripts/KillZone.gd" id="12_hr25b"]
+[ext_resource type="JSON" path="res://src/ui/word_salad.json" id="13_sraxl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ixcmd"]
 sky_top_color = Color(0.2, 0, 0, 1)
@@ -246,6 +248,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0218487, 0)
 
 [node name="FogCollider" type="CollisionShape3D" parent="LevelTerrain/DoorNode3/door_fog/Area3D"]
 shape = SubResource("BoxShape3D_faaru")
+
+[node name="InteractAreas" type="Node" parent="."]
+
+[node name="TextAreaCreator" parent="InteractAreas" instance=ExtResource("12_36d4l")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.2114, 0.0218487, 9.3268)
+display_text = Array[String](["YOU HAVE BEEN WALKING FOR YEARS", "A WALK THAT TAKES A LIFETIME", "YOU ARE WALKING TO YOUR GRAVE"])
+disappear_after = 8.0
+word_salad_json = ExtResource("13_sraxl")
+
+[node name="TextAreaCreator2" parent="InteractAreas" instance=ExtResource("12_36d4l")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -124.211, 0.0218487, 9.3268)
+display_text = Array[String](["THE TERMINAL", "YOU ARE AT THE TERMINAL", "THE PLACE BETWEEN PLACES", "SEPSIS IS BEHIND THE MIDDLE DOOR", "SEPSIS WAITS", "YOU NEED THE ARTIFACTS"])
+disappear_after = 12.0
+word_salad_json = ExtResource("13_sraxl")
 
 [node name="KillZone" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -101.847, 0)

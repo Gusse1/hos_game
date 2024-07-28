@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://8lkw4atb18x7"]
+[gd_scene load_steps=91 format=3 uid="uid://8lkw4atb18x7"]
 
 [ext_resource type="Script" path="res://src/resources/SharedVariables.gd" id="1_el3gr"]
 [ext_resource type="PackedScene" uid="uid://d4u3qwcrc37p" path="res://scenes/level_pieces/background_audio.tscn" id="1_hlakb"]
@@ -182,7 +182,7 @@ resource_name = "EyeVideoMat"
 cull_mode = 2
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_rnvmh"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_1yya7"]
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
 "format": 34896613377,
@@ -234,14 +234,14 @@ _surfaces = [{
 "vertex_data": PackedByteArray(255, 127, 0, 0, 0, 0, 83, 150, 255, 127, 0, 0, 0, 0, 83, 150, 255, 255, 0, 0, 255, 127, 170, 233, 255, 255, 0, 0, 255, 127, 83, 150, 255, 127, 0, 0, 255, 255, 170, 233, 255, 127, 0, 0, 255, 255, 170, 233, 0, 0, 0, 0, 255, 127, 170, 233, 0, 0, 0, 0, 255, 127, 83, 150, 255, 127, 255, 255, 0, 0, 83, 150, 255, 127, 255, 255, 0, 0, 255, 191, 255, 127, 255, 255, 0, 0, 83, 150, 255, 255, 255, 255, 255, 127, 170, 233, 255, 255, 255, 255, 255, 127, 83, 150, 255, 255, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 255, 170, 233, 255, 127, 255, 255, 255, 255, 255, 191, 255, 127, 255, 255, 255, 255, 170, 233, 0, 0, 255, 255, 255, 127, 255, 191, 0, 0, 255, 255, 255, 127, 170, 233, 0, 0, 255, 255, 255, 127, 83, 150, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 0, 0, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 0, 0)
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_rnvmh")
+shadow_mesh = SubResource("ArrayMesh_1yya7")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1yjo"]
 resource_name = "EyeClosed"
 cull_mode = 2
 albedo_texture = ExtResource("30_e3mvi")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_dxesn"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_on2ie"]
 _surfaces = [{
 "aabb": AABB(-0.69879, 0.388442, -0.69879, 1.39758, 1.00136e-05, 1.39758),
 "format": 34896613377,
@@ -271,7 +271,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray(255, 127, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 255, 127, 255, 191, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 255, 127, 255, 191, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127)
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_dxesn")
+shadow_mesh = SubResource("ArrayMesh_on2ie")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ofkav"]
 
@@ -290,13 +290,13 @@ subsurf_scatter_transmittance_color = Color(0.333333, 0.329412, 0.901961, 1)
 seed = 280
 frequency = 0.0375
 
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_w86lk"]
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_ltu03"]
 noise = SubResource("FastNoiseLite_iqfmp")
 
 [sub_resource type="FogMaterial" id="FogMaterial_spoft"]
 density = 2.0885
 emission = Color(0.411765, 0.411765, 0.411765, 1)
-density_texture = SubResource("NoiseTexture3D_w86lk")
+density_texture = SubResource("NoiseTexture3D_ltu03")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_57srf"]
 size = Vector3(14.34, 22.3708, 1)
@@ -355,6 +355,9 @@ size = Vector3(650, 1, 250)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bhpry"]
 size = Vector3(208.155, 54.6509, 79.3114)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_osdg1"]
+size = Vector3(50.1214, 22.9706, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6bg6m"]
 size = Vector3(2000, 100, 1977.72)
@@ -1712,6 +1715,86 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -217.24, -346.764, -41.0263)
 [node name="Sprinter8" parent="CombatAreas/CombatArea2/Wave4" instance=ExtResource("29_qb3oi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -223.747, -346.764, -26.0038)
 
+[node name="InteractAreas" type="Node" parent="."]
+
+[node name="TextAreaCreator" type="Area3D" parent="InteractAreas"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.21288, 0.0218487, -2.55012)
+script = ExtResource("45_n4cqm")
+display_text = Array[String](["A GIANT DANCING", "WHERE IS HE LOOKING?", "LOOK DOWN", "JUMP INTO THE LIGHT", "LIKE MOTH TO FLAME", "JUMP INTO THE LIGHT", "THE LIGHT"])
+disappear_after = 12.0
+shake_amount = 3.0
+label_theme = ExtResource("46_hiud1")
+word_salad_json = ExtResource("47_55u8a")
+
+[node name="TextCollider" type="CollisionShape3D" parent="InteractAreas/TextAreaCreator"]
+transform = Transform3D(1.00001, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1.00001, 2.01793, 5.06586, 4.76837e-06)
+shape = SubResource("BoxShape3D_osdg1")
+
+[node name="TextAreaCreator2" type="Area3D" parent="InteractAreas"]
+transform = Transform3D(0.217206, 0, -0.976126, 0, 1, 0, 0.976126, 0, 0.217206, -41.7826, -156.22, -40.3077)
+script = ExtResource("45_n4cqm")
+display_text = Array[String](["A GIANT DANCING", "THIS WAS THEIR HOME", "A PEACEFUL PEOPLE", "SEPSIS CONSUMED THEM", "SEPSIS ENSLAVED THE GIANTS", "THE GIANTS ARE MUCH LIKE YOU"])
+disappear_after = 12.0
+shake_amount = 3.0
+label_theme = ExtResource("46_hiud1")
+word_salad_json = ExtResource("47_55u8a")
+
+[node name="TextCollider" type="CollisionShape3D" parent="InteractAreas/TextAreaCreator2"]
+transform = Transform3D(1.00001, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1.00001, 2.01793, 5.06586, 4.76837e-06)
+shape = SubResource("BoxShape3D_osdg1")
+
+[node name="TextAreaCreator3" type="Area3D" parent="InteractAreas"]
+transform = Transform3D(0.370752, 0, -0.928732, 0, 1, 0, 0.928732, 0, 0.370752, -234.045, -364.454, 43.2891)
+script = ExtResource("45_n4cqm")
+display_text = Array[String](["WE CAN HEAR THE GIANTS TALK", "THEY TOLD US THERE ARE 4", "THERE ARE 4 EYES HERE", "THE GIANTS SAID 4", "4 EYES TO OPEN THE GATE"])
+disappear_after = 12.0
+shake_amount = 3.0
+label_theme = ExtResource("46_hiud1")
+word_salad_json = ExtResource("47_55u8a")
+
+[node name="TextCollider" type="CollisionShape3D" parent="InteractAreas/TextAreaCreator3"]
+transform = Transform3D(1.00001, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1.00001, 2.01793, 5.06586, 4.76837e-06)
+shape = SubResource("BoxShape3D_osdg1")
+
+[node name="TextAreaCreator4" type="Area3D" parent="InteractAreas"]
+transform = Transform3D(0.370752, 0, -0.928732, 0, 1, 0, 0.928732, 0, 0.370752, -405.481, -795.916, 141.516)
+script = ExtResource("45_n4cqm")
+display_text = Array[String](["THERE WAS A CHECKPOINT", "BEHIND YOU", "THE GIANTS ARE SCARED", "YOU ARE NOT READY TO RESIST", "THE ARTIFACT WILL NOT BE SAFE"])
+disappear_after = 12.0
+shake_amount = 3.0
+label_theme = ExtResource("46_hiud1")
+word_salad_json = ExtResource("47_55u8a")
+
+[node name="TextCollider" type="CollisionShape3D" parent="InteractAreas/TextAreaCreator4"]
+transform = Transform3D(1.00001, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1.00001, 2.01793, 5.06586, 4.76837e-06)
+shape = SubResource("BoxShape3D_osdg1")
+
+[node name="TextAreaCreator5" type="Area3D" parent="InteractAreas"]
+transform = Transform3D(-0.512178, 0, -0.858879, 0, 1, 0, 0.858879, 0, -0.512178, -555.14, -847.516, 109.33)
+script = ExtResource("45_n4cqm")
+display_text = Array[String](["2 GREEN EYES", "GREEN EYES ARE SHY", "THEY CLOSE AFTER SOME TIME", "YOU NEED TO BE QUICK", "GREEN EYES ARE SLEEPY"])
+disappear_after = 12.0
+shake_amount = 3.0
+label_theme = ExtResource("46_hiud1")
+word_salad_json = ExtResource("47_55u8a")
+
+[node name="TextCollider" type="CollisionShape3D" parent="InteractAreas/TextAreaCreator5"]
+transform = Transform3D(1.00001, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1.00001, 2.01793, 5.06586, 4.76837e-06)
+shape = SubResource("BoxShape3D_osdg1")
+
+[node name="TextAreaCreator6" type="Area3D" parent="InteractAreas"]
+transform = Transform3D(-0.426616, -0.886118, -0.181088, 2.98023e-08, 0.200223, -0.97975, 0.904433, -0.417977, -0.0854183, -724.286, -940.482, 28.7014)
+script = ExtResource("45_n4cqm")
+display_text = Array[String](["ABOMINATIONS ROAM DOWN THERE", "GET READY"])
+disappear_after = 8.0
+shake_amount = 3.0
+label_theme = ExtResource("46_hiud1")
+word_salad_json = ExtResource("47_55u8a")
+
+[node name="TextCollider" type="CollisionShape3D" parent="InteractAreas/TextAreaCreator6"]
+transform = Transform3D(1.00001, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1.00001, 2.01793, 5.06586, 4.76837e-06)
+shape = SubResource("BoxShape3D_osdg1")
+
 [node name="level_3_battle_arena" parent="." instance=ExtResource("38_nmn7n")]
 transform = Transform3D(0.432558, 0, 1.30733, 0, 1, 0, -0.901606, 0, 0.627209, -629.587, -1504.65, -222.639)
 
@@ -1869,6 +1952,12 @@ shape = SubResource("SphereShape3D_mdp5s")
 [connection signal="area_entered" from="CombatAreas/CombatArea1" to="CombatAreas/CombatArea1" method="_on_area_entered"]
 [connection signal="area_entered" from="CombatAreas/CombatArea2" to="CombatAreas/CombatArea2" method="_on_area_entered"]
 [connection signal="wave_cleared" from="CombatAreas/CombatArea2" to="artifact1" method="_on_combat_area_2_wave_cleared"]
+[connection signal="area_entered" from="InteractAreas/TextAreaCreator" to="InteractAreas/TextAreaCreator" method="_on_area_entered"]
+[connection signal="area_entered" from="InteractAreas/TextAreaCreator2" to="InteractAreas/TextAreaCreator2" method="_on_area_entered"]
+[connection signal="area_entered" from="InteractAreas/TextAreaCreator3" to="InteractAreas/TextAreaCreator3" method="_on_area_entered"]
+[connection signal="area_entered" from="InteractAreas/TextAreaCreator4" to="InteractAreas/TextAreaCreator4" method="_on_area_entered"]
+[connection signal="area_entered" from="InteractAreas/TextAreaCreator5" to="InteractAreas/TextAreaCreator5" method="_on_area_entered"]
+[connection signal="area_entered" from="InteractAreas/TextAreaCreator6" to="InteractAreas/TextAreaCreator6" method="_on_area_entered"]
 [connection signal="area_entered" from="KillZone" to="KillZone" method="_on_area_entered"]
 [connection signal="area_entered" from="KillZone/KillZone" to="KillZone/KillZone" method="_on_area_entered"]
 [connection signal="area_entered" from="KillZone/KillZone2" to="KillZone/KillZone2" method="_on_area_entered"]

@@ -76,7 +76,7 @@ albedo = Color(0.295677, 0.000892729, 0.491307, 1)
 emission = Color(0.295677, 0.000892729, 0.491307, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i2u7x"]
-size = Vector3(0.609497, 0.537585, 0.802734)
+size = Vector3(1.218, 1.701, 1.606)
 
 [node name="ranger" type="Node3D"]
 
@@ -100,7 +100,7 @@ IS_RANGED_ENEMY = true
 enemy_mesh_path = "enemy/HumanoidBase_NotOverlapping"
 
 [node name="enemy" parent="CharacterBody3D" instance=ExtResource("4_re4le")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 
 [node name="HumanoidBase_NotOverlapping" parent="CharacterBody3D/enemy" index="0"]
 mesh = SubResource("ArrayMesh_nhonr")
@@ -120,7 +120,7 @@ size = Vector3(2, 2, 3.53562)
 material = SubResource("FogMaterial_7uvjy")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.0229966, 0.323446, -0.096308)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.0229966, 0.455429, -0.096308)
 shape = SubResource("BoxShape3D_i2u7x")
 
 [editable path="CharacterBody3D/enemy"]

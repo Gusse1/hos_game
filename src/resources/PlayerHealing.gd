@@ -6,6 +6,6 @@ extends Node
 func _process(delta):
 	if Input.is_action_pressed("Healing"):
 		if shared_variables.player_state.current_blood > 0 and shared_variables.player_state.current_health < shared_variables.player_state.playerVariables.MAX_HEALTH:
-			shared_variables.player_state._adjust_blood(-shared_variables.player_state.playerVariables.HEALING_SPEED * delta)
+			shared_variables.player_state._adjust_blood(-shared_variables.player_state.playerVariables.HEALING_SPEED * delta * 0.6)
 			shared_variables.player_state._adjust_health(shared_variables.player_state.playerVariables.HEALING_SPEED * delta)
 

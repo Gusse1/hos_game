@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://cwlb5ak0vi5w1"]
+[gd_scene load_steps=72 format=3 uid="uid://cwlb5ak0vi5w1"]
 
 [ext_resource type="Script" path="res://src/resources/SharedVariables.gd" id="1_075lf"]
 [ext_resource type="PackedScene" uid="uid://bb44urkanokx" path="res://scenes/level_pieces/bottom_fog.tscn" id="2_ymr8v"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://sk7spv88orwg" path="res://models/checkpoint_sign.blend" id="24_k61yi"]
 [ext_resource type="Texture2D" uid="uid://dckmk45o6edcu" path="res://textures/Metal_12-128x128.png" id="25_s8u0j"]
 [ext_resource type="PackedScene" uid="uid://dskwoaxlq5bqg" path="res://assets/decorations/concrete_bench.tscn" id="26_0deyf"]
+[ext_resource type="PackedScene" uid="uid://b2wwbmnwgn1rh" path="res://assets/effects/text_area_creator.tscn" id="27_k0lka"]
 [ext_resource type="Script" path="res://src/ui/UITextCreator.gd" id="27_qqrk8"]
 [ext_resource type="Theme" uid="uid://om37whdt5pb7" path="res://assets/ui/UITextStyle.tres" id="28_xqxvh"]
 [ext_resource type="JSON" path="res://src/ui/word_salad.json" id="29_0f4dw"]
@@ -259,6 +260,12 @@ size = Vector3(14.34, 22.3708, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oe2tv"]
 size = Vector3(106.196, 68, 47.15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dgkod"]
+size = Vector3(35.5753, 22.9706, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xjt3y"]
+size = Vector3(43.9101, 35.6899, 17.3433)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxxi0"]
 albedo_texture = ExtResource("25_s8u0j")
@@ -1295,6 +1302,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0218487, 0)
 [node name="FogCollider" type="CollisionShape3D" parent="CombatAreas/CombatArea4/DoorNode/door_fog/Area3D"]
 shape = SubResource("BoxShape3D_ycymk")
 
+[node name="InteractAreas" type="Node" parent="."]
+
+[node name="TextAreaCreator" type="Area3D" parent="InteractAreas"]
+transform = Transform3D(0.788687, 0, -0.614795, 0, 1, 0, 0.614795, 0, 0.788687, -327.795, -19.4182, 92.5404)
+script = ExtResource("27_qqrk8")
+display_text = Array[String](["WE HAVE THE ARTIFACTS", "YOU HAVE TO RESIST SEPSIS", "GO AND TALK TO HIM", "PROVE THE SAGES WRONG", "YOU ARE STRONGER THAN THEY THINK", "DO NOT BECOME SEPSIS' SLAVE"])
+disappear_after = 8.0
+shake_amount = 3.0
+label_theme = ExtResource("28_xqxvh")
+word_salad_json = ExtResource("29_0f4dw")
+
+[node name="TextCollider" type="CollisionShape3D" parent="InteractAreas/TextAreaCreator"]
+transform = Transform3D(1.00001, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1.00001, -0.533234, 5.06586, -3.05176e-05)
+shape = SubResource("BoxShape3D_dgkod")
+
+[node name="TextAreaCreator2" parent="InteractAreas" instance=ExtResource("27_k0lka")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -370.992, -19.1686, 9.31812)
+display_text = Array[String](["THE HALL OF EYES", "HELLO!", "IT'S US", "WE ARE HERE!", "SHOOT US", "YOU NEED TO GO TALK TO SEPSIS", "WE LIVE IN THE HALL OF EYES", "1, 2, 3, 4, 5", "HI!", "HELLO I'M HERE TOO!", "WE TRUST IN YOU", "HALL OF EYES", "WE ARE THE VOICES INSIDE YOUR HEAD"])
+disappear_after = 18.0
+word_salad_json = ExtResource("29_0f4dw")
+
+[node name="TextAreaCreator3" type="Area3D" parent="InteractAreas"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -929.456, 103.091, 9.31808)
+script = ExtResource("27_qqrk8")
+display_text = Array[String](["THIS IS IT", "WE WILL NEVER SEE YOU AGAIN", "WALK UP TO HIM", "WALK TO HIM"])
+disappear_after = 12.0
+shake_amount = 3.0
+label_theme = ExtResource("28_xqxvh")
+word_salad_json = ExtResource("29_0f4dw")
+
+[node name="TextCollider" type="CollisionShape3D" parent="InteractAreas/TextAreaCreator3"]
+transform = Transform3D(1.00001, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1.00001, 1.34293, -1.29379, -8.17169)
+shape = SubResource("BoxShape3D_xjt3y")
+
 [node name="sepsis" parent="." instance=ExtResource("9_1d2an")]
 transform = Transform3D(-1.31134e-05, 0, 300, 0, 300, 0, -300, 0, -1.31134e-05, -1047, -283, 3)
 
@@ -1385,6 +1426,8 @@ shape = SubResource("BoxShape3D_5snop")
 [connection signal="wave_cleared" from="CombatAreas/CombatArea3" to="CombatAreas/CombatArea3/DoorNode/door" method="_on_combat_area_2_wave_cleared"]
 [connection signal="area_entered" from="CombatAreas/CombatArea4" to="CombatAreas/CombatArea4" method="_on_area_entered"]
 [connection signal="wave_cleared" from="CombatAreas/CombatArea4" to="CombatAreas/CombatArea4/DoorNode/door" method="_on_combat_area_2_wave_cleared"]
+[connection signal="area_entered" from="InteractAreas/TextAreaCreator" to="InteractAreas/TextAreaCreator" method="_on_area_entered"]
+[connection signal="area_entered" from="InteractAreas/TextAreaCreator3" to="InteractAreas/TextAreaCreator3" method="_on_area_entered"]
 [connection signal="area_entered" from="Checkpoint/CSGSphere3D/CheckpointArea" to="Checkpoint/CSGSphere3D/WordSaladCreator" method="_on_checkpoint_area_area_entered"]
 [connection signal="area_entered" from="Checkpoint/CSGSphere3D/CheckpointArea" to="Checkpoint/CSGSphere3D/CheckpointArea" method="_on_area_entered"]
 [connection signal="area_entered" from="KillZone" to="KillZone" method="_on_area_entered"]

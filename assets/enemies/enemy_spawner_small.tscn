@@ -36,6 +36,7 @@ heightmap_texture = SubResource("NoiseTexture2D_oog14")
 transform = Transform3D(1, 0, 0, 0, 0.275, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("1_vaslr")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="CSGBox3D" parent="EnemySpawner" index="0"]
 material = SubResource("StandardMaterial3D_xcpvo")
