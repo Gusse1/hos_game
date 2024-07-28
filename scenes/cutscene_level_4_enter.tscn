@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj7hws8u5txe1"]
+
+[ext_resource type="Script" path="res://src/game_management/LevelSwapper.gd" id="1_grtrx"]
+[ext_resource type="VideoStream" path="res://videos/Hos Level 4 Cutscene Start New New.ogv" id="2_2vb1l"]
+
+[node name="Level4Start" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_grtrx")
+level_to_swap_to = "level_4"
+
+[node name="CutsceneVideo" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_right = 960.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_2vb1l")
+autoplay = true
+metadata/_edit_use_anchors_ = true
+
+[connection signal="finished" from="CutsceneVideo" to="." method="_on_cutscene_video_finished"]

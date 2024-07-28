@@ -637,11 +637,8 @@ environment = SubResource("Environment_rxsmp")
 
 [node name="Pawn" parent="." instance=ExtResource("6_gfcwf")]
 
-[node name="Body" parent="Pawn/SVC/VC" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18279e-11, 0, 0)
-
 [node name="Interpolated Camera" parent="Pawn/SVC/VC" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18279e-11, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="LevelTerrain" type="Node" parent="."]
 
@@ -2377,7 +2374,7 @@ shape = SubResource("BoxShape3D_fih0p")
 
 [node name="LevelSwapper" type="Node" parent="artifact1"]
 script = ExtResource("43_jp1f5")
-level_to_swap_to = "level_4_end_cutscene"
+level_to_swap_to = "cutscene_level_4_end"
 
 [node name="KillZone" type="Area3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -101.847, 0)

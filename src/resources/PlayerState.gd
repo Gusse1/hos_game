@@ -19,7 +19,6 @@ var current_checkpoint_location : Vector3
 
 # FX
 var shot_effect_timer : float
-var post_process_config : PostProcessingConfiguration
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,7 +28,6 @@ func _ready():
 	current_checkpoint_location = level_start_checkpoint_location
 	
 	shot_effect_timer = 1
-	post_process_config = shared_variables.post_process_layer.configuration
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -39,8 +37,8 @@ func _process(delta):
 		shot_effect_timer += delta
 	else:
 		# Stopping shot effect
-		post_process_config.ChromaticAberration = false
-		post_process_config.Glitch = false
+		shared_variables.post_process_layer.configuration.ChromaticAberration = false
+		shared_variables.post_process_layer.configuration.Glitch = false
 	
 func _passive_blood_accumulation(amount: float):
 	blood_accumulation_float += amount
@@ -81,8 +79,8 @@ func _kill_player():
 	_adjust_blood(999)
 
 func _camera_flash():
-	post_process_config.ChromaticAberration = true
-	post_process_config.Glitch = true
+	shared_variables.post_process_layer.configuration.ChromaticAberration = true
+	shared_variables.post_process_layer.configuration.Glitch = true
 	shot_effect_timer = 0
 	
 func _on_player_area_area_entered(area):

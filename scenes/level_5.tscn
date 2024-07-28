@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://cwlb5ak0vi5w1"]
+[gd_scene load_steps=75 format=3 uid="uid://cwlb5ak0vi5w1"]
 
 [ext_resource type="Script" path="res://src/resources/SharedVariables.gd" id="1_075lf"]
 [ext_resource type="PackedScene" uid="uid://dfryp7psbhdr7" path="res://assets/ui/pause_menu.tscn" id="1_865wy"]
@@ -268,6 +268,9 @@ size = Vector3(35.5753, 22.9706, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xjt3y"]
 size = Vector3(43.9101, 35.6899, 17.3433)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0hq06"]
+size = Vector3(249.209, 35.6899, 20.3484)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxxi0"]
 albedo_texture = ExtResource("25_s8u0j")
@@ -1357,6 +1360,22 @@ word_salad_json = ExtResource("29_0f4dw")
 transform = Transform3D(1.00001, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1.00001, 1.34293, -1.29379, -8.17169)
 shape = SubResource("BoxShape3D_xjt3y")
 
+[node name="LevelEnd" type="Area3D" parent="InteractAreas"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -994.769, 103.091, 9.31808)
+script = ExtResource("27_qqrk8")
+disappear_after = 12.0
+shake_amount = 3.0
+label_theme = ExtResource("25_am83h")
+word_salad_json = ExtResource("29_0f4dw")
+
+[node name="TextCollider" type="CollisionShape3D" parent="InteractAreas/LevelEnd"]
+transform = Transform3D(1.00001, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1.00001, 2.90248, -1.29379, -9.67426)
+shape = SubResource("BoxShape3D_0hq06")
+
+[node name="LevelSwapper" type="Node" parent="InteractAreas/LevelEnd"]
+script = ExtResource("8_4vx7u")
+level_to_swap_to = "cutscene_level_5_end"
+
 [node name="sepsis" parent="." instance=ExtResource("9_1d2an")]
 transform = Transform3D(-1.31134e-05, 0, 300, 0, 300, 0, -300, 0, -1.31134e-05, -1047, -283, 3)
 
@@ -1452,6 +1471,8 @@ shape = SubResource("BoxShape3D_5snop")
 [connection signal="wave_cleared" from="CombatAreas/CombatArea4" to="CombatAreas/CombatArea4/DoorNode/door" method="_on_combat_area_2_wave_cleared"]
 [connection signal="area_entered" from="InteractAreas/TextAreaCreator" to="InteractAreas/TextAreaCreator" method="_on_area_entered"]
 [connection signal="area_entered" from="InteractAreas/TextAreaCreator3" to="InteractAreas/TextAreaCreator3" method="_on_area_entered"]
+[connection signal="area_entered" from="InteractAreas/LevelEnd" to="InteractAreas/LevelEnd" method="_on_area_entered"]
+[connection signal="area_entered" from="InteractAreas/LevelEnd" to="InteractAreas/LevelEnd/LevelSwapper" method="_on_level_end_area_entered"]
 [connection signal="area_entered" from="Checkpoint/CSGSphere3D/CheckpointArea" to="Checkpoint/CSGSphere3D/WordSaladCreator" method="_on_checkpoint_area_area_entered"]
 [connection signal="area_entered" from="Checkpoint/CSGSphere3D/CheckpointArea" to="Checkpoint/CSGSphere3D/CheckpointArea" method="_on_area_entered"]
 [connection signal="area_entered" from="KillZone" to="KillZone" method="_on_area_entered"]

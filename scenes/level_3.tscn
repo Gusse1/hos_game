@@ -1823,6 +1823,9 @@ transform = Transform3D(0.432558, 0, 1.30733, 0, 1, 0, -0.901606, 0, 0.627209, -
 [node name="artifact1" parent="." instance=ExtResource("39_gj3yt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -715.333, -1365.04, -8.45762)
 
+[node name="LevelSwapper" parent="artifact1" index="7"]
+level_to_swap_to = "cutscene_level_3_end"
+
 [node name="KillZone" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 725.46, -496.816, 0)
 script = ExtResource("41_t6l0r")
@@ -2008,3 +2011,4 @@ shape = SubResource("SphereShape3D_mdp5s")
 [editable path="LevelTerrain/Giant8"]
 [editable path="CombatAreas/CombatArea1"]
 [editable path="CombatAreas/CombatArea2"]
+[editable path="artifact1"]
