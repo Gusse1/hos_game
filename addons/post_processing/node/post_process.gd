@@ -5,6 +5,17 @@ extends CanvasLayer
 @export var configuration : PostProcessingConfiguration
 @export var dynamically_update : bool = true
 
+var original_configuration : PostProcessingConfiguration
+
+func _ready():
+	original_configuration = configuration.duplicate(true)
+	
+func _disable():
+	configuration = PostProcessingConfiguration.new()
+
+func _enable():
+	configuration = original_configuration.duplicate(true)
+
 func update_shaders() -> void:
 	if not configuration:
 		return

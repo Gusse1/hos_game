@@ -91,6 +91,7 @@ ScreenShake = false
 ScreenShakePower = 0.88
 
 [node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
 follow_viewport_enabled = true
 script = ExtResource("1_dymw5")
 configuration = SubResource("Resource_gkxv8")

@@ -1,6 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://cb7kykc3pq851"]
+[gd_scene load_steps=30 format=3 uid="uid://cb7kykc3pq851"]
 
+[ext_resource type="PackedScene" uid="uid://dfryp7psbhdr7" path="res://assets/ui/pause_menu.tscn" id="1_w8xjd"]
 [ext_resource type="Script" path="res://src/resources/SharedVariables.gd" id="1_yfgsf"]
+[ext_resource type="Script" path="res://src/game_management/SaveGameManager.gd" id="2_l20m0"]
 [ext_resource type="PackedScene" uid="uid://bb44urkanokx" path="res://scenes/level_pieces/bottom_fog.tscn" id="2_yj87v"]
 [ext_resource type="PackedScene" uid="uid://qawdt8k11fsu" path="res://scenes/level_pieces/post_process_layer.tscn" id="3_880fx"]
 [ext_resource type="PackedScene" uid="uid://b6ro3qtuffgog" path="res://scenes/level_pieces/videotape_player.tscn" id="4_85afa"]
@@ -13,7 +15,7 @@
 [ext_resource type="Script" path="res://src/interactable_scripts/EyeDoor.gd" id="11_ykahq"]
 [ext_resource type="Script" path="res://src/interactable_scripts/KillZone.gd" id="12_c4oan"]
 [ext_resource type="Script" path="res://src/ui/UITextCreator.gd" id="12_x1o42"]
-[ext_resource type="Theme" uid="uid://om37whdt5pb7" path="res://assets/ui/UITextStyle.tres" id="13_5tnk5"]
+[ext_resource type="Theme" uid="uid://d20hm5kwnmbwg" path="res://assets/ui/UITextStyle_MENU.tres" id="13_ma8mu"]
 [ext_resource type="JSON" path="res://src/ui/word_salad.json" id="14_tx0l1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ixcmd"]
@@ -92,13 +94,32 @@ size = Vector3(2000, 100, 724)
 
 [node name="level3_5" type="Node3D"]
 
-[node name="SharedVariables" type="Node" parent="." node_paths=PackedStringArray("player_node", "player_body", "player_state", "post_process_layer", "text_ui")]
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="PauseMenu" parent="PauseLayer" instance=ExtResource("1_w8xjd")]
+process_mode = 3
+visible = false
+z_index = 1
+offset_left = -1021.0
+offset_top = -677.0
+offset_right = 1004.0
+offset_bottom = 455.0
+
+[node name="SaveGameManager" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("2_l20m0")
+level_to_save = "level_3_5"
+
+[node name="SharedVariables" type="Node" parent="." node_paths=PackedStringArray("player_node", "player_body", "player_state", "post_process_layer", "text_ui", "save_game_manager", "settings_panel")]
 script = ExtResource("1_yfgsf")
 player_node = NodePath("../Pawn")
 player_body = NodePath("../Pawn/SVC/VC/Body")
 player_state = NodePath("../Pawn/PlayerState")
 post_process_layer = NodePath("../CanvasLayer")
 text_ui = NodePath("../Pawn/GameUI/TextUI")
+save_game_manager = NodePath("../SaveGameManager")
+settings_panel = NodePath("../PauseLayer/PauseMenu/SettingsPanel")
 
 [node name="FogVolume" parent="." instance=ExtResource("2_yj87v")]
 transform = Transform3D(1.89, 0, 0, 0, 1.89, 0, 0, 0, 1.89, -13.3765, -88.5212, -0.8528)
@@ -256,7 +277,7 @@ script = ExtResource("12_x1o42")
 display_text = Array[String](["BACK AT THE TERMINAL", "YOU HAVE THE ARTIFACT", "WHAT DID THE GIANTS SAY?", "WHAT WAS THEIR MESSAGE?", "WILL IT HELP US?", "AT THE TERMINAL AGAIN", "NEXT ARTIFACT IS SOMEWHERE ELSE"])
 disappear_after = 12.0
 shake_amount = 3.0
-label_theme = ExtResource("13_5tnk5")
+label_theme = ExtResource("13_ma8mu")
 word_salad_json = ExtResource("14_tx0l1")
 
 [node name="TextCollider" type="CollisionShape3D" parent="InteractionAreas/TextAreaCreator"]
@@ -269,7 +290,7 @@ script = ExtResource("12_x1o42")
 display_text = Array[String](["A NEST OF ABOMINATIONS", "THE SAGES HALL IS FULL OF THEM", "THE SAGES MUST BE ABLE TO HELP YOU", "ONE OF THEM MUST BE ALIVE"])
 disappear_after = 12.0
 shake_amount = 3.0
-label_theme = ExtResource("13_5tnk5")
+label_theme = ExtResource("13_ma8mu")
 word_salad_json = ExtResource("14_tx0l1")
 
 [node name="TextCollider" type="CollisionShape3D" parent="InteractionAreas/TextAreaCreator2"]
@@ -284,9 +305,13 @@ script = ExtResource("12_c4oan")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 shape = SubResource("BoxShape3D_i0qnu")
 
+[connection signal="value_changed" from="PauseLayer/PauseMenu/SettingsPanel/PixelationSlider" to="SaveGameManager" method="_on_pixelation_slider_value_changed"]
+[connection signal="value_changed" from="PauseLayer/PauseMenu/SettingsPanel/VolumeSlider" to="SaveGameManager" method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="PauseLayer/PauseMenu/SettingsPanel/MouseSensSlider" to="SaveGameManager" method="_on_mouse_sens_slider_value_changed"]
 [connection signal="area_entered" from="LevelTerrain/Level4Entrance/LevelSwapArea" to="LevelTerrain/Level4Entrance/LevelSwapArea" method="_on_area_entered"]
 [connection signal="area_entered" from="InteractionAreas/TextAreaCreator" to="InteractionAreas/TextAreaCreator" method="_on_area_entered"]
 [connection signal="area_entered" from="InteractionAreas/TextAreaCreator2" to="InteractionAreas/TextAreaCreator2" method="_on_area_entered"]
 [connection signal="area_entered" from="KillZone" to="KillZone" method="_on_area_entered"]
 
+[editable path="PauseLayer/PauseMenu"]
 [editable path="Pawn"]

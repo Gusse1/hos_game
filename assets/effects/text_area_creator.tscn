@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2wwbmnwgn1rh"]
 
 [ext_resource type="Script" path="res://src/ui/UITextCreator.gd" id="1_twld4"]
-[ext_resource type="Theme" uid="uid://om37whdt5pb7" path="res://assets/ui/UITextStyle.tres" id="2_h2f2w"]
+[ext_resource type="Theme" uid="uid://d20hm5kwnmbwg" path="res://assets/ui/UITextStyle_MENU.tres" id="2_sua8w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rsbch"]
 size = Vector3(22.4246, 22.9706, 1)
@@ -11,7 +11,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 44.788
 script = ExtResource("1_twld4")
 disappear_after = 5.0
 shake_amount = 3.0
-label_theme = ExtResource("2_h2f2w")
+label_theme = ExtResource("2_sua8w")
 
 [node name="TextCollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.00001, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1.00001, 1.15009, 5.06586, 3.8147e-06)

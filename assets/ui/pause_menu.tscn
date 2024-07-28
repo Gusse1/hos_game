@@ -1,79 +1,43 @@
-[gd_scene load_steps=14 format=3 uid="uid://bh7o2icnichkg"]
+[gd_scene load_steps=10 format=3 uid="uid://dfryp7psbhdr7"]
 
-[ext_resource type="Script" path="res://src/game_management/SaveGameManager.gd" id="1_52l8j"]
-[ext_resource type="VideoStream" path="res://videos/Hos Intro Background.ogv" id="1_li7v3"]
-[ext_resource type="Script" path="res://src/resources/SharedVariables.gd" id="1_yc3n8"]
-[ext_resource type="Script" path="res://src/ui/MainMenu.gd" id="2_nu8am"]
-[ext_resource type="VideoStream" path="res://videos/Hos Intro With Audio.ogv" id="2_q6vdl"]
-[ext_resource type="FontFile" uid="uid://mu4fafoxri40" path="res://fonts/Cinzel-VariableFont_wght.ttf" id="3_7ysx4"]
-[ext_resource type="Theme" uid="uid://d20hm5kwnmbwg" path="res://assets/ui/UITextStyle_MENU.tres" id="4_1ckoh"]
-[ext_resource type="Script" path="res://src/ui/MenuItemsTooltipDisable.gd" id="5_jngpb"]
-[ext_resource type="StyleBox" uid="uid://b82ffn5jyqng4" path="res://styles/main_menu.tres" id="6_b66ke"]
-[ext_resource type="AudioStream" uid="uid://duruah65ds4op" path="res://audio/ambiance/creepy_building_hum.ogg" id="7_n0wja"]
-[ext_resource type="AudioStream" uid="uid://cndwqaxk0susv" path="res://audio/ambiance/whirr.ogg" id="8_miaub"]
-[ext_resource type="Script" path="res://src/ui/SettingsPanel.gd" id="8_vvspn"]
+[ext_resource type="Script" path="res://src/ui/PauseMenuLogic.gd" id="1_4ih2m"]
+[ext_resource type="Theme" uid="uid://d20hm5kwnmbwg" path="res://assets/ui/UITextStyle_MENU.tres" id="2_v0ft5"]
+[ext_resource type="StyleBox" uid="uid://b82ffn5jyqng4" path="res://styles/main_menu.tres" id="3_clrub"]
+[ext_resource type="Script" path="res://src/ui/SettingsPanel.gd" id="4_td50m"]
+[ext_resource type="FontFile" uid="uid://mu4fafoxri40" path="res://fonts/Cinzel-VariableFont_wght.ttf" id="5_rtexj"]
+[ext_resource type="Script" path="res://src/ui/MenuItemsTooltipDisable.gd" id="6_js8as"]
+[ext_resource type="AudioStream" uid="uid://duruah65ds4op" path="res://audio/ambiance/creepy_building_hum.ogg" id="7_qoryu"]
+[ext_resource type="AudioStream" uid="uid://cndwqaxk0susv" path="res://audio/ambiance/whirr.ogg" id="8_qkfx3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51xcn"]
 bg_color = Color(0.294118, 0, 0.262745, 1)
 corner_detail = 1
 anti_aliasing = false
 
-[node name="MainMenu" type="Control"]
+[node name="PauseMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1008.0
+offset_top = -588.0
+offset_right = 912.0
+offset_bottom = 492.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.88, 0.88)
+pivot_offset = Vector2(1080, 960)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="SharedVariables" type="Node" parent="." node_paths=PackedStringArray("save_game_manager", "settings_panel")]
-script = ExtResource("1_yc3n8")
-save_game_manager = NodePath("../SaveGameManager")
-settings_panel = NodePath("../SettingsPanel")
-
-[node name="SaveGameManager" type="Node" parent="."]
-script = ExtResource("1_52l8j")
-level_saving_enabled = false
-
-[node name="MenuLogic" type="Node" parent="." node_paths=PackedStringArray("menu_items", "menu_panel", "intro_video_player", "intro_background_video_player", "settings_panel", "credits_panel", "save_game_manager")]
-script = ExtResource("2_nu8am")
+[node name="PauseMenuLogic" type="Node" parent="." node_paths=PackedStringArray("menu_items", "menu_panel", "settings_panel", "credits_panel")]
+script = ExtResource("1_4ih2m")
 menu_items = NodePath("../Panel/MenuItems")
 menu_panel = NodePath("../Panel")
-intro_video_player = NodePath("../IntroVideo")
-intro_background_video_player = NodePath("../BackgroundVideo")
 settings_panel = NodePath("../SettingsPanel")
 credits_panel = NodePath("../Credits")
-save_game_manager = NodePath("../SaveGameManager")
-
-[node name="BackgroundVideo" type="VideoStreamPlayer" parent="."]
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -960.0
-offset_right = 960.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-stream = ExtResource("1_li7v3")
-autoplay = true
-loop = true
-metadata/_edit_use_anchors_ = true
-
-[node name="IntroVideo" type="VideoStreamPlayer" parent="."]
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -960.0
-offset_right = 960.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-stream = ExtResource("2_q6vdl")
-metadata/_edit_use_anchors_ = true
 
 [node name="SettingsPanel" type="Panel" parent="."]
 visible = false
@@ -90,9 +54,9 @@ offset_right = 960.0
 offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("4_1ckoh")
-theme_override_styles/panel = ExtResource("6_b66ke")
-script = ExtResource("8_vvspn")
+theme = ExtResource("2_v0ft5")
+theme_override_styles/panel = ExtResource("3_clrub")
+script = ExtResource("4_td50m")
 
 [node name="SettingsLabel" type="Label" parent="SettingsPanel"]
 layout_mode = 1
@@ -100,8 +64,8 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 118.0
 grow_horizontal = 2
-theme = ExtResource("4_1ckoh")
-theme_override_fonts/font = ExtResource("3_7ysx4")
+theme = ExtResource("2_v0ft5")
+theme_override_fonts/font = ExtResource("5_rtexj")
 theme_override_font_sizes/font_size = 87
 text = "SETTINGS"
 horizontal_alignment = 1
@@ -113,8 +77,8 @@ anchor_right = 1.0
 offset_top = 128.0
 offset_bottom = 256.0
 grow_horizontal = 2
-theme = ExtResource("4_1ckoh")
-theme_override_fonts/font = ExtResource("3_7ysx4")
+theme = ExtResource("2_v0ft5")
+theme_override_fonts/font = ExtResource("5_rtexj")
 theme_override_font_sizes/font_size = 50
 text = "PIXELATION FACTOR"
 horizontal_alignment = 1
@@ -133,7 +97,7 @@ offset_bottom = -856.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
-theme = ExtResource("4_1ckoh")
+theme = ExtResource("2_v0ft5")
 max_value = 10.0
 value = 3.0
 
@@ -150,7 +114,7 @@ offset_bottom = -824.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("4_1ckoh")
+theme = ExtResource("2_v0ft5")
 theme_override_styles/panel = SubResource("StyleBoxFlat_51xcn")
 
 [node name="PixelationDescription" type="Label" parent="SettingsPanel"]
@@ -160,8 +124,8 @@ anchor_right = 1.0
 offset_top = 256.0
 offset_bottom = 352.0
 grow_horizontal = 2
-theme = ExtResource("4_1ckoh")
-theme_override_fonts/font = ExtResource("3_7ysx4")
+theme = ExtResource("2_v0ft5")
+theme_override_fonts/font = ExtResource("5_rtexj")
 theme_override_font_sizes/font_size = 20
 text = "DIVIDE YOUR RESOLUTION WITH THIS VALUE. HIGHER VALUES PROVIDE MORE PIXELATION AND PERFORMANCE."
 horizontal_alignment = 1
@@ -179,8 +143,8 @@ offset_right = -192.0
 offset_bottom = -824.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("4_1ckoh")
-theme_override_fonts/font = ExtResource("3_7ysx4")
+theme = ExtResource("2_v0ft5")
+theme_override_fonts/font = ExtResource("5_rtexj")
 theme_override_font_sizes/font_size = 45
 text = "3"
 horizontal_alignment = 1
@@ -197,8 +161,8 @@ offset_top = -220.0
 offset_bottom = -152.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("4_1ckoh")
-theme_override_fonts/font = ExtResource("3_7ysx4")
+theme = ExtResource("2_v0ft5")
+theme_override_fonts/font = ExtResource("5_rtexj")
 theme_override_font_sizes/font_size = 50
 text = "VOLUME"
 horizontal_alignment = 1
@@ -217,7 +181,7 @@ offset_bottom = -124.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
-theme = ExtResource("4_1ckoh")
+theme = ExtResource("2_v0ft5")
 value = 50.0
 
 [node name="VolumeBG" type="Panel" parent="SettingsPanel"]
@@ -233,7 +197,7 @@ offset_bottom = -92.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("4_1ckoh")
+theme = ExtResource("2_v0ft5")
 theme_override_styles/panel = SubResource("StyleBoxFlat_51xcn")
 
 [node name="VolumeNumber" type="Label" parent="SettingsPanel"]
@@ -248,8 +212,8 @@ offset_right = -488.0
 offset_bottom = -95.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("4_1ckoh")
-theme_override_fonts/font = ExtResource("3_7ysx4")
+theme = ExtResource("2_v0ft5")
+theme_override_fonts/font = ExtResource("5_rtexj")
 theme_override_font_sizes/font_size = 45
 text = "50"
 horizontal_alignment = 1
@@ -266,8 +230,8 @@ offset_top = -28.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("4_1ckoh")
-theme_override_fonts/font = ExtResource("3_7ysx4")
+theme = ExtResource("2_v0ft5")
+theme_override_fonts/font = ExtResource("5_rtexj")
 theme_override_font_sizes/font_size = 50
 text = "MOUSE SENSITIVTY"
 horizontal_alignment = 1
@@ -286,7 +250,7 @@ offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
-theme = ExtResource("4_1ckoh")
+theme = ExtResource("2_v0ft5")
 value = 50.0
 
 [node name="MouseSensBG" type="Panel" parent="SettingsPanel"]
@@ -302,7 +266,7 @@ offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("4_1ckoh")
+theme = ExtResource("2_v0ft5")
 theme_override_styles/panel = SubResource("StyleBoxFlat_51xcn")
 
 [node name="MouseSensNumber" type="Label" parent="SettingsPanel"]
@@ -317,8 +281,8 @@ offset_right = -488.0
 offset_bottom = 97.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("4_1ckoh")
-theme_override_fonts/font = ExtResource("3_7ysx4")
+theme = ExtResource("2_v0ft5")
+theme_override_fonts/font = ExtResource("5_rtexj")
 theme_override_font_sizes/font_size = 45
 text = "50"
 horizontal_alignment = 1
@@ -340,8 +304,8 @@ offset_right = 296.0
 offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("4_1ckoh")
-theme_override_styles/panel = ExtResource("6_b66ke")
+theme = ExtResource("2_v0ft5")
+theme_override_styles/panel = ExtResource("3_clrub")
 
 [node name="CreditsLabel" type="Label" parent="Credits"]
 layout_mode = 1
@@ -349,8 +313,8 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 118.0
 grow_horizontal = 2
-theme = ExtResource("4_1ckoh")
-theme_override_fonts/font = ExtResource("3_7ysx4")
+theme = ExtResource("2_v0ft5")
+theme_override_fonts/font = ExtResource("5_rtexj")
 theme_override_font_sizes/font_size = 87
 text = "CREDITS"
 horizontal_alignment = 1
@@ -362,8 +326,8 @@ anchor_right = 1.0
 offset_top = 136.0
 offset_bottom = 304.0
 grow_horizontal = 2
-theme = ExtResource("4_1ckoh")
-theme_override_fonts/font = ExtResource("3_7ysx4")
+theme = ExtResource("2_v0ft5")
+theme_override_fonts/font = ExtResource("5_rtexj")
 theme_override_font_sizes/font_size = 55
 text = "GAME CREATED BY
 MIKAEL GUSTAFSSON"
@@ -377,8 +341,8 @@ anchor_right = 1.0
 offset_top = 264.0
 offset_bottom = 1216.0
 grow_horizontal = 2
-theme = ExtResource("4_1ckoh")
-theme_override_fonts/font = ExtResource("3_7ysx4")
+theme = ExtResource("2_v0ft5")
+theme_override_fonts/font = ExtResource("5_rtexj")
 theme_override_font_sizes/font_size = 40
 text = "
 ADDITIONAL SOUNDS BY
@@ -395,8 +359,8 @@ offset_top = 520.0
 offset_right = -8.0
 offset_bottom = 1152.0
 grow_horizontal = 2
-theme = ExtResource("4_1ckoh")
-theme_override_fonts/font = ExtResource("3_7ysx4")
+theme = ExtResource("2_v0ft5")
+theme_override_fonts/font = ExtResource("5_rtexj")
 theme_override_font_sizes/font_size = 30
 text = "ATTRIBUTIONS:
 GOLD_GDT CHARACTER CONTROLLER BY RATMARROW
@@ -427,36 +391,31 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 0
 tooltip_text = " "
-theme = ExtResource("4_1ckoh")
+theme = ExtResource("2_v0ft5")
 theme_type_variation = &"MainMenuButtons"
 theme_override_colors/font_hovered_color = Color(0.567193, 0, 0.0532531, 1)
 theme_override_colors/font_selected_color = Color(0.999863, 0.324293, 0.259129, 1)
-theme_override_fonts/font = ExtResource("3_7ysx4")
+theme_override_fonts/font = ExtResource("5_rtexj")
 theme_override_font_sizes/font_size = 101
-theme_override_styles/panel = ExtResource("6_b66ke")
+theme_override_styles/panel = ExtResource("3_clrub")
 allow_search = false
-item_count = 5
-item_0/text = "Continue"
-item_1/text = "New Game"
-item_2/text = "Settings"
-item_3/text = "Exit"
-item_4/text = "Credits"
-script = ExtResource("5_jngpb")
+item_count = 4
+item_0/text = "Resume"
+item_1/text = "Settings"
+item_2/text = "QUIT"
+item_3/text = "Credits"
+script = ExtResource("6_js8as")
 
 [node name="BackgroundAudio" type="Node" parent="."]
 
 [node name="Creepy_Hum" type="AudioStreamPlayer" parent="BackgroundAudio"]
-stream = ExtResource("7_n0wja")
+stream = ExtResource("7_qoryu")
 volume_db = -12.417
 
 [node name="Creepy_Hum2" type="AudioStreamPlayer" parent="BackgroundAudio"]
-stream = ExtResource("8_miaub")
+stream = ExtResource("8_qkfx3")
 volume_db = -21.119
 pitch_scale = 0.6
 autoplay = true
 
-[connection signal="finished" from="IntroVideo" to="MenuLogic" method="_on_intro_video_finished"]
-[connection signal="value_changed" from="SettingsPanel/PixelationSlider" to="SaveGameManager" method="_on_pixelation_slider_value_changed"]
-[connection signal="value_changed" from="SettingsPanel/VolumeSlider" to="SaveGameManager" method="_on_volume_slider_value_changed"]
-[connection signal="value_changed" from="SettingsPanel/MouseSensSlider" to="SaveGameManager" method="_on_mouse_sens_slider_value_changed"]
-[connection signal="item_clicked" from="Panel/MenuItems" to="MenuLogic" method="_on_menu_items_item_clicked"]
+[connection signal="item_clicked" from="Panel/MenuItems" to="PauseMenuLogic" method="_on_menu_items_item_clicked"]

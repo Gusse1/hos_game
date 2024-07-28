@@ -1,7 +1,9 @@
-[gd_scene load_steps=117 format=3 uid="uid://cdaxeyxys1tfs"]
+[gd_scene load_steps=119 format=3 uid="uid://cdaxeyxys1tfs"]
 
 [ext_resource type="FastNoiseLite" uid="uid://bmubs6juomn5f" path="res://materials/fast_noise.tres" id="1_4tqfa"]
+[ext_resource type="PackedScene" uid="uid://dfryp7psbhdr7" path="res://assets/ui/pause_menu.tscn" id="1_geitg"]
 [ext_resource type="Script" path="res://src/resources/SharedVariables.gd" id="1_odsn5"]
+[ext_resource type="Script" path="res://src/game_management/SaveGameManager.gd" id="2_1bgai"]
 [ext_resource type="Texture2D" uid="uid://bmeye3os7s6fg" path="res://textures/Gem_05-128x128.png" id="2_04pw4"]
 [ext_resource type="Script" path="res://src/misc/Warper.gd" id="3_qyvtk"]
 [ext_resource type="Script" path="res://src/ui/video_swapper.gd" id="4_uqhlp"]
@@ -725,12 +727,20 @@ size = Vector3(85.0579, 15.7714, 26.8831)
 
 [node name="level_1" type="Node3D"]
 
-[node name="SharedVariables" type="Node" parent="." node_paths=PackedStringArray("player_node", "player_body", "player_state", "post_process_layer", "video_screen_player", "eye_screen_player")]
+[node name="SaveGameManager" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("2_1bgai")
+level_to_save = "level_1"
+
+[node name="SharedVariables" type="Node" parent="." node_paths=PackedStringArray("player_node", "player_body", "player_state", "post_process_layer", "text_ui", "save_game_manager", "settings_panel", "video_screen_player", "eye_screen_player")]
 script = ExtResource("1_odsn5")
 player_node = NodePath("../Pawn")
 player_body = NodePath("../Pawn/SVC/VC/Body")
 player_state = NodePath("../Pawn/PlayerState")
 post_process_layer = NodePath("../CanvasLayer")
+text_ui = NodePath("../Pawn/GameUI/TextUI")
+save_game_manager = NodePath("../SaveGameManager")
+settings_panel = NodePath("../PauseLayer/PauseMenu/SettingsPanel")
 video_screen_player = NodePath("../VideotapePlayer")
 eye_screen_player = NodePath("../EyeVidViewport")
 
@@ -767,11 +777,23 @@ buffering_msec = 1000
 
 [node name="EyeVidViewport" parent="." instance=ExtResource("8_priwm")]
 
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="PauseMenu" parent="PauseLayer" instance=ExtResource("1_geitg")]
+process_mode = 3
+visible = false
+z_index = 1
+offset_left = -1021.0
+offset_top = -677.0
+offset_right = 1004.0
+offset_bottom = 455.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 follow_viewport_enabled = true
 script = ExtResource("9_lfpyh")
 configuration = SubResource("Resource_gkxv8")
-dynamically_update = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_138gm")
@@ -791,6 +813,13 @@ autoplay = true
 
 [node name="Pawn" parent="." groups=["Pawn"] instance=ExtResource("11_riuqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 167.968, 80.5037, 0.94486)
+
+[node name="SVC" parent="Pawn" index="0"]
+mouse_filter = 2
+
+[node name="VC" parent="Pawn/SVC" index="0"]
+msaa_3d = 0
+use_occlusion_culling = true
 
 [node name="Body" parent="Pawn/SVC/VC" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.479, 51.9381, 1.70181)
@@ -1873,6 +1902,9 @@ size = Vector3(12.8036, 13.7779, 2)
 [node name="SpotLight3D" parent="Checkpoints/Checkpoint2/concrete_bench" index="4"]
 transform = Transform3D(0.571382, 2.98023e-08, 1.77636e-15, 0, -2.49759e-08, 0.571383, 2.98023e-08, -0.571382, -2.49758e-08, 0.579666, 12.5714, -7.62939e-06)
 
+[connection signal="value_changed" from="PauseLayer/PauseMenu/SettingsPanel/PixelationSlider" to="SaveGameManager" method="_on_pixelation_slider_value_changed"]
+[connection signal="value_changed" from="PauseLayer/PauseMenu/SettingsPanel/VolumeSlider" to="SaveGameManager" method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="PauseLayer/PauseMenu/SettingsPanel/MouseSensSlider" to="SaveGameManager" method="_on_mouse_sens_slider_value_changed"]
 [connection signal="area_entered" from="LevelTerrrain/DoorNode2/door_fog/Area3D" to="LevelTerrrain/DoorNode2/video_man" method="_on_area_3d_area_entered"]
 [connection signal="area_entered" from="LevelTerrrain/DoorNode/door_fog/Area3D" to="LevelTerrrain/DoorNode/video_man" method="_on_area_3d_area_entered"]
 [connection signal="area_entered" from="CombatAreas/CombatArea1" to="CombatAreas/CombatArea1" method="_on_area_entered"]
@@ -1883,6 +1915,7 @@ transform = Transform3D(0.571382, 2.98023e-08, 1.77636e-15, 0, -2.49759e-08, 0.5
 [connection signal="area_entered" from="InteractAreas/LevelSwapArea" to="InteractAreas/LevelSwapArea" method="_on_area_entered"]
 
 [editable path="EyeVidViewport"]
+[editable path="PauseLayer/PauseMenu"]
 [editable path="Pawn"]
 [editable path="LevelTerrrain/Giant3"]
 [editable path="LevelTerrrain/Giant"]

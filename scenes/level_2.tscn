@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bbibnw3wxy20d"]
+[gd_scene load_steps=28 format=3 uid="uid://bbibnw3wxy20d"]
 
 [ext_resource type="PackedScene" uid="uid://dmra7k702xhnr" path="res://assets/rooms/hub_level.tscn" id="1_gu0a6"]
 [ext_resource type="Script" path="res://src/resources/SharedVariables.gd" id="1_ld66a"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://b2wwbmnwgn1rh" path="res://assets/effects/text_area_creator.tscn" id="12_36d4l"]
 [ext_resource type="Script" path="res://src/interactable_scripts/KillZone.gd" id="12_hr25b"]
 [ext_resource type="JSON" path="res://src/ui/word_salad.json" id="13_sraxl"]
+[ext_resource type="Script" path="res://src/game_management/SaveGameManager.gd" id="15_41cki"]
+[ext_resource type="PackedScene" uid="uid://dfryp7psbhdr7" path="res://assets/ui/pause_menu.tscn" id="16_4cop5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ixcmd"]
 sky_top_color = Color(0.2, 0, 0, 1)
@@ -86,19 +88,39 @@ size = Vector3(14.34, 22.3708, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ausqc"]
 size = Vector3(2000, 100, 724)
 
-[node name="level2" type="Node3D"]
+[node name="level_2" type="Node3D"]
 
-[node name="SharedVariables" type="Node" parent="." node_paths=PackedStringArray("player_node", "player_body", "player_state", "post_process_layer", "text_ui", "video_screen_player")]
+[node name="FogVolume" parent="." instance=ExtResource("3_dhw5e")]
+transform = Transform3D(1.89, 0, 0, 0, 1.89, 0, 0, 0, 1.89, -13.3765, -88.5212, -0.8528)
+
+[node name="SharedVariables" type="Node" parent="." node_paths=PackedStringArray("player_node", "player_body", "player_state", "post_process_layer", "text_ui", "save_game_manager", "settings_panel", "video_screen_player")]
 script = ExtResource("1_ld66a")
 player_node = NodePath("../Pawn")
 player_body = NodePath("../Pawn/SVC/VC/Body")
 player_state = NodePath("../Pawn/PlayerState")
 post_process_layer = NodePath("../CanvasLayer")
 text_ui = NodePath("../Pawn/GameUI/TextUI")
+save_game_manager = NodePath("../SaveGameManager")
+settings_panel = NodePath("../PauseLayer/PauseMenu/SettingsPanel")
 video_screen_player = NodePath("../VideotapePlayer")
 
-[node name="FogVolume" parent="." instance=ExtResource("3_dhw5e")]
-transform = Transform3D(1.89, 0, 0, 0, 1.89, 0, 0, 0, 1.89, -13.3765, -88.5212, -0.8528)
+[node name="SaveGameManager" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("15_41cki")
+level_to_save = "level_2"
+
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 5
+
+[node name="PauseMenu" parent="PauseLayer" instance=ExtResource("16_4cop5")]
+process_mode = 3
+visible = false
+z_index = 1
+offset_left = -1021.0
+offset_top = -677.0
+offset_right = 1004.0
+offset_bottom = 455.0
 
 [node name="CanvasLayer" parent="." instance=ExtResource("4_wt8c4")]
 
@@ -271,7 +293,11 @@ script = ExtResource("12_hr25b")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 shape = SubResource("BoxShape3D_ausqc")
 
+[connection signal="value_changed" from="PauseLayer/PauseMenu/SettingsPanel/PixelationSlider" to="SaveGameManager" method="_on_pixelation_slider_value_changed"]
+[connection signal="value_changed" from="PauseLayer/PauseMenu/SettingsPanel/VolumeSlider" to="SaveGameManager" method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="PauseLayer/PauseMenu/SettingsPanel/MouseSensSlider" to="SaveGameManager" method="_on_mouse_sens_slider_value_changed"]
 [connection signal="area_entered" from="LevelTerrain/Level3Entrance/LevelSwapArea" to="LevelTerrain/Level3Entrance/LevelSwapArea" method="_on_area_entered"]
 [connection signal="area_entered" from="KillZone" to="KillZone" method="_on_area_entered"]
 
+[editable path="PauseLayer/PauseMenu"]
 [editable path="Pawn"]

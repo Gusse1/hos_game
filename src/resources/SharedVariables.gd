@@ -7,6 +7,10 @@ extends Node
 @export var post_process_layer : CanvasLayer
 @export var text_ui : Control
 
+@export_category("GameLogic")
+@export var save_game_manager : Node
+@export var settings_panel : Panel
+
 @export_category("Video")
 @export var video_screen_player : SubViewport
 @export var eye_screen_player : SubViewport
