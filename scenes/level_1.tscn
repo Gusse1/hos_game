@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://src/game_management/SaveGameManager.gd" id="2_1bgai"]
 [ext_resource type="Texture2D" uid="uid://bmeye3os7s6fg" path="res://textures/Gem_05-128x128.png" id="2_04pw4"]
 [ext_resource type="Script" path="res://src/misc/Warper.gd" id="3_qyvtk"]
-[ext_resource type="Script" path="res://src/ui/video_swapper.gd" id="4_uqhlp"]
+[ext_resource type="Script" path="res://src/ui/VideoSwapper.gd" id="4_uqhlp"]
 [ext_resource type="VideoStream" path="res://videos/Hos Tutorial Video Reload.ogv" id="5_a1fmg"]
 [ext_resource type="VideoStream" path="res://videos/Hos Video Heal Tutorial.ogv" id="6_p42yn"]
 [ext_resource type="VideoStream" path="res://videos/Hos Video Screen 1.ogv" id="7_cx4ho"]

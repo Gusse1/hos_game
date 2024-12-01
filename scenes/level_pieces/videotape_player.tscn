@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b6ro3qtuffgog"]
 
-[ext_resource type="Script" path="res://src/ui/video_swapper.gd" id="1_u41yy"]
+[ext_resource type="Script" path="res://src/ui/VideoSwapper.gd" id="1_u41yy"]
 [ext_resource type="VideoStream" path="res://videos/Hos Tutorial Video Reload.ogv" id="2_d2vel"]
 [ext_resource type="VideoStream" path="res://videos/Hos Video Heal Tutorial.ogv" id="3_w2dc7"]
 [ext_resource type="VideoStream" path="res://videos/Hos Video Screen 1.ogv" id="4_2bnly"]

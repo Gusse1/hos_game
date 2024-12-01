@@ -1,10 +1,10 @@
 [gd_scene load_steps=49 format=3 uid="uid://b34q6nrbu7sys"]
 
-[ext_resource type="Script" path="res://models/handgun_info.gd" id="1_goqh3"]
+[ext_resource type="Script" path="res://src/ui/HandgunInfo.gd" id="1_goqh3"]
 [ext_resource type="Shader" path="res://assets/ui/ammo_display.gdshader" id="1_sfv7b"]
 [ext_resource type="Texture2D" uid="uid://d3bkiw8gdv05w" path="res://textures/Metal_11-128x128.png" id="2_hmtix"]
-[ext_resource type="Script" path="res://models/HealthBar.gd" id="3_0d2ar"]
-[ext_resource type="Script" path="res://models/BloodBar.gd" id="3_68agk"]
+[ext_resource type="Script" path="res://src/ui/HealthBar.gd" id="3_0d2ar"]
+[ext_resource type="Script" path="res://src/ui/BloodBar.gd" id="3_68agk"]
 [ext_resource type="Texture2D" uid="uid://bybw0d1jf3rie" path="res://textures/Metal_05-128x128.png" id="3_q6o8q"]
 [ext_resource type="Texture2D" uid="uid://nrt70c3prylj" path="res://textures/Elements_05-128x128.png" id="5_6o6we"]
 [ext_resource type="Texture2D" uid="uid://cofh4tmvlwryg" path="res://textures/Elements_14-128x128.png" id="5_syv3y"]
