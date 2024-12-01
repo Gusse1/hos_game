@@ -1,5 +1,5 @@
 # House of Sepsis
-![Uploading Screenshot 2024-12-01 205502.png…]()
+![Screenshot 2024-12-01 205502](https://github.com/user-attachments/assets/915a1b0f-05a5-4a34-b15f-7b662edc7681)
 
 ## Repository
 This repository houses the Godot project for the game "House of Sepsis" (downloadable from here https://mikaelgustafsson.itch.io/house-of-sepsis).
